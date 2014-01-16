@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20A18884A890087E0DB /* Foundation.framework */; };
+		279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20C18884A890087E0DB /* CoreGraphics.framework */; };
+		279EC20F18884A890087E0DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20E18884A890087E0DB /* UIKit.framework */; };
+		279EC21118884A890087E0DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC21018884A890087E0DB /* CoreData.framework */; };
+		279EC21718884A890087E0DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 279EC21518884A890087E0DB /* InfoPlist.strings */; };
+		279EC21918884A890087E0DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC21818884A890087E0DB /* main.m */; };
+		279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC21C18884A890087E0DB /* MMXAppDelegate.m */; };
+		279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279EC21E18884A890087E0DB /* Main_iPhone.storyboard */; };
+		279EC22318884A890087E0DB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279EC22118884A890087E0DB /* Main_iPad.storyboard */; };
+		279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 279EC22418884A890087E0DB /* MathMatch.xcdatamodeld */; };
+		279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC22818884A890087E0DB /* CLXMasterViewController.m */; };
+		279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC22B18884A890087E0DB /* CLXDetailViewController.m */; };
+		279EC22E18884A890087E0DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279EC22D18884A890087E0DB /* Images.xcassets */; };
+		279EC23518884A890087E0DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC23418884A890087E0DB /* XCTest.framework */; };
+		279EC23618884A890087E0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20A18884A890087E0DB /* Foundation.framework */; };
+		279EC23718884A890087E0DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20E18884A890087E0DB /* UIKit.framework */; };
+		279EC23818884A890087E0DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC21018884A890087E0DB /* CoreData.framework */; };
+		279EC24018884A890087E0DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 279EC23E18884A890087E0DB /* InfoPlist.strings */; };
+		279EC24218884A890087E0DB /* MathMatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24118884A890087E0DB /* MathMatchTests.m */; };
+		279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */; };
+		279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		279EC23918884A890087E0DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 279EC1FF18884A890087E0DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 279EC20618884A890087E0DB;
+			remoteInfo = MathMatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		279EC20718884A890087E0DB /* MathMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		279EC20A18884A890087E0DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		279EC20C18884A890087E0DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		279EC20E18884A890087E0DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		279EC21018884A890087E0DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		279EC21418884A890087E0DB /* MathMatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MathMatch-Info.plist"; sourceTree = "<group>"; };
+		279EC21618884A890087E0DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		279EC21818884A890087E0DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		279EC21A18884A890087E0DB /* MathMatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathMatch-Prefix.pch"; sourceTree = "<group>"; };
+		279EC21B18884A890087E0DB /* MMXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXAppDelegate.h; sourceTree = "<group>"; };
+		279EC21C18884A890087E0DB /* MMXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMXAppDelegate.m; sourceTree = "<group>"; };
+		279EC21F18884A890087E0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		279EC22218884A890087E0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		279EC22518884A890087E0DB /* MathMatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MathMatch.xcdatamodel; sourceTree = "<group>"; };
+		279EC22718884A890087E0DB /* CLXMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLXMasterViewController.h; sourceTree = "<group>"; };
+		279EC22818884A890087E0DB /* CLXMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLXMasterViewController.m; sourceTree = "<group>"; };
+		279EC22A18884A890087E0DB /* CLXDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLXDetailViewController.h; sourceTree = "<group>"; };
+		279EC22B18884A890087E0DB /* CLXDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLXDetailViewController.m; sourceTree = "<group>"; };
+		279EC22D18884A890087E0DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		279EC23318884A890087E0DB /* MathMatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathMatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		279EC23418884A890087E0DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		279EC23D18884A890087E0DB /* MathMatchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MathMatchTests-Info.plist"; sourceTree = "<group>"; };
+		279EC23F18884A890087E0DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		279EC24118884A890087E0DB /* MathMatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathMatchTests.m; sourceTree = "<group>"; };
+		279EC24B18884CF70087E0DB /* MMXMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXMainMenuViewController.h; sourceTree = "<group>"; };
+		279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXMainMenuViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		279EC20418884A890087E0DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279EC21118884A890087E0DB /* CoreData.framework in Frameworks */,
+				279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */,
+				279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */,
+				279EC20F18884A890087E0DB /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		279EC23018884A890087E0DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279EC23518884A890087E0DB /* XCTest.framework in Frameworks */,
+				279EC23818884A890087E0DB /* CoreData.framework in Frameworks */,
+				279EC23718884A890087E0DB /* UIKit.framework in Frameworks */,
+				279EC23618884A890087E0DB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		279EC1FE18884A890087E0DB = {
+			isa = PBXGroup;
+			children = (
+				279EC21218884A890087E0DB /* MathMatch */,
+				279EC23B18884A890087E0DB /* MathMatchTests */,
+				279EC20918884A890087E0DB /* Frameworks */,
+				279EC20818884A890087E0DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		279EC20818884A890087E0DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				279EC20718884A890087E0DB /* MathMatch.app */,
+				279EC23318884A890087E0DB /* MathMatchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		279EC20918884A890087E0DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				279EC20A18884A890087E0DB /* Foundation.framework */,
+				279EC20C18884A890087E0DB /* CoreGraphics.framework */,
+				279EC20E18884A890087E0DB /* UIKit.framework */,
+				279EC21018884A890087E0DB /* CoreData.framework */,
+				279EC23418884A890087E0DB /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		279EC21218884A890087E0DB /* MathMatch */ = {
+			isa = PBXGroup;
+			children = (
+				279EC21B18884A890087E0DB /* MMXAppDelegate.h */,
+				279EC21C18884A890087E0DB /* MMXAppDelegate.m */,
+				279EC24B18884CF70087E0DB /* MMXMainMenuViewController.h */,
+				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
+				279EC21E18884A890087E0DB /* Main_iPhone.storyboard */,
+				279EC22118884A890087E0DB /* Main_iPad.storyboard */,
+				279EC22718884A890087E0DB /* CLXMasterViewController.h */,
+				279EC22818884A890087E0DB /* CLXMasterViewController.m */,
+				279EC22A18884A890087E0DB /* CLXDetailViewController.h */,
+				279EC22B18884A890087E0DB /* CLXDetailViewController.m */,
+				279EC22D18884A890087E0DB /* Images.xcassets */,
+				279EC22418884A890087E0DB /* MathMatch.xcdatamodeld */,
+				279EC21318884A890087E0DB /* Supporting Files */,
+			);
+			path = MathMatch;
+			sourceTree = "<group>";
+		};
+		279EC21318884A890087E0DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				279EC21418884A890087E0DB /* MathMatch-Info.plist */,
+				279EC21518884A890087E0DB /* InfoPlist.strings */,
+				279EC21818884A890087E0DB /* main.m */,
+				279EC21A18884A890087E0DB /* MathMatch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		279EC23B18884A890087E0DB /* MathMatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				279EC24118884A890087E0DB /* MathMatchTests.m */,
+				279EC23C18884A890087E0DB /* Supporting Files */,
+			);
+			path = MathMatchTests;
+			sourceTree = "<group>";
+		};
+		279EC23C18884A890087E0DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				279EC23D18884A890087E0DB /* MathMatchTests-Info.plist */,
+				279EC23E18884A890087E0DB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		279EC20618884A890087E0DB /* MathMatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 279EC24518884A890087E0DB /* Build configuration list for PBXNativeTarget "MathMatch" */;
+			buildPhases = (
+				279EC20318884A890087E0DB /* Sources */,
+				279EC20418884A890087E0DB /* Frameworks */,
+				279EC20518884A890087E0DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathMatch;
+			productName = MathMatch;
+			productReference = 279EC20718884A890087E0DB /* MathMatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		279EC23218884A890087E0DB /* MathMatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 279EC24818884A890087E0DB /* Build configuration list for PBXNativeTarget "MathMatchTests" */;
+			buildPhases = (
+				279EC22F18884A890087E0DB /* Sources */,
+				279EC23018884A890087E0DB /* Frameworks */,
+				279EC23118884A890087E0DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				279EC23A18884A890087E0DB /* PBXTargetDependency */,
+			);
+			name = MathMatchTests;
+			productName = MathMatchTests;
+			productReference = 279EC23318884A890087E0DB /* MathMatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		279EC1FF18884A890087E0DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CLX;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Computer Lab";
+				TargetAttributes = {
+					279EC20618884A890087E0DB = {
+						DevelopmentTeam = 4R42LNL6YL;
+					};
+					279EC23218884A890087E0DB = {
+						TestTargetID = 279EC20618884A890087E0DB;
+					};
+				};
+			};
+			buildConfigurationList = 279EC20218884A890087E0DB /* Build configuration list for PBXProject "MathMatch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 279EC1FE18884A890087E0DB;
+			productRefGroup = 279EC20818884A890087E0DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				279EC20618884A890087E0DB /* MathMatch */,
+				279EC23218884A890087E0DB /* MathMatchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		279EC20518884A890087E0DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279EC22318884A890087E0DB /* Main_iPad.storyboard in Resources */,
+				279EC22E18884A890087E0DB /* Images.xcassets in Resources */,
+				279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */,
+				279EC21718884A890087E0DB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		279EC23118884A890087E0DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279EC24018884A890087E0DB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		279EC20318884A890087E0DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
+				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
+				279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */,
+				279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */,
+				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
+				279EC21918884A890087E0DB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		279EC22F18884A890087E0DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
+				279EC24218884A890087E0DB /* MathMatchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		279EC23A18884A890087E0DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 279EC20618884A890087E0DB /* MathMatch */;
+			targetProxy = 279EC23918884A890087E0DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		279EC21518884A890087E0DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279EC21618884A890087E0DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		279EC21E18884A890087E0DB /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279EC21F18884A890087E0DB /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		279EC22118884A890087E0DB /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279EC22218884A890087E0DB /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		279EC23E18884A890087E0DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279EC23F18884A890087E0DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		279EC24318884A890087E0DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		279EC24418884A890087E0DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		279EC24618884A890087E0DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MathMatch/MathMatch-Prefix.pch";
+				INFOPLIST_FILE = "MathMatch/MathMatch-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		279EC24718884A890087E0DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MathMatch/MathMatch-Prefix.pch";
+				INFOPLIST_FILE = "MathMatch/MathMatch-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		279EC24918884A890087E0DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MathMatch.app/MathMatch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MathMatch/MathMatch-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MathMatchTests/MathMatchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		279EC24A18884A890087E0DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MathMatch.app/MathMatch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MathMatch/MathMatch-Prefix.pch";
+				INFOPLIST_FILE = "MathMatchTests/MathMatchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		279EC20218884A890087E0DB /* Build configuration list for PBXProject "MathMatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				279EC24318884A890087E0DB /* Debug */,
+				279EC24418884A890087E0DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		279EC24518884A890087E0DB /* Build configuration list for PBXNativeTarget "MathMatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				279EC24618884A890087E0DB /* Debug */,
+				279EC24718884A890087E0DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		279EC24818884A890087E0DB /* Build configuration list for PBXNativeTarget "MathMatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				279EC24918884A890087E0DB /* Debug */,
+				279EC24A18884A890087E0DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		279EC22418884A890087E0DB /* MathMatch.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				279EC22518884A890087E0DB /* MathMatch.xcdatamodel */,
+			);
+			currentVersion = 279EC22518884A890087E0DB /* MathMatch.xcdatamodel */;
+			path = MathMatch.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 279EC1FF18884A890087E0DB /* Project object */;
+}
