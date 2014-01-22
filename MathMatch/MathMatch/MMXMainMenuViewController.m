@@ -1,5 +1,5 @@
 //
-//  CLXMainMenuViewController.m
+//  MMXMainMenuViewController.m
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.1.16.
@@ -29,23 +29,17 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:YES];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(43.0 / 255.0)
+                                                                           green:(43.0 / 255.0)
+                                                                            blue:(43.0 / 255.0)
+                                                                           alpha:1.0];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.0],
+                                                                    NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Avenir"]);
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

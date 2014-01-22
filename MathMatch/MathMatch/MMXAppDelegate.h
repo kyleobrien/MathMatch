@@ -1,5 +1,5 @@
 //
-//  CLXAppDelegate.h
+//  MMXAppDelegate.h
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.1.16.

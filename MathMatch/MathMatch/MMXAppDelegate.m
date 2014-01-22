@@ -1,5 +1,5 @@
 //
-//  CLXAppDelegate.m
+//  MMXAppDelegate.m
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.1.16.
@@ -29,11 +29,14 @@
         CLXMasterViewController *controller = (CLXMasterViewController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
          */
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        CLXMasterViewController *controller = (CLXMasterViewController *)navigationController.topViewController;
+    }
+    else
+    {
+        //UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        //CLXMasterViewController *controller = (CLXMasterViewController *)navigationController.topViewController;
         //controller.managedObjectContext = self.managedObjectContext;
     }
+    
     return YES;
 }
 							
