@@ -38,8 +38,6 @@
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.0],
                                                                     NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Avenir"]);
 }
 
 @end

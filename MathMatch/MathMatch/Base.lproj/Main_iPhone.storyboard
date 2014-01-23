@@ -32,64 +32,130 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUb-bG-fDy">
-                                <rect key="frame" x="0.0" y="43" width="320" height="330"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIN-Wx-MXj" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="0.0" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-w3-IfP">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
-                                        <state key="normal" title="Courses">
-                                            <color key="titleColor" red="0.019607843137254902" green="0.66666666666666663" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A">
-                                        <rect key="frame" x="20" y="88" width="280" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
-                                        <state key="normal" title="Practice">
-                                            <color key="titleColor" red="0.011764705882352941" green="0.89411764705882346" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Fwk-8r-rWc" kind="push" id="u1b-1b-3us"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
-                                        <rect key="frame" x="20" y="176" width="280" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
-                                        <state key="normal" title="How to Play">
-                                            <color key="titleColor" red="1" green="0.5607843137254902" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
-                                        <rect key="frame" x="20" y="264" width="280" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
-                                        <state key="normal" title="Report Card">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="330" id="JQt-kt-2M5"/>
-                                    <constraint firstAttribute="width" constant="320" id="PNt-Zx-6Rm"/>
+                                    <constraint firstAttribute="width" constant="280" id="Ymz-Fa-MPs"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-w3-IfP">
+                                <rect key="frame" x="20" y="32" width="280" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="dQ6-wg-z20"/>
+                                    <constraint firstAttribute="width" constant="280" id="euP-IW-wIu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
+                                <state key="normal" title="Courses">
+                                    <color key="titleColor" red="0.019607843137254902" green="0.66666666666666663" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="96" width="280" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="pp1-mN-EVJ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A">
+                                <rect key="frame" x="20" y="128" width="280" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="P2x-pC-prM"/>
+                                    <constraint firstAttribute="width" constant="280" id="wTn-Gf-jrQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
+                                <state key="normal" title="Practice">
+                                    <color key="titleColor" red="0.011764705882352941" green="0.89411764705882346" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Fwk-8r-rWc" kind="push" id="u1b-1b-3us"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="192" width="280" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="rUg-b8-p3y"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
+                                <rect key="frame" x="20" y="224" width="280" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="jzv-Jw-cO3"/>
+                                    <constraint firstAttribute="height" constant="64" id="qpu-Js-3gb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
+                                <state key="normal" title="How to Play">
+                                    <color key="titleColor" red="1" green="0.5607843137254902" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="288" width="280" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="uih-iF-VJh"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
+                                <rect key="frame" x="20" y="320" width="280" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="7yk-ML-shO"/>
+                                    <constraint firstAttribute="width" constant="280" id="J4V-7T-Qvl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="44"/>
+                                <state key="normal" title="Report Card">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="384" width="280" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="0i3-Tr-fvU"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="HUb-bG-fDy" secondAttribute="centerY" id="EdZ-L5-nJC"/>
-                            <constraint firstAttribute="centerX" secondItem="HUb-bG-fDy" secondAttribute="centerX" id="UIU-Wq-qwV"/>
+                            <constraint firstItem="xk1-lB-v2A" firstAttribute="top" secondItem="jkq-Qt-S5r" secondAttribute="bottom" id="9g0-Sr-VQg"/>
+                            <constraint firstItem="5ZN-pU-Nfv" firstAttribute="top" secondItem="6fv-DM-rfO" secondAttribute="bottom" id="CnO-Qf-wvu"/>
+                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="top" secondItem="YCh-w3-IfP" secondAttribute="bottom" id="Ian-dP-FDr"/>
+                            <constraint firstAttribute="centerX" secondItem="YCh-w3-IfP" secondAttribute="centerX" id="MJO-ss-uje"/>
+                            <constraint firstItem="YCh-w3-IfP" firstAttribute="top" secondItem="zIN-Wx-MXj" secondAttribute="bottom" id="OHO-Uh-0b5"/>
+                            <constraint firstAttribute="centerX" secondItem="Zf2-B6-3Wd" secondAttribute="centerX" id="P13-uv-7iV"/>
+                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="SYZ-Pw-490" secondAttribute="height" id="QL3-6F-wsx"/>
+                            <constraint firstAttribute="centerX" secondItem="6fv-DM-rfO" secondAttribute="centerX" id="Rg9-L2-L0f"/>
+                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="5ZN-pU-Nfv" secondAttribute="height" id="SIf-4p-Kpq"/>
+                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="Zf2-B6-3Wd" secondAttribute="height" id="SmO-wm-4ex"/>
+                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="zIN-Wx-MXj" secondAttribute="height" id="SoN-hG-rQ6"/>
+                            <constraint firstAttribute="centerX" secondItem="JF7-IU-aB8" secondAttribute="centerX" id="VKT-vN-i92"/>
+                            <constraint firstItem="SYZ-Pw-490" firstAttribute="top" secondItem="xk1-lB-v2A" secondAttribute="bottom" id="Yr4-M5-j4G"/>
+                            <constraint firstAttribute="centerX" secondItem="xk1-lB-v2A" secondAttribute="centerX" id="aVP-RC-SQ6"/>
+                            <constraint firstAttribute="centerX" secondItem="5ZN-pU-Nfv" secondAttribute="centerX" id="ccu-E1-hk0"/>
+                            <constraint firstItem="JF7-IU-aB8" firstAttribute="top" secondItem="5ZN-pU-Nfv" secondAttribute="bottom" id="haF-NB-cI2"/>
+                            <constraint firstAttribute="centerX" secondItem="zIN-Wx-MXj" secondAttribute="centerX" id="lHM-LY-RFy"/>
+                            <constraint firstItem="zIN-Wx-MXj" firstAttribute="top" secondItem="e5h-gw-ZgO" secondAttribute="bottom" id="oyg-io-fd5"/>
+                            <constraint firstAttribute="centerX" secondItem="jkq-Qt-S5r" secondAttribute="centerX" id="qYT-Qq-KRT"/>
+                            <constraint firstAttribute="centerX" secondItem="SYZ-Pw-490" secondAttribute="centerX" id="vpr-yQ-gos"/>
+                            <constraint firstItem="6fv-DM-rfO" firstAttribute="top" secondItem="SYZ-Pw-490" secondAttribute="bottom" id="vxZ-PX-IN7"/>
+                            <constraint firstItem="Zf2-B6-3Wd" firstAttribute="top" secondItem="JF7-IU-aB8" secondAttribute="bottom" id="waU-x9-z02"/>
+                            <constraint firstItem="JTZ-bv-TUy" firstAttribute="top" secondItem="Zf2-B6-3Wd" secondAttribute="bottom" id="yGI-iO-Qxt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Math Match" id="E1A-dv-7wY">
-                        <barButtonItem key="backBarButtonItem" title="Main Menu" id="Apg-2T-0uZ"/>
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="Apg-2T-0uZ"/>
                         <barButtonItem key="rightBarButtonItem" image="GearIcon" id="Ypd-Og-J4w"/>
                     </navigationItem>
                 </viewController>
@@ -109,82 +175,352 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vz2-tG-JaO">
-                                <rect key="frame" x="43" y="285" width="243" height="29"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-n7-4BR" userLabel="Number View">
+                                <rect key="frame" x="20" y="20" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Track A"/>
-                                    <segment title="Track B"/>
-                                    <segment title="Track C"/>
-                                    <segment title="Off"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Cou-y1-zEZ">
-                                <rect key="frame" x="99" y="219" width="123" height="29"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruF-TR-8Rb">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <color key="textColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjr-yG-5dI" customClass="MMXFlatButton">
+                                        <rect key="frame" x="0.0" y="28" width="50" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="4">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="numberButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="xBp-ht-1yI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLZ-g3-jQ0" customClass="MMXFlatButton">
+                                        <rect key="frame" x="58" y="28" width="49" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="8">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="numberButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="tbX-JU-2xp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDZ-3A-fPA" customClass="MMXFlatButton">
+                                        <rect key="frame" x="115" y="28" width="50" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="12">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="numberButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="TvK-h6-wbR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1K-3C-nQo" customClass="MMXFlatButton">
+                                        <rect key="frame" x="173" y="28" width="49" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="16">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="numberButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="WGJ-lA-LNq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lng-py-aHX" customClass="MMXFlatButton">
+                                        <rect key="frame" x="230" y="28" width="50" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="20">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="numberButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="Atx-k0-CKE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="cpd-Ta-KR4"/>
+                                    <constraint firstAttribute="height" constant="72" id="sgC-zx-rdU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7O-4k-JVo" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="92" width="280" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3M5-2Z-n2r">
-                                <rect key="frame" x="99" y="168" width="123" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="bk3-Mk-gEH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-d3-EXq" userLabel="Arithmetic View">
+                                <rect key="frame" x="20" y="104" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-fg-Hyc">
-                                <rect key="frame" x="99" y="121" width="123" height="29"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arithmetic Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4W-kE-kFX">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <color key="textColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOv-ei-PM8" customClass="MMXFlatButton">
+                                        <rect key="frame" x="0.0" y="28" width="64" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.37254901960784315" green="0.25098039215686274" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="33"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="arithmeticButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="mGq-KJ-VD7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFE-3w-eVF" customClass="MMXFlatButton">
+                                        <rect key="frame" x="72" y="28" width="64" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.37254901960784315" green="0.25098039215686274" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="33"/>
+                                        <state key="normal" title="−">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="arithmeticButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="Ie2-Pa-yNp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOt-Sa-d7K" customClass="MMXFlatButton">
+                                        <rect key="frame" x="144" y="28" width="64" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.37254901960784315" green="0.25098039215686274" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="33"/>
+                                        <state key="normal" title="×">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="arithmeticButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="nYY-1N-cGQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ury-pk-nbJ" customClass="MMXFlatButton">
+                                        <rect key="frame" x="216" y="28" width="64" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.37254901960784315" green="0.25098039215686274" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="33"/>
+                                        <state key="normal" title="÷">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="arithmeticButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="ofF-6X-tcD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="Diy-Kh-DHP"/>
+                                    <constraint firstAttribute="width" constant="280" id="MTm-he-huG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cq1-EE-6W1" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="176" width="280" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0br-uC-6YE">
-                                <rect key="frame" x="125" y="78" width="97" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="cYH-Gt-hpq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZc-ys-LAC" userLabel="Memory Speed View">
+                                <rect key="frame" x="20" y="188" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5o1-RL-OJX">
-                                <rect key="frame" x="20" y="87" width="42" height="21"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Memory Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-ao-gRo">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <color key="textColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4w-w4-ta0" customClass="MMXFlatButton">
+                                        <rect key="frame" x="0.0" y="28" width="88" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="Slow">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="memoryButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="L78-jH-Mpn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3te-fA-Qys" customClass="MMXFlatButton">
+                                        <rect key="frame" x="96" y="28" width="88" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="Fast">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="memoryButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="FNm-7F-5Mu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzT-Fl-qJZ" customClass="MMXFlatButton">
+                                        <rect key="frame" x="192" y="28" width="88" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="None">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="memoryButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="VAd-xt-o04"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="58S-XQ-rbl"/>
+                                    <constraint firstAttribute="height" constant="72" id="TWl-bM-QjJ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-Nj-W7D" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="260" width="280" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruF-TR-8Rb">
-                                <rect key="frame" x="20" y="123" width="42" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="U8l-44-PPk"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-UI-jrn" userLabel="Music View">
+                                <rect key="frame" x="20" y="272" width="280" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4W-kE-kFX">
-                                <rect key="frame" x="20" y="171" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-ao-gRo">
-                                <rect key="frame" x="20" y="221" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXY-Sg-yXr">
-                                <rect key="frame" x="31" y="256" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXY-Sg-yXr">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <color key="textColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjU-0L-bXg" customClass="MMXFlatButton">
+                                        <rect key="frame" x="0.0" y="28" width="136" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.66666666666666663" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="Track 1">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="musicButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="nKZ-09-TY4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfw-Hl-c93" customClass="MMXFlatButton">
+                                        <rect key="frame" x="144" y="28" width="136" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.66666666666666663" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="Track 2">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="musicButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="aUP-Yh-7uD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZS-NR-9Fj" customClass="MMXFlatButton">
+                                        <rect key="frame" x="0.0" y="80" width="136" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.66666666666666663" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="Track 3">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="musicButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="ISU-9u-Cn5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXl-jU-70w" customClass="MMXFlatButton">
+                                        <rect key="frame" x="144" y="80" width="136" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.66666666666666663" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                        <state key="normal" title="Off">
+                                            <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="musicButtonWasTapped:" destination="Fwk-8r-rWc" eventType="touchUpInside" id="BWT-Gi-uqc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="Nt0-xk-OxW"/>
+                                    <constraint firstAttribute="height" constant="124" id="zEC-fp-pTR"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="tY1-d3-EXq" secondAttribute="centerX" id="4lX-Aq-MQp"/>
+                            <constraint firstAttribute="centerX" secondItem="6ne-n7-4BR" secondAttribute="centerX" id="5Dn-Lk-Qis"/>
+                            <constraint firstItem="b7Z-UI-jrn" firstAttribute="top" secondItem="WAz-Nj-W7D" secondAttribute="bottom" id="7H7-0o-Rlh"/>
+                            <constraint firstItem="WAz-Nj-W7D" firstAttribute="top" secondItem="NZc-ys-LAC" secondAttribute="bottom" id="Bvh-eN-x0q"/>
+                            <constraint firstAttribute="centerX" secondItem="cq1-EE-6W1" secondAttribute="centerX" id="Dal-Do-PnM"/>
+                            <constraint firstAttribute="centerX" secondItem="NZc-ys-LAC" secondAttribute="centerX" id="Pg9-Lo-4GX"/>
+                            <constraint firstAttribute="centerX" secondItem="b7Z-UI-jrn" secondAttribute="centerX" id="SeU-82-IkX"/>
+                            <constraint firstItem="k7O-4k-JVo" firstAttribute="top" secondItem="6ne-n7-4BR" secondAttribute="bottom" id="UrN-rq-zLE"/>
+                            <constraint firstItem="cq1-EE-6W1" firstAttribute="height" secondItem="k7O-4k-JVo" secondAttribute="height" id="ZSa-hl-fe5"/>
+                            <constraint firstItem="tY1-d3-EXq" firstAttribute="top" secondItem="k7O-4k-JVo" secondAttribute="bottom" id="aVP-95-OIQ"/>
+                            <constraint firstItem="NZc-ys-LAC" firstAttribute="top" secondItem="cq1-EE-6W1" secondAttribute="bottom" id="bWH-aH-pbW"/>
+                            <constraint firstAttribute="centerX" secondItem="WAz-Nj-W7D" secondAttribute="centerX" id="cw6-hT-pdS"/>
+                            <constraint firstAttribute="centerX" secondItem="k7O-4k-JVo" secondAttribute="centerX" id="cxX-oB-d7E"/>
+                            <constraint firstItem="ddM-bC-P2A" firstAttribute="top" secondItem="b7Z-UI-jrn" secondAttribute="bottom" constant="20" id="mPR-7O-uK6"/>
+                            <constraint firstItem="6ne-n7-4BR" firstAttribute="top" secondItem="azj-xu-j1g" secondAttribute="bottom" constant="20" id="qcn-VY-JaB"/>
+                            <constraint firstItem="cq1-EE-6W1" firstAttribute="height" secondItem="WAz-Nj-W7D" secondAttribute="height" id="rlc-oU-k5v"/>
+                            <constraint firstItem="cq1-EE-6W1" firstAttribute="top" secondItem="tY1-d3-EXq" secondAttribute="bottom" id="tL2-cI-Hwn"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Practice" id="L2E-x7-Gbg"/>
+                    <navigationItem key="navigationItem" title="Practice" id="L2E-x7-Gbg">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="J0e-jS-LLd"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="arithmeticAdditionButton" destination="JOv-ei-PM8" id="i37-GJ-N50"/>
+                        <outlet property="arithmeticDivisionButton" destination="Ury-pk-nbJ" id="181-6Q-6kV"/>
+                        <outlet property="arithmeticMultiplicationButton" destination="kOt-Sa-d7K" id="e4Y-UW-oUp"/>
+                        <outlet property="arithmeticSubtractionButton" destination="EFE-3w-eVF" id="Xcd-x4-1iN"/>
+                        <outlet property="memoryFastButton" destination="3te-fA-Qys" id="3L6-Ul-hei"/>
+                        <outlet property="memoryNoneButton" destination="zzT-Fl-qJZ" id="fal-BQ-uij"/>
+                        <outlet property="memorySlowButton" destination="t4w-w4-ta0" id="2Ib-Xc-Qrg"/>
+                        <outlet property="music1Button" destination="UjU-0L-bXg" id="bVv-rR-ttw"/>
+                        <outlet property="music2Button" destination="Nfw-Hl-c93" id="481-tV-EoS"/>
+                        <outlet property="music3Button" destination="hZS-NR-9Fj" id="Bnp-Um-x5T"/>
+                        <outlet property="musicOffButton" destination="QXl-jU-70w" id="su3-bv-Y22"/>
+                        <outlet property="number12Button" destination="FDZ-3A-fPA" id="AFA-uV-hwa"/>
+                        <outlet property="number16Button" destination="s1K-3C-nQo" id="4eu-2x-imM"/>
+                        <outlet property="number20Button" destination="lng-py-aHX" id="buh-ew-cLj"/>
+                        <outlet property="number4Button" destination="Yjr-yG-5dI" id="XpH-yp-bX1"/>
+                        <outlet property="number8Button" destination="PLZ-g3-jQ0" id="yAj-wV-bVW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0B-pz-wvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

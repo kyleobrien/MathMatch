@@ -71,6 +71,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Math Match" id="MsI-Yu-Nox">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="JZn-ay-d08"/>
                         <barButtonItem key="rightBarButtonItem" image="GearIcon" id="nQT-iM-k9x"/>
                     </navigationItem>
                 </viewController>

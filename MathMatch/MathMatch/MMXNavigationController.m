@@ -8,10 +8,6 @@
 
 #import "MMXNavigationController.h"
 
-@interface MMXNavigationController ()
-
-@end
-
 @implementation MMXNavigationController
 
 - (UIStatusBarStyle)preferredStatusBarStyle

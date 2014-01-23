@@ -30,6 +30,8 @@
 		279EC24218884A890087E0DB /* MathMatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24118884A890087E0DB /* MathMatchTests.m */; };
 		279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */; };
 		279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */; };
+		27A086721890882F00C318DE /* MMXFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086711890882F00C318DE /* MMXFlatButton.m */; };
+		27A086731890882F00C318DE /* MMXFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086711890882F00C318DE /* MMXFlatButton.m */; };
 		27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,8 @@
 		279EC24118884A890087E0DB /* MathMatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathMatchTests.m; sourceTree = "<group>"; };
 		279EC24B18884CF70087E0DB /* MMXMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXMainMenuViewController.h; sourceTree = "<group>"; };
 		279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXMainMenuViewController.m; sourceTree = "<group>"; };
+		27A086701890882F00C318DE /* MMXFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXFlatButton.h; sourceTree = "<group>"; };
+		27A086711890882F00C318DE /* MMXFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXFlatButton.m; sourceTree = "<group>"; };
 		27A1D938188F0B8100255231 /* MMXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXNavigationController.h; sourceTree = "<group>"; };
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +149,8 @@
 				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
 				273592A01888AA5C0063C5CD /* MMXPracticeMenuViewController.h */,
 				273592A11888AA5C0063C5CD /* MMXPracticeMenuViewController.m */,
+				27A086701890882F00C318DE /* MMXFlatButton.h */,
+				27A086711890882F00C318DE /* MMXFlatButton.m */,
 				279EC21E18884A890087E0DB /* Main_iPhone.storyboard */,
 				279EC22118884A890087E0DB /* Main_iPad.storyboard */,
 				279EC22718884A890087E0DB /* CLXMasterViewController.h */,
@@ -295,6 +301,7 @@
 				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
 				279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */,
 				279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */,
+				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
 				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				279EC21918884A890087E0DB /* main.m in Sources */,
 			);
@@ -306,6 +313,7 @@
 			files = (
 				273592A31888AA5C0063C5CD /* MMXPracticeMenuViewController.m in Sources */,
 				279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
+				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				279EC24218884A890087E0DB /* MathMatchTests.m in Sources */,
 			);
