@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+#import "MMXGameConfiguration.h"
 #import "MMXPracticeMenuViewController.h"
 
 @interface MMXPracticeMenuViewController ()
+
+@property (strong) MMXGameConfiguration *gameConfiguration;
 
 @end
 
@@ -32,28 +35,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 {
     [super viewDidLoad];
     
+    self.gameConfiguration = [[MMXGameConfiguration alloc] init];
     
-    //[self.number4Button mmx_makeButtonFlatWithColor:[UIColor redColor]];
-     /*
-    @property (weak) IBOutlet UIButton *number8Button;
-    @property (weak) IBOutlet UIButton *number12Button;
-    @property (weak) IBOutlet UIButton *number16Button;
-    @property (weak) IBOutlet UIButton *number20Button;
-    
-    @property (weak) IBOutlet UIButton *arithmeticAdditionButton;
-    @property (weak) IBOutlet UIButton *arithmeticSubtractionButton;
-    @property (weak) IBOutlet UIButton *arithmeticMultiplicationButton;
-    @property (weak) IBOutlet UIButton *arithmeticDivisionButton;
-    
-    @property (weak) IBOutlet UIButton *memorySlowButton;
-    @property (weak) IBOutlet UIButton *memoryFastButton;
-    @property (weak) IBOutlet UIButton *memoryNoneButton;
-    
-    @property (weak) IBOutlet UIButton *music1Button;
-    @property (weak) IBOutlet UIButton *music2Button;
-    @property (weak) IBOutlet UIButton *music3Button;
-    @property (weak) IBOutlet UIButton *musicOffButton;
-      */
+    [self loadUserDefaultsAndSetInterface];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,52 +77,245 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 }
 */
 
+#pragma mark - User Action
+
 - (IBAction)numberButtonWasTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     self.number4Button.selected = (button == self.number4Button);
     self.number8Button.selected = (button == self.number8Button);
     self.number12Button.selected = (button == self.number12Button);
     self.number16Button.selected = (button == self.number16Button);
     self.number20Button.selected = (button == self.number20Button);
+    
+    if (button == self.number4Button)
+    {
+        self.gameConfiguration.numberOfCards = 4;
+        [userDefaults setInteger:4 forKey:kMMXUserDefaultsPracticeNumberOfCards];
+    }
+    else if (button == self.number8Button)
+    {
+        self.gameConfiguration.numberOfCards = 8;
+        [userDefaults setInteger:8 forKey:kMMXUserDefaultsPracticeNumberOfCards];
+    }
+    else if (button == self.number12Button)
+    {
+        self.gameConfiguration.numberOfCards = 12;
+        [userDefaults setInteger:12 forKey:kMMXUserDefaultsPracticeNumberOfCards];
+    }
+    else if (button == self.number16Button)
+    {
+        self.gameConfiguration.numberOfCards = 16;
+        [userDefaults setInteger:16 forKey:kMMXUserDefaultsPracticeNumberOfCards];
+    }
+    else if (button == self.number20Button)
+    {
+        self.gameConfiguration.numberOfCards = 20;
+        [userDefaults setInteger:20 forKey:kMMXUserDefaultsPracticeNumberOfCards];
+    }
 }
 
 - (IBAction)arithmeticButtonWasTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     self.arithmeticAdditionButton.selected = (button == self.arithmeticAdditionButton);
     self.arithmeticSubtractionButton.selected = (button == self.arithmeticSubtractionButton);
     self.arithmeticMultiplicationButton.selected = (button == self.arithmeticMultiplicationButton);
     self.arithmeticDivisionButton.selected = (button == self.arithmeticDivisionButton);
+    
+    if (button == self.arithmeticAdditionButton)
+    {
+        self.gameConfiguration.arithmeticType = MMXArithmeticTypeAddition;
+        [userDefaults setInteger:MMXArithmeticTypeAddition forKey:kMMXUserDefaultsPracticeArithmeticType];
+    }
+    else if (button == self.arithmeticSubtractionButton)
+    {
+        self.gameConfiguration.arithmeticType = MMXArithmeticTypeSubtraction;
+        [userDefaults setInteger:MMXArithmeticTypeSubtraction forKey:kMMXUserDefaultsPracticeArithmeticType];
+    }
+    else if (button == self.arithmeticMultiplicationButton)
+    {
+        self.gameConfiguration.arithmeticType = MMXArithmeticTypeMultiplication;
+        [userDefaults setInteger:MMXArithmeticTypeMultiplication forKey:kMMXUserDefaultsPracticeArithmeticType];
+    }
+    else if (button == self.arithmeticDivisionButton)
+    {
+        self.gameConfiguration.arithmeticType = MMXArithmeticTypeDivision;
+        [userDefaults setInteger:MMXArithmeticTypeDivision forKey:kMMXUserDefaultsPracticeArithmeticType];
+    }
 }
 
 - (IBAction)memoryButtonWasTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     self.memorySlowButton.selected = (button == self.memorySlowButton);
     self.memoryFastButton.selected = (button == self.memoryFastButton);
     self.memoryNoneButton.selected = (button == self.memoryNoneButton);
+    
+    if (button == self.memorySlowButton)
+    {
+        self.gameConfiguration.memorySpeed = MMXMemorySpeedSlow;
+        [userDefaults setInteger:MMXMemorySpeedSlow forKey:kMMXUserDefaultsPracticeMemorySpeed];
+    }
+    else if (button == self.memoryFastButton)
+    {
+        self.gameConfiguration.memorySpeed = MMXMemorySpeedFast;
+        [userDefaults setInteger:MMXMemorySpeedFast forKey:kMMXUserDefaultsPracticeMemorySpeed];
+    }
+    else if (button == self.memoryNoneButton)
+    {
+        self.gameConfiguration.memorySpeed = MMXMemorySpeedNone;
+        [userDefaults setInteger:MMXMemorySpeedNone forKey:kMMXUserDefaultsPracticeMemorySpeed];
+    }
 }
 
 - (IBAction)musicButtonWasTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     self.music1Button.selected = (button == self.music1Button);
     self.music2Button.selected = (button == self.music2Button);
     self.music3Button.selected = (button == self.music3Button);
     self.musicOffButton.selected = (button == self.musicOffButton);
+    
+    if (button == self.music1Button)
+    {
+        self.gameConfiguration.musicTrack = MMXMusicTrack1;
+        [userDefaults setInteger:MMXMusicTrack1 forKey:kMMXUserDefaultsPracticeMusic];
+    }
+    else if (button == self.music2Button)
+    {
+        self.gameConfiguration.musicTrack = MMXMusicTrack2;
+        [userDefaults setInteger:MMXMusicTrack2 forKey:kMMXUserDefaultsPracticeMusic];
+    }
+    else if (button == self.music3Button)
+    {
+        self.gameConfiguration.musicTrack = MMXMusicTrack3;
+        [userDefaults setInteger:MMXMusicTrack3 forKey:kMMXUserDefaultsPracticeMusic];
+    }
+    else if (button == self.musicOffButton)
+    {
+        self.gameConfiguration.musicTrack = MMXMusicTrackOff;
+        [userDefaults setInteger:MMXMusicTrackOff forKey:kMMXUserDefaultsPracticeMusic];
+    }
 }
 
-- (void)loadAndSetUserDefaults
+#pragma mark - Other Instance Methods
+
+- (void)loadUserDefaultsAndSetInterface
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    // Number of Cards --------------
     NSInteger numberOfCards = [userDefaults integerForKey:kMMXUserDefaultsPracticeNumberOfCards];
+    if (numberOfCards == 4)
+    {
+        self.number4Button.selected = YES;
+    }
+    else if (numberOfCards == 8)
+    {
+        self.number8Button.selected = YES;
+    }
+    else if (numberOfCards == 12)
+    {
+        self.number12Button.selected = YES;
+    }
+    else if (numberOfCards == 16)
+    {
+        self.number16Button.selected = YES;
+    }
+    else if (numberOfCards == 20)
+    {
+        self.number20Button.selected = YES;
+    }
+    else
+    {
+        self.number4Button.selected = YES;
+        numberOfCards = 4;
+    }
     
+    self.gameConfiguration.numberOfCards = numberOfCards;
+    
+    // Arithmetic Type --------------
+    MMXArithmeticType arithmeticType = [userDefaults integerForKey:kMMXUserDefaultsPracticeArithmeticType];
+    if (arithmeticType == MMXArithmeticTypeAddition)
+    {
+        self.arithmeticAdditionButton.selected = YES;
+    }
+    else if (arithmeticType == MMXArithmeticTypeSubtraction)
+    {
+        self.arithmeticSubtractionButton.selected = YES;
+    }
+    else if (arithmeticType == MMXArithmeticTypeMultiplication)
+    {
+        self.arithmeticMultiplicationButton.selected = YES;
+    }
+    else if (arithmeticType == MMXArithmeticTypeDivision)
+    {
+        self.arithmeticDivisionButton.selected = YES;
+    }
+    else
+    {
+        self.arithmeticAdditionButton.selected = YES;
+        arithmeticType = MMXArithmeticTypeAddition;
+    }
+    
+    self.gameConfiguration.arithmeticType = arithmeticType;
+    
+    // Memory Speed --------------
+    MMXMemorySpeed memorySpeed = [userDefaults integerForKey:kMMXUserDefaultsPracticeMemorySpeed];
+    if (memorySpeed == MMXMemorySpeedSlow)
+    {
+        self.memorySlowButton.selected = YES;
+    }
+    else if (memorySpeed == MMXMemorySpeedFast)
+    {
+        self.memoryFastButton.selected = YES;
+    }
+    else if (memorySpeed == MMXMemorySpeedNone)
+    {
+        self.memoryNoneButton.selected = YES;
+    }
+    else
+    {
+        self.memorySlowButton.selected = YES;
+        memorySpeed = MMXMemorySpeedSlow;
+    }
+    
+    self.gameConfiguration.memorySpeed = memorySpeed;
+    
+    // Music Track --------------
+    MMXMusicTrack musicTrack = [userDefaults integerForKey:kMMXUserDefaultsPracticeMusic];
+    if (musicTrack == MMXMusicTrack1)
+    {
+        self.music1Button.selected = YES;
+    }
+    else if (musicTrack == MMXMusicTrack2)
+    {
+        self.music2Button.selected = YES;
+    }
+    else if (musicTrack == MMXMusicTrack3)
+    {
+        self.music3Button.selected = YES;
+    }
+    else if (musicTrack == MMXMusicTrackOff)
+    {
+        self.musicOffButton.selected = YES;
+    }
+    else
+    {
+        self.music1Button.selected = YES;
+        musicTrack = MMXMusicTrack1;
+    }
+    
+    self.gameConfiguration.musicTrack = musicTrack;
 }
 
 @end
