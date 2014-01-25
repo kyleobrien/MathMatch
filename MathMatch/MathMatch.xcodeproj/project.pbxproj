@@ -36,6 +36,8 @@
 		27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameConfiguration.m */; };
 		27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */; };
 		27A0867C18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */; };
+		27A086801893867C00C318DE /* MMXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867F1893867C00C318DE /* MMXGameViewController.m */; };
+		27A086811893867C00C318DE /* MMXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867F1893867C00C318DE /* MMXGameViewController.m */; };
 		27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,8 @@
 		27A086751891CB9000C318DE /* MMXGameConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameConfiguration.m; sourceTree = "<group>"; };
 		27A0867918930F1200C318DE /* MMXPracticeMenuBetaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXPracticeMenuBetaViewController.h; sourceTree = "<group>"; };
 		27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXPracticeMenuBetaViewController.m; sourceTree = "<group>"; };
+		27A0867E1893867C00C318DE /* MMXGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXGameViewController.h; sourceTree = "<group>"; };
+		27A0867F1893867C00C318DE /* MMXGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameViewController.m; sourceTree = "<group>"; };
 		27A1D938188F0B8100255231 /* MMXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXNavigationController.h; sourceTree = "<group>"; };
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,10 +141,10 @@
 		279EC20918884A890087E0DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				279EC20A18884A890087E0DB /* Foundation.framework */,
-				279EC20C18884A890087E0DB /* CoreGraphics.framework */,
-				279EC20E18884A890087E0DB /* UIKit.framework */,
 				279EC21018884A890087E0DB /* CoreData.framework */,
+				279EC20C18884A890087E0DB /* CoreGraphics.framework */,
+				279EC20A18884A890087E0DB /* Foundation.framework */,
+				279EC20E18884A890087E0DB /* UIKit.framework */,
 				279EC23418884A890087E0DB /* XCTest.framework */,
 			);
 			name = Frameworks;
@@ -149,17 +153,14 @@
 		279EC21218884A890087E0DB /* MathMatch */ = {
 			isa = PBXGroup;
 			children = (
-				279EC21B18884A890087E0DB /* MMXAppDelegate.h */,
-				279EC21C18884A890087E0DB /* MMXAppDelegate.m */,
-				27A1D938188F0B8100255231 /* MMXNavigationController.h */,
-				27A1D939188F0B8100255231 /* MMXNavigationController.m */,
-				279EC24B18884CF70087E0DB /* MMXMainMenuViewController.h */,
-				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
+				27A0867D18937D5800C318DE /* Main */,
 				27A0867818930EE600C318DE /* Practice */,
 				27A086701890882F00C318DE /* MMXFlatButton.h */,
 				27A086711890882F00C318DE /* MMXFlatButton.m */,
 				27A086741891CB9000C318DE /* MMXGameConfiguration.h */,
 				27A086751891CB9000C318DE /* MMXGameConfiguration.m */,
+				27A0867E1893867C00C318DE /* MMXGameViewController.h */,
+				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
 				279EC21E18884A890087E0DB /* Main_iPhone.storyboard */,
 				279EC22118884A890087E0DB /* Main_iPad.storyboard */,
 				279EC22718884A890087E0DB /* CLXMasterViewController.h */,
@@ -211,6 +212,19 @@
 				27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */,
 			);
 			name = Practice;
+			sourceTree = "<group>";
+		};
+		27A0867D18937D5800C318DE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				279EC21B18884A890087E0DB /* MMXAppDelegate.h */,
+				279EC21C18884A890087E0DB /* MMXAppDelegate.m */,
+				27A1D938188F0B8100255231 /* MMXNavigationController.h */,
+				27A1D939188F0B8100255231 /* MMXNavigationController.m */,
+				279EC24B18884CF70087E0DB /* MMXMainMenuViewController.h */,
+				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +334,7 @@
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
+				27A086801893867C00C318DE /* MMXGameViewController.m in Sources */,
 				279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */,
 				27A086761891CB9000C318DE /* MMXGameConfiguration.m in Sources */,
 				279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */,
@@ -338,6 +353,7 @@
 				279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				27A086811893867C00C318DE /* MMXGameViewController.m in Sources */,
 				27A0867C18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				279EC24218884A890087E0DB /* MathMatchTests.m in Sources */,
 			);

@@ -717,7 +717,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Number" id="oOh-qi-lYG">
-                        <barButtonItem key="rightBarButtonItem" title="Go!" id="eOi-rj-Q0j"/>
+                        <barButtonItem key="rightBarButtonItem" title="Go!" id="eOi-rj-Q0j">
+                            <connections>
+                                <segue destination="Yb9-LP-y4W" kind="push" id="vb0-dF-OO3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="startBarButtonItem" destination="eOi-rj-Q0j" id="KQV-Xe-WLS"/>
@@ -727,6 +731,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqS-DF-dyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1778" y="-274"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="nK5-zM-rpC">
+            <objects>
+                <viewController id="Yb9-LP-y4W" customClass="MMXGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NMl-dV-0Gk"/>
+                        <viewControllerLayoutGuide type="bottom" id="5LU-Ge-xK4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0ym-2z-HbT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GFo-Y7-pU3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m86-B3-Knu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2377" y="-650"/>
         </scene>
     </scenes>
     <resources>

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+#import "MMXGameViewController.h"
 #import "MMXPracticeMenuBetaViewController.h"
 
 @interface MMXPracticeMenuBetaViewController ()
@@ -17,17 +18,6 @@
 @implementation MMXPracticeMenuBetaViewController
 
 NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPracticeTargetNumber";
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-    }
-    
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -65,8 +55,8 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
+    gameViewController.gameConfiguration = self.gameConfiguration;
 }
 
 #pragma mark - User Action
