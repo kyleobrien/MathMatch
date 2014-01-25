@@ -7,15 +7,16 @@
 //
 
 #import "MMXGameConfiguration.h"
-#import "MMXPracticeMenuViewController.h"
+#import "MMXPracticeMenuAlphaViewController.h"
+#import "MMXPracticeMenuBetaViewController.h"
 
-@interface MMXPracticeMenuViewController ()
+@interface MMXPracticeMenuAlphaViewController ()
 
 @property (strong) MMXGameConfiguration *gameConfiguration;
 
 @end
 
-@implementation MMXPracticeMenuViewController
+@implementation MMXPracticeMenuAlphaViewController
 
 NSString * const kMMXUserDefaultsPracticeNumberOfCards = @"MMXUserDefaultsPracticeNumberOfCards";
 NSString * const kMMXUserDefaultsPracticeArithmeticType = @"MMXUserDefaultsPracticeArithmeticType";
@@ -25,9 +26,11 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        
     }
+    
     return self;
 }
 
@@ -44,9 +47,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(0.0 / 255.0)
-                                                                           green:(255.0 / 255.0)
-                                                                            blue:(0.0 / 255.0)
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(3.0 / 255.0)
+                                                                           green:(228.0 / 255.0)
+                                                                            blue:(90.0 / 255.0)
                                                                            alpha:1.0];
 }
 
@@ -60,22 +63,13 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     [super viewWillDisappear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    MMXPracticeMenuBetaViewController *betaViewController = (MMXPracticeMenuBetaViewController *)segue.destinationViewController;
+    betaViewController.gameConfiguration = self.gameConfiguration;
 }
-*/
 
 #pragma mark - User Action
 

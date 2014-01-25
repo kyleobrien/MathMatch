@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-@interface MMXPracticeMenuViewController : UIViewController
+@interface MMXPracticeMenuAlphaViewController : UIViewController
 
 @property (weak) IBOutlet UIButton *number4Button;
 @property (weak) IBOutlet UIButton *number8Button;

@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 
 @interface MMXGameConfiguration : NSObject
 
+@property (assign) NSInteger targetNumber;
 @property (assign) NSInteger numberOfCards;
 @property (assign) MMXArithmeticType arithmeticType;
 @property (assign) MMXMemorySpeed memorySpeed;

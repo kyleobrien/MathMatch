@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		273592A21888AA5C0063C5CD /* MMXPracticeMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273592A11888AA5C0063C5CD /* MMXPracticeMenuViewController.m */; };
-		273592A31888AA5C0063C5CD /* MMXPracticeMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273592A11888AA5C0063C5CD /* MMXPracticeMenuViewController.m */; };
+		273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273592A11888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m */; };
+		273592A31888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273592A11888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m */; };
 		279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20A18884A890087E0DB /* Foundation.framework */; };
 		279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20C18884A890087E0DB /* CoreGraphics.framework */; };
 		279EC20F18884A890087E0DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20E18884A890087E0DB /* UIKit.framework */; };
@@ -34,6 +34,8 @@
 		27A086731890882F00C318DE /* MMXFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086711890882F00C318DE /* MMXFlatButton.m */; };
 		27A086761891CB9000C318DE /* MMXGameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameConfiguration.m */; };
 		27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameConfiguration.m */; };
+		27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */; };
+		27A0867C18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */; };
 		27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 /* End PBXBuildFile section */
@@ -49,8 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		273592A01888AA5C0063C5CD /* MMXPracticeMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXPracticeMenuViewController.h; sourceTree = "<group>"; };
-		273592A11888AA5C0063C5CD /* MMXPracticeMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXPracticeMenuViewController.m; sourceTree = "<group>"; };
+		273592A01888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXPracticeMenuAlphaViewController.h; sourceTree = "<group>"; };
+		273592A11888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXPracticeMenuAlphaViewController.m; sourceTree = "<group>"; };
 		279EC20718884A890087E0DB /* MathMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279EC20A18884A890087E0DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		279EC20C18884A890087E0DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -81,6 +83,8 @@
 		27A086711890882F00C318DE /* MMXFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXFlatButton.m; sourceTree = "<group>"; };
 		27A086741891CB9000C318DE /* MMXGameConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXGameConfiguration.h; sourceTree = "<group>"; };
 		27A086751891CB9000C318DE /* MMXGameConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameConfiguration.m; sourceTree = "<group>"; };
+		27A0867918930F1200C318DE /* MMXPracticeMenuBetaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXPracticeMenuBetaViewController.h; sourceTree = "<group>"; };
+		27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXPracticeMenuBetaViewController.m; sourceTree = "<group>"; };
 		27A1D938188F0B8100255231 /* MMXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXNavigationController.h; sourceTree = "<group>"; };
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,8 +155,7 @@
 				27A1D939188F0B8100255231 /* MMXNavigationController.m */,
 				279EC24B18884CF70087E0DB /* MMXMainMenuViewController.h */,
 				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
-				273592A01888AA5C0063C5CD /* MMXPracticeMenuViewController.h */,
-				273592A11888AA5C0063C5CD /* MMXPracticeMenuViewController.m */,
+				27A0867818930EE600C318DE /* Practice */,
 				27A086701890882F00C318DE /* MMXFlatButton.h */,
 				27A086711890882F00C318DE /* MMXFlatButton.m */,
 				27A086741891CB9000C318DE /* MMXGameConfiguration.h */,
@@ -197,6 +200,17 @@
 				279EC23E18884A890087E0DB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27A0867818930EE600C318DE /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				273592A01888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.h */,
+				273592A11888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m */,
+				27A0867918930F1200C318DE /* MMXPracticeMenuBetaViewController.h */,
+				27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */,
+			);
+			name = Practice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
-				273592A21888AA5C0063C5CD /* MMXPracticeMenuViewController.m in Sources */,
+				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
+				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
 				279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */,
@@ -318,11 +333,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273592A31888AA5C0063C5CD /* MMXPracticeMenuViewController.m in Sources */,
+				273592A31888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */,
 				279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				27A0867C18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				279EC24218884A890087E0DB /* MathMatchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

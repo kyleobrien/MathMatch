@@ -33,11 +33,6 @@
                                                                            green:(43.0 / 255.0)
                                                                             blue:(43.0 / 255.0)
                                                                            alpha:1.0];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:22.0],
-                                                                    NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
 @end
