@@ -11,7 +11,7 @@
 
 @interface MMXPracticeMenuBetaViewController ()
 
-@property (assign) NSInteger targetNumber;
+@property (nonatomic, assign) NSInteger targetNumber;
 
 @end
 

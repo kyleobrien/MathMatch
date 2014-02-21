@@ -8,6 +8,6 @@
 
 @interface MMXFlatButton : UIButton
 
-@property (strong) UIColor *originalBackgroundColor;
+@property (nonatomic, strong) UIColor *originalBackgroundColor;
 
 @end

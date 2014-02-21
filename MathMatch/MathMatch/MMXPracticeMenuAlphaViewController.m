@@ -12,7 +12,7 @@
 
 @interface MMXPracticeMenuAlphaViewController ()
 
-@property (strong) MMXGameConfiguration *gameConfiguration;
+@property (nonatomic, strong) MMXGameConfiguration *gameConfiguration;
 
 @end
 
@@ -67,18 +67,13 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     UIButton *button = (UIButton *)sender;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    self.number4Button.selected = (button == self.number4Button);
     self.number8Button.selected = (button == self.number8Button);
     self.number12Button.selected = (button == self.number12Button);
     self.number16Button.selected = (button == self.number16Button);
     self.number20Button.selected = (button == self.number20Button);
+    self.number24Button.selected = (button == self.number24Button);
     
-    if (button == self.number4Button)
-    {
-        self.gameConfiguration.numberOfCards = 4;
-        [userDefaults setInteger:4 forKey:kMMXUserDefaultsPracticeNumberOfCards];
-    }
-    else if (button == self.number8Button)
+    if (button == self.number8Button)
     {
         self.gameConfiguration.numberOfCards = 8;
         [userDefaults setInteger:8 forKey:kMMXUserDefaultsPracticeNumberOfCards];
@@ -97,6 +92,11 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     {
         self.gameConfiguration.numberOfCards = 20;
         [userDefaults setInteger:20 forKey:kMMXUserDefaultsPracticeNumberOfCards];
+    }
+    else if (button == self.number24Button)
+    {
+        self.gameConfiguration.numberOfCards = 24;
+        [userDefaults setInteger:24 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
 }
 
@@ -198,11 +198,8 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     // Number of Cards --------------
     NSInteger numberOfCards = [userDefaults integerForKey:kMMXUserDefaultsPracticeNumberOfCards];
-    if (numberOfCards == 4)
-    {
-        self.number4Button.selected = YES;
-    }
-    else if (numberOfCards == 8)
+    
+    if (numberOfCards == 8)
     {
         self.number8Button.selected = YES;
     }
@@ -218,10 +215,14 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     {
         self.number20Button.selected = YES;
     }
+    else if (numberOfCards == 24)
+    {
+        self.number24Button.selected = YES;
+    }
     else
     {
-        self.number4Button.selected = YES;
-        numberOfCards = 4;
+        self.number8Button.selected = YES;
+        numberOfCards = 8;
     }
     
     self.gameConfiguration.numberOfCards = numberOfCards;

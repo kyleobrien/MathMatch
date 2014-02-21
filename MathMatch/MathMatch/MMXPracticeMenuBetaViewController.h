@@ -10,10 +10,12 @@
 
 @interface MMXPracticeMenuBetaViewController : UIViewController
 
-@property (strong) MMXGameConfiguration *gameConfiguration;
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeTargetNumber;
 
-@property (weak) IBOutlet UIBarButtonItem *startBarButtonItem;
-@property (weak) IBOutlet UILabel *targetNumberLabel;
+@property (nonatomic, strong) MMXGameConfiguration *gameConfiguration;
+
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *startBarButtonItem;
+@property (nonatomic, weak) IBOutlet UILabel *targetNumberLabel;
 
 - (IBAction)numberButtonWasTapped:(id)sender;
 

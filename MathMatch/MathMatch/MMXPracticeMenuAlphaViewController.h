@@ -8,25 +8,30 @@
 
 @interface MMXPracticeMenuAlphaViewController : UIViewController
 
-@property (weak) IBOutlet UIButton *number4Button;
-@property (weak) IBOutlet UIButton *number8Button;
-@property (weak) IBOutlet UIButton *number12Button;
-@property (weak) IBOutlet UIButton *number16Button;
-@property (weak) IBOutlet UIButton *number20Button;
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeNumberOfCards;
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeArithmeticType;
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMemorySpeed;
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMusic;
 
-@property (weak) IBOutlet UIButton *arithmeticAdditionButton;
-@property (weak) IBOutlet UIButton *arithmeticSubtractionButton;
-@property (weak) IBOutlet UIButton *arithmeticMultiplicationButton;
-@property (weak) IBOutlet UIButton *arithmeticDivisionButton;
+@property (nonatomic, weak) IBOutlet UIButton *number8Button;
+@property (nonatomic, weak) IBOutlet UIButton *number12Button;
+@property (nonatomic, weak) IBOutlet UIButton *number16Button;
+@property (nonatomic, weak) IBOutlet UIButton *number20Button;
+@property (nonatomic, weak) IBOutlet UIButton *number24Button;
 
-@property (weak) IBOutlet UIButton *memorySlowButton;
-@property (weak) IBOutlet UIButton *memoryFastButton;
-@property (weak) IBOutlet UIButton *memoryNoneButton;
+@property (nonatomic, weak) IBOutlet UIButton *arithmeticAdditionButton;
+@property (nonatomic, weak) IBOutlet UIButton *arithmeticSubtractionButton;
+@property (nonatomic, weak) IBOutlet UIButton *arithmeticMultiplicationButton;
+@property (nonatomic, weak) IBOutlet UIButton *arithmeticDivisionButton;
 
-@property (weak) IBOutlet UIButton *music1Button;
-@property (weak) IBOutlet UIButton *music2Button;
-@property (weak) IBOutlet UIButton *music3Button;
-@property (weak) IBOutlet UIButton *musicOffButton;
+@property (nonatomic, weak) IBOutlet UIButton *memorySlowButton;
+@property (nonatomic, weak) IBOutlet UIButton *memoryFastButton;
+@property (nonatomic, weak) IBOutlet UIButton *memoryNoneButton;
+
+@property (nonatomic, weak) IBOutlet UIButton *music1Button;
+@property (nonatomic, weak) IBOutlet UIButton *music2Button;
+@property (nonatomic, weak) IBOutlet UIButton *music3Button;
+@property (nonatomic, weak) IBOutlet UIButton *musicOffButton;
 
 - (IBAction)numberButtonWasTapped:(id)sender;
 - (IBAction)arithmeticButtonWasTapped:(id)sender;
