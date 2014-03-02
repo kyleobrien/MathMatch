@@ -59,7 +59,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     gameViewController.gameConfiguration = self.gameConfiguration;
 }
 
-#pragma mark - User Action
+#pragma mark - Player Action
 
 - (IBAction)numberButtonWasTapped:(id)sender
 {

@@ -39,102 +39,113 @@
     
     self.navigationItem.hidesBackButton = YES;
     
-    CALayer *bottomBorderX = [CALayer layer];
-    bottomBorderX.frame = CGRectMake(0.0, self.xNumberLabel.frame.size.height - 2.0, self.xNumberLabel.frame.size.width, 2.0);
-    bottomBorderX.backgroundColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
+    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
+        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+    {
+        CALayer *bottomBorderZ = [CALayer layer];
+        bottomBorderZ.frame = CGRectMake(0.0, self.zNumberLabel.frame.size.height - 2.0, self.zNumberLabel.frame.size.width, 2.0);
+        bottomBorderZ.backgroundColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
+        
+        [self.zNumberLabel.layer addSublayer:bottomBorderZ];
+    }
+    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
+             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+    {
+        CALayer *bottomBorderX = [CALayer layer];
+        bottomBorderX.frame = CGRectMake(0.0, self.xNumberLabel.frame.size.height - 2.0, self.xNumberLabel.frame.size.width, 2.0);
+        bottomBorderX.backgroundColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
+        
+        [self.xNumberLabel.layer addSublayer:bottomBorderX];
+    }
     
     CALayer *bottomBorderY = [CALayer layer];
     bottomBorderY.frame = CGRectMake(0.0, self.yNumberLabel.frame.size.height - 2.0, self.yNumberLabel.frame.size.width, 2.0);
     bottomBorderY.backgroundColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
     
-    [self.xNumberLabel.layer addSublayer:bottomBorderX];
     [self.yNumberLabel.layer addSublayer:bottomBorderY];
     
     if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
     {
-        self.mathOperatorLabel.text = @"+";
+        self.aFormulaLabel.text = @"+";
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
     {
-        self.mathOperatorLabel.text = @"−";
+        self.aFormulaLabel.text = @"−";
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
     {
-        self.mathOperatorLabel.text = @"×";
+        self.aFormulaLabel.text = @"×";
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
     {
-        self.mathOperatorLabel.text = @"÷";
+        self.aFormulaLabel.text = @"÷";
     }
-    else
-    {
-        self.mathOperatorLabel.text = @"?";
-    }
-    
-    self.resultNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
     
     [self startNewGame];
 }
 
-
-- (IBAction)playerTappedQuitButton:(id)sender
+- (void)viewDidAppear:(BOOL)animated
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    // TODO: Need to show a menu.
-}
-
-- (void)updateClock
-{
-    // TODO: basic timer, but this is not a reliable way of calculating time!
-    
-    self.elapsedTime += 1.0/60.0;
-    
-    double minutes = floor(self.elapsedTime / 60);
-    double seconds = round(self.elapsedTime - minutes * 60);
-    
-    self.navigationItem.title = [NSString stringWithFormat:@"Time - %02.0f:%02.0f", minutes, seconds];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     [self arrangDeckOntoPlaySpace];
 }
 
+#pragma mark - Player Action
+
+- (IBAction)playerTappedQuitButton:(id)sender
+{
+    // TODO: Need to show a menu.
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Game State
+
 - (void)startNewGame
 {
     [self removeDeckFromPlaySpace];
-    
-    self.gameState = MMXGameStateStart;
     
     self.firstCardViewController = nil;
     self.secondCardViewController = nil;
     
     self.matchesAttempted = 0;
     self.matchesFailed = 0;
-    self.elapsedTime = 0;
+    self.elapsedTime = 0.0;
     
     self.xNumberLabel.text = @"";
     self.yNumberLabel.text = @"";
-    self.resultNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    self.zNumberLabel.text = @"";
+    
+    if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
+    {
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    }
+    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
+    {
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    }
+    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
+    {
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    }
+    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
+    {
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    }
+    
     self.navigationItem.title = @"Time - 00:00";
     
+    self.gameState = MMXGameStateStart;
+    
     [self createDeck];
-    [self arrangDeckOntoPlaySpace];
     
     [self.clockTimer invalidate];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
-                                                      target:self
-                                                    selector:@selector(updateClock)
-                                                    userInfo:nil
-                                                     repeats:YES];
-    self.clockTimer = timer;
+    self.clockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
+                                                       target:self
+                                                     selector:@selector(updateClock)
+                                                     userInfo:nil
+                                                      repeats:YES];;
 }
-
-
-#pragma mark - Board layout
 
 - (void)createDeck
 {
@@ -183,9 +194,10 @@
     
     NSMutableArray *unshuffledCardValues = [NSMutableArray arrayWithCapacity:0];
     
-    if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
+    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
+        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction))
     {
-        NSInteger maxCardValue = floor(self.gameConfiguration.targetNumber / 2.0);
+        u_int32_t maxCardValue = floor(self.gameConfiguration.targetNumber / 2.0);
         
         while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards)
         {
@@ -195,34 +207,10 @@
             [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber - randomValue)]];
         }
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
+    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication) ||
+             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
     {
-        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards)
-        {
-            NSInteger randomValue = arc4random_uniform(self.gameConfiguration.targetNumber + 1);
-            
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber + randomValue)]];
-        }
-    }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
-    {
-        // Pull out all the factors for the target number.
-        NSMutableArray *factors = [NSMutableArray arrayWithCapacity:0];
-        for (NSInteger i = 1; i <= self.gameConfiguration.targetNumber; i++)
-        {
-            if ((self.gameConfiguration.targetNumber % i) == 0)
-            {
-                [factors addObject:[NSNumber numberWithInteger:i]];
-            }
-        }
-        
-        // If the target number is a perfect square, we need to duplicate the square root factor, or we will have a missing pair!
-        if ((factors.count % 2) != 0)
-        {
-            NSInteger squareRoot = (NSInteger)sqrt(self.gameConfiguration.targetNumber);
-            [factors addObject:[NSNumber numberWithInteger:squareRoot]];
-        }
+        NSMutableArray *factors = [self factorizeNumber:self.gameConfiguration.targetNumber];
         
         // Use the factors to populate the unshuffled deck.
         if (factors.count > self.gameConfiguration.numberOfCards)
@@ -262,17 +250,6 @@
             }
         }
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
-    {
-        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards)
-        {
-            NSInteger randomValue = arc4random_uniform(self.gameConfiguration.numberOfCards) + 1;
-            
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber * randomValue)]];
-        }
-    }
-    
     
     NSMutableArray *freshDeck = [NSMutableArray arrayWithCapacity:self.numberOfCardsInRow.count];
     
@@ -302,8 +279,26 @@
     self.deck = freshDeck;
 }
 
+#pragma mark - Board layout
+
 - (void)arrangDeckOntoPlaySpace
 {
+    for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
+    {
+        NSMutableArray *rows = self.deck[i];
+        
+        NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+        
+        for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
+        {
+            MMXCardViewController *cvc = rows[j];
+            
+            cvc.view.frame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height, self.cardWidth, self.cardHeight);
+            
+            [self.view addSubview:cvc.view];
+        }
+    }
+    
     CGFloat existingHeight = self.equationContainerView.frame.size.height + (self.numberOfCardsInRow.count * self.cardHeight);
     CGFloat verticalSpaceRemaining = self.view.bounds.size.height - existingHeight;
     CGFloat verticalGap = verticalSpaceRemaining / (self.numberOfCardsInRow.count + 1);
@@ -328,9 +323,21 @@
             frame.origin.y = yCoordinate;
             frame.size.width = self.cardWidth;
             frame.size.height = self.cardHeight;
-            cvc.view.frame = frame;
             
-            [self.view addSubview:cvc.view];
+            CGFloat delay = (arc4random_uniform(100) / 100.0);
+            NSLog(@"DELAY: %f", delay);
+            
+            [UIView animateWithDuration:0.3
+                                  delay:delay
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^
+                             {
+                                 cvc.view.frame = frame;
+                             }
+                             completion:^(BOOL finished)
+                             {
+                                 
+                             }];
             
             xCoordinate += self.cardWidth + horizontalGap;
         }
@@ -364,18 +371,26 @@
     if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
     {
         result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
+        
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
     {
-        result = self.firstCardViewController.card.value - self.secondCardViewController.card.value;
+        result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
+        
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
     {
         result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
+        
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
     {
-        result = self.firstCardViewController.card.value / self.secondCardViewController.card.value;
+        result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
+        
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
     }
     
     if (result == self.gameConfiguration.targetNumber)
@@ -388,8 +403,6 @@
         
         self.matchesFailed += 1;
     }
-    
-    self.resultNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
     
     self.matchesAttempted += 1;
     
@@ -445,9 +458,20 @@
     self.firstCardViewController = nil;
     self.secondCardViewController = nil;
     
-    self.xNumberLabel.text = @"";
-    self.yNumberLabel.text = @"";
-    self.resultNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
+        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+    {
+        self.xNumberLabel.text = @"";
+        self.yNumberLabel.text = @"";
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+    }
+    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
+             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+    {
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.yNumberLabel.text = @"";
+        self.zNumberLabel.text = @"";
+    }
 }
 
 - (void)endGame
@@ -457,6 +481,18 @@
     self.gameState = MMXGameStateOver;
     
     [self performSegueWithIdentifier:@"MMXSegueFromGameToResults" sender:nil];
+}
+
+- (void)updateClock
+{
+    // TODO: basic timer, but this is not a reliable way of calculating time!
+    
+    self.elapsedTime += 1.0/60.0;
+    
+    double minutes = floor(self.elapsedTime / 60);
+    double seconds = round(self.elapsedTime - minutes * 60);
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"Time - %02.0f:%02.0f", minutes, seconds];
 }
 
 #pragma mark CardViewControllerDelegate
@@ -469,17 +505,17 @@
     {
         shouldFlip = YES;
         
-        self.firstCardViewController = cardViewController;
-        
         self.gameState = MMXGameStateOneCardFlipped;
+        
+        self.firstCardViewController = cardViewController;
     }
     else if (self.gameState == MMXGameStateOneCardFlipped)
     {
         shouldFlip = YES;
         
-        self.secondCardViewController = cardViewController;
-        
         self.gameState = MMXGameStateTwoCardsFlipped;
+        
+        self.secondCardViewController = cardViewController;
     }
     else if ((self.gameState == MMXGameStateTwoCardsFlipped) || (self.gameState == MMXGameStateAnimating) || (self.gameState == MMXGameStateOver))
     {
@@ -491,16 +527,58 @@
 
 - (void)finishedFlippingFor:(MMXCardViewController *)cardViewController
 {
-    if ([cardViewController isEqual:self.firstCardViewController])
+    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
+        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+        if ([cardViewController isEqual:self.firstCardViewController])
+        {
+            self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+        }
+        else if ([cardViewController isEqual:self.secondCardViewController])
+        {
+            self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+        }
     }
-    else if ([cardViewController isEqual:self.secondCardViewController])
+    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
+             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
     {
-        self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
-        
+        if ([cardViewController isEqual:self.firstCardViewController])
+        {
+            self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+        }
+        else if ([cardViewController isEqual:self.secondCardViewController])
+        {
+            self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+        }
+    }
+    
+    if (self.firstCardViewController && self.secondCardViewController)
+    {
         [self evaluateFormula];
     }
+}
+
+#pragma mark - Pull this into another class
+
+- (NSMutableArray *)factorizeNumber:(NSInteger)number
+{
+    NSMutableArray *factors = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger i = 1; i <= number; i++)
+    {
+        if ((number % i) == 0)
+        {
+            [factors addObject:[NSNumber numberWithInteger:i]];
+        }
+    }
+    
+    // If the target number is a perfect square, we need to duplicate the square root factor, or we will have a missing pair!
+    if ((factors.count % 2) != 0)
+    {
+        NSInteger squareRoot = (NSInteger)sqrt(number);
+        [factors addObject:[NSNumber numberWithInteger:squareRoot]];
+    }
+    
+    return factors;
 }
 
 @end

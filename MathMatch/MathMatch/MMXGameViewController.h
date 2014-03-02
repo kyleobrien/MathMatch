@@ -26,9 +26,10 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 @property (nonatomic, weak) IBOutlet UIView *equationContainerView;
 
 @property (nonatomic, weak) IBOutlet UILabel *xNumberLabel;
-@property (nonatomic, weak) IBOutlet UILabel *mathOperatorLabel;
 @property (nonatomic, weak) IBOutlet UILabel *yNumberLabel;
-@property (nonatomic, weak) IBOutlet UILabel *resultNumberLabel;
+@property (nonatomic, weak) IBOutlet UILabel *zNumberLabel;
+@property (nonatomic, weak) IBOutlet UILabel *aFormulaLabel;
+@property (nonatomic, weak) IBOutlet UILabel *bFormulaLabel;
 
 - (IBAction)playerTappedQuitButton:(id)sender;
 
