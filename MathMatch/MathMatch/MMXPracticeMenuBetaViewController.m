@@ -13,17 +13,30 @@
 
 @property (nonatomic, assign) NSInteger targetNumber;
 
+@property (nonatomic, assign) BOOL haveAnyButtonsBeenTapped;
+
 @end
 
 @implementation MMXPracticeMenuBetaViewController
 
 NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPracticeTargetNumber";
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        self.haveAnyButtonsBeenTapped = NO;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Make sure the stored target number isn't something crazy.
+    // Sanity check to make sure the stored target number isn't something crazy.
     
     NSInteger targetNumber = [[NSUserDefaults standardUserDefaults] integerForKey:kMMXUserDefaultsPracticeTargetNumber];
     if (targetNumber <= 0)
@@ -37,7 +50,8 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     
     self.targetNumber = targetNumber;
     self.gameConfiguration.targetNumber = targetNumber;
-    self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)targetNumber];
+    
+    self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -49,7 +63,6 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
                                                                             blue:(90.0 / 255.0)
                                                                            alpha:1.0];
 }
-
 
 #pragma mark - Navigation
 
@@ -70,27 +83,35 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     {
         // Player tapped "Clear" button.
         
+        self.haveAnyButtonsBeenTapped = YES;
+        self.targetNumber = 0;
+        
         self.startBarButtonItem.enabled = NO;
         self.targetNumberLabel.text = @"0";
-        
-        self.targetNumber = 0;
     }
     else
     {
         // Player tapped one of the 0 - 9 buttons.
         
-        if (((self.targetNumber > 0) || (digit > 0)) && (self.targetNumber < 100))
+        if (self.haveAnyButtonsBeenTapped)
         {
-            self.targetNumber = (self.targetNumber * 10) + digit;
-            
-            self.gameConfiguration.targetNumber = self.targetNumber;
-            
-            [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
-            self.gameConfiguration.targetNumber = self.targetNumber;
-            
-            self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", self.targetNumber];
-            self.startBarButtonItem.enabled = YES;
+            // Capping the target at 999 by ignoring input if it would make the target greater or equal to 100.
+            if (((self.targetNumber > 0) || (digit > 0)) && (self.targetNumber < 100))
+            {
+                self.targetNumber = (self.targetNumber * 10) + digit;
+            }
         }
+        else
+        {
+            self.haveAnyButtonsBeenTapped = YES;
+            self.targetNumber = digit;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
+        self.gameConfiguration.targetNumber = self.targetNumber;
+        
+        self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", self.targetNumber];
+        self.startBarButtonItem.enabled = YES;
     }
 }
 

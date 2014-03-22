@@ -23,11 +23,20 @@ NSString * const kMMXUserDefaultsPracticeArithmeticType = @"MMXUserDefaultsPract
 NSString * const kMMXUserDefaultsPracticeMemorySpeed = @"MMXUserDefaultsPracticeMemorySpeed";
 NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic";
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        self.gameConfiguration = [[MMXGameConfiguration alloc] init];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.gameConfiguration = [[MMXGameConfiguration alloc] init];
     
     [self loadUserDefaultsAndSetInterface];
 }

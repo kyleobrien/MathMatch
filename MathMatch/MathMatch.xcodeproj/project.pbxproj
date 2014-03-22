@@ -48,6 +48,8 @@
 		27A086811893867C00C318DE /* MMXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867F1893867C00C318DE /* MMXGameViewController.m */; };
 		27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
+		27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
+		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		27A0867F1893867C00C318DE /* MMXGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameViewController.m; sourceTree = "<group>"; };
 		27A1D938188F0B8100255231 /* MMXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXNavigationController.h; sourceTree = "<group>"; };
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
+		27C687D818C438A50060D451 /* KMODecisionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMODecisionView.h; sourceTree = "<group>"; };
+		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			children = (
 				27A086701890882F00C318DE /* MMXFlatButton.h */,
 				27A086711890882F00C318DE /* MMXFlatButton.m */,
+				27C687D818C438A50060D451 /* KMODecisionView.h */,
+				27C687D918C438A50060D451 /* KMODecisionView.m */,
 			);
 			name = "Component UI";
 			sourceTree = "<group>";
@@ -179,8 +185,7 @@
 				27A0867D18937D5800C318DE /* Main */,
 				27A0867818930EE600C318DE /* Practice */,
 				27572EA518A1FF56007EAF8A /* Component UI */,
-				27A086741891CB9000C318DE /* MMXGameConfiguration.h */,
-				27A086751891CB9000C318DE /* MMXGameConfiguration.m */,
+				27C687D718C3BE9E0060D451 /* Model */,
 				27A0867E1893867C00C318DE /* MMXGameViewController.h */,
 				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
 				275500A318AB0DC2008B4DB4 /* MMXCard.h */,
@@ -253,6 +258,15 @@
 				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		27C687D718C3BE9E0060D451 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27A086741891CB9000C318DE /* MMXGameConfiguration.h */,
+				27A086751891CB9000C318DE /* MMXGameConfiguration.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +379,7 @@
 				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
 				275500AA18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */,
 				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
+				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
@@ -386,6 +401,7 @@
 				273592A31888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */,
 				279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
+				27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				275500A918AB0DC2008B4DB4 /* MMXCard.m in Sources */,

@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 
 @property (nonatomic, assign) NSInteger targetNumber;
 @property (nonatomic, assign) NSInteger numberOfCards;
+
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXMemorySpeed memorySpeed;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;

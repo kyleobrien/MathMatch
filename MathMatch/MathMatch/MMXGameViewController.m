@@ -17,6 +17,7 @@
 @property (nonatomic, strong) MMXCardViewController *secondCardViewController;
 
 @property (nonatomic, strong) NSMutableArray *deck;
+@property (nonatomic, strong) NSMutableArray *deck2;
 
 @property (nonatomic, assign) CGFloat cardWidth;
 @property (nonatomic, assign) CGFloat cardHeight;
@@ -38,6 +39,8 @@
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
+    
+    // Draw bottom borders on the parts of the formula that the player provides.
     
     if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
         (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
@@ -64,6 +67,8 @@
     
     [self.yNumberLabel.layer addSublayer:bottomBorderY];
     
+    // Update the UI to reflect the current operation.
+    
     if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
     {
         self.aFormulaLabel.text = @"+";
@@ -89,6 +94,11 @@
     [super viewDidAppear:animated];
     
     [self arrangDeckOntoPlaySpace];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    
 }
 
 #pragma mark - Player Action
@@ -149,6 +159,8 @@
 
 - (void)createDeck
 {
+    self.deck2 = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards];
+    
     if (self.gameConfiguration.numberOfCards == 8)
     {
         self.cardWidth = 88.0;
@@ -271,6 +283,7 @@
             [unshuffledCardValues removeObjectAtIndex:randomIndex];
             
             [column addObject:cvc];
+            [self.deck2 addObject:cvc];
         }
         
         [freshDeck addObject:column];
@@ -318,32 +331,46 @@
         {
             MMXCardViewController *cvc = rows[j];
             
-            CGRect frame = cvc.view.frame;
-            frame.origin.x = xCoordinate;
-            frame.origin.y = yCoordinate;
-            frame.size.width = self.cardWidth;
-            frame.size.height = self.cardHeight;
-            
-            CGFloat delay = (arc4random_uniform(100) / 100.0);
-            NSLog(@"DELAY: %f", delay);
-            
-            [UIView animateWithDuration:0.3
-                                  delay:delay
-                                options:UIViewAnimationOptionCurveEaseOut
-                             animations:^
-                             {
-                                 cvc.view.frame = frame;
-                             }
-                             completion:^(BOOL finished)
-                             {
-                                 
-                             }];
+            cvc.tableLocation = CGPointMake(xCoordinate, yCoordinate);
+            cvc.cardSize = CGSizeMake(self.cardWidth, self.cardHeight);
             
             xCoordinate += self.cardWidth + horizontalGap;
         }
         
         yCoordinate += self.cardHeight + verticalGap;
     }
+    
+    [self dealCardWithIndex:0];
+}
+
+- (void)dealCardWithIndex:(NSInteger)index
+{
+    // TODO: Would like to make this feel more natural.
+    [UIView animateWithDuration:0.1
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^
+                     {
+                         MMXCardViewController *cvc = self.deck2[index];
+                         cvc.view.frame = CGRectMake(cvc.tableLocation.x,
+                                                     cvc.tableLocation.y,
+                                                     cvc.cardSize.width,
+                                                     cvc.cardSize.height);
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         if (finished)
+                         {
+                             if (index == (self.deck2.count - 1))
+                             {
+                                 // TODO: Let the game start
+                             }
+                             else
+                             {
+                                 [self dealCardWithIndex:index + 1];
+                             }
+                         }
+                     }];
 }
 
 - (void)removeDeckFromPlaySpace
@@ -444,8 +471,32 @@
     
     if (success)
     {
-        [self.firstCardViewController removeCardFromTable];
-        [self.secondCardViewController removeCardFromTable];
+        [self.view bringSubviewToFront:self.firstCardViewController.view];
+        [self.view bringSubviewToFront:self.secondCardViewController.view];
+        
+        [UIView animateWithDuration:0.1
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^
+                         {
+                             self.firstCardViewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width,
+                                                                                  [UIScreen mainScreen].bounds.size.height,
+                                                                                  self.firstCardViewController.view.bounds.size.width,
+                                                                                  self.firstCardViewController.view.bounds.size.height);
+                             
+                             self.secondCardViewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width,
+                                                                                   [UIScreen mainScreen].bounds.size.height,
+                                                                                   self.secondCardViewController.view.bounds.size.width,
+                                                                                   self.secondCardViewController.view.bounds.size.height);
+                         }
+                         completion:^(BOOL finished)
+                         {
+                             if (finished)
+                             {
+                                 [self.firstCardViewController removeCardFromTable];
+                                 [self.secondCardViewController removeCardFromTable];
+                             }
+                         }];
     }
     else
     {
