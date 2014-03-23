@@ -96,16 +96,12 @@
     [self arrangDeckOntoPlaySpace];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    
-}
-
 #pragma mark - Player Action
 
 - (IBAction)playerTappedQuitButton:(id)sender
 {
     // TODO: Need to show a menu.
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -114,6 +110,8 @@
 - (void)startNewGame
 {
     [self removeDeckFromPlaySpace];
+    
+    // TODO: Make sure these are all the variables that need to be reset.
     
     self.firstCardViewController = nil;
     self.secondCardViewController = nil;
@@ -308,6 +306,8 @@
             
             cvc.view.frame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height, self.cardWidth, self.cardHeight);
             
+            cvc.row = i;
+            
             [self.view addSubview:cvc.view];
         }
     }
@@ -345,13 +345,21 @@
 
 - (void)dealCardWithIndex:(NSInteger)index
 {
-    // TODO: Would like to make this feel more natural.
-    [UIView animateWithDuration:0.1
+    MMXCardViewController *cvc = self.deck2[index];
+    
+    CGFloat animationDuration = 0.25 - (cvc.row * 0.02); // 0.02 is just a fudge factor based on what looks good.
+    
+    CGFloat center = self.view.frame.size.width / 2.0;
+    cvc.view.frame = CGRectMake(center - cvc.view.frame.size.width + arc4random_uniform(cvc.view.frame.size.width),
+                                cvc.view.frame.origin.y,
+                                cvc.view.frame.size.width,
+                                cvc.view.frame.size.height);
+    
+    [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^
                      {
-                         MMXCardViewController *cvc = self.deck2[index];
                          cvc.view.frame = CGRectMake(cvc.tableLocation.x,
                                                      cvc.tableLocation.y,
                                                      cvc.cardSize.width,
@@ -367,10 +375,21 @@
                              }
                              else
                              {
-                                 [self dealCardWithIndex:index + 1];
+                                 
                              }
                          }
                      }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((animationDuration / 2) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (index < (self.deck2.count - 1))
+            {
+                [self dealCardWithIndex:index + 1];
+            }
+        });
+    });
 }
 
 - (void)removeDeckFromPlaySpace

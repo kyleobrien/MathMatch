@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, MMXCardColor)
 
 @property (nonatomic, assign) CGPoint tableLocation;
 @property (nonatomic, assign) CGSize cardSize;
+@property (nonatomic, assign) NSInteger row;
 
 @property (nonatomic, weak) id<MMXCardViewControllerDelegate> delegate;
 
