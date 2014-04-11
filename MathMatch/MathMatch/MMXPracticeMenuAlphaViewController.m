@@ -29,6 +29,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     if (self)
     {
         self.gameConfiguration = [[MMXGameConfiguration alloc] init];
+        self.gameConfiguration.gameType = MMXGameTypePractice;
     }
     
     return self;
@@ -45,9 +46,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(3.0 / 255.0)
-                                                                           green:(228.0 / 255.0)
-                                                                            blue:(90.0 / 255.0)
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(255.0 / 255.0)
+                                                                           green:(143.0 / 255.0)
+                                                                            blue:(0.0 / 255.0)
                                                                            alpha:1.0];
 }
 
@@ -197,6 +198,11 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         self.gameConfiguration.musicTrack = MMXMusicTrackOff;
         [userDefaults setInteger:MMXMusicTrackOff forKey:kMMXUserDefaultsPracticeMusic];
     }
+}
+
+- (IBAction)unwindToPracticeConfiguration:(UIStoryboardSegue *)unwindSegue;
+{
+    
 }
 
 #pragma mark - Other Instance Methods

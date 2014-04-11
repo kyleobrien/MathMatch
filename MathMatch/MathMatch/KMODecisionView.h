@@ -28,12 +28,18 @@
 
 @interface KMODecisionView : UIView
 
-@property (weak) id<KMODecisionViewDelegate> delegate;
+FOUNDATION_EXPORT CGFloat const kKMODecisionViewMessageFontSize;
+FOUNDATION_EXPORT CGFloat const kKMODecisionViewButtonFontSize;
+
+@property (nonatomic, weak) id<KMODecisionViewDelegate> delegate;
 
 @property (nonatomic, copy) NSString *message;
 
+@property (nonatomic, copy) NSString *fontName;
+@property (nonatomic, strong) UIColor *color;
+
 @property (nonatomic, readonly) NSInteger numberOfButtons;
-@property (assign, readonly, getter = isVisible) BOOL visible;
+@property (nonatomic, assign, readonly, getter = isVisible) BOOL visible;
 
 - (id)initWithMessage:(NSString *)message
              delegate:(id)delegate
@@ -44,7 +50,7 @@
 - (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
 
 - (void)show;
-- (void)showWithGloom:(float)gloomness;
+- (void)showAndDimBackgroundWithPercent:(CGFloat)dimPercent;
 - (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
 
 @end

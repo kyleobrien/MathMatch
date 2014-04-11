@@ -7,17 +7,15 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "MMXAppDelegate.h"
 #import "KMODecisionView.h"
 
 @interface KMODecisionView ()
-{
-    UIView *containerView;
 
-    UILabel *messageLabel;
-    UIButton *cancelButton;
-    NSMutableArray *otherButtons;
-}
+@property (nonatomic, strong) UIView *containerView;
+
+@property (nonatomic, strong) UILabel *messageLabel;
+@property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) NSMutableArray *otherButtons;
 
 - (void)layoutView;
 - (void)removeAfterTappingButtonIndex:(NSInteger)index withAnimation:(BOOL)animated;
@@ -26,8 +24,10 @@
 
 @end
 
-
 @implementation KMODecisionView
+
+CGFloat const kKMODecisionViewMessageFontSize = 18.0;
+CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 @synthesize visible = _visible;
 
@@ -42,58 +42,56 @@
                                            [UIScreen mainScreen].bounds.size.height)];
     if (self)
     {
-        _delegate = delegate;
-        _message = message;
+        self.delegate = delegate;
         
+        // 14.0 is a dummy value, I'm only interested in the name.
+        _fontName = [UIFont systemFontOfSize:14.0].fontName;
+        _message = message;
+        _color = [UIColor blackColor];
         
         self.backgroundColor = [UIColor clearColor];
         
         
         // We're just estimating the height here. It'll get recomputed during layoutView and set accordingly.
-        containerView = [[UIView alloc] initWithFrame:CGRectMake((self.bounds.size.width - 264.0) / 2.0,
-                                                                 (self.bounds.size.height - 132.0) / 2.0,
-                                                                 264.0,
-                                                                 132.0)];
-        containerView.backgroundColor = [UIColor whiteColor];
-        containerView.layer.cornerRadius = 7.0;
-        containerView.layer.borderColor = [UIColor blackColor].CGColor;
-        containerView.layer.borderWidth = 2.0;
-        containerView.layer.shadowOpacity = 0.25;
-        containerView.layer.shadowRadius = 3.0;
-        containerView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
-        containerView.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.containerView = [[UIView alloc] initWithFrame:CGRectMake((self.bounds.size.width - 264.0) / 2.0,
+                                                                      (self.bounds.size.height - 132.0) / 2.0,
+                                                                      264.0,
+                                                                      132.0)];
+        self.containerView.backgroundColor = [UIColor whiteColor];
+        self.containerView.layer.shadowOpacity = 0.75;
+        self.containerView.layer.shadowRadius = 3.0;
+        self.containerView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+        self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
         
         
-        messageLabel = [[UILabel alloc] init];
-        messageLabel.font = [UIFont fontWithName:@"Avenir" size:18.0];
-        messageLabel.textColor = [UIColor blackColor];
-        messageLabel.textAlignment = NSTextAlignmentCenter;
-        messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        messageLabel.numberOfLines = 0;
+        self.messageLabel = [[UILabel alloc] init];
+        self.messageLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewMessageFontSize];
+        self.messageLabel.textColor = [UIColor blackColor];
+        self.messageLabel.textAlignment = NSTextAlignmentCenter;
+        self.messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.messageLabel.numberOfLines = 0;
         
-        [containerView addSubview:messageLabel];
-        
-        
-        cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:21.0];
-        cancelButton.layer.cornerRadius = 14.0;
-        cancelButton.layer.borderColor = [UIColor blackColor].CGColor;
-        cancelButton.layer.borderWidth = 2.0;
-        
-        [cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
-        [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-        [cancelButton addTarget:self action:@selector(userTappedCancelButton) forControlEvents:UIControlEventTouchUpInside];
-        
-        [containerView addSubview:cancelButton];
+        [self.containerView addSubview:self.messageLabel];
         
         
-        otherButtons = [NSMutableArray arrayWithCapacity:0];
+        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.cancelButton.titleLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewButtonFontSize];
+        self.cancelButton.layer.borderColor = [UIColor blackColor].CGColor;
+        self.cancelButton.layer.borderWidth = 2.0;
+        
+        [self.cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
+        [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        [self.cancelButton addTarget:self action:@selector(userTappedCancelButton) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.containerView addSubview:self.cancelButton];
+        
+        
+        self.otherButtons = [NSMutableArray arrayWithCapacity:otherButtonTitles.count];
         for (NSString *buttonTitle in otherButtonTitles)
         {
             UIButton *otherButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            otherButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:21.0];
-            otherButton.layer.cornerRadius = 14.0;
+            otherButton.titleLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewButtonFontSize];
             otherButton.layer.borderColor = [UIColor blackColor].CGColor;
             otherButton.layer.borderWidth = 2.0;
             
@@ -102,13 +100,13 @@
             [otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
             [otherButton addTarget:self action:@selector(userTappedOtherButton:) forControlEvents:UIControlEventTouchUpInside];
             
-            [otherButtons addObject:otherButton];
+            [self.otherButtons addObject:otherButton];
             
-            [containerView addSubview:otherButton];
+            [self.containerView addSubview:otherButton];
         }
         
         
-        [self addSubview:containerView];
+        [self addSubview:self.containerView];
         [self layoutView];
     }
     
@@ -118,8 +116,7 @@
 - (NSInteger)addButtonWithTitle:(NSString *)title
 {
     UIButton *otherButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    otherButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:21.0];
-    otherButton.layer.cornerRadius = 14.0;
+    otherButton.titleLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewButtonFontSize];
     otherButton.layer.borderColor = [UIColor blackColor].CGColor;
     otherButton.layer.borderWidth = 2.0;
     
@@ -128,29 +125,29 @@
     [otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [otherButton addTarget:self action:@selector(userTappedOtherButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    [otherButtons addObject:otherButton];
+    [self.otherButtons addObject:otherButton];
     
-    [containerView addSubview:otherButton];
+    [self.containerView addSubview:otherButton];
     [self layoutView];
     
     // Adding 1 to the index (by not subtracting 1) since 0 is reserved for the cancel button.
-    return [otherButtons count];
+    return [self.otherButtons count];
 }
 
 - (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0)
     {
-        return [cancelButton titleForState:UIControlStateNormal];
+        return [self.cancelButton titleForState:UIControlStateNormal];
     }
     else
     {
         // Decrement the button index to account for the cancel button.
         buttonIndex -= 1;
         
-        if (buttonIndex < [otherButtons count])
+        if (buttonIndex < [self.otherButtons count])
         {
-            UIButton *otherButton = [otherButtons objectAtIndex:buttonIndex];
+            UIButton *otherButton = [self.otherButtons objectAtIndex:buttonIndex];
             return [otherButton titleForState:UIControlStateNormal];
         }
         else
@@ -162,23 +159,22 @@
 
 - (void)show
 {
-    [self showWithGloom:0.25];
+    [self showAndDimBackgroundWithPercent:0.25];
 }
 
-- (void)showWithGloom:(float)gloomness
+- (void)showAndDimBackgroundWithPercent:(CGFloat)dimPercent
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(willPresentDecisionView:)])
     {
         [self.delegate willPresentDecisionView:self];
     }
     
-    containerView.frame = CGRectMake(containerView.frame.origin.x,
-                                     containerView.frame.origin.y - self.bounds.size.height,
-                                     containerView.frame.size.width,
-                                     containerView.frame.size.height);
+    self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
+                                          self.containerView.frame.origin.y - self.bounds.size.height,
+                                          self.containerView.frame.size.width,
+                                          self.containerView.frame.size.height);
     
-    MMXAppDelegate *appDelegate = (MMXAppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.navController.view addSubview:self];
+    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self];
     _visible = YES;
     
     [UIView animateWithDuration:0.3
@@ -186,11 +182,11 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^
                      {
-                         self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:gloomness];
-                         containerView.frame = CGRectMake((self.bounds.size.width - containerView.frame.size.width) / 2.0,
-                                                          (self.bounds.size.height - containerView.frame.size.height) / 2.0,
-                                                          containerView.frame.size.width,
-                                                          containerView.frame.size.height);
+                         self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:dimPercent];
+                         self.containerView.frame = CGRectMake((self.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                                               (self.bounds.size.height - self.containerView.frame.size.height) / 2.0,
+                                                               self.containerView.frame.size.width,
+                                                               self.containerView.frame.size.height);
                      }
                      completion:^(BOOL finished)
                      {
@@ -229,7 +225,7 @@
 - (void)userTappedOtherButton:(id)sender
 {
     // Increment by 1 to account for the cancel button.
-    NSInteger index = [otherButtons indexOfObject:sender] + 1;
+    NSInteger index = [self.otherButtons indexOfObject:sender] + 1;
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(decisionView:tappedButtonAtIndex:)])
     {
@@ -244,13 +240,45 @@
 - (void)setMessage:(NSString *)message
 {
     _message = message;
+    
+    [self layoutView];
+}
+
+- (void)setFontName:(NSString *)fontName
+{
+    _fontName = [fontName copy];
+    
+    self.messageLabel.font = [UIFont fontWithName:fontName size:kKMODecisionViewMessageFontSize];
+    self.cancelButton.titleLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewButtonFontSize];
+    
+    for (UIButton *otherButton in self.otherButtons)
+    {
+        otherButton.titleLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewButtonFontSize];
+    }
+    
+    [self layoutView];
+}
+
+- (void)setColor:(UIColor *)color
+{
+    _color = color;
+    
+    self.cancelButton.layer.borderColor = self.color.CGColor;
+    [self.cancelButton setTitleColor:self.color forState:UIControlStateNormal];
+    
+    for (UIButton *otherButton in self.otherButtons)
+    {
+        otherButton.layer.borderColor = self.color.CGColor;
+        [otherButton setTitleColor:self.color forState:UIControlStateNormal];
+    }
+    
     [self layoutView];
 }
 
 - (NSInteger)numberOfButtons
 {
-    // Add one to account for the cancel button.
-    return [otherButtons count] + 1;
+    // Add 1 to account for the cancel button.
+    return [self.otherButtons count] + 1;
 }
 
 - (BOOL)isVisible
@@ -262,84 +290,85 @@
 
 - (void)layoutView
 {
-    messageLabel.text = self.message;
+    self.messageLabel.text = self.message;
     
     // Calculating the height of the message so we can adjust the label to the proper size.
-    CGSize messageSize = [messageLabel.text sizeWithFont:messageLabel.font
-                                       constrainedToSize:CGSizeMake(containerView.bounds.size.width - 20.0, [UIScreen mainScreen].bounds.size.height)
-                                           lineBreakMode:NSLineBreakByWordWrapping];
     
-    messageLabel.frame = CGRectMake(10.0,
-                                    10.0,
-                                    containerView.frame.size.width - 20.0,
-                                    messageSize.height);
+    CGSize maxSize = CGSizeMake(self.containerView.bounds.size.width - 20.0, [UIScreen mainScreen].bounds.size.height);
+    CGSize actualSize = [self.messageLabel sizeThatFits:maxSize];
     
-    if ([otherButtons count] > 0)
+    self.messageLabel.frame = CGRectMake(10.0,
+                                         10.0,
+                                         self.containerView.frame.size.width - 20.0,
+                                         actualSize.height);
+    
+    if ([self.otherButtons count] > 0)
     {
-        UIButton *firstOtherButton = [otherButtons objectAtIndex:0];
-        double cancelWidth = [[cancelButton titleForState:UIControlStateNormal] sizeWithFont:cancelButton.titleLabel.font].width;
-        double otherWidth = [[firstOtherButton titleForState:UIControlStateNormal] sizeWithFont:firstOtherButton.titleLabel.font].width;
+        UIButton *firstOtherButton = [self.otherButtons objectAtIndex:0];
         
-        if (([otherButtons count] == 1) && (cancelWidth <= 100.0) && (otherWidth <= 100.0))
+        CGFloat cancelWidth = [[self.cancelButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName: self.cancelButton.titleLabel.font}].width;
+        CGFloat otherWidth = [[firstOtherButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName: firstOtherButton.titleLabel.font}].width;
+        
+        if (([self.otherButtons count] == 1) && (cancelWidth <= 100.0) && (otherWidth <= 100.0))
         {
             // Place the two buttons side-by-side.
-            cancelButton.frame = CGRectMake(10.0,
-                                            messageLabel.frame.origin.y + messageLabel.frame.size.height + 10.0,
-                                            117.0,
-                                            44.0);
+            self.cancelButton.frame = CGRectMake(10.0,
+                                                 self.messageLabel.frame.origin.y + self.messageLabel.frame.size.height + 10.0,
+                                                 117.0,
+                                                 44.0);
             
             firstOtherButton.frame = CGRectMake(137.0,
-                                                messageLabel.frame.origin.y + messageLabel.frame.size.height + 10.0,
+                                                self.messageLabel.frame.origin.y + self.messageLabel.frame.size.height + 10.0,
                                                 117.0,
                                                 44.0);
             
-            UIImage *firstOtherBackground = [self backgroundImageForButton:firstOtherButton withColor:[UIColor blackColor]];
+            UIImage *firstOtherBackground = [self backgroundImageForButton:firstOtherButton withColor:self.color];
             [firstOtherButton setBackgroundImage:firstOtherBackground forState:UIControlStateHighlighted];
         }
         else
         {
             // We'll use the N-row, 1-column approach.
             
-            double yCoordinateTracker = messageLabel.frame.origin.y + messageLabel.frame.size.height + 10.0;
-            for (UIButton *otherButton in otherButtons)
+            double yCoordinateTracker = self.messageLabel.frame.origin.y + self.messageLabel.frame.size.height + 10.0;
+            for (UIButton *otherButton in self.otherButtons)
             {
                 otherButton.frame = CGRectMake(10.0,
                                                yCoordinateTracker,
                                                244.0,
                                                44.0);
                 
-                UIImage *otherBackground = [self backgroundImageForButton:otherButton withColor:[UIColor blackColor]];
+                UIImage *otherBackground = [self backgroundImageForButton:otherButton withColor:self.color];
                 [otherButton setBackgroundImage:otherBackground forState:UIControlStateHighlighted];
                 
                 yCoordinateTracker += otherButton.frame.size.height + 10.0;
             }
             
-            cancelButton.frame = CGRectMake(10.0,
-                                            yCoordinateTracker,
-                                            244.0,
-                                            44.0);
+            self.cancelButton.frame = CGRectMake(10.0,
+                                                 yCoordinateTracker,
+                                                 244.0,
+                                            	44.0);
         }
     }
     else
     {
         // There's only a cancel button.
         
-        cancelButton.frame = CGRectMake(10.0,
-                                        messageLabel.frame.origin.y + messageLabel.frame.size.height + 10.0,
-                                        244.0,
-                                        44.0);
+        self.cancelButton.frame = CGRectMake(10.0,
+                                             self.messageLabel.frame.origin.y + self.messageLabel.frame.size.height + 10.0,
+                                             244.0,
+                                             44.0);
     }
     
     
-    UIImage *cancelBackground = [self backgroundImageForButton:cancelButton withColor:[UIColor blackColor]];
-    [cancelButton setBackgroundImage:cancelBackground forState:UIControlStateHighlighted];
+    UIImage *cancelBackground = [self backgroundImageForButton:self.cancelButton withColor:self.color];
+    [self.cancelButton setBackgroundImage:cancelBackground forState:UIControlStateHighlighted];
     
     // Now that everything is positioned, make sure the container view is appropriately positioned and sized.
-    double newHeight = cancelButton.frame.origin.y + cancelButton.frame.size.height + 10.0;
-    containerView.frame = CGRectMake(containerView.frame.origin.x,
-                                     (self.bounds.size.height - newHeight) / 2.0,
-                                     containerView.frame.size.width,
-                                     newHeight);
+    double newHeight = self.cancelButton.frame.origin.y + self.cancelButton.frame.size.height + 10.0;
+    self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
+                                          (self.bounds.size.height - newHeight) / 2.0,
+                                          self.containerView.frame.size.width,
+                                          newHeight);
 }
 
 - (void)removeAfterTappingButtonIndex:(NSInteger)index withAnimation:(BOOL)animated;
@@ -357,10 +386,10 @@
                          animations:^
                          {
                              self.backgroundColor = [UIColor clearColor];
-                             containerView.frame = CGRectMake(containerView.frame.origin.x,
-                                                              containerView.frame.origin.y + self.bounds.size.height,
-                                                              containerView.frame.size.width,
-                                                              containerView.frame.size.height);
+                             self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
+                                                                   self.containerView.frame.origin.y + self.bounds.size.height,
+                                                                   self.containerView.frame.size.width,
+                                                                   self.containerView.frame.size.height);
                          }
                          completion:^(BOOL finished)
                          {
@@ -385,52 +414,21 @@
 
 - (UIImage *)backgroundImageForButton:(UIButton *)button withColor:(UIColor *)color
 {
-    // Modified version of example code:
-    // http://www.cocoanetics.com/2010/02/drawing-rounded-rectangles/
-    
     UIGraphicsBeginImageContextWithOptions(button.bounds.size, NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-	CGRect outerRect = button.bounds;
-    outerRect = CGRectMake(outerRect.origin.x + 4.0,
-                           outerRect.origin.y + 4.0,
-                           outerRect.size.width - 8.0,
-                           outerRect.size.height - 8.0);
-	double radius = 11.0;
-    CGRect innerRect = CGRectInset(outerRect, radius, radius);
-    
-    CGMutablePathRef roundedRectPath = CGPathCreateMutable();
-    
-	CGFloat insideRight = innerRect.origin.x + innerRect.size.width;
-	CGFloat outsideRight = outerRect.origin.x + outerRect.size.width;
-	CGFloat insideBottom = innerRect.origin.y + innerRect.size.height;
-	CGFloat outsideBottom = outerRect.origin.y + outerRect.size.height;
-	CGFloat insideTop = innerRect.origin.y;
-	CGFloat outsideTop = outerRect.origin.y;
-    CGFloat insideLeft = innerRect.origin.x;
-	CGFloat outsideLeft = outerRect.origin.x;
-    
-	CGPathMoveToPoint(roundedRectPath, NULL, insideLeft, outsideTop);
-	CGPathAddLineToPoint(roundedRectPath, NULL, insideRight, outsideTop);
-	CGPathAddArcToPoint(roundedRectPath, NULL, outsideRight, outsideTop, outsideRight, insideTop, radius);
-	CGPathAddLineToPoint(roundedRectPath, NULL, outsideRight, insideBottom);
-	CGPathAddArcToPoint(roundedRectPath, NULL,  outsideRight, outsideBottom, insideRight, outsideBottom, radius);
-	CGPathAddLineToPoint(roundedRectPath, NULL, insideLeft, outsideBottom);
-	CGPathAddArcToPoint(roundedRectPath, NULL,  outsideLeft, outsideBottom, outsideLeft, insideBottom, radius);
-	CGPathAddLineToPoint(roundedRectPath, NULL, outsideLeft, insideTop);
-	CGPathAddArcToPoint(roundedRectPath, NULL,  outsideLeft, outsideTop, insideLeft, outsideTop, radius);
-    
-	CGPathCloseSubpath(roundedRectPath);
+    CGPathRef backgroundRect = CGPathCreateWithRect(button.bounds, NULL);
     
 	[color set];
     
-	CGContextAddPath(context, roundedRectPath);
+    CGContextAddPath(context, backgroundRect);
 	CGContextFillPath(context);
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
-	CGPathRelease(roundedRectPath);
+	
+    CGPathRelease(backgroundRect);
     
     return image;
 }

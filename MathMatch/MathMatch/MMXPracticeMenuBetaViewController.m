@@ -58,9 +58,9 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
 {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(3.0 / 255.0)
-                                                                           green:(228.0 / 255.0)
-                                                                            blue:(90.0 / 255.0)
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(255.0 / 255.0)
+                                                                           green:(143.0 / 255.0)
+                                                                            blue:(0.0 / 255.0)
                                                                            alpha:1.0];
 }
 
@@ -110,7 +110,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
         [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
         self.gameConfiguration.targetNumber = self.targetNumber;
         
-        self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", self.targetNumber];
+        self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.targetNumber];
         self.startBarButtonItem.enabled = YES;
     }
 }

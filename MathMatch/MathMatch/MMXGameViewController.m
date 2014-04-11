@@ -21,10 +21,13 @@
 
 @property (nonatomic, assign) CGFloat cardWidth;
 @property (nonatomic, assign) CGFloat cardHeight;
+@property (nonatomic, assign) CGFloat cardFontSize;
 
 @property (nonatomic, strong) NSArray *numberOfCardsInRow;
 
-@property (nonatomic, strong) NSTimer *clockTimer;
+@property (nonatomic, strong) NSTimer *gameClockTimer;
+@property (nonatomic, strong) NSTimer *memorySpeedTimer;
+@property (nonatomic, assign) NSInteger memoryTimeRemaining;
 
 @property (nonatomic, assign) NSInteger matchesAttempted;
 @property (nonatomic, assign) NSInteger matchesFailed;
@@ -96,13 +99,37 @@
     [self arrangDeckOntoPlaySpace];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"unwindToPracticeConfigurationSegue"])
+    {
+        [self terminateCurrentGame];
+    }
+}
+
 #pragma mark - Player Action
 
-- (IBAction)playerTappedQuitButton:(id)sender
+- (IBAction)playerTappedPauseButton:(id)sender
 {
-    // TODO: Need to show a menu.
+    [self.gameClockTimer invalidate];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString *secondOption;
+    if (self.gameConfiguration.gameType == MMXGameTypePractice)
+    {
+        secondOption = NSLocalizedString(@"Change Settings", nil);
+    }
+    else
+    {
+        // TODO: WHAT SHOULD WE DO?
+    }
+    
+    KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:NSLocalizedString(@"The game is paused. What would you like to do?", nil)
+                                                                    delegate:self
+                                                           cancelButtonTitle:NSLocalizedString(@"Keep Playing", nil)
+                                                           otherButtonTitles:@[@"Quit", secondOption]];
+    decisionView.fontName = @"Futura-Medium";
+    
+    [decisionView showAndDimBackgroundWithPercent:0.50];
 }
 
 #pragma mark - Game State
@@ -142,17 +169,31 @@
     }
     
     self.navigationItem.title = @"Time - 00:00";
+    self.pauseBarButtonItem.enabled = NO;
     
-    self.gameState = MMXGameStateStart;
+    self.gameState = MMXGameStatePreGame;
     
     [self createDeck];
     
-    [self.clockTimer invalidate];
-    self.clockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
-                                                       target:self
-                                                     selector:@selector(updateClock)
-                                                     userInfo:nil
-                                                      repeats:YES];;
+    [self.gameClockTimer invalidate];
+}
+
+- (void)allowPlayerInput
+{
+    self.gameState = MMXGameStateStart;
+    
+    self.pauseBarButtonItem.enabled = YES;
+    
+    self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
+                                                           target:self
+                                                         selector:@selector(updateClock)
+                                                         userInfo:nil
+                                                          repeats:YES];
+}
+
+- (void)terminateCurrentGame
+{
+    // TODO: ALL the things! (tear them down)
 }
 
 - (void)createDeck
@@ -163,13 +204,15 @@
     {
         self.cardWidth = 88.0;
         self.cardHeight = 88.0;
+        self.cardFontSize = 44.0;
         
         self.numberOfCardsInRow = @[@3, @2, @3];
     }
     else if (self.gameConfiguration.numberOfCards == 12)
     {
-        self.cardWidth = 66.0;
-        self.cardHeight = 66.0;
+        self.cardWidth = 77.0;
+        self.cardHeight = 77.0;
+        self.cardFontSize = 44.0;
         
         self.numberOfCardsInRow = @[@3, @3, @3, @3];
     }
@@ -182,8 +225,8 @@
     }
     else if (self.gameConfiguration.numberOfCards == 20)
     {
-        self.cardWidth = 44.0;
-        self.cardHeight = 44.0;
+        self.cardWidth = 55.0;
+        self.cardHeight = 55.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4, @4];
     }
@@ -277,6 +320,7 @@
                                                                            bundle:[NSBundle mainBundle]];
             cvc.card = card;
             cvc.delegate = self;
+            cvc.fontSize = self.cardFontSize;
             
             [unshuffledCardValues removeObjectAtIndex:randomIndex];
             
@@ -312,10 +356,29 @@
         }
     }
     
-    CGFloat existingHeight = self.equationContainerView.frame.size.height + (self.numberOfCardsInRow.count * self.cardHeight);
-    CGFloat verticalSpaceRemaining = self.view.bounds.size.height - existingHeight;
-    CGFloat verticalGap = verticalSpaceRemaining / (self.numberOfCardsInRow.count + 1);
-    CGFloat yCoordinate = self.equationContainerView.frame.origin.x + self.equationContainerView.frame.size.height + verticalGap;
+    // I want the horizontal gaps to be the same, otherwise it looks weird.
+    // So I'm going to loop once and choose the smallest gap.
+    // This should only affect the 8 card layout.
+    
+    CGFloat widthOfGap = 1000.0;
+    for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
+    {
+        NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+        
+        CGFloat horizontalSpaceRemaining = self.view.bounds.size.width - (numberOfCardsInThisRow * self.cardWidth);
+        CGFloat widthOfGapCandidate = horizontalSpaceRemaining / (numberOfCardsInThisRow + 1);
+    
+        if (widthOfGapCandidate < widthOfGap)
+        {
+            widthOfGap = widthOfGapCandidate;
+        }
+    }
+    // END TRANSMISSION.
+    
+    CGFloat verticalSpaceAlreadyTaken = self.equationContainerView.frame.size.height + (self.numberOfCardsInRow.count * self.cardHeight);
+    CGFloat verticalSpaceRemaining = self.view.bounds.size.height - verticalSpaceAlreadyTaken;
+    CGFloat heightOfGap = verticalSpaceRemaining / (self.numberOfCardsInRow.count + 1);
+    CGFloat yCoordinate = self.equationContainerView.frame.origin.x + self.equationContainerView.frame.size.height + heightOfGap;
     
     for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
     {
@@ -323,21 +386,20 @@
         
         NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
         
-        CGFloat horizontalSpaceRemaining = self.view.bounds.size.width - (numberOfCardsInThisRow * self.cardWidth);
-        CGFloat horizontalGap = horizontalSpaceRemaining / (numberOfCardsInThisRow + 1);
-        CGFloat xCoordinate = horizontalGap;
+        CGFloat totalWidthOfCardsAndSpaced = (numberOfCardsInThisRow * self.cardWidth) + ((numberOfCardsInThisRow - 1) * widthOfGap);
+        CGFloat xCoordinate = floorf((self.view.bounds.size.width - totalWidthOfCardsAndSpaced) / 2);
         
         for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
         {
             MMXCardViewController *cvc = rows[j];
             
-            cvc.tableLocation = CGPointMake(xCoordinate, yCoordinate);
+            cvc.tableLocation = CGPointMake(roundf(xCoordinate), roundf(yCoordinate));
             cvc.cardSize = CGSizeMake(self.cardWidth, self.cardHeight);
             
-            xCoordinate += self.cardWidth + horizontalGap;
+            xCoordinate += self.cardWidth + widthOfGap;
         }
         
-        yCoordinate += self.cardHeight + verticalGap;
+        yCoordinate += self.cardHeight + heightOfGap;
     }
     
     [self dealCardWithIndex:0];
@@ -367,15 +429,16 @@
                      }
                      completion:^(BOOL finished)
                      {
-                         if (finished)
+                         if (finished && (index == (self.deck2.count - 1)))
                          {
-                             if (index == (self.deck2.count - 1))
+                             if ((self.gameConfiguration.memorySpeed == MMXMemorySpeedSlow) ||
+                                 (self.gameConfiguration.memorySpeed == MMXMemorySpeedFast))
                              {
-                                 // TODO: Let the game start
+                                 [self showFaceOfCardWithIndex:0];
                              }
                              else
                              {
-                                 
+                                 [self allowPlayerInput];
                              }
                          }
                      }];
@@ -386,9 +449,85 @@
         {
             if (index < (self.deck2.count - 1))
             {
-                [self dealCardWithIndex:index + 1];
+                [self dealCardWithIndex:(index + 1)];
             }
         });
+    });
+}
+
+- (void)showFaceOfCardWithIndex:(NSInteger)index
+{
+    MMXCardViewController *cvc = self.deck2[index];
+    
+    [cvc flipCardFaceUp];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (index < (self.deck2.count - 1))
+            {
+                [self showFaceOfCardWithIndex:(index + 1)];
+            }
+            else
+            {
+                [self showMemorySpeedCountdownTimer];
+            }
+        });
+    });
+}
+
+- (void)showMemorySpeedCountdownTimer
+{
+    if (self.memorySpeedTimer)
+    {
+        if (self.memoryTimeRemaining == 0)
+        {
+            [self showBackOfCardWithIndex:0];
+        }
+        else
+        {
+            self.memoryTimeRemaining -= 1;
+            NSLog(@"%ld", self.memoryTimeRemaining);
+            
+            self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                     target:self
+                                                                   selector:@selector(showMemorySpeedCountdownTimer)
+                                                                   userInfo:nil
+                                                                    repeats:NO];
+        }
+    }
+    else
+    {
+        NSLog(@"5");
+        self.memoryTimeRemaining = 5;
+        self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                 target:self
+                                                               selector:@selector(showMemorySpeedCountdownTimer)
+                                                               userInfo:nil
+                                                                repeats:NO];
+    }
+}
+
+- (void)showBackOfCardWithIndex:(NSInteger)index
+{
+    MMXCardViewController *cvc = self.deck2[index];
+    
+    [cvc flipCardFaceDown];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           if (index < (self.deck2.count - 1))
+                           {
+                               [self showBackOfCardWithIndex:(index + 1)];
+                           }
+                           else
+                           {
+                               [self allowPlayerInput];
+                           }
+                       });
     });
 }
 
@@ -411,55 +550,84 @@
 
 - (void)evaluateFormula
 {
-    NSInteger result;
-    BOOL success;
-    
-    if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
+    dispatch_async(dispatch_get_main_queue(), ^
     {
-        result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
+        NSInteger result;
+        BOOL success;
         
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
-    }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
-    {
-        result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
+        if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
+        {
+            result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
+            
+            //self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
+        }
+        else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
+        {
+            result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
+            
+            //self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
+        }
+        else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
+        {
+            result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
+            
+            //self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
+        }
+        else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
+        {
+            result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
+            
+            //self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
+        }
         
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
-    }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
-    {
-        result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
+        if (result == self.gameConfiguration.targetNumber)
+        {
+            success = YES;
+        }
+        else
+        {
+            success = NO;
+            
+            self.matchesFailed += 1;
+        }
         
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
-    }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
-    {
-        result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
+        self.matchesAttempted += 1;
         
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
-    }
-    
-    if (result == self.gameConfiguration.targetNumber)
-    {
-        success = YES;
-    }
-    else
-    {
-        success = NO;
+        if (success)
+        {
+            [UIView animateWithDuration:0.1 animations:^
+             {
+                 self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:(3.0 / 255.0)
+                                                                                green:(228.0 / 255.0)
+                                                                                 blue:(90.0 / 255.)
+                                                                                alpha:1.0];
+             }];
+        }
+        else
+        {
+            [UIView animateWithDuration:0.1 animations:^
+             {
+                 self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:(255.0 / 255.0)
+                                                                                green:(0.0 / 255.0)
+                                                                                 blue:(64.0 / 255.)
+                                                                                alpha:1.0];
+             }];
+        }
         
-        self.matchesFailed += 1;
-    }
-    
-    self.matchesAttempted += 1;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        [self proceedToNextTurnAfterSuccessfulMatch:success];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        {
+            [self proceedToNextTurnAfterSuccessfulMatch:success];
+        });
     });
 }
 
 - (void)proceedToNextTurnAfterSuccessfulMatch:(BOOL)success
 {
+    [UIView animateWithDuration:0.3 animations:^
+    {
+        self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
+    }];
+    
     if (success)
     {
         // Check if there are any cards on the table still face down, let the game continue.
@@ -546,7 +714,7 @@
 
 - (void)endGame
 {
-    [self.clockTimer invalidate];
+    [self.gameClockTimer invalidate];
     
     self.gameState = MMXGameStateOver;
     
@@ -559,19 +727,29 @@
     
     self.elapsedTime += 1.0/60.0;
     
-    double minutes = floor(self.elapsedTime / 60);
-    double seconds = round(self.elapsedTime - minutes * 60);
+    CGFloat minutes = floor(self.elapsedTime / 60);
+    CGFloat seconds = floorf(self.elapsedTime - minutes * 60);
+    
+    if ((seconds >= 60.0) && (seconds < 61.0))
+    {
+        minutes += 1.0;
+        seconds = 0.0;
+    }
     
     self.navigationItem.title = [NSString stringWithFormat:@"Time - %02.0f:%02.0f", minutes, seconds];
 }
 
-#pragma mark CardViewControllerDelegate
+#pragma mark - CardViewControllerDelegate
 
 - (BOOL)playerRequestedFlipFor:(MMXCardViewController *)cardViewController
 {
     BOOL shouldFlip = NO;
     
-    if ((self.gameState == MMXGameStateStart) || (self.gameState == MMXGameStateNoCardsFlipped))
+    if (self.gameState == MMXGameStatePreGame)
+    {
+        shouldFlip = YES;
+    }
+    else if ((self.gameState == MMXGameStateStart) || (self.gameState == MMXGameStateNoCardsFlipped))
     {
         shouldFlip = YES;
         
@@ -597,8 +775,12 @@
 
 - (void)finishedFlippingFor:(MMXCardViewController *)cardViewController
 {
-    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+    if (self.gameState == MMXGameStatePreGame)
+    {
+        // Don't need to do anything.
+    }
+    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
+             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
@@ -622,9 +804,42 @@
         }
     }
     
-    if (self.firstCardViewController && self.secondCardViewController)
+    if (self.firstCardViewController && [self.secondCardViewController isEqual:cardViewController])
     {
         [self evaluateFormula];
+    }
+}
+
+#pragma mark - KMODecisionViewDelegate
+
+- (void)decisionView:(KMODecisionView *)decisionView tappedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        // Player decided to keep playing. Resume.
+        self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
+                                                               target:self
+                                                             selector:@selector(updateClock)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    }
+    else if (buttonIndex == 1)
+    {
+        // Player quit.
+        [self terminateCurrentGame];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else if (buttonIndex == 2)
+    {
+        // Player wanted to change the settings or the course.
+        if (self.gameConfiguration.gameType == MMXGameTypePractice)
+        {
+            [self performSegueWithIdentifier:@"unwindToPracticeConfigurationSegue" sender:self];
+        }
+        else
+        {
+            // TODO: Action for course.
+        }
     }
 }
 

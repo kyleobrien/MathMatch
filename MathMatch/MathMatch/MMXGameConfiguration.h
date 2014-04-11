@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+typedef NS_ENUM(NSUInteger, MMXGameType)
+{
+    MMXGameTypeCourse,
+    MMXGameTypePractice
+};
+
 typedef NS_ENUM(NSUInteger, MMXArithmeticType)
 {
     MMXArithmeticTypeAddition,
@@ -34,6 +40,7 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 @property (nonatomic, assign) NSInteger targetNumber;
 @property (nonatomic, assign) NSInteger numberOfCards;
 
+@property (nonatomic, assign) MMXGameType gameType;
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXMemorySpeed memorySpeed;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;

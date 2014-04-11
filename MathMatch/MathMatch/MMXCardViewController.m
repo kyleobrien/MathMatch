@@ -33,6 +33,15 @@
                        forState:UIControlStateNormal];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+        
+    //self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:self.fontSize];
+    //self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    //self.faceUpButton.titleLabel.minimumScaleFactor = 0.2;
+}
+
 - (IBAction)playerRequestedCardFlip:(id)sender
 {
     if (self.card.isFaceUp)

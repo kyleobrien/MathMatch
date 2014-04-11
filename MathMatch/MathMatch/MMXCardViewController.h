@@ -30,11 +30,13 @@ typedef NS_ENUM(NSUInteger, MMXCardColor)
 @property (nonatomic, assign) CGPoint tableLocation;
 @property (nonatomic, assign) CGSize cardSize;
 @property (nonatomic, assign) NSInteger row;
+@property (nonatomic, assign) CGFloat fontSize;
 
 @property (nonatomic, weak) id<MMXCardViewControllerDelegate> delegate;
 
 - (IBAction)playerRequestedCardFlip:(id)sender;
 
+- (void)flipCardFaceUp;
 - (void)flipCardFaceDown;
 - (void)removeCardFromTable;
 
