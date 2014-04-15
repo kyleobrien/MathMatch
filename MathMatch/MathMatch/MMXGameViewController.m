@@ -204,7 +204,7 @@
     {
         self.cardWidth = 88.0;
         self.cardHeight = 88.0;
-        self.cardFontSize = 44.0;
+        self.cardFontSize = 33.0;
         
         self.numberOfCardsInRow = @[@3, @2, @3];
     }
@@ -212,7 +212,7 @@
     {
         self.cardWidth = 77.0;
         self.cardHeight = 77.0;
-        self.cardFontSize = 44.0;
+        self.cardFontSize = 33.0;
         
         self.numberOfCardsInRow = @[@3, @3, @3, @3];
     }
@@ -220,6 +220,7 @@
     {
         self.cardWidth = 66.0;
         self.cardHeight = 66.0;
+        self.cardFontSize = 22.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4];
     }
@@ -227,13 +228,15 @@
     {
         self.cardWidth = 55.0;
         self.cardHeight = 55.0;
+        self.cardFontSize = 22.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4, @4];
     }
     else if (self.gameConfiguration.numberOfCards == 24)
     {
-        self.cardWidth = 44.0;
-        self.cardHeight = 44.0;
+        self.cardWidth = 55.0;
+        self.cardHeight = 55.0;
+        self.cardFontSize = 22.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
     }
@@ -241,6 +244,7 @@
     {
         self.cardWidth = 88.0;
         self.cardHeight = 88.0;
+        self.cardFontSize = 33.0;
         
         self.numberOfCardsInRow = @[@3, @2, @3];
     }
@@ -417,11 +421,24 @@
                                 cvc.view.frame.size.width,
                                 cvc.view.frame.size.height);
     
+    
+    // TODO: This looks a little wonky...
+    NSInteger randomAngle = arc4random_uniform(15);
+    //randomAngle += 30;
+    if (arc4random_uniform(2) == 0)
+    {
+        randomAngle = -randomAngle;
+    }
+    
+    cvc.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
+    
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^
                      {
+                         cvc.view.transform = CGAffineTransformIdentity;
+                         
                          cvc.view.frame = CGRectMake(cvc.tableLocation.x,
                                                      cvc.tableLocation.y,
                                                      cvc.cardSize.width,
@@ -488,7 +505,7 @@
         else
         {
             self.memoryTimeRemaining -= 1;
-            NSLog(@"%ld", self.memoryTimeRemaining);
+            NSLog(@"%ld", (long)self.memoryTimeRemaining);
             
             self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                                      target:self
@@ -597,9 +614,9 @@
         {
             [UIView animateWithDuration:0.1 animations:^
              {
-                 self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:(3.0 / 255.0)
-                                                                                green:(228.0 / 255.0)
-                                                                                 blue:(90.0 / 255.)
+                 self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:(76.0 / 255.0)
+                                                                                green:(217.0 / 255.0)
+                                                                                 blue:(100.0 / 255.)
                                                                                 alpha:1.0];
              }];
         }
@@ -623,7 +640,7 @@
 
 - (void)proceedToNextTurnAfterSuccessfulMatch:(BOOL)success
 {
-    [UIView animateWithDuration:0.3 animations:^
+    [UIView animateWithDuration:0.1 animations:^
     {
         self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
     }];
@@ -658,30 +675,93 @@
     
     if (success)
     {
+        self.gameState = MMXGameStateAnimating;
+        
         [self.view bringSubviewToFront:self.firstCardViewController.view];
         [self.view bringSubviewToFront:self.secondCardViewController.view];
         
-        [UIView animateWithDuration:0.1
+        self.firstCardViewController.view.transform = CGAffineTransformIdentity;
+        self.secondCardViewController.view.transform = CGAffineTransformIdentity;
+        
+        // Want to make sure that the state reset happens when the last card leaves the table.
+        BOOL firstCardExitsLast = YES;
+        if (self.secondCardViewController.row < self.firstCardViewController.row)
+        {
+            firstCardExitsLast = NO;
+        }
+        
+        CGFloat animationDurationFirstCard = 0.30 - (self.firstCardViewController.row * 0.02);
+        CGFloat animationDurationSecondCard = 0.30 - (self.secondCardViewController.row * 0.02);
+        
+        [UIView animateWithDuration:animationDurationFirstCard
                               delay:0.0
                             options:UIViewAnimationOptionCurveEaseOut
                          animations:^
                          {
-                             self.firstCardViewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width,
+                             CGFloat center = self.view.frame.size.width / 2.0;
+                             CGFloat randomX = center - self.firstCardViewController.view.frame.size.width + arc4random_uniform(self.firstCardViewController.view.frame.size.width);
+                             self.firstCardViewController.view.frame = CGRectMake(randomX,
                                                                                   [UIScreen mainScreen].bounds.size.height,
                                                                                   self.firstCardViewController.view.bounds.size.width,
                                                                                   self.firstCardViewController.view.bounds.size.height);
                              
-                             self.secondCardViewController.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width,
-                                                                                   [UIScreen mainScreen].bounds.size.height,
-                                                                                   self.secondCardViewController.view.bounds.size.width,
-                                                                                   self.secondCardViewController.view.bounds.size.height);
+                             NSInteger randomAngle = arc4random_uniform(20);
+                             randomAngle += 10;
+                             if (arc4random_uniform(2) == 0)
+                             {
+                                 randomAngle = -randomAngle;
+                             }
+                             
+                             self.firstCardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
                          }
                          completion:^(BOOL finished)
                          {
                              if (finished)
                              {
                                  [self.firstCardViewController removeCardFromTable];
+                                 
+                                 if (firstCardExitsLast)
+                                 {
+                                     [self resetFormulaForNewMatch];
+                                     
+                                     self.gameState = MMXGameStateNoCardsFlipped;
+                                 }
+                             }
+                         }];
+        
+        [UIView animateWithDuration:animationDurationSecondCard
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^
+                         {
+                             CGFloat center = self.view.frame.size.width / 2.0;
+                             CGFloat randomX = center - self.secondCardViewController.view.frame.size.width + arc4random_uniform(self.secondCardViewController.view.frame.size.width);
+                             self.secondCardViewController.view.frame = CGRectMake(randomX,
+                                                                                   [UIScreen mainScreen].bounds.size.height,
+                                                                                   self.secondCardViewController.view.bounds.size.width,
+                                                                                   self.secondCardViewController.view.bounds.size.height);
+                             
+                             NSInteger randomAngle = arc4random_uniform(20);
+                             randomAngle += 10;
+                             if (arc4random_uniform(2) == 0)
+                             {
+                                 randomAngle = -randomAngle;
+                             }
+                             
+                             self.secondCardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
+                         }
+                         completion:^(BOOL finished)
+                         {
+                             if (finished)
+                             {
                                  [self.secondCardViewController removeCardFromTable];
+                                 
+                                 if (!firstCardExitsLast)
+                                 {
+                                     [self resetFormulaForNewMatch];
+                                     
+                                     self.gameState = MMXGameStateNoCardsFlipped;
+                                 }
                              }
                          }];
     }
@@ -689,10 +769,15 @@
     {
         [self.firstCardViewController flipCardFaceDown];
         [self.secondCardViewController flipCardFaceDown];
+        
+        [self resetFormulaForNewMatch];
+        
+        self.gameState = MMXGameStateNoCardsFlipped;
     }
-    
-    self.gameState = MMXGameStateNoCardsFlipped;
-    
+}
+
+- (void)resetFormulaForNewMatch
+{
     self.firstCardViewController = nil;
     self.secondCardViewController = nil;
     
@@ -701,12 +786,12 @@
     {
         self.xNumberLabel.text = @"";
         self.yNumberLabel.text = @"";
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
     }
     else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
              (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
         self.yNumberLabel.text = @"";
         self.zNumberLabel.text = @"";
     }
@@ -778,6 +863,14 @@
     if (self.gameState == MMXGameStatePreGame)
     {
         // Don't need to do anything.
+        
+        return;
+    }
+    else if (self.gameState == MMXGameStateAnimating)
+    {
+        // Don't do anything.
+        
+        return;
     }
     else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
              (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))

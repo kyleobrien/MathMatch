@@ -37,9 +37,8 @@
 {
     [super viewWillAppear:animated];
         
-    //self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:self.fontSize];
-    //self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    //self.faceUpButton.titleLabel.minimumScaleFactor = 0.2;
+    self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:self.fontSize];
+    self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = NO;
 }
 
 - (IBAction)playerRequestedCardFlip:(id)sender
@@ -78,7 +77,8 @@
                         {
                             if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFor:)])
                             {
-                                [self.delegate finishedFlippingFor:self];
+                                //[self.delegate finishedFlippingFor:self];
+                                // TODO: This was causing a loop. Dod we need to know when this happens?
                             }
                         }
                     }];
