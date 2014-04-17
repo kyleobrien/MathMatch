@@ -107,11 +107,21 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
             self.targetNumber = digit;
         }
         
-        [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
-        self.gameConfiguration.targetNumber = self.targetNumber;
+        // Don't let the player start the game if they target number is 0.
+        
+        if ((self.targetNumber == 0) && (digit == 0))
+        {
+            self.startBarButtonItem.enabled = NO;
+        }
+        else
+        {
+            self.startBarButtonItem.enabled = YES;
+            
+            [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
+            self.gameConfiguration.targetNumber = self.targetNumber;
+        }
         
         self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.targetNumber];
-        self.startBarButtonItem.enabled = YES;
     }
 }
 

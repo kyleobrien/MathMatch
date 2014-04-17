@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSMutableArray *deck;
 @property (nonatomic, strong) NSMutableArray *deck2;
 
+@property (nonatomic, strong) UILabel *customNavigationBarTitle;
+
 @property (nonatomic, assign) CGFloat cardWidth;
 @property (nonatomic, assign) CGFloat cardHeight;
 @property (nonatomic, assign) CGFloat cardFontSize;
@@ -27,7 +29,7 @@
 
 @property (nonatomic, strong) NSTimer *gameClockTimer;
 @property (nonatomic, strong) NSTimer *memorySpeedTimer;
-@property (nonatomic, assign) NSInteger memoryTimeRemaining;
+@property (nonatomic, assign) CGFloat memoryTimeRemaining;
 
 @property (nonatomic, assign) NSInteger matchesAttempted;
 @property (nonatomic, assign) NSInteger matchesFailed;
@@ -168,7 +170,8 @@
         self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
     }
     
-    self.navigationItem.title = @"Time - 00:00";
+    self.customNavigationBarTitle.text = @"";
+    
     self.pauseBarButtonItem.enabled = NO;
     
     self.gameState = MMXGameStatePreGame;
@@ -183,6 +186,8 @@
     self.gameState = MMXGameStateStart;
     
     self.pauseBarButtonItem.enabled = YES;
+    
+    [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Time - 00:00", nil)];
     
     self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
                                                            target:self
@@ -498,16 +503,26 @@
 {
     if (self.memorySpeedTimer)
     {
-        if (self.memoryTimeRemaining == 0)
+        if (self.memoryTimeRemaining <= 0.0)
         {
+            self.customNavigationBarTitle.text = @"";
+            
             [self showBackOfCardWithIndex:0];
         }
         else
         {
-            self.memoryTimeRemaining -= 1;
-            NSLog(@"%ld", (long)self.memoryTimeRemaining);
+            self.memoryTimeRemaining -= 1.0 / 60.0;
+            if (self.memoryTimeRemaining <= 0.0)
+            {
+                NSString *title = NSLocalizedString(@"Memorize - 0.00", nil);
+                self.customNavigationBarTitle.text = title;
+            }
+            else
+            {
+                self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
+            }
             
-            self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+            self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
                                                                      target:self
                                                                    selector:@selector(showMemorySpeedCountdownTimer)
                                                                    userInfo:nil
@@ -516,9 +531,15 @@
     }
     else
     {
-        NSLog(@"5");
-        self.memoryTimeRemaining = 5;
-        self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+        self.memoryTimeRemaining = 5.0;
+        if (self.gameConfiguration.memorySpeed == MMXMemorySpeedSlow)
+        {
+            self.memoryTimeRemaining = 10.0;
+        }
+        
+        [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Memorize - 0:00", nil)];
+        self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
+        self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
                                                                  target:self
                                                                selector:@selector(showMemorySpeedCountdownTimer)
                                                                userInfo:nil
@@ -821,7 +842,23 @@
         seconds = 0.0;
     }
     
-    self.navigationItem.title = [NSString stringWithFormat:@"Time - %02.0f:%02.0f", minutes, seconds];
+    NSString *text = [NSString stringWithFormat:@"Time - %02.0f:%02.0f", minutes, seconds];
+    self.customNavigationBarTitle.text = text;
+}
+
+- (void)generateCustomNavigationBarViewForTitle:(NSString *)title
+{
+    // Hack to prevent the label from recentering. This is the widest it will be, so set the label based on it.
+    // Will mean the countdown is slightly off center, but fuck it.
+    
+    UIFont *font = [UIFont fontWithName:@"Futura-Medium" size:17.0];
+    CGSize size = [title sizeWithAttributes:@{NSFontAttributeName: font}];
+    
+    self.customNavigationBarTitle = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, size.width, size.height)];
+    self.customNavigationBarTitle.textAlignment = NSTextAlignmentJustified;
+    self.customNavigationBarTitle.textColor = [UIColor whiteColor];
+    self.customNavigationBarTitle.font = font;
+    self.navigationItem.titleView = self.customNavigationBarTitle;
 }
 
 #pragma mark - CardViewControllerDelegate
