@@ -58,11 +58,14 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 
 @property (nonatomic, assign) MMXCardStyle cardStyle;
 
+@property (nonatomic, assign) CGFloat penaltyMultiplier;
+
 @property (nonatomic, assign) NSTimeInterval totalElapsedTime;
 @property (nonatomic, assign) NSInteger attemptedMatches;
 @property (nonatomic, assign) NSInteger incorrectMatches;
-@property (nonatomic, assign) CGFloat penaltyMultiplier;
 
 + (MMXCardStyle)selectRandomCardStyle;
+
+- (void)resetGameStatistics;
 
 @end

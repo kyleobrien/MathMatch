@@ -41,7 +41,7 @@
 
 @required
 
-- (BOOL)playerRequestedFlipFor:(MMXCardViewController *)cardViewController;
+- (BOOL)requestedFlipFor:(MMXCardViewController *)cardViewController;
 - (void)finishedFlippingFor:(MMXCardViewController *)cardViewController;
 
 @end

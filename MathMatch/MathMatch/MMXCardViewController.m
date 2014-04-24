@@ -82,7 +82,7 @@
     }
     else
     {
-        if ([self.delegate playerRequestedFlipFor:self])
+        if ([self.delegate requestedFlipFor:self])
         {
             [self flipCardFaceUp];
         }

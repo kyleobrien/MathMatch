@@ -7,6 +7,7 @@
 //
 
 #import "MMXResultsViewController.h"
+#import "MMXTimeIntervalFormatter.h"
 
 @interface MMXResultsViewController ()
 

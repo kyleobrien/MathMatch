@@ -15,4 +15,11 @@
     return arc4random_uniform(MMXCardStyleCount);
 }
 
+- (void)resetGameStatistics
+{
+    self.totalElapsedTime = 0.0;
+    self.attemptedMatches = 0;
+    self.incorrectMatches = 0;
+}
+
 @end
