@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import "MMXGameConfiguration.h"
 #import "MMXPracticeMenuAlphaViewController.h"
 #import "MMXPracticeMenuBetaViewController.h"
 

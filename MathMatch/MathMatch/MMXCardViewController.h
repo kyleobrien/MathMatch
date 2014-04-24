@@ -12,15 +12,6 @@
 
 @interface MMXCardViewController : UIViewController
 
-typedef NS_ENUM(NSUInteger, MMXCardColor)
-{
-    MMXCardColorBlue,
-    MMXCardColorGreen,
-    MMXCardColorRed,
-    MMXCardColorOrange,
-    MMXCardColorPurple
-};
-
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic, weak) IBOutlet UIButton *faceDownButton;
 @property (nonatomic, weak) IBOutlet UIButton *faceUpButton;
@@ -33,6 +24,8 @@ typedef NS_ENUM(NSUInteger, MMXCardColor)
 @property (nonatomic, assign) CGFloat fontSize;
 
 @property (nonatomic, weak) id<MMXCardViewControllerDelegate> delegate;
+
+- (id)initWithCardStyle:(MMXCardStyle)cardStyle;
 
 - (IBAction)playerRequestedCardFlip:(id)sender;
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import "MMXGameConfiguration.h"
-
 @interface MMXPracticeMenuBetaViewController : UIViewController
 
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeTargetNumber;

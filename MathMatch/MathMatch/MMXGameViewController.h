@@ -8,7 +8,6 @@
 
 #import "KMODecisionView.h"
 #import "MMXCardViewController.h"
-#import "MMXGameConfiguration.h"
 
 @interface MMXGameViewController : UIViewController <MMXCardViewControllerDelegate, KMODecisionViewDelegate>
 

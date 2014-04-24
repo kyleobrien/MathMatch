@@ -10,4 +10,9 @@
 
 @implementation MMXGameConfiguration
 
++ (MMXCardStyle)selectRandomCardStyle
+{
+    return arc4random_uniform(MMXCardStyleCount);
+}
+
 @end

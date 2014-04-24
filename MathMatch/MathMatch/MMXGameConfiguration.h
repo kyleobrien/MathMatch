@@ -35,6 +35,17 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
     MMXMusicTrackOff
 };
 
+typedef NS_ENUM(NSUInteger, MMXCardStyle)
+{
+    MMXCardStyleNone,
+    MMXCardStyle01,
+    MMXCardStyle02,
+    MMXCardStyle03,
+    MMXCardStyle04,
+    MMXCardStyle05,
+    MMXCardStyleCount
+};
+
 @interface MMXGameConfiguration : NSObject
 
 @property (nonatomic, assign) NSInteger targetNumber;
@@ -44,5 +55,13 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXMemorySpeed memorySpeed;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;
+
+@property (nonatomic, assign) MMXCardStyle cardStyle;
+
+@property (nonatomic, assign) NSTimeInterval totalElapsedTime;
+@property (nonatomic, assign) NSInteger incorrectMatches;
+@property (nonatomic, assign) CGFloat penaltyMultiplier;
+
++ (MMXCardStyle)selectRandomCardStyle;
 
 @end

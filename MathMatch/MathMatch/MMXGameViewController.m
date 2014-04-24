@@ -8,6 +8,7 @@
 
 #import "MMXCard.h"
 #import "MMXGameViewController.h"
+#import "MMXResultsViewController.h"
 
 @interface MMXGameViewController ()
 
@@ -35,6 +36,8 @@
 @property (nonatomic, assign) NSInteger matchesFailed;
 @property (nonatomic, assign) NSTimeInterval elapsedTime;
 
+@property (nonatomic, assign) BOOL shouldEndGameAfterAnimation;
+
 @end
 
 @implementation MMXGameViewController
@@ -42,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.shouldEndGameAfterAnimation = NO;
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -107,6 +112,11 @@
     {
         [self terminateCurrentGame];
     }
+    else if ([segue.identifier isEqualToString:@"MMXResultsSegue"])
+    {
+        MMXResultsViewController *resultsViewController = (MMXResultsViewController *)segue.destinationViewController;
+        resultsViewController.gameConfiguration = self.gameConfiguration;
+    }
 }
 
 #pragma mark - Player Action
@@ -127,8 +137,8 @@
     
     KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:NSLocalizedString(@"The game is paused. What would you like to do?", nil)
                                                                     delegate:self
-                                                           cancelButtonTitle:NSLocalizedString(@"Keep Playing", nil)
-                                                           otherButtonTitles:@[@"Quit", secondOption]];
+                                                           cancelButtonTitle:NSLocalizedString(@"Quit", nil)
+                                                           otherButtonTitles:@[NSLocalizedString(@"Keep Playing", nil), secondOption]];
     decisionView.fontName = @"Futura-Medium";
     
     [decisionView showAndDimBackgroundWithPercent:0.50];
@@ -315,6 +325,8 @@
     
     NSMutableArray *freshDeck = [NSMutableArray arrayWithCapacity:self.numberOfCardsInRow.count];
     
+    MMXCardStyle randomStyle = [MMXGameConfiguration selectRandomCardStyle];
+    
     for (int i = 0; i < self.numberOfCardsInRow.count; i++)
     {
         NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
@@ -325,8 +337,15 @@
         {
             int randomIndex = arc4random() % [unshuffledCardValues count];
             MMXCard *card = [[MMXCard alloc] initWithValue:[[unshuffledCardValues objectAtIndex:randomIndex] integerValue]];
-            MMXCardViewController *cvc = [[MMXCardViewController alloc] initWithNibName:@"MMXCardViewController"
-                                                                           bundle:[NSBundle mainBundle]];
+            MMXCardViewController *cvc;
+            if (self.gameConfiguration.cardStyle == MMXCardStyleNone)
+            {
+                cvc = [[MMXCardViewController alloc] initWithCardStyle:randomStyle];
+            }
+            else
+            {
+                cvc = [[MMXCardViewController alloc] initWithCardStyle:self.gameConfiguration.cardStyle];
+            }
             cvc.card = card;
             cvc.delegate = self;
             cvc.fontSize = self.cardFontSize;
@@ -652,6 +671,33 @@
              }];
         }
         
+        if (success)
+        {
+            // Check if there are any cards on the table still face down, let the game continue.
+            
+            BOOL stopPlaying = YES;
+            for (int i = 0; i < self.numberOfCardsInRow.count; i++)
+            {
+                NSMutableArray *rows = self.deck[i];
+                NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+                
+                for (int j = 0; j < numberOfCardsInThisRow; j++)
+                {
+                    MMXCardViewController *cvc = rows[j];
+                    if (!cvc.card.isFaceUp)
+                    {
+                        stopPlaying = NO;
+                    }
+                }
+            }
+            
+            if (stopPlaying)
+            {
+                [self.gameClockTimer invalidate];
+                self.shouldEndGameAfterAnimation = YES;
+            }
+        }
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
         {
             [self proceedToNextTurnAfterSuccessfulMatch:success];
@@ -664,35 +710,20 @@
     [UIView animateWithDuration:0.1 animations:^
     {
         self.equationCorrectnessView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
+        
+        if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
+            (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+        {
+            self.xNumberLabel.text = @"";
+            self.yNumberLabel.text = @"";
+        }
+        else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
+                 (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+        {
+            self.yNumberLabel.text = @"";
+            self.zNumberLabel.text = @"";
+        }
     }];
-    
-    if (success)
-    {
-        // Check if there are any cards on the table still face down, let the game continue.
-        
-        BOOL stopPlaying = YES;
-        for (int i = 0; i < self.numberOfCardsInRow.count; i++)
-        {
-            NSMutableArray *rows = self.deck[i];
-            NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
-            
-            for (int j = 0; j < numberOfCardsInThisRow; j++)
-            {
-                MMXCardViewController *cvc = rows[j];
-                if (!cvc.card.isFaceUp)
-                {
-                    stopPlaying = NO;
-                }
-            }
-        }
-        
-        if (stopPlaying)
-        {
-            [self endGame];
-            
-            return;
-        }
-    }
     
     if (success)
     {
@@ -746,6 +777,11 @@
                                      [self resetFormulaForNewMatch];
                                      
                                      self.gameState = MMXGameStateNoCardsFlipped;
+                                     
+                                     if (self.shouldEndGameAfterAnimation)
+                                     {
+                                         [self endGame];
+                                     }
                                  }
                              }
                          }];
@@ -782,6 +818,11 @@
                                      [self resetFormulaForNewMatch];
                                      
                                      self.gameState = MMXGameStateNoCardsFlipped;
+                                     
+                                     if (self.shouldEndGameAfterAnimation)
+                                     {
+                                         [self endGame];
+                                     }
                                  }
                              }
                          }];
@@ -801,21 +842,6 @@
 {
     self.firstCardViewController = nil;
     self.secondCardViewController = nil;
-    
-    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
-    {
-        self.xNumberLabel.text = @"";
-        self.yNumberLabel.text = @"";
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
-    }
-    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
-             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
-    {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
-        self.yNumberLabel.text = @"";
-        self.zNumberLabel.text = @"";
-    }
 }
 
 - (void)endGame
@@ -824,7 +850,10 @@
     
     self.gameState = MMXGameStateOver;
     
-    [self performSegueWithIdentifier:@"MMXSegueFromGameToResults" sender:nil];
+    self.gameConfiguration.totalElapsedTime = self.elapsedTime;
+    self.gameConfiguration.incorrectMatches = self.matchesFailed;
+    
+    [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
 }
 
 - (void)updateClock
@@ -946,18 +975,18 @@
 {
     if (buttonIndex == 0)
     {
+        // Player quit.
+        [self terminateCurrentGame];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else if (buttonIndex == 1)
+    {
         // Player decided to keep playing. Resume.
         self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/60.0)
                                                                target:self
                                                              selector:@selector(updateClock)
                                                              userInfo:nil
                                                               repeats:YES];
-    }
-    else if (buttonIndex == 1)
-    {
-        // Player quit.
-        [self terminateCurrentGame];
-        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else if (buttonIndex == 2)
     {

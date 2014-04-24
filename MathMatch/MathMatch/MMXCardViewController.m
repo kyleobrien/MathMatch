@@ -8,29 +8,62 @@
 
 #import "MMXCardViewController.h"
 
+@interface MMXCardViewController()
+
+@property (nonatomic, strong) UIColor *edgeColor;
+@property (nonatomic, strong) UIImage *faceDownImage;
+
+@end
+
 @implementation MMXCardViewController
+
+- (id)initWithCardStyle:(MMXCardStyle)cardStyle
+{
+    self = [super initWithNibName:@"MMXCardViewController" bundle:[NSBundle mainBundle]];
+    if (self)
+    {
+        if (cardStyle == MMXCardStyle01)
+        {
+            self.edgeColor = [UIColor colorWithRed:(1.0 / 255.0) green:(170.0 / 255.0) blue:(227.0 / 255.0) alpha:1.0];
+            
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleDots"];
+            self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
+        }
+        else
+        {
+            self.edgeColor = [UIColor colorWithRed:(0.0 / 255.0) green:(0.0 / 255.0) blue:(0.0 / 255.0) alpha:1.0];
+            
+            self.faceDownImage = nil;
+        }
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.containerView.layer.cornerRadius = 7.0;
-    self.containerView.layer.borderColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
+    self.containerView.layer.cornerRadius = 6.0;
+    self.containerView.layer.borderColor = self.edgeColor.CGColor;
     self.containerView.layer.borderWidth = 2.0;
     self.containerView.clipsToBounds = YES;
     
-    self.faceUpButton.layer.cornerRadius = 7.0;
-    self.faceUpButton.layer.borderColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
+    self.faceUpButton.layer.cornerRadius = 6.0;
+    self.faceUpButton.layer.borderColor = self.edgeColor.CGColor;
     self.faceUpButton.layer.borderWidth = 2.0;
     self.faceUpButton.clipsToBounds = YES;
+    self.faceUpButton.backgroundColor = self.edgeColor;
     
-    self.faceDownButton.layer.cornerRadius = 7.0;
-    self.faceDownButton.layer.borderColor = [UIColor colorWithRed:(43.0/255.0) green:(43.0/255.0) blue:(43.0/255.0) alpha:1.0].CGColor;
+    self.faceDownButton.layer.cornerRadius = 6.0;
+    self.faceDownButton.layer.borderColor = self.edgeColor.CGColor;
     self.faceDownButton.layer.borderWidth = 2.0;
     self.faceDownButton.clipsToBounds = YES;
     
     [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", self.card.value]
                        forState:UIControlStateNormal];
+    
+    [self.faceDownButton setBackgroundImage:self.faceDownImage forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
