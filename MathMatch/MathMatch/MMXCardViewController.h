@@ -29,6 +29,8 @@
 
 - (IBAction)playerRequestedCardFlip:(id)sender;
 
+- (void)prepareCardForDealingInView:(UIView *)view;
+- (void)dealCard;
 - (void)flipCardFaceUp;
 - (void)flipCardFaceDown;
 - (void)removeCardFromTable;

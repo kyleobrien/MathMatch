@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import "MMXCard.h"
 #import "MMXGameViewController.h"
 #import "MMXResultsViewController.h"
 
@@ -18,29 +17,152 @@
 @property (nonatomic, strong) MMXCardViewController *secondCardViewController;
 
 @property (nonatomic, strong) NSMutableArray *deck;
-@property (nonatomic, strong) NSMutableArray *deck2;
+@property (nonatomic, strong) NSMutableArray *deckArray;
 
 @property (nonatomic, strong) UILabel *customNavigationBarTitle;
 
 @property (nonatomic, assign) CGFloat cardWidth;
 @property (nonatomic, assign) CGFloat cardHeight;
-@property (nonatomic, assign) CGFloat cardFontSize;
 
 @property (nonatomic, strong) NSArray *numberOfCardsInRow;
 
 @property (nonatomic, strong) NSTimer *gameClockTimer;
+@property (nonatomic, assign) NSTimeInterval elapsedGameTime;
 @property (nonatomic, strong) NSTimer *memorySpeedTimer;
-@property (nonatomic, assign) CGFloat memoryTimeRemaining;
-
-@property (nonatomic, assign) NSInteger matchesAttempted;
-@property (nonatomic, assign) NSInteger matchesFailed;
-@property (nonatomic, assign) NSTimeInterval elapsedTime;
+@property (nonatomic, assign) NSTimeInterval memoryTimeRemaining;
 
 @property (nonatomic, assign) BOOL shouldEndGameAfterAnimation;
 
 @end
 
 @implementation MMXGameViewController
+
+#pragma mark - Pregame animation
+
+- (void)dealCardWithIndex:(NSInteger)index
+{
+    MMXCardViewController *cardViewController = self.deckArray[index];
+    [cardViewController prepareCardForDealingInView:self.view];
+    
+    CGFloat animationDuration = 0.25 - (cardViewController.row * 0.02); // 0.02 is just a fudge factor based on what looks good.
+    [UIView animateWithDuration:animationDuration
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^
+                     {
+                         [cardViewController dealCard];
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         if (finished && (index == (self.deckArray.count - 1)))
+                         {
+                             if (self.gameConfiguration.memorySpeed != MMXMemorySpeedNone)
+                             {
+                                 [self flipCardFaceUpWithIndex:0];
+                             }
+                             else
+                             {
+                                 [self allowPlayerInputAndStartGame];
+                             }
+                         }
+                     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((animationDuration / 2) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        if (index < (self.deckArray.count - 1))
+        {
+            [self dealCardWithIndex:(index + 1)];
+        }
+    });
+}
+
+- (void)flipCardFaceUpWithIndex:(NSInteger)index
+{
+    MMXCardViewController *cardViewController = self.deckArray[index];
+    [cardViewController flipCardFaceUp];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        if (index < (self.deckArray.count - 1))
+        {
+            [self flipCardFaceUpWithIndex:(index + 1)];
+        }
+        else
+        {
+            [self tickMemorySpeedCountdownTimer];
+        }
+    });
+}
+
+- (void)tickMemorySpeedCountdownTimer
+{
+    if (self.memorySpeedTimer)
+    {
+        if (self.memoryTimeRemaining <= 0.0)
+        {
+            self.customNavigationBarTitle.text = @"";
+            
+            [self flipCardFaceDownWithIndex:0];
+        }
+        else
+        {
+            self.memoryTimeRemaining -= 1.0 / 60.0;
+            if (self.memoryTimeRemaining <= 0.0)
+            {
+                self.customNavigationBarTitle.text = NSLocalizedString(@"Memorize - 0.00", nil);
+            }
+            else
+            {
+                self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
+            }
+            
+            self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
+                                                                     target:self
+                                                                   selector:@selector(tickMemorySpeedCountdownTimer)
+                                                                   userInfo:nil
+                                                                    repeats:NO];
+        }
+    }
+    else
+    {
+        self.memoryTimeRemaining = 5.0;
+        if (self.gameConfiguration.memorySpeed == MMXMemorySpeedSlow)
+        {
+            self.memoryTimeRemaining = 10.0;
+        }
+        
+        [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Memorize - 0:00", nil)];
+        self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
+        self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
+                                                                 target:self
+                                                               selector:@selector(tickMemorySpeedCountdownTimer)
+                                                               userInfo:nil
+                                                                repeats:NO];
+    }
+}
+
+- (void)flipCardFaceDownWithIndex:(NSInteger)index
+{
+    MMXCardViewController *cardViewController = self.deckArray[index];
+    [cardViewController flipCardFaceDown];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        if (index < (self.deckArray.count - 1))
+        {
+            [self flipCardFaceDownWithIndex:(index + 1)];
+        }
+        else
+        {
+            [self allowPlayerInputAndStartGame];
+        }
+    });
+}
+
+
+
+
+
 
 - (void)viewDidLoad
 {
@@ -155,9 +277,9 @@
     self.firstCardViewController = nil;
     self.secondCardViewController = nil;
     
-    self.matchesAttempted = 0;
-    self.matchesFailed = 0;
-    self.elapsedTime = 0.0;
+    self.gameConfiguration.attemptedMatches = 0;
+    self.gameConfiguration.incorrectMatches = 0;
+    self.elapsedGameTime = 0.0;
     
     self.xNumberLabel.text = @"";
     self.yNumberLabel.text = @"";
@@ -191,9 +313,9 @@
     [self.gameClockTimer invalidate];
 }
 
-- (void)allowPlayerInput
+- (void)allowPlayerInputAndStartGame
 {
-    self.gameState = MMXGameStateStart;
+    self.gameState = MMXGameStateStarted;
     
     self.pauseBarButtonItem.enabled = YES;
     
@@ -213,13 +335,15 @@
 
 - (void)createDeck
 {
-    self.deck2 = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards];
+    self.deckArray = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards];
+    
+    CGFloat cardFontSize;
     
     if (self.gameConfiguration.numberOfCards == 8)
     {
         self.cardWidth = 88.0;
         self.cardHeight = 88.0;
-        self.cardFontSize = 33.0;
+        cardFontSize = 33.0;
         
         self.numberOfCardsInRow = @[@3, @2, @3];
     }
@@ -227,7 +351,7 @@
     {
         self.cardWidth = 77.0;
         self.cardHeight = 77.0;
-        self.cardFontSize = 33.0;
+        cardFontSize = 33.0;
         
         self.numberOfCardsInRow = @[@3, @3, @3, @3];
     }
@@ -235,7 +359,7 @@
     {
         self.cardWidth = 66.0;
         self.cardHeight = 66.0;
-        self.cardFontSize = 22.0;
+        cardFontSize = 22.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4];
     }
@@ -243,7 +367,7 @@
     {
         self.cardWidth = 55.0;
         self.cardHeight = 55.0;
-        self.cardFontSize = 22.0;
+        cardFontSize = 22.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4, @4];
     }
@@ -251,7 +375,7 @@
     {
         self.cardWidth = 55.0;
         self.cardHeight = 55.0;
-        self.cardFontSize = 22.0;
+        cardFontSize = 22.0;
         
         self.numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
     }
@@ -259,7 +383,7 @@
     {
         self.cardWidth = 88.0;
         self.cardHeight = 88.0;
-        self.cardFontSize = 33.0;
+        cardFontSize = 33.0;
         
         self.numberOfCardsInRow = @[@3, @2, @3];
     }
@@ -348,12 +472,12 @@
             }
             cvc.card = card;
             cvc.delegate = self;
-            cvc.fontSize = self.cardFontSize;
+            cvc.fontSize = cardFontSize;
             
             [unshuffledCardValues removeObjectAtIndex:randomIndex];
             
             [column addObject:cvc];
-            [self.deck2 addObject:cvc];
+            [self.deckArray addObject:cvc];
         }
         
         [freshDeck addObject:column];
@@ -433,161 +557,6 @@
     [self dealCardWithIndex:0];
 }
 
-- (void)dealCardWithIndex:(NSInteger)index
-{
-    MMXCardViewController *cvc = self.deck2[index];
-    
-    CGFloat animationDuration = 0.25 - (cvc.row * 0.02); // 0.02 is just a fudge factor based on what looks good.
-    
-    CGFloat center = self.view.frame.size.width / 2.0;
-    cvc.view.frame = CGRectMake(center - cvc.view.frame.size.width + arc4random_uniform(cvc.view.frame.size.width),
-                                cvc.view.frame.origin.y,
-                                cvc.view.frame.size.width,
-                                cvc.view.frame.size.height);
-    
-    
-    // TODO: This looks a little wonky...
-    NSInteger randomAngle = arc4random_uniform(15);
-    //randomAngle += 30;
-    if (arc4random_uniform(2) == 0)
-    {
-        randomAngle = -randomAngle;
-    }
-    
-    cvc.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
-    
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^
-                     {
-                         cvc.view.transform = CGAffineTransformIdentity;
-                         
-                         cvc.view.frame = CGRectMake(cvc.tableLocation.x,
-                                                     cvc.tableLocation.y,
-                                                     cvc.cardSize.width,
-                                                     cvc.cardSize.height);
-                     }
-                     completion:^(BOOL finished)
-                     {
-                         if (finished && (index == (self.deck2.count - 1)))
-                         {
-                             if ((self.gameConfiguration.memorySpeed == MMXMemorySpeedSlow) ||
-                                 (self.gameConfiguration.memorySpeed == MMXMemorySpeedFast))
-                             {
-                                 [self showFaceOfCardWithIndex:0];
-                             }
-                             else
-                             {
-                                 [self allowPlayerInput];
-                             }
-                         }
-                     }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((animationDuration / 2) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            if (index < (self.deck2.count - 1))
-            {
-                [self dealCardWithIndex:(index + 1)];
-            }
-        });
-    });
-}
-
-- (void)showFaceOfCardWithIndex:(NSInteger)index
-{
-    MMXCardViewController *cvc = self.deck2[index];
-    
-    [cvc flipCardFaceUp];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            if (index < (self.deck2.count - 1))
-            {
-                [self showFaceOfCardWithIndex:(index + 1)];
-            }
-            else
-            {
-                [self showMemorySpeedCountdownTimer];
-            }
-        });
-    });
-}
-
-- (void)showMemorySpeedCountdownTimer
-{
-    if (self.memorySpeedTimer)
-    {
-        if (self.memoryTimeRemaining <= 0.0)
-        {
-            self.customNavigationBarTitle.text = @"";
-            
-            [self showBackOfCardWithIndex:0];
-        }
-        else
-        {
-            self.memoryTimeRemaining -= 1.0 / 60.0;
-            if (self.memoryTimeRemaining <= 0.0)
-            {
-                NSString *title = NSLocalizedString(@"Memorize - 0.00", nil);
-                self.customNavigationBarTitle.text = title;
-            }
-            else
-            {
-                self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
-            }
-            
-            self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
-                                                                     target:self
-                                                                   selector:@selector(showMemorySpeedCountdownTimer)
-                                                                   userInfo:nil
-                                                                    repeats:NO];
-        }
-    }
-    else
-    {
-        self.memoryTimeRemaining = 5.0;
-        if (self.gameConfiguration.memorySpeed == MMXMemorySpeedSlow)
-        {
-            self.memoryTimeRemaining = 10.0;
-        }
-        
-        [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Memorize - 0:00", nil)];
-        self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
-        self.memorySpeedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
-                                                                 target:self
-                                                               selector:@selector(showMemorySpeedCountdownTimer)
-                                                               userInfo:nil
-                                                                repeats:NO];
-    }
-}
-
-- (void)showBackOfCardWithIndex:(NSInteger)index
-{
-    MMXCardViewController *cvc = self.deck2[index];
-    
-    [cvc flipCardFaceDown];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        dispatch_async(dispatch_get_main_queue(), ^
-                       {
-                           if (index < (self.deck2.count - 1))
-                           {
-                               [self showBackOfCardWithIndex:(index + 1)];
-                           }
-                           else
-                           {
-                               [self allowPlayerInput];
-                           }
-                       });
-    });
-}
-
 - (void)removeDeckFromPlaySpace
 {
     for (int i = 0; i < self.numberOfCardsInRow.count; i++)
@@ -615,26 +584,18 @@
         if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
         {
             result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
-            
-            //self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
         }
         else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
         {
             result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
-            
-            //self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
         }
         else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
         {
             result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
-            
-            //self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
         }
         else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
         {
             result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
-            
-            //self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", result];
         }
         
         if (result == self.gameConfiguration.targetNumber)
@@ -645,10 +606,10 @@
         {
             success = NO;
             
-            self.matchesFailed += 1;
+            self.gameConfiguration.incorrectMatches += 1;
         }
         
-        self.matchesAttempted += 1;
+        self.gameConfiguration.attemptedMatches += 1;
         
         if (success)
         {
@@ -850,8 +811,7 @@
     
     self.gameState = MMXGameStateOver;
     
-    self.gameConfiguration.totalElapsedTime = self.elapsedTime;
-    self.gameConfiguration.incorrectMatches = self.matchesFailed;
+    self.gameConfiguration.totalElapsedTime = self.elapsedGameTime;
     
     [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
 }
@@ -860,10 +820,10 @@
 {
     // TODO: basic timer, but this is not a reliable way of calculating time!
     
-    self.elapsedTime += 1.0/60.0;
+    self.elapsedGameTime += 1.0/60.0;
     
-    CGFloat minutes = floor(self.elapsedTime / 60);
-    CGFloat seconds = floorf(self.elapsedTime - minutes * 60);
+    CGFloat minutes = floor(self.elapsedGameTime / 60);
+    CGFloat seconds = floorf(self.elapsedGameTime - minutes * 60);
     
     if ((seconds >= 60.0) && (seconds < 61.0))
     {
@@ -900,7 +860,7 @@
     {
         shouldFlip = YES;
     }
-    else if ((self.gameState == MMXGameStateStart) || (self.gameState == MMXGameStateNoCardsFlipped))
+    else if ((self.gameState == MMXGameStateStarted) || (self.gameState == MMXGameStateNoCardsFlipped))
     {
         shouldFlip = YES;
         

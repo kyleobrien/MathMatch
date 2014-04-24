@@ -89,6 +89,33 @@
     }
 }
 
+- (void)prepareCardForDealingInView:(UIView *)view
+{
+    CGFloat center = view.frame.size.width / 2.0;
+    CGFloat offCenterX = center - self.view.frame.size.width + arc4random_uniform(self.view.frame.size.width);
+    self.view.frame = CGRectMake(offCenterX,
+                                 self.view.frame.origin.y,
+                                 self.view.frame.size.width,
+                                 self.view.frame.size.height);
+    
+    NSInteger randomAngle = arc4random_uniform(15) + 15;
+    if (arc4random_uniform(2) == 0)
+    {
+        randomAngle = -randomAngle;
+    }
+    
+    self.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
+}
+
+- (void)dealCard
+{
+    self.view.transform = CGAffineTransformIdentity;
+    self.view.frame = CGRectMake(self.tableLocation.x,
+                                 self.tableLocation.y,
+                                 self.view.frame.size.width,
+                                 self.view.frame.size.height);
+}
+
 - (void)flipCardFaceDown
 {
     if (self.card.isFaceUp)

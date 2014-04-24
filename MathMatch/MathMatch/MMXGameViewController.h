@@ -9,12 +9,12 @@
 #import "KMODecisionView.h"
 #import "MMXCardViewController.h"
 
-@interface MMXGameViewController : UIViewController <MMXCardViewControllerDelegate, KMODecisionViewDelegate>
+@interface MMXGameViewController : UIViewController <KMODecisionViewDelegate, MMXCardViewControllerDelegate>
 
 typedef NS_ENUM(NSUInteger, MMXGameState)
 {
     MMXGameStatePreGame,
-    MMXGameStateStart,
+    MMXGameStateStarted,
     MMXGameStateNoCardsFlipped,
     MMXGameStateOneCardFlipped,
     MMXGameStateTwoCardsFlipped,
