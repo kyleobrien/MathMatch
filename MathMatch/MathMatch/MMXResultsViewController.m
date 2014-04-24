@@ -39,7 +39,8 @@
         seconds = 0.0;
     }
     
-    self.timeLabel.text = [NSString stringWithFormat:@"%02.0f:%02.0f", minutes, seconds];
+    self.timeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameConfiguration.totalElapsedTime
+                                                         forFormatType:MMXTimeIntervalFormatTypeLong];
     self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.incorrectMatches];
     
     // TODO: actaully implement the logic to show "new record".

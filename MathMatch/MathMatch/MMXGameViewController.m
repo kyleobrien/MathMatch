@@ -22,8 +22,6 @@
 
 @property (nonatomic, strong) UILabel *customNavigationBarTitle;
 
-@property (nonatomic, strong) NSArray *numberOfCardsInRow;
-
 @property (nonatomic, strong) NSTimer *gameClockTimer;
 @property (nonatomic, strong) NSTimer *memorySpeedTimer;
 @property (nonatomic, assign) NSTimeInterval memoryTimeRemaining;
@@ -550,7 +548,7 @@
     for (NSInteger i = 0; i < numberOfCardsInRow.count; i++)
     {
         NSInteger numberOfCardsInThisRow = ((NSNumber *)numberOfCardsInRow[i]).integerValue;
-        NSMutableArray *columnOfCards = [NSMutableArray arrayWithCapacity:numberOfCardsInThisRow];
+        NSMutableArray *rowOfCards = [NSMutableArray arrayWithCapacity:numberOfCardsInThisRow];
         
         for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
         {
@@ -573,14 +571,12 @@
             
             [unshuffledCardValues removeObjectAtIndex:randomIndex];
             
-            [columnOfCards addObject:cardViewController];
+            [rowOfCards addObject:cardViewController];
             [self.deckAsFlatArray addObject:cardViewController];
         }
         
-        [self.deckAsGrid addObject:columnOfCards];
+        [self.deckAsGrid addObject:rowOfCards];
     }
-    
-    self.numberOfCardsInRow = numberOfCardsInRow;
 }
 
 #pragma mark - Board layout
@@ -589,64 +585,51 @@
 {
     MMXCardViewController *prototypeCardViewController = self.deckAsFlatArray[0];
     
-    for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
-    {
-        NSMutableArray *rows = self.deckAsGrid[i];
-        
-        NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
-        
-        for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
-        {
-            MMXCardViewController *cvc = rows[j];
-            
-            cvc.view.frame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height, cvc.cardSize.width, cvc.cardSize.height);
-            
-            cvc.row = i;
-            
-            [self.view addSubview:cvc.view];
-        }
-    }
-    
     // I want the horizontal gaps to be the same, otherwise it looks weird.
     // So I'm going to loop once and choose the smallest gap.
     // This should only affect the 8 card layout.
     
     CGFloat widthOfGap = 1000.0;
-    for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
+    for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
     {
-        NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+        NSMutableArray *row = self.deckAsGrid[i];
         
-        CGFloat horizontalSpaceRemaining = self.view.bounds.size.width - (numberOfCardsInThisRow * prototypeCardViewController.cardSize.width);
-        CGFloat widthOfGapCandidate = horizontalSpaceRemaining / (numberOfCardsInThisRow + 1);
+        CGFloat horizontalSpaceRemaining = self.view.bounds.size.width - (row.count * prototypeCardViewController.cardSize.width);
+        CGFloat widthOfGapCandidate = horizontalSpaceRemaining / (row.count + 1);
     
         if (widthOfGapCandidate < widthOfGap)
         {
             widthOfGap = widthOfGapCandidate;
         }
     }
-    // END TRANSMISSION.
     
-    CGFloat verticalSpaceAlreadyTaken = self.equationContainerView.frame.size.height + (self.numberOfCardsInRow.count * prototypeCardViewController.cardSize.height);
+    CGFloat cardHeight = prototypeCardViewController.cardSize.height;
+    CGFloat verticalSpaceAlreadyTaken = self.equationContainerView.frame.size.height + (self.deckAsGrid.count * cardHeight);
     CGFloat verticalSpaceRemaining = self.view.bounds.size.height - verticalSpaceAlreadyTaken;
-    CGFloat heightOfGap = verticalSpaceRemaining / (self.numberOfCardsInRow.count + 1);
+    CGFloat heightOfGap = verticalSpaceRemaining / (self.deckAsGrid.count + 1);
     CGFloat yCoordinate = self.equationContainerView.frame.origin.x + self.equationContainerView.frame.size.height + heightOfGap;
     
-    for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
+    for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
     {
-        NSMutableArray *rows = self.deckAsGrid[i];
+        NSMutableArray *row = self.deckAsGrid[i];
         
-        NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+        CGFloat totalWidthOfCardsAndSpaces = (row.count * prototypeCardViewController.cardSize.width) + ((row.count - 1) * widthOfGap);
+        CGFloat xCoordinate = floorf((self.view.bounds.size.width - totalWidthOfCardsAndSpaces) / 2);
         
-        CGFloat totalWidthOfCardsAndSpaced = (numberOfCardsInThisRow * prototypeCardViewController.cardSize.width) + ((numberOfCardsInThisRow - 1) * widthOfGap);
-        CGFloat xCoordinate = floorf((self.view.bounds.size.width - totalWidthOfCardsAndSpaced) / 2);
-        
-        for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
+        for (NSInteger j = 0; j < row.count; j++)
         {
-            MMXCardViewController *cvc = rows[j];
+            MMXCardViewController *cardViewController = row[j];
             
-            cvc.tableLocation = CGPointMake(roundf(xCoordinate), roundf(yCoordinate));
+            cardViewController.view.frame = CGRectMake(0.0,
+                                                       [UIScreen mainScreen].bounds.size.height,
+                                                       cardViewController.cardSize.width,
+                                                       cardViewController.cardSize.height);
+            cardViewController.row = i;
+            cardViewController.tableLocation = CGPointMake(roundf(xCoordinate), roundf(yCoordinate));
             
-            xCoordinate += cvc.cardSize.width + widthOfGap;
+            [self.view addSubview:cardViewController.view];
+            
+            xCoordinate += cardViewController.cardSize.width + widthOfGap;
         }
         
         yCoordinate += prototypeCardViewController.cardSize.height + heightOfGap;
@@ -657,14 +640,14 @@
 
 - (void)removeDeckFromPlaySpaceAndRestartGame
 {
-    for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
+    for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
     {
-        NSMutableArray *rows = self.deckAsGrid[i];
-        NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+        NSMutableArray *row = self.deckAsGrid[i];
+        NSInteger numberOfCardsInThisRow = row.count;
         
         for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
         {
-            MMXCardViewController *cvc = rows[j];
+            MMXCardViewController *cvc = row[j];
             [cvc.view removeFromSuperview];
         }
     }
@@ -729,14 +712,14 @@
         // Check if there are any cards on the table still face down, let the game continue.
         
         BOOL stopPlaying = YES;
-        for (NSInteger i = 0; i < self.numberOfCardsInRow.count; i++)
+        for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
         {
-            NSMutableArray *rows = self.deckAsGrid[i];
-            NSInteger numberOfCardsInThisRow = ((NSNumber *)self.numberOfCardsInRow[i]).integerValue;
+            NSMutableArray *row = self.deckAsGrid[i];
+            NSInteger numberOfCardsInThisRow = row.count;
             
             for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
             {
-                MMXCardViewController *cvc = rows[j];
+                MMXCardViewController *cvc = row[j];
                 if (!cvc.card.isFaceUp)
                 {
                     stopPlaying = NO;

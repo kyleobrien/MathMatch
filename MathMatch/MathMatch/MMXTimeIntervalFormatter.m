@@ -14,25 +14,25 @@
 {
     NSString *formattedString = nil;
     
+    CGFloat minutes = floor(interval / 60.0);
+    CGFloat seconds = floorf(interval - minutes * 60.0);
+    
+    if ((seconds >= 60.0) && (seconds < 61.0))
+    {
+        minutes += 1.0;
+        seconds = 0.0;
+    }
+    
     if (formatType == MMXTimeIntervalFormatTypeShort)
     {
-        CGFloat minutes = floor(interval / 60.0);
-        CGFloat seconds = floorf(interval - minutes * 60.0);
-        
-        if ((seconds >= 60.0) && (seconds < 61.0))
-        {
-            minutes += 1.0;
-            seconds = 0.0;
-        }
-        
         formattedString = [NSString stringWithFormat:@"%02.0f:%02.0f", minutes, seconds];
     }
     else if (formatType == MMXTimeIntervalFormatTypeLong)
     {
-        
+        formattedString = [NSString stringWithFormat:@"%1.0f%@ %1.0f%@", minutes, NSLocalizedString(@"m", nil), seconds, NSLocalizedString(@"s", nil)];
     }
     
-    return formattedString;
+    return [formattedString copy];
 }
 
 @end

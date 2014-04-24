@@ -52,6 +52,8 @@
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
+		27B199991909BE4000C38E8F /* MMXDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199981909BE4000C38E8F /* MMXDeck.m */; };
+		27B1999A1909BE4000C38E8F /* MMXDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199981909BE4000C38E8F /* MMXDeck.m */; };
 		27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 /* End PBXBuildFile section */
@@ -115,6 +117,8 @@
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
 		27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTimeIntervalFormatter.m; sourceTree = "<group>"; };
+		27B199971909BE4000C38E8F /* MMXDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXDeck.h; sourceTree = "<group>"; };
+		27B199981909BE4000C38E8F /* MMXDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXDeck.m; sourceTree = "<group>"; };
 		27C687D818C438A50060D451 /* KMODecisionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMODecisionView.h; sourceTree = "<group>"; };
 		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,12 +196,13 @@
 			children = (
 				27A0867D18937D5800C318DE /* Main */,
 				27A0867818930EE600C318DE /* Practice */,
-				27572EA518A1FF56007EAF8A /* Component UI */,
 				27C687D718C3BE9E0060D451 /* Model */,
+				27572EA518A1FF56007EAF8A /* Component UI */,
+				27B199961909BD5900C38E8F /* Utilities */,
 				27A0867E1893867C00C318DE /* MMXGameViewController.h */,
 				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
-				27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */,
-				27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */,
+				27B199971909BE4000C38E8F /* MMXDeck.h */,
+				27B199981909BE4000C38E8F /* MMXDeck.m */,
 				271DA31A1901953B00E81154 /* MMXResultsViewController.h */,
 				271DA31B1901953B00E81154 /* MMXResultsViewController.m */,
 				275500A518AB0DC2008B4DB4 /* MMXCardViewController.h */,
@@ -268,6 +273,15 @@
 				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		27B199961909BD5900C38E8F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */,
+				27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		27C687D718C3BE9E0060D451 /* Model */ = {
@@ -394,6 +408,7 @@
 				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
+				27B199991909BE4000C38E8F /* MMXDeck.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
 				271DA31C1901953B00E81154 /* MMXResultsViewController.m in Sources */,
@@ -418,6 +433,7 @@
 				27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				27B1999A1909BE4000C38E8F /* MMXDeck.m in Sources */,
 				27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
 				275500A918AB0DC2008B4DB4 /* MMXCard.m in Sources */,
 				271DA31D1901953B00E81154 /* MMXResultsViewController.m in Sources */,
