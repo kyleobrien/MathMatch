@@ -52,6 +52,8 @@
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
+		27B199A6190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */; };
+		27B199A7190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */; };
 		27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 /* End PBXBuildFile section */
@@ -115,6 +117,8 @@
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
 		27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTimeIntervalFormatter.m; sourceTree = "<group>"; };
+		27B199A4190ADCBA00C38E8F /* UIColor+MMXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MMXColor.h"; sourceTree = "<group>"; };
+		27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MMXColor.m"; sourceTree = "<group>"; };
 		27C687D818C438A50060D451 /* KMODecisionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMODecisionView.h; sourceTree = "<group>"; };
 		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +278,8 @@
 			children = (
 				27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */,
 				27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */,
+				27B199A4190ADCBA00C38E8F /* UIColor+MMXColor.h */,
+				27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				27B199A6190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */,
 				279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */,
 				271DA31C1901953B00E81154 /* MMXResultsViewController.m in Sources */,
 				27A086801893867C00C318DE /* MMXGameViewController.m in Sources */,
@@ -419,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B199A7190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */,
 				275500AB18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */,
 				273592A31888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */,

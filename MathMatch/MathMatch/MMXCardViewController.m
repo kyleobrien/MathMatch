@@ -24,17 +24,22 @@
     {
         if (cardStyle == MMXCardStyle01)
         {
-            self.edgeColor = [UIColor colorWithRed:(1.0 / 255.0) green:(170.0 / 255.0) blue:(227.0 / 255.0) alpha:1.0];
+            self.edgeColor = [UIColor mmx_blueColor];
             
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleDots"];
             self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
         }
         else
         {
-            self.edgeColor = [UIColor colorWithRed:(0.0 / 255.0) green:(0.0 / 255.0) blue:(0.0 / 255.0) alpha:1.0];
+            self.edgeColor = [UIColor mmx_blackColor];
             
             self.faceDownImage = nil;
         }
+        
+        self.edgeColor = [UIColor mmx_blueColor];
+        
+        self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleDots"];
+        self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
     }
     
     return self;

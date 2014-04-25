@@ -16,4 +16,5 @@
     #import <CoreData/CoreData.h>
 
     #import "MMXGameConfiguration.h"
+    #import "UIColor+MMXColor.h"
 #endif

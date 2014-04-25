@@ -58,10 +58,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
 {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(255.0 / 255.0)
-                                                                           green:(143.0 / 255.0)
-                                                                            blue:(0.0 / 255.0)
-                                                                           alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor mmx_orangeColor];
 }
 
 #pragma mark - Navigation
