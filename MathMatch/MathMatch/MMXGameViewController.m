@@ -17,16 +17,16 @@
 @property (nonatomic, strong) MMXCardViewController *firstCardViewController;
 @property (nonatomic, strong) MMXCardViewController *secondCardViewController;
 
-@property (nonatomic, strong) NSMutableArray *deckAsGrid;
-@property (nonatomic, strong) NSMutableArray *deckAsFlatArray;
-
-@property (nonatomic, strong) UILabel *customNavigationBarTitle;
+@property (nonatomic, strong) NSMutableArray *cardsGrid;
+@property (nonatomic, strong) NSMutableArray *cardsList;
 
 @property (nonatomic, strong) NSTimer *gameClockTimer;
 @property (nonatomic, strong) NSTimer *memorySpeedTimer;
 @property (nonatomic, assign) NSTimeInterval memoryTimeRemaining;
 
 @property (nonatomic, assign) BOOL shouldEndGameAfterAnimation;
+
+@property (nonatomic, strong) UILabel *customNavigationBarTitle;
 
 @end
 
@@ -167,7 +167,7 @@
 
 - (void)dealCardWithIndex:(NSInteger)index
 {
-    MMXCardViewController *cardViewController = self.deckAsFlatArray[index];
+    MMXCardViewController *cardViewController = self.cardsList[index];
     [cardViewController prepareCardForDealingInView:self.view];
     
     CGFloat animationDuration = 0.25 - (cardViewController.row * 0.02); // 0.02 is just a fudge factor based on what looks good.
@@ -180,7 +180,7 @@
                      }
                      completion:^(BOOL finished)
                      {
-                         if (finished && (index == (self.deckAsFlatArray.count - 1)))
+                         if (finished && (index == (self.cardsList.count - 1)))
                          {
                              if (self.gameConfiguration.memorySpeed != MMXMemorySpeedNone)
                              {
@@ -195,7 +195,7 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((animationDuration / 2) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
-        if (index < (self.deckAsFlatArray.count - 1))
+        if (index < (self.cardsList.count - 1))
         {
             [self dealCardWithIndex:(index + 1)];
         }
@@ -204,12 +204,12 @@
 
 - (void)flipCardFaceUpWithIndex:(NSInteger)index
 {
-    MMXCardViewController *cardViewController = self.deckAsFlatArray[index];
+    MMXCardViewController *cardViewController = self.cardsList[index];
     [cardViewController flipCardFaceUp];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
-        if (index < (self.deckAsFlatArray.count - 1))
+        if (index < (self.cardsList.count - 1))
         {
             [self flipCardFaceUpWithIndex:(index + 1)];
         }
@@ -269,12 +269,12 @@
 
 - (void)flipCardFaceDownWithIndex:(NSInteger)index
 {
-    MMXCardViewController *cardViewController = self.deckAsFlatArray[index];
+    MMXCardViewController *cardViewController = self.cardsList[index];
     [cardViewController flipCardFaceDown];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
-        if (index < (self.deckAsFlatArray.count - 1))
+        if (index < (self.cardsList.count - 1))
         {
             [self flipCardFaceDownWithIndex:(index + 1)];
         }
@@ -542,8 +542,8 @@
     }
     
     
-    self.deckAsFlatArray = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards];
-    self.deckAsGrid = [NSMutableArray arrayWithCapacity:numberOfCardsInRow.count];
+    self.cardsList = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards];
+    self.cardsGrid = [NSMutableArray arrayWithCapacity:numberOfCardsInRow.count];
     
     for (NSInteger i = 0; i < numberOfCardsInRow.count; i++)
     {
@@ -572,10 +572,10 @@
             [unshuffledCardValues removeObjectAtIndex:randomIndex];
             
             [rowOfCards addObject:cardViewController];
-            [self.deckAsFlatArray addObject:cardViewController];
+            [self.cardsList addObject:cardViewController];
         }
         
-        [self.deckAsGrid addObject:rowOfCards];
+        [self.cardsGrid addObject:rowOfCards];
     }
 }
 
@@ -583,16 +583,16 @@
 
 - (void)arrangDeckOntoPlaySpace
 {
-    MMXCardViewController *prototypeCardViewController = self.deckAsFlatArray[0];
+    MMXCardViewController *prototypeCardViewController = self.cardsList[0];
     
     // I want the horizontal gaps to be the same, otherwise it looks weird.
     // So I'm going to loop once and choose the smallest gap.
     // This should only affect the 8 card layout.
     
     CGFloat widthOfGap = 1000.0;
-    for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
+    for (NSInteger i = 0; i < self.cardsGrid.count; i++)
     {
-        NSMutableArray *row = self.deckAsGrid[i];
+        NSMutableArray *row = self.cardsGrid[i];
         
         CGFloat horizontalSpaceRemaining = self.view.bounds.size.width - (row.count * prototypeCardViewController.cardSize.width);
         CGFloat widthOfGapCandidate = horizontalSpaceRemaining / (row.count + 1);
@@ -604,14 +604,14 @@
     }
     
     CGFloat cardHeight = prototypeCardViewController.cardSize.height;
-    CGFloat verticalSpaceAlreadyTaken = self.equationContainerView.frame.size.height + (self.deckAsGrid.count * cardHeight);
+    CGFloat verticalSpaceAlreadyTaken = self.equationContainerView.frame.size.height + (self.cardsGrid.count * cardHeight);
     CGFloat verticalSpaceRemaining = self.view.bounds.size.height - verticalSpaceAlreadyTaken;
-    CGFloat heightOfGap = verticalSpaceRemaining / (self.deckAsGrid.count + 1);
+    CGFloat heightOfGap = verticalSpaceRemaining / (self.cardsGrid.count + 1);
     CGFloat yCoordinate = self.equationContainerView.frame.origin.x + self.equationContainerView.frame.size.height + heightOfGap;
     
-    for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
+    for (NSInteger i = 0; i < self.cardsGrid.count; i++)
     {
-        NSMutableArray *row = self.deckAsGrid[i];
+        NSMutableArray *row = self.cardsGrid[i];
         
         CGFloat totalWidthOfCardsAndSpaces = (row.count * prototypeCardViewController.cardSize.width) + ((row.count - 1) * widthOfGap);
         CGFloat xCoordinate = floorf((self.view.bounds.size.width - totalWidthOfCardsAndSpaces) / 2);
@@ -640,9 +640,9 @@
 
 - (void)removeDeckFromPlaySpaceAndRestartGame
 {
-    for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
+    for (NSInteger i = 0; i < self.cardsGrid.count; i++)
     {
-        NSMutableArray *row = self.deckAsGrid[i];
+        NSMutableArray *row = self.cardsGrid[i];
         NSInteger numberOfCardsInThisRow = row.count;
         
         for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
@@ -652,7 +652,7 @@
         }
     }
     
-    self.deckAsGrid = nil;
+    self.cardsGrid = nil;
 }
 
 - (void)evaluateFormula
@@ -712,9 +712,9 @@
         // Check if there are any cards on the table still face down, let the game continue.
         
         BOOL stopPlaying = YES;
-        for (NSInteger i = 0; i < self.deckAsGrid.count; i++)
+        for (NSInteger i = 0; i < self.cardsGrid.count; i++)
         {
-            NSMutableArray *row = self.deckAsGrid[i];
+            NSMutableArray *row = self.cardsGrid[i];
             NSInteger numberOfCardsInThisRow = row.count;
             
             for (NSInteger j = 0; j < numberOfCardsInThisRow; j++)
@@ -885,8 +885,6 @@
     self.customNavigationBarTitle.font = font;
     self.navigationItem.titleView = self.customNavigationBarTitle;
 }
-
-#pragma mark - Pull this into another class
 
 - (NSMutableArray *)factorizeNumber:(NSInteger)number
 {
