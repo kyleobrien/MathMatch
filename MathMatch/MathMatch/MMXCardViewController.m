@@ -36,10 +36,10 @@
             self.faceDownImage = nil;
         }
         
-        self.edgeColor = [UIColor mmx_blueColor];
+        self.edgeColor = [UIColor mmx_purpleColor];
         
-        self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleDots"];
-        self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
+        self.faceDownImage = [UIImage imageNamed:@"MMXCardTest10b"];
+        //self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
     }
     
     return self;
@@ -68,7 +68,8 @@
     [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", self.card.value]
                        forState:UIControlStateNormal];
     
-    [self.faceDownButton setBackgroundImage:self.faceDownImage forState:UIControlStateNormal];
+    //[self.faceDownButton setBackgroundImage:self.faceDownImage forState:UIControlStateNormal];
+    [self.faceDownButton setBackgroundColor:[UIColor colorWithPatternImage:self.faceDownImage]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

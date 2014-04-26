@@ -29,6 +29,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     {
         self.gameConfiguration = [[MMXGameConfiguration alloc] init];
         self.gameConfiguration.gameType = MMXGameTypePractice;
+        self.gameConfiguration.penaltyMultiplier = 5.0;
     }
     
     return self;

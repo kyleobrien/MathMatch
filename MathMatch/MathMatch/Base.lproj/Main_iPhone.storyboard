@@ -1059,9 +1059,12 @@
                         <outlet property="recordLabel" destination="JnF-y4-gyq" id="wqo-dE-LUf"/>
                         <outlet property="timeLabel" destination="Eni-a5-e6h" id="qQd-5N-TdL"/>
                         <outlet property="totalTimeLabel" destination="pKY-RS-9XW" id="EIY-aq-QC5"/>
+                        <segue destination="oQj-7y-Bje" kind="unwind" identifier="MMXUnwindToPracticeConfigurationSegue" unwindAction="unwindToPracticeConfiguration:" id="Ksn-st-NB5"/>
+                        <segue destination="oQj-7y-Bje" kind="unwind" identifier="MMXUnwindToGameSegue" unwindAction="unwindToGame:" id="bKE-AS-Ven"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elm-wK-wdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oQj-7y-Bje" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2968" y="-650"/>
         </scene>

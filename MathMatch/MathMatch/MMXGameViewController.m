@@ -133,6 +133,12 @@
     [decisionView showAndDimBackgroundWithPercent:0.50];
 }
 
+- (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue;
+{
+    self.customNavigationBarTitle.text = @"";
+    [self removeCardFromTableauWithIndex:0];
+}
+
 #pragma mark - Deck Management
 
 - (void)createDeck
@@ -613,7 +619,7 @@
     {
         [UIView animateWithDuration:0.1 animations:^
         {
-            self.equationCorrectnessView.backgroundColor = [UIColor whiteColor];
+            self.equationCorrectnessView.backgroundColor = [UIColor mmx_whiteColor];
             
             if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
                 (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))

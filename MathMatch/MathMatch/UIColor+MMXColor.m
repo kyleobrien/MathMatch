@@ -52,9 +52,9 @@
 
 + (UIColor *)mmx_whiteColor
 {
-    return [UIColor colorWithRed:(247.0 / 247.0)
-                           green:(247.0 / 247.0)
-                            blue:(247.0 / 247.0)
+    return [UIColor colorWithRed:(247.0 / 255.0)
+                           green:(247.0 / 255.0)
+                            blue:(247.0 / 255.0)
                            alpha:1.0];
 }
 

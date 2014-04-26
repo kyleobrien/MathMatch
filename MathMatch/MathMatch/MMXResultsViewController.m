@@ -42,6 +42,15 @@
     self.timeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameConfiguration.totalElapsedTime
                                                          forFormatType:MMXTimeIntervalFormatTypeLong];
     self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.incorrectMatches];
+    self.penaltyMultiplierLabel.text = [NSString stringWithFormat:@"x %2.1fs", self.gameConfiguration.penaltyMultiplier];
+    
+    NSTimeInterval penaltyTime = self.gameConfiguration.incorrectMatches * self.gameConfiguration.penaltyMultiplier;
+    self.penaltyTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:penaltyTime
+                                                                forFormatType:MMXTimeIntervalFormatTypeLong];
+    
+    NSTimeInterval totalTime = self.gameConfiguration.totalElapsedTime + penaltyTime;
+    self.totalTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:totalTime
+                                                              forFormatType:MMXTimeIntervalFormatTypeLong];
     
     // TODO: actaully implement the logic to show "new record".
     self.recordLabel.hidden = YES;
@@ -83,10 +92,11 @@
         // TODO: WHAT SHOULD WE DO?
     }
     
+    NSArray *otherButtonTitles = @[NSLocalizedString(@"Main Menu", nil), NSLocalizedString(@"Play Again", nil), secondOption];
     KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:NSLocalizedString(@"What would you like to do?", nil)
                                                                     delegate:self
                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                           otherButtonTitles:@[NSLocalizedString(@"Main Menu", nil), secondOption]];
+                                                           otherButtonTitles:otherButtonTitles];
     decisionView.fontName = @"Futura-Medium";
     
     [decisionView showAndDimBackgroundWithPercent:0.50];
@@ -107,10 +117,14 @@
     }
     else if (buttonIndex == 2)
     {
+         [self performSegueWithIdentifier:@"MMXUnwindToGameSegue" sender:self];
+    }
+    else if (buttonIndex == 3)
+    {
         // Player wanted to change the settings or the course.
         if (self.gameConfiguration.gameType == MMXGameTypePractice)
         {
-            [self performSegueWithIdentifier:@"unwindToPracticeConfigurationSegue" sender:self];
+            [self performSegueWithIdentifier:@"MMXUnwindToPracticeConfigurationSegue" sender:self];
         }
         else
         {
