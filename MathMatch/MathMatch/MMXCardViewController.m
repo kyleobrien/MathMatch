@@ -29,6 +29,46 @@
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleDots"];
             self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
         }
+        else if (cardStyle == MMXCardStyleBeach)
+        {
+            self.edgeColor = [UIColor colorWithRed:(105.0 / 255.0)
+                                             green:(210.0 / 255.0)
+                                              blue:(231.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleBeach"];
+        }
+        else if (cardStyle == MMXCardStyleCheckers)
+        {
+            self.edgeColor = [UIColor colorWithRed:(63.0 / 255.0)
+                                             green:(44.0 / 255.0)
+                                              blue:(38.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCheckers"];
+        }
+        else if (cardStyle == MMXCardStyleCitrus)
+        {
+            self.edgeColor = [UIColor colorWithRed:(245.0 / 255.0)
+                                             green:(105.0 / 255.0)
+                                              blue:(145.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCitrus"];
+        }
+        else if (cardStyle == MMXCardStyleCupcake)
+        {
+            self.edgeColor = [UIColor colorWithRed:(167.0 / 255.0)
+                                             green:(156.0 / 255.0)
+                                              blue:(142.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCupcake"];
+        }
+        else if (cardStyle == MMXCardStyleThatch)
+        {
+            self.edgeColor = [UIColor colorWithRed:(82.0 / 255.0)
+                                             green:(70.0 / 255.0)
+                                              blue:(86.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleThatch"];
+        }
         else
         {
             self.edgeColor = [UIColor mmx_blackColor];
@@ -36,10 +76,11 @@
             self.faceDownImage = nil;
         }
         
-        self.edgeColor = [UIColor mmx_purpleColor];
-        
-        self.faceDownImage = [UIImage imageNamed:@"MMXCardTest10b"];
-        //self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
+        self.edgeColor = [UIColor colorWithRed:(245.0 / 255.0)
+                                         green:(105.0 / 255.0)
+                                          blue:(145.0 / 255.0)
+                                         alpha:1.0];
+        self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCitrus"];
     }
     
     return self;

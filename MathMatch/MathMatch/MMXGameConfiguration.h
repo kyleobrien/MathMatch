@@ -38,6 +38,11 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 typedef NS_ENUM(NSUInteger, MMXCardStyle)
 {
     MMXCardStyleNone,
+    MMXCardStyleBeach,
+    MMXCardStyleCheckers,
+    MMXCardStyleCitrus,
+    MMXCardStyleCupcake,
+    MMXCardStyleThatch,
     MMXCardStyle01,
     MMXCardStyle02,
     MMXCardStyle03,

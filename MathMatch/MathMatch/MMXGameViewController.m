@@ -759,6 +759,8 @@
 
 - (void)removeCardFromTableauWithIndex:(NSInteger)index
 {
+    // TODO: Some jankiness here, especially with large decks (24). Dealing was slow and UI was jammed up after returning to settings.
+    
     MMXCardViewController *cardViewController = self.cardsList[index];
     if (cardViewController.view.superview)
     {
