@@ -42,13 +42,12 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
     MMXCardStyleCheckers,
     MMXCardStyleCitrus,
     MMXCardStyleCupcake,
+    MMXCardStyleMoon,
+    MMXCardStyleSushi,
     MMXCardStyleThatch,
-    MMXCardStyle01,
-    MMXCardStyle02,
-    MMXCardStyle03,
-    MMXCardStyle04,
-    MMXCardStyle05,
-    MMXCardStyleCount
+    MMXCardStyleTriangles,
+    MMXCardStyleCount,
+    MMXCardStyleOverlook
 };
 
 @interface MMXGameConfiguration : NSObject

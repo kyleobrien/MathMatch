@@ -318,7 +318,7 @@
             cardViewController.row = i;
             cardViewController.tableLocation = CGPointMake(roundf(xCoordinate), roundf(yCoordinate));
             
-            [self.view addSubview:cardViewController.view];
+            //[self.view addSubview:cardViewController.view];
             
             xCoordinate += cardViewController.cardSize.width + widthOfGap;
         }
@@ -479,6 +479,8 @@
 {
     MMXCardViewController *cardViewController = self.cardsList[index];
     [cardViewController prepareCardForDealingInView:self.view];
+    
+    [self.view addSubview:cardViewController.view];
     
     CGFloat animationDuration = 0.25 - (cardViewController.row * 0.02); // 0.02 is just a fudge factor based on what looks good.
     [UIView animateWithDuration:animationDuration
@@ -759,44 +761,55 @@
 
 - (void)removeCardFromTableauWithIndex:(NSInteger)index
 {
-    // TODO: Some jankiness here, especially with large decks (24). Dealing was slow and UI was jammed up after returning to settings.
-    
     MMXCardViewController *cardViewController = self.cardsList[index];
+    NSTimeInterval waitTimeBeforeNextCardRemoval;
+    
     if (cardViewController.view.superview)
     {
-        cardViewController.view.transform = CGAffineTransformIdentity;
-        
-        [self.view bringSubviewToFront:cardViewController.view];
-        
+        waitTimeBeforeNextCardRemoval = 0.1;
         CGFloat animationDuration = 0.30 - (cardViewController.row * 0.02); // 0.02 is just a fudge factor based on what looks good.
-        [UIView animateWithDuration:animationDuration
-                              delay:0.0
-                            options:UIViewAnimationOptionCurveEaseOut
-                         animations:^
-                         {
-                             CGFloat center = self.view.frame.size.width / 2.0;
-                             CGFloat randomOffset = arc4random_uniform(cardViewController.view.frame.size.width);
-                             CGFloat randomX = center - cardViewController.view.frame.size.width + randomOffset;
-                             cardViewController.view.frame = CGRectMake(randomX,
-                                                                        [UIScreen mainScreen].bounds.size.height,
-                                                                        cardViewController.view.bounds.size.width,
-                                                                        cardViewController.view.bounds.size.height);
-                             
-                             NSInteger randomAngle = arc4random_uniform(20) + 10;
-                             if (arc4random_uniform(2) == 0)
+        
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            cardViewController.view.transform = CGAffineTransformIdentity;
+            [self.view bringSubviewToFront:cardViewController.view];
+            
+            [UIView animateWithDuration:animationDuration
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^
                              {
-                                 randomAngle = -randomAngle;
+                                 CGFloat center = self.view.frame.size.width / 2.0;
+                                 CGFloat randomOffset = arc4random_uniform(cardViewController.view.frame.size.width);
+                                 CGFloat randomX = center - cardViewController.view.frame.size.width + randomOffset;
+                                 cardViewController.view.frame = CGRectMake(randomX,
+                                                                            [UIScreen mainScreen].bounds.size.height,
+                                                                            cardViewController.view.bounds.size.width,
+                                                                            cardViewController.view.bounds.size.height);
+                                 
+                                 NSInteger randomAngle = arc4random_uniform(20) + 10;
+                                 if (arc4random_uniform(2) == 0)
+                                 {
+                                     randomAngle = -randomAngle;
+                                 }
+                                 
+                                 cardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180.0);
                              }
-                             
-                             cardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180.0);
-                         }
-                         completion:^(BOOL finished)
-                         {
-                             [cardViewController removeCardFromTable];
-                         }];
+                             completion:^(BOOL finished)
+                             {
+                                 if (finished)
+                                 {
+                                     [cardViewController removeCardFromTable];
+                                 }
+                             }];
+        });
+    }
+    else
+    {
+        waitTimeBeforeNextCardRemoval = 0.0;
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(waitTimeBeforeNextCardRemoval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
         if (index < (self.cardsList.count - 1))
         {
@@ -851,7 +864,7 @@
 #pragma mark - CardViewControllerDelegate
 
 - (BOOL)requestedFlipFor:(MMXCardViewController *)cardViewController
-{
+{    
     BOOL shouldFlip = NO;
     
     if (self.gameState == MMXGameStatePreGame)
@@ -889,11 +902,11 @@
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
-            self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+            self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
         else if ([cardViewController isEqual:self.secondCardViewController])
         {
-            self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+            self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
     }
     else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
@@ -901,11 +914,11 @@
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
-            self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+            self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
         else if ([cardViewController isEqual:self.secondCardViewController])
         {
-            self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", cardViewController.card.value];
+            self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
     }
     
@@ -932,7 +945,7 @@
                                                              userInfo:nil
                                                               repeats:YES];
     }
-    else if (buttonIndex == 2)
+    else if (buttonIndex == 2) // Player wanted to try again.
     {
         [self terminateGameBeforeFinishing];
         [self removeCardFromTableauWithIndex:0];
@@ -941,7 +954,7 @@
     {
         [self terminateGameBeforeFinishing];
         
-        if (self.gameConfiguration.gameType == MMXGameTypePractice) // Player wanted to change the settings or the course.
+        if (self.gameConfiguration.gameType == MMXGameTypePractice) // Player wanted to change the settings.
         {
             [self performSegueWithIdentifier:@"MMXUnwindToPracticeConfigurationSegue" sender:self];
         }

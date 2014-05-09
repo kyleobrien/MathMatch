@@ -177,27 +177,30 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self];
     _visible = YES;
     
-    [UIView animateWithDuration:0.3
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^
-                     {
-                         self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:dimPercent];
-                         self.containerView.frame = CGRectMake((self.bounds.size.width - self.containerView.frame.size.width) / 2.0,
-                                                               (self.bounds.size.height - self.containerView.frame.size.height) / 2.0,
-                                                               self.containerView.frame.size.width,
-                                                               self.containerView.frame.size.height);
-                     }
-                     completion:^(BOOL finished)
-                     {
-                         if (finished)
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^
                          {
-                             if (self.delegate && [self.delegate respondsToSelector:@selector(didPresentDecisionView:)])
-                             {
-                                 [self.delegate didPresentDecisionView:self];
-                             }
+                             self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:dimPercent];
+                             self.containerView.frame = CGRectMake((self.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                                                   (self.bounds.size.height - self.containerView.frame.size.height) / 2.0,
+                                                                   self.containerView.frame.size.width,
+                                                                   self.containerView.frame.size.height);
                          }
-                     }];
+                         completion:^(BOOL finished)
+                         {
+                             if (finished)
+                             {
+                                 if (self.delegate && [self.delegate respondsToSelector:@selector(didPresentDecisionView:)])
+                                 {
+                                     [self.delegate didPresentDecisionView:self];
+                                 }
+                             }
+                         }];
+    });
 }
 
 - (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
@@ -380,30 +383,33 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     
     if (animated)
     {
-        [UIView animateWithDuration:0.3
-                              delay:0.0
-                            options:UIViewAnimationOptionCurveEaseIn
-                         animations:^
-                         {
-                             self.backgroundColor = [UIColor clearColor];
-                             self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
-                                                                   self.containerView.frame.origin.y + self.bounds.size.height,
-                                                                   self.containerView.frame.size.width,
-                                                                   self.containerView.frame.size.height);
-                         }
-                         completion:^(BOOL finished)
-                         {
-                             if (finished)
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            [UIView animateWithDuration:0.3
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^
                              {
-                                 [self removeFromSuperview];
-                                 _visible = NO;
-                                 
-                                 if (self.delegate && [self.delegate respondsToSelector:@selector(decisionView:didDismissWithButtonIndex:)])
-                                 {
-                                     [self.delegate decisionView:self didDismissWithButtonIndex:index];
-                                 }
+                                 self.backgroundColor = [UIColor clearColor];
+                                 self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
+                                                                       self.containerView.frame.origin.y + self.bounds.size.height,
+                                                                       self.containerView.frame.size.width,
+                                                                       self.containerView.frame.size.height);
                              }
-                         }];
+                             completion:^(BOOL finished)
+                             {
+                                 if (finished)
+                                 {
+                                     [self removeFromSuperview];
+                                     _visible = NO;
+                                     
+                                     if (self.delegate && [self.delegate respondsToSelector:@selector(decisionView:didDismissWithButtonIndex:)])
+                                     {
+                                         [self.delegate decisionView:self didDismissWithButtonIndex:index];
+                                     }
+                                 }
+                             }];
+        });
     }
     else
     {

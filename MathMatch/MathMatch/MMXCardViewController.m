@@ -22,14 +22,7 @@
     self = [super initWithNibName:@"MMXCardViewController" bundle:[NSBundle mainBundle]];
     if (self)
     {
-        if (cardStyle == MMXCardStyle01)
-        {
-            self.edgeColor = [UIColor mmx_blueColor];
-            
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleDots"];
-            self.faceDownImage = [self.faceDownImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0) resizingMode:UIImageResizingModeTile];
-        }
-        else if (cardStyle == MMXCardStyleBeach)
+        if (cardStyle == MMXCardStyleBeach)
         {
             self.edgeColor = [UIColor colorWithRed:(105.0 / 255.0)
                                              green:(210.0 / 255.0)
@@ -61,6 +54,22 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCupcake"];
         }
+        else if (cardStyle == MMXCardStyleMoon)
+        {
+            self.edgeColor = [UIColor colorWithRed:(81.0 / 255.0)
+                                             green:(43.0 / 255.0)
+                                              blue:(82.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleMoon"];
+        }
+        else if (cardStyle == MMXCardStyleSushi)
+        {
+            self.edgeColor = [UIColor colorWithRed:(60.0 / 255.0)
+                                             green:(59.0 / 255.0)
+                                              blue:(39.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSushi"];
+        }
         else if (cardStyle == MMXCardStyleThatch)
         {
             self.edgeColor = [UIColor colorWithRed:(82.0 / 255.0)
@@ -69,6 +78,14 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleThatch"];
         }
+        else if (cardStyle == MMXCardStyleTriangles)
+        {
+            self.edgeColor = [UIColor colorWithRed:(2.0 / 255.0)
+                                             green:(143.0 / 255.0)
+                                              blue:(118.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleTriangles"];
+        }
         else
         {
             self.edgeColor = [UIColor mmx_blackColor];
@@ -76,11 +93,12 @@
             self.faceDownImage = nil;
         }
         
-        self.edgeColor = [UIColor colorWithRed:(245.0 / 255.0)
-                                         green:(105.0 / 255.0)
-                                          blue:(145.0 / 255.0)
+        // TODO: For testing new backgrounds only! Delete!
+        self.edgeColor = [UIColor colorWithRed:(60.0 / 255.0)
+                                         green:(59.0 / 255.0)
+                                          blue:(39.0 / 255.0)
                                          alpha:1.0];
-        self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCitrus"];
+        self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSushi"];
     }
     
     return self;
@@ -106,10 +124,9 @@
     self.faceDownButton.layer.borderWidth = 2.0;
     self.faceDownButton.clipsToBounds = YES;
     
-    [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", self.card.value]
+    [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", (long)self.card.value]
                        forState:UIControlStateNormal];
     
-    //[self.faceDownButton setBackgroundImage:self.faceDownImage forState:UIControlStateNormal];
     [self.faceDownButton setBackgroundColor:[UIColor colorWithPatternImage:self.faceDownImage]];
 }
 
@@ -120,6 +137,8 @@
     self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:self.fontSize];
     self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = NO;
 }
+
+#pragma mark - Player Action
 
 - (IBAction)playerRequestedCardFlip:(id)sender
 {
@@ -136,14 +155,12 @@
     }
 }
 
+#pragma mark - Helpers
+
 - (void)prepareCardForDealingInView:(UIView *)view
 {
     CGFloat center = view.frame.size.width / 2.0;
     CGFloat offCenterX = center - self.view.frame.size.width + arc4random_uniform(self.view.frame.size.width);
-    self.view.frame = CGRectMake(offCenterX,
-                                 self.view.frame.origin.y,
-                                 self.view.frame.size.width,
-                                 self.view.frame.size.height);
     
     NSInteger randomAngle = arc4random_uniform(15) + 15;
     if (arc4random_uniform(2) == 0)
@@ -151,12 +168,18 @@
         randomAngle = -randomAngle;
     }
     
+    self.view.frame = CGRectMake(offCenterX,
+                                 self.view.frame.origin.y,
+                                 self.view.frame.size.width,
+                                 self.view.frame.size.height);
+    
     self.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
 }
 
 - (void)dealCard
 {
     self.view.transform = CGAffineTransformIdentity;
+
     self.view.frame = CGRectMake(self.tableLocation.x,
                                  self.tableLocation.y,
                                  self.view.frame.size.width,
@@ -220,10 +243,7 @@
 
 - (void)removeCardFromTable
 {
-    if (self.card.isFaceUp)
-    {
-        self.view.hidden = YES;
-    }
+    [self.view removeFromSuperview];
 }
 
 @end
