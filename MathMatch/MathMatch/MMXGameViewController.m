@@ -130,6 +130,11 @@
                                                            otherButtonTitles:otherButtonTitles];
     decisionView.fontName = @"Futura-Medium";
     
+    // Need to make sure the animation is smooth, so disabling temporarily.
+    // Turning back off as soon as the decision view disappears.
+    self.view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    self.view.layer.shouldRasterize = YES;
+    
     [decisionView showAndDimBackgroundWithPercent:0.50];
 }
 
@@ -144,6 +149,12 @@
 - (void)createDeck
 {
     MMXCardStyle randomStyle = [MMXGameConfiguration selectRandomCardStyle];
+    
+    // EEGG: The shining card style if the target number is 237.
+    if (self.gameConfiguration.targetNumber == 237)
+    {
+        randomStyle = MMXCardStyleOverlook;
+    }
     
     CGSize size;
     CGFloat fontSize;
@@ -175,7 +186,7 @@
     }
     else if (self.gameConfiguration.numberOfCards == 24)
     {
-        size = CGSizeMake(50.0, 50.0);
+        size = CGSizeMake(60.0, 60.0);
         fontSize = 22.0;
         numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
     }
@@ -525,10 +536,6 @@
         {
             [self flipCardFaceUpWithIndex:(index + 1)];
         }
-        else
-        {
-            [self tickMemorySpeedCountdownTimer];
-        }
     });
 }
 
@@ -589,10 +596,6 @@
         if (index < (self.cardsList.count - 1))
         {
             [self flipCardFaceDownWithIndex:(index + 1)];
-        }
-        else
-        {
-            [self allowPlayerInputAndStartGame];
         }
     });
 }
@@ -891,9 +894,21 @@
     return shouldFlip;
 }
 
-- (void)finishedFlippingFor:(MMXCardViewController *)cardViewController
+- (void)finishedFlippingFaceDownFor:(MMXCardViewController *)cardViewController
 {
-    if ((self.gameState == MMXGameStatePreGame) || (self.gameState == MMXGameStateAnimating))
+    if ((self.gameState == MMXGameStatePreGame) && (cardViewController == self.cardsList.lastObject))
+    {
+        [self allowPlayerInputAndStartGame];
+    }
+}
+
+- (void)finishedFlippingFaceUpFor:(MMXCardViewController *)cardViewController
+{
+    if ((self.gameState == MMXGameStatePreGame) && (cardViewController == self.cardsList.lastObject))
+    {
+        [self tickMemorySpeedCountdownTimer];
+    }
+    else if (self.gameState == MMXGameStateAnimating)
     {
         return;
     }
@@ -963,6 +978,11 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
+}
+
+- (void)decisionView:(KMODecisionView *)decisionView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    self.view.layer.shouldRasterize = NO;
 }
 
 @end

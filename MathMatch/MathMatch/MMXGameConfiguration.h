@@ -42,10 +42,10 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
     MMXCardStyleCheckers,
     MMXCardStyleCitrus,
     MMXCardStyleCupcake,
+    MMXCardStyleEmerald,
     MMXCardStyleMoon,
     MMXCardStyleSushi,
     MMXCardStyleThatch,
-    MMXCardStyleTriangles,
     MMXCardStyleCount,
     MMXCardStyleOverlook
 };

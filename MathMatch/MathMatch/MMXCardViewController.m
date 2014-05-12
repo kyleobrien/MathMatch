@@ -62,6 +62,14 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleMoon"];
         }
+        else if (cardStyle == MMXCardStyleOverlook)
+        {
+            self.edgeColor = [UIColor colorWithRed:(138.0 / 255.0)
+                                             green:(59.0 / 255.0)
+                                              blue:(0.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleOverlook"];
+        }
         else if (cardStyle == MMXCardStyleSushi)
         {
             self.edgeColor = [UIColor colorWithRed:(60.0 / 255.0)
@@ -78,13 +86,13 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleThatch"];
         }
-        else if (cardStyle == MMXCardStyleTriangles)
+        else if (cardStyle == MMXCardStyleEmerald)
         {
             self.edgeColor = [UIColor colorWithRed:(2.0 / 255.0)
                                              green:(143.0 / 255.0)
                                               blue:(118.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleTriangles"];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleEmerald"];
         }
         else
         {
@@ -94,11 +102,13 @@
         }
         
         // TODO: For testing new backgrounds only! Delete!
+        /*
         self.edgeColor = [UIColor colorWithRed:(60.0 / 255.0)
                                          green:(59.0 / 255.0)
                                           blue:(39.0 / 255.0)
                                          alpha:1.0];
         self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSushi"];
+         */
     }
     
     return self;
@@ -205,10 +215,9 @@
                     {
                         if (finished)
                         {
-                            if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFor:)])
+                            if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFaceDownFor:)])
                             {
-                                //[self.delegate finishedFlippingFor:self];
-                                // TODO: This was causing a loop. Dod we need to know when this happens?
+                                [self.delegate finishedFlippingFaceDownFor:self];
                             }
                         }
                     }];
@@ -232,9 +241,9 @@
                         {
                             if (finished)
                             {
-                                if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFor:)])
+                                if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFaceUpFor:)])
                                 {
-                                    [self.delegate finishedFlippingFor:self];
+                                    [self.delegate finishedFlippingFaceUpFor:self];
                                 }
                             }
                         }];
@@ -245,5 +254,5 @@
 {
     [self.view removeFromSuperview];
 }
-
+    
 @end

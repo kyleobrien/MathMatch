@@ -50,6 +50,7 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
         _color = [UIColor blackColor];
         
         self.backgroundColor = [UIColor clearColor];
+        self.opaque = NO;
         
         
         // We're just estimating the height here. It'll get recomputed during layoutView and set accordingly.
@@ -62,6 +63,7 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
         self.containerView.layer.shadowRadius = 3.0;
         self.containerView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
         self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.containerView.opaque = YES;
         
         
         self.messageLabel = [[UILabel alloc] init];

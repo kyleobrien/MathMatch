@@ -42,6 +42,7 @@
 @required
 
 - (BOOL)requestedFlipFor:(MMXCardViewController *)cardViewController;
-- (void)finishedFlippingFor:(MMXCardViewController *)cardViewController;
+- (void)finishedFlippingFaceDownFor:(MMXCardViewController *)cardViewController;
+- (void)finishedFlippingFaceUpFor:(MMXCardViewController *)cardViewController;
 
 @end
