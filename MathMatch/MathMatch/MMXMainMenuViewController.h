@@ -8,4 +8,6 @@
 
 @interface MMXMainMenuViewController : UIViewController
 
+- (IBAction)playerTappedMenuButton:(id)sender;
+
 @end

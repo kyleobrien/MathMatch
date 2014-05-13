@@ -19,6 +19,13 @@
 		275500AD18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */; };
 		275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
 		275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
+		277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
+		277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
+		277A1F231922690B00E09050 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277A1F221922690B00E09050 /* AVFoundation.framework */; };
+		277A1F26192289CB00E09050 /* button-44.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F25192289CB00E09050 /* button-44.caf */; };
+		277A1F27192289CB00E09050 /* button-44.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F25192289CB00E09050 /* button-44.caf */; };
+		277A1F2919229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
+		277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
 		279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20A18884A890087E0DB /* Foundation.framework */; };
 		279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20C18884A890087E0DB /* CoreGraphics.framework */; };
 		279EC20F18884A890087E0DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20E18884A890087E0DB /* UIKit.framework */; };
@@ -79,6 +86,11 @@
 		275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXCardViewController.m; sourceTree = "<group>"; };
 		275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~ipad.xib"; sourceTree = "<group>"; };
 		275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~iphone.xib"; sourceTree = "<group>"; };
+		277A1F1E192268BC00E09050 /* MMXAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXAudioManager.h; sourceTree = "<group>"; };
+		277A1F1F192268BC00E09050 /* MMXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXAudioManager.m; sourceTree = "<group>"; };
+		277A1F221922690B00E09050 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		277A1F25192289CB00E09050 /* button-44.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "button-44.caf"; sourceTree = "<group>"; };
+		277A1F2819229B4F00E09050 /* destination-01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "destination-01.caf"; sourceTree = "<group>"; };
 		279EC20718884A890087E0DB /* MathMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279EC20A18884A890087E0DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		279EC20C18884A890087E0DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277A1F231922690B00E09050 /* AVFoundation.framework in Frameworks */,
 				279EC21118884A890087E0DB /* CoreData.framework in Frameworks */,
 				279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */,
 				279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */,
@@ -160,6 +173,15 @@
 			name = "Component UI";
 			sourceTree = "<group>";
 		};
+		277A1F24192289CB00E09050 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				277A1F2819229B4F00E09050 /* destination-01.caf */,
+				277A1F25192289CB00E09050 /* button-44.caf */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		279EC1FE18884A890087E0DB = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +204,7 @@
 		279EC20918884A890087E0DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				277A1F221922690B00E09050 /* AVFoundation.framework */,
 				279EC21018884A890087E0DB /* CoreData.framework */,
 				279EC20C18884A890087E0DB /* CoreGraphics.framework */,
 				279EC20A18884A890087E0DB /* Foundation.framework */,
@@ -223,6 +246,7 @@
 		279EC21318884A890087E0DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				277A1F24192289CB00E09050 /* Audio */,
 				279EC21418884A890087E0DB /* MathMatch-Info.plist */,
 				279EC21518884A890087E0DB /* InfoPlist.strings */,
 				279EC21818884A890087E0DB /* main.m */,
@@ -276,6 +300,8 @@
 		27B199961909BD5900C38E8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				277A1F1E192268BC00E09050 /* MMXAudioManager.h */,
+				277A1F1F192268BC00E09050 /* MMXAudioManager.m */,
 				27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */,
 				27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */,
 				27B199A4190ADCBA00C38E8F /* UIColor+MMXColor.h */,
@@ -377,7 +403,9 @@
 			files = (
 				279EC22318884A890087E0DB /* Main_iPad.storyboard in Resources */,
 				279EC22E18884A890087E0DB /* Images.xcassets in Resources */,
+				277A1F2919229B4F00E09050 /* destination-01.caf in Resources */,
 				279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */,
+				277A1F26192289CB00E09050 /* button-44.caf in Resources */,
 				275500AC18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */,
 				275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
 				279EC21718884A890087E0DB /* InfoPlist.strings in Resources */,
@@ -389,7 +417,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				275500AD18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */,
+				277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */,
 				275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
+				277A1F27192289CB00E09050 /* button-44.caf in Resources */,
 				279EC24018884A890087E0DB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +435,7 @@
 				27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
 				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
 				275500AA18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */,
+				277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */,
 				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
@@ -434,6 +465,7 @@
 				27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */,
 				27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
 				275500A918AB0DC2008B4DB4 /* MMXCard.m in Sources */,
 				271DA31D1901953B00E81154 /* MMXResultsViewController.m in Sources */,

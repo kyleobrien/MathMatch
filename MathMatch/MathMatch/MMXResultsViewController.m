@@ -54,6 +54,8 @@
     
     // TODO: actaully implement the logic to show "new record".
     self.recordLabel.hidden = YES;
+    
+    // TODO: Make the best time bigger if it's a record, just like total time.
 }
 
 - (void)viewWillAppear:(BOOL)animated

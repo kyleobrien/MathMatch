@@ -102,13 +102,11 @@
         }
         
         // TODO: For testing new backgrounds only! Delete!
-        /*
-        self.edgeColor = [UIColor colorWithRed:(60.0 / 255.0)
-                                         green:(59.0 / 255.0)
-                                          blue:(39.0 / 255.0)
+        self.edgeColor = [UIColor colorWithRed:(255.0 / 255.0)
+                                         green:(190.0 / 255.0)
+                                          blue:(64.0 / 255.0)
                                          alpha:1.0];
-        self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSushi"];
-         */
+        self.faceDownImage = [UIImage imageNamed:@"CardTile02"];
     }
     
     return self;
