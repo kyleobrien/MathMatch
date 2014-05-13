@@ -366,19 +366,19 @@
     
     if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
     {
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
     {
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.targetNumber];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
     }
     
     self.customNavigationBarTitle.text = @"";

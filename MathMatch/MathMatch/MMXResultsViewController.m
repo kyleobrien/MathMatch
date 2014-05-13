@@ -30,18 +30,9 @@
 {
     [super viewDidLoad];
     
-    CGFloat minutes = floor(self.gameConfiguration.totalElapsedTime / 60);
-    CGFloat seconds = floorf(self.gameConfiguration.totalElapsedTime - minutes * 60);
-    
-    if ((seconds >= 60.0) && (seconds < 61.0))
-    {
-        minutes += 1.0;
-        seconds = 0.0;
-    }
-    
     self.timeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameConfiguration.totalElapsedTime
                                                          forFormatType:MMXTimeIntervalFormatTypeLong];
-    self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", self.gameConfiguration.incorrectMatches];
+    self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.incorrectMatches];
     self.penaltyMultiplierLabel.text = [NSString stringWithFormat:@"x %2.1fs", self.gameConfiguration.penaltyMultiplier];
     
     NSTimeInterval penaltyTime = self.gameConfiguration.incorrectMatches * self.gameConfiguration.penaltyMultiplier;
