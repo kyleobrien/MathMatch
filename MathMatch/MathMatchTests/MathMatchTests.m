@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+@import XCTest;
 
 @interface MathMatchTests : XCTestCase
 

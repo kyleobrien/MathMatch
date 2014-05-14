@@ -6,11 +6,9 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @class CLXDetailViewController;
 
-#import <CoreData/CoreData.h>
+@import CoreData;
 
 @interface CLXMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 

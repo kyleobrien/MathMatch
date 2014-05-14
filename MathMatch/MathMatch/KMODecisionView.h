@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Kyle O'Brien. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 @class KMODecisionView;
 

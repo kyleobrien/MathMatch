@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 Kyle O'Brien. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "KMODecisionView.h"
+
+@import QuartzCore;
 
 @interface KMODecisionView ()
 

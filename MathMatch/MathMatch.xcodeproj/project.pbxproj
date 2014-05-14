@@ -21,15 +21,10 @@
 		275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
 		277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
 		277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
-		277A1F231922690B00E09050 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277A1F221922690B00E09050 /* AVFoundation.framework */; };
 		277A1F26192289CB00E09050 /* button-44.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F25192289CB00E09050 /* button-44.caf */; };
 		277A1F27192289CB00E09050 /* button-44.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F25192289CB00E09050 /* button-44.caf */; };
 		277A1F2919229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
 		277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
-		279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20A18884A890087E0DB /* Foundation.framework */; };
-		279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20C18884A890087E0DB /* CoreGraphics.framework */; };
-		279EC20F18884A890087E0DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20E18884A890087E0DB /* UIKit.framework */; };
-		279EC21118884A890087E0DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC21018884A890087E0DB /* CoreData.framework */; };
 		279EC21718884A890087E0DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 279EC21518884A890087E0DB /* InfoPlist.strings */; };
 		279EC21918884A890087E0DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC21818884A890087E0DB /* main.m */; };
 		279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC21C18884A890087E0DB /* MMXAppDelegate.m */; };
@@ -39,10 +34,6 @@
 		279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC22818884A890087E0DB /* CLXMasterViewController.m */; };
 		279EC22C18884A890087E0DB /* CLXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC22B18884A890087E0DB /* CLXDetailViewController.m */; };
 		279EC22E18884A890087E0DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279EC22D18884A890087E0DB /* Images.xcassets */; };
-		279EC23518884A890087E0DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC23418884A890087E0DB /* XCTest.framework */; };
-		279EC23618884A890087E0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20A18884A890087E0DB /* Foundation.framework */; };
-		279EC23718884A890087E0DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC20E18884A890087E0DB /* UIKit.framework */; };
-		279EC23818884A890087E0DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279EC21018884A890087E0DB /* CoreData.framework */; };
 		279EC24018884A890087E0DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 279EC23E18884A890087E0DB /* InfoPlist.strings */; };
 		279EC24218884A890087E0DB /* MathMatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24118884A890087E0DB /* MathMatchTests.m */; };
 		279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */; };
@@ -88,14 +79,9 @@
 		275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~iphone.xib"; sourceTree = "<group>"; };
 		277A1F1E192268BC00E09050 /* MMXAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXAudioManager.h; sourceTree = "<group>"; };
 		277A1F1F192268BC00E09050 /* MMXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXAudioManager.m; sourceTree = "<group>"; };
-		277A1F221922690B00E09050 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		277A1F25192289CB00E09050 /* button-44.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "button-44.caf"; sourceTree = "<group>"; };
 		277A1F2819229B4F00E09050 /* destination-01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "destination-01.caf"; sourceTree = "<group>"; };
 		279EC20718884A890087E0DB /* MathMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		279EC20A18884A890087E0DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		279EC20C18884A890087E0DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		279EC20E18884A890087E0DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		279EC21018884A890087E0DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		279EC21418884A890087E0DB /* MathMatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MathMatch-Info.plist"; sourceTree = "<group>"; };
 		279EC21618884A890087E0DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		279EC21818884A890087E0DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,7 +97,6 @@
 		279EC22B18884A890087E0DB /* CLXDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLXDetailViewController.m; sourceTree = "<group>"; };
 		279EC22D18884A890087E0DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		279EC23318884A890087E0DB /* MathMatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathMatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		279EC23418884A890087E0DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		279EC23D18884A890087E0DB /* MathMatchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MathMatchTests-Info.plist"; sourceTree = "<group>"; };
 		279EC23F18884A890087E0DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		279EC24118884A890087E0DB /* MathMatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathMatchTests.m; sourceTree = "<group>"; };
@@ -140,11 +125,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277A1F231922690B00E09050 /* AVFoundation.framework in Frameworks */,
-				279EC21118884A890087E0DB /* CoreData.framework in Frameworks */,
-				279EC20D18884A890087E0DB /* CoreGraphics.framework in Frameworks */,
-				279EC20B18884A890087E0DB /* Foundation.framework in Frameworks */,
-				279EC20F18884A890087E0DB /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,10 +132,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				279EC23518884A890087E0DB /* XCTest.framework in Frameworks */,
-				279EC23818884A890087E0DB /* CoreData.framework in Frameworks */,
-				279EC23718884A890087E0DB /* UIKit.framework in Frameworks */,
-				279EC23618884A890087E0DB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +163,6 @@
 			children = (
 				279EC21218884A890087E0DB /* MathMatch */,
 				279EC23B18884A890087E0DB /* MathMatchTests */,
-				279EC20918884A890087E0DB /* Frameworks */,
 				279EC20818884A890087E0DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -199,19 +174,6 @@
 				279EC23318884A890087E0DB /* MathMatchTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		279EC20918884A890087E0DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				277A1F221922690B00E09050 /* AVFoundation.framework */,
-				279EC21018884A890087E0DB /* CoreData.framework */,
-				279EC20C18884A890087E0DB /* CoreGraphics.framework */,
-				279EC20A18884A890087E0DB /* Foundation.framework */,
-				279EC20E18884A890087E0DB /* UIKit.framework */,
-				279EC23418884A890087E0DB /* XCTest.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		279EC21218884A890087E0DB /* MathMatch */ = {

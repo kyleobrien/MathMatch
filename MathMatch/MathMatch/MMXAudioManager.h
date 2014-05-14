@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import <AVFoundation/AVFoundation.h>
+@import AVFoundation;
 
 FOUNDATION_EXPORT NSString * const kMMXNotificationTrackVolumeChanged;
 FOUNDATION_EXPORT NSString * const kMMXNotificationSoundEffectVolumeChanged;
