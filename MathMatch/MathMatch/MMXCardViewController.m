@@ -54,6 +54,14 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCupcake"];
         }
+        else if (cardStyle == MMXCardStyleEmerald)
+        {
+            self.edgeColor = [UIColor colorWithRed:(2.0 / 255.0)
+                                             green:(143.0 / 255.0)
+                                              blue:(118.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleEmerald"];
+        }
         else if (cardStyle == MMXCardStyleMoon)
         {
             self.edgeColor = [UIColor colorWithRed:(81.0 / 255.0)
@@ -69,6 +77,14 @@
                                               blue:(0.0 / 255.0)
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleOverlook"];
+        }
+        else if (cardStyle == MMXCardStyleSteel)
+        {
+            self.edgeColor = [UIColor colorWithRed:(188.0 / 255.0)
+                                             green:(188.0 / 255.0)
+                                              blue:(188.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"CardTile01"];
         }
         else if (cardStyle == MMXCardStyleSushi)
         {
@@ -86,13 +102,13 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleThatch"];
         }
-        else if (cardStyle == MMXCardStyleEmerald)
+        else if (cardStyle == MMXCardStyleVelvet)
         {
-            self.edgeColor = [UIColor colorWithRed:(2.0 / 255.0)
-                                             green:(143.0 / 255.0)
-                                              blue:(118.0 / 255.0)
+            self.edgeColor = [UIColor colorWithRed:(73.0 / 255.0)
+                                             green:(10.0 / 255.0)
+                                              blue:(61.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleEmerald"];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleVelvet"];
         }
         else
         {
@@ -102,9 +118,9 @@
         }
         
         // TODO: For testing new backgrounds only! Delete!
-        self.edgeColor = [UIColor colorWithRed:(255.0 / 255.0)
-                                         green:(190.0 / 255.0)
-                                          blue:(64.0 / 255.0)
+        self.edgeColor = [UIColor colorWithRed:(73.0 / 255.0)
+                                         green:(10.0 / 255.0)
+                                          blue:(61.0 / 255.0)
                                          alpha:1.0];
         self.faceDownImage = [UIImage imageNamed:@"CardTile02"];
     }
