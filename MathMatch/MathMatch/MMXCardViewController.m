@@ -62,6 +62,22 @@
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleEmerald"];
         }
+        else if (cardStyle == MMXCardStyleGrass)
+        {
+            self.edgeColor = [UIColor colorWithRed:(64.0 / 255.0)
+                                             green:(192.0 / 255.0)
+                                              blue:(203.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleGrass"];
+        }
+        else if (cardStyle == MMXCardStyleHoney)
+        {
+            self.edgeColor = [UIColor colorWithRed:(119.0 / 255.0)
+                                             green:(79.0 / 255.0)
+                                              blue:(56.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleHoney"];
+        }
         else if (cardStyle == MMXCardStyleMoon)
         {
             self.edgeColor = [UIColor colorWithRed:(81.0 / 255.0)
@@ -77,6 +93,14 @@
                                               blue:(0.0 / 255.0)
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleOverlook"];
+        }
+        else if (cardStyle == MMXCardStyleStars)
+        {
+            self.edgeColor = [UIColor colorWithRed:(49.0 / 255.0)
+                                             green:(54.0 / 255.0)
+                                              blue:(64.0 / 255.0)
+                                             alpha:1.0];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleStars"];
         }
         else if (cardStyle == MMXCardStyleSteel)
         {
@@ -116,13 +140,6 @@
             
             self.faceDownImage = nil;
         }
-        
-        // TODO: For testing new backgrounds only! Delete!
-        self.edgeColor = [UIColor colorWithRed:(73.0 / 255.0)
-                                         green:(10.0 / 255.0)
-                                          blue:(61.0 / 255.0)
-                                         alpha:1.0];
-        self.faceDownImage = [UIImage imageNamed:@"CardTile02"];
     }
     
     return self;
@@ -134,24 +151,31 @@
     
     self.containerView.layer.cornerRadius = 6.0;
     self.containerView.layer.borderColor = self.edgeColor.CGColor;
-    self.containerView.layer.borderWidth = 2.0;
+    self.containerView.layer.borderWidth = 3.0;
     self.containerView.clipsToBounds = YES;
     
     self.faceUpButton.layer.cornerRadius = 6.0;
     self.faceUpButton.layer.borderColor = self.edgeColor.CGColor;
-    self.faceUpButton.layer.borderWidth = 2.0;
+    self.faceUpButton.layer.borderWidth = 3.0;
     self.faceUpButton.clipsToBounds = YES;
     self.faceUpButton.backgroundColor = self.edgeColor;
     
     self.faceDownButton.layer.cornerRadius = 6.0;
     self.faceDownButton.layer.borderColor = self.edgeColor.CGColor;
-    self.faceDownButton.layer.borderWidth = 2.0;
+    self.faceDownButton.layer.borderWidth = 3.0;
     self.faceDownButton.clipsToBounds = YES;
     
     [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", (long)self.card.value]
                        forState:UIControlStateNormal];
     
-    [self.faceDownButton setBackgroundColor:[UIColor colorWithPatternImage:self.faceDownImage]];
+    if (self.faceDownImage)
+    {
+        [self.faceDownButton setBackgroundColor:[UIColor colorWithPatternImage:self.faceDownImage]];
+    }
+    else
+    {
+        [self.faceDownButton setBackgroundColor:[UIColor mmx_blackColor]];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

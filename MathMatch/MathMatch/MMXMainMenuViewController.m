@@ -14,8 +14,8 @@
 {
     [super viewDidLoad];
     
-    [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
-    [[MMXAudioManager sharedManager] playTrack];
+    //[MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+    //[[MMXAudioManager sharedManager] playTrack];
 }
 
 - (void)viewWillAppear:(BOOL)animated
