@@ -108,7 +108,7 @@
                                              green:(188.0 / 255.0)
                                               blue:(188.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"CardTile01"];
+            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSteel"];
         }
         else if (cardStyle == MMXCardStyleSushi)
         {
@@ -151,18 +151,18 @@
     
     self.containerView.layer.cornerRadius = 6.0;
     self.containerView.layer.borderColor = self.edgeColor.CGColor;
-    self.containerView.layer.borderWidth = 3.0;
+    self.containerView.layer.borderWidth = 5.0;
     self.containerView.clipsToBounds = YES;
     
     self.faceUpButton.layer.cornerRadius = 6.0;
     self.faceUpButton.layer.borderColor = self.edgeColor.CGColor;
-    self.faceUpButton.layer.borderWidth = 3.0;
+    self.faceUpButton.layer.borderWidth = 5.0;
     self.faceUpButton.clipsToBounds = YES;
     self.faceUpButton.backgroundColor = self.edgeColor;
     
     self.faceDownButton.layer.cornerRadius = 6.0;
     self.faceDownButton.layer.borderColor = self.edgeColor.CGColor;
-    self.faceDownButton.layer.borderWidth = 3.0;
+    self.faceDownButton.layer.borderWidth = 5.0;
     self.faceDownButton.clipsToBounds = YES;
     
     [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", (long)self.card.value]

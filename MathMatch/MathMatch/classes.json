@@ -1,0 +1,32 @@
+[
+    {
+        "title" : "Grade 1",
+        "lessons" :
+        [
+            {
+                "title" : "Add to 10",
+                "arithmeticType" : "addition",
+                "targetNumber" : 10,
+                "numberOfCards" : 12,
+                "memorySpeed" : "fast",
+                "penaltyMultiplier" : 5.0,
+                "musicTrack" : ""
+            }
+         ]
+    },
+    {
+        "title" : "Grade 2"
+    },
+    {
+        "title" : "Grade 3"
+    },
+    {
+        "title" : "Grade 4"
+    },
+    {
+        "title" : "Grade 5"
+    },
+    {
+        "title" : "Grade 6"
+    }
+]

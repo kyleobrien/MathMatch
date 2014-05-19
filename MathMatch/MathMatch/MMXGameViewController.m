@@ -90,6 +90,8 @@
 {
     [super viewDidAppear:animated];
     
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
     if (!self.haveAlreadyArrangedOnce)
     {
         self.haveAlreadyArrangedOnce = YES;
@@ -104,6 +106,13 @@
         MMXResultsViewController *resultsViewController = (MMXResultsViewController *)segue.destinationViewController;
         resultsViewController.gameConfiguration = self.gameConfiguration;
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 #pragma mark - Player Action
@@ -405,6 +414,14 @@
 - (void)updateClock
 {
     self.gameConfiguration.totalElapsedTime += 1.0 / 60.0;
+    
+    // Don't let the clock go past 90 minutes.
+    if (self.gameConfiguration.totalElapsedTime > (60.0 * 90.0))
+    {
+        [self.gameClockTimer invalidate];
+        
+        self.gameConfiguration.totalElapsedTime = 60.0 * 90.0;
+    }
     
     NSString *time = [MMXTimeIntervalFormatter stringWithInterval:self.gameConfiguration.totalElapsedTime
                                                     forFormatType:MMXTimeIntervalFormatTypeShort];

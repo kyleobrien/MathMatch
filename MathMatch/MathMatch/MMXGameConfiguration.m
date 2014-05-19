@@ -12,7 +12,7 @@
 
 + (MMXCardStyle)selectRandomCardStyle
 {
-    return arc4random_uniform(MMXCardStyleCount);
+    return arc4random_uniform(MMXCardStyleCount - 1) + 1;
 }
 
 - (void)resetGameStatistics
