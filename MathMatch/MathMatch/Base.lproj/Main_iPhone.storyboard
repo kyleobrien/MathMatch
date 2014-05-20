@@ -182,31 +182,32 @@
         <!--Classes View Controller-->
         <scene sceneID="uyV-Pf-uHV">
             <objects>
-                <tableViewController id="C6b-E3-CYH" customClass="MMXClassesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" id="1O3-1a-r6e">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="C6b-E3-CYH" customClass="MMXClassesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="1O3-1a-r6e">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MMXClassProgressCell" rowHeight="88" id="aP6-Uh-ncV" customClass="MMXClassProgressTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="88"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MMXClassProgressCell" rowHeight="80" id="aP6-Uh-ncV" customClass="MMXClassProgressTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aP6-Uh-ncV" id="6dH-Jc-SVU">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Class Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKp-qS-LjF">
-                                            <rect key="frame" x="20" y="12" width="213" height="66"/>
+                                            <rect key="frame" x="20" y="8" width="206" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="33"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
                                             <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="n of N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paK-td-vxp">
-                                            <rect key="frame" x="253" y="42" width="47" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 of 00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paK-td-vxp">
+                                            <rect key="frame" x="236" y="31" width="64" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -218,11 +219,11 @@
                                     <segue destination="fm7-LP-WHa" kind="push" identifier="MMXProgressCellToLessonsSegue" id="bm2-5u-3zP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMXClassStarCell" rowHeight="88" id="ken-bb-xJ1" customClass="MMXClassStarTableViewCell">
-                                <rect key="frame" x="0.0" y="110" width="320" height="88"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMXClassStarCell" rowHeight="80" id="ken-bb-xJ1" customClass="MMXClassStarTableViewCell">
+                                <rect key="frame" x="0.0" y="102" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ken-bb-xJ1" id="wne-Lz-iKk">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Class Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCi-CL-Jxv">
@@ -996,7 +997,7 @@
             </objects>
             <point key="canvasLocation" x="2377" y="-650"/>
         </scene>
-        <!--Results View Controller - Your Performance-->
+        <!--Results View Controller - Your Grade-->
         <scene sceneID="x1c-ER-hR0">
             <objects>
                 <viewController id="U9w-ce-CU9" customClass="MMXResultsViewController" sceneMemberID="viewController">
@@ -1200,7 +1201,7 @@
                             <constraint firstItem="lo4-tc-S2n" firstAttribute="leading" secondItem="S0q-Qx-Ubp" secondAttribute="leading" constant="20" id="zin-JC-Lei"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Performance" id="tNO-tx-Vus"/>
+                    <navigationItem key="navigationItem" title="Your Grade" id="tNO-tx-Vus"/>
                     <connections>
                         <outlet property="bestTimeLabel" destination="A2e-82-obX" id="VlK-AR-Mto"/>
                         <outlet property="incorrectMatchesLabel" destination="3p0-gC-G5G" id="21X-DH-BiK"/>

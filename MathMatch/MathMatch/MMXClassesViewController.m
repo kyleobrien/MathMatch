@@ -55,6 +55,9 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blueColor];
+    
+    // Doesn't deselect on sipe back (bug?) so doing it manually.
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

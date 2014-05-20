@@ -1,6 +1,6 @@
 [
     {
-        "title" : "Grade 1",
+        "title" : "First Grade",
         "lessons" :
         [
             {
@@ -15,18 +15,18 @@
          ]
     },
     {
-        "title" : "Grade 2"
+        "title" : "Second Grade"
     },
     {
-        "title" : "Grade 3"
+        "title" : "Third Grade"
     },
     {
-        "title" : "Grade 4"
+        "title" : "Fourth Grade"
     },
     {
-        "title" : "Grade 5"
+        "title" : "Fifth Grade"
     },
     {
-        "title" : "Grade 6"
+        "title" : "Sixth Grade"
     }
 ]
