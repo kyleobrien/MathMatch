@@ -75,6 +75,7 @@
         NSDictionary *class = self.classesFromJSON[self.tableView.indexPathForSelectedRow.row];
         
         MMXLessonsViewController *lessonsViewController = (MMXLessonsViewController *)segue.destinationViewController;
+        lessonsViewController.title = class[@"title"];
         lessonsViewController.lessons = class[@"lessons"];
     }
 }
@@ -96,8 +97,19 @@
     MMXClassProgressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassProgressCell" forIndexPath:indexPath];
     
     NSDictionary *class = self.classesFromJSON[indexPath.row];
+    NSInteger lessonCount = ((NSArray *)class[@"lessons"]).count;
     
     cell.classTitleLabel.text = class[@"title"];
+    cell.progressDescriptionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d of %ld", nil), 0, lessonCount];
+
+    /*
+    MMXClassStarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassStarCell" forIndexPath:indexPath];
+    
+    NSDictionary *class = self.classesFromJSON[indexPath.row];
+    
+    cell.classTitleLabel.text = class[@"title"];
+    cell.starCountLabel.text = @"2";
+     */
     
     return cell;
 }
