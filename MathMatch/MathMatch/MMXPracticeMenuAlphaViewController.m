@@ -194,7 +194,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     }
 }
 
-- (IBAction)unwindToPracticeConfiguration:(UIStoryboardSegue *)unwindSegue;
+- (IBAction)unwindToPracticeConfiguration:(UIStoryboardSegue *)unwindSegue
 {
     
 }

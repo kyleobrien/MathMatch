@@ -37,4 +37,6 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 
 - (IBAction)playerTappedPauseButton:(id)sender;
 
+- (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue;
+
 @end

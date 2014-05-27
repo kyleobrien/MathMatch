@@ -10,4 +10,6 @@
 
 @property (nonatomic, strong) NSArray *lessons;
 
+- (IBAction)unwindToLessonsSegue:(UIStoryboardSegue *)unwindSegue;
+
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+#import "MMXGameViewController.h"
 #import "MMXLessonTableViewCell.h"
 #import "MMXLessonsViewController.h"
 
@@ -108,15 +109,24 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"MMXBeginLessonSegue"])
+    {
+        NSDictionary *lesson = self.lessons[self.tableView.indexPathForSelectedRow.row];
+        MMXGameConfiguration *gameConfiguration = [MMXGameConfiguration gameConfigurationFromLesson:lesson];
+        
+        MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
+        gameViewController.gameConfiguration = gameConfiguration;
+    }
 }
-*/
+
+- (IBAction)unwindToLessonsSegue:(UIStoryboardSegue *)unwindSegue
+{
+    
+}
 
 @end

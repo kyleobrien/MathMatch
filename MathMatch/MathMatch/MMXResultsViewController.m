@@ -82,11 +82,12 @@
     }
     else
     {
-        // TODO: WHAT SHOULD WE DO?
+        secondOption = NSLocalizedString(@"Show Lessons", nil);
     }
     
-    NSArray *otherButtonTitles = @[NSLocalizedString(@"Main Menu", nil), NSLocalizedString(@"Play Again", nil), secondOption];
-    KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:NSLocalizedString(@"What would you like to do?", nil)
+    NSString *message = NSLocalizedString(@"The game is paused. What would you like to do?", nil);
+    NSArray *otherButtonTitles = @[NSLocalizedString(@"Main Menu", nil), NSLocalizedString(@"Try Again", nil), secondOption];
+    KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                     delegate:self
                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                                            otherButtonTitles:otherButtonTitles];
@@ -103,12 +104,11 @@
     {
         // Player cancelled. Do nothing.
     }
-    else if (buttonIndex == 1)
+    else if (buttonIndex == 1) // Player decided to return to the main menu.
     {
-        // Player decided to return to the main menu.
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
-    else if (buttonIndex == 2)
+    else if (buttonIndex == 2) // Player wants to try again.
     {
          [self performSegueWithIdentifier:@"MMXUnwindToGameSegue" sender:self];
     }
@@ -119,9 +119,9 @@
         {
             [self performSegueWithIdentifier:@"MMXUnwindToPracticeConfigurationSegue" sender:self];
         }
-        else
+        else // Player wanted to view the list of lessons for the current course.
         {
-            // TODO: Action for course.
+            [self performSegueWithIdentifier:@"MMXUnwindToLessonsSegue" sender:self];
         }
     }
 }

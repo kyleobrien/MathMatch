@@ -73,6 +73,8 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 @property (nonatomic, assign) NSInteger attemptedMatches;
 @property (nonatomic, assign) NSInteger incorrectMatches;
 
++ (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson;
+
 + (MMXCardStyle)selectRandomCardStyle;
 
 - (void)resetGameStatistics;

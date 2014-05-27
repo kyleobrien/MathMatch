@@ -38,4 +38,6 @@ FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMusic;
 - (IBAction)memoryButtonWasTapped:(id)sender;
 - (IBAction)musicButtonWasTapped:(id)sender;
 
+- (IBAction)unwindToPracticeConfiguration:(UIStoryboardSegue *)unwindSegue;
+
 @end
