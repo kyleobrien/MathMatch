@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "MMXAppDelegate.h"
 
 int main(int argc, char * argv[])

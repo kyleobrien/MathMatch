@@ -1,5 +1,5 @@
 //
-//  MMXGameConfiguration.h
+//  MMXGameData.h
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.1.23.
@@ -55,12 +55,14 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
     MMXCardStyleOverlook
 };
 
-@interface MMXGameConfiguration : NSObject
-
-@property (nonatomic, assign) NSInteger targetNumber;
-@property (nonatomic, assign) NSInteger numberOfCards;
+@interface MMXGameData : NSObject
 
 @property (nonatomic, assign) MMXGameType gameType;
+@property (nonatomic, strong) NSNumber *lessonID;
+
+@property (nonatomic, strong) NSNumber *targetNumber;
+@property (nonatomic, strong) NSNumber *numberOfCards;
+
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXMemorySpeed memorySpeed;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;
@@ -72,6 +74,9 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 @property (nonatomic, assign) NSTimeInterval totalElapsedTime;
 @property (nonatomic, assign) NSInteger attemptedMatches;
 @property (nonatomic, assign) NSInteger incorrectMatches;
+
+@property (nonatomic, assign) NSTimeInterval totalTimeWithPenalty;
+@property (nonatomic, assign) NSInteger starRating;
 
 + (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson;
 

@@ -117,7 +117,7 @@
     if ([segue.identifier isEqualToString:@"MMXBeginLessonSegue"])
     {
         NSDictionary *lesson = self.lessons[self.tableView.indexPathForSelectedRow.row];
-        MMXGameConfiguration *gameConfiguration = [MMXGameConfiguration gameConfigurationFromLesson:lesson];
+        MMXGameData *gameConfiguration = [MMXGameData gameConfigurationFromLesson:lesson];
         
         MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
         gameViewController.gameConfiguration = gameConfiguration;

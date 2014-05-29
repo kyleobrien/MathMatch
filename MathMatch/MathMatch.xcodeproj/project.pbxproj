@@ -40,8 +40,8 @@
 		279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */; };
 		27A086721890882F00C318DE /* MMXFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086711890882F00C318DE /* MMXFlatButton.m */; };
 		27A086731890882F00C318DE /* MMXFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086711890882F00C318DE /* MMXFlatButton.m */; };
-		27A086761891CB9000C318DE /* MMXGameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameConfiguration.m */; };
-		27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameConfiguration.m */; };
+		27A086761891CB9000C318DE /* MMXGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameData.m */; };
+		27A086771891CB9000C318DE /* MMXGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A086751891CB9000C318DE /* MMXGameData.m */; };
 		27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */; };
 		27A0867C18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */; };
 		27A086801893867C00C318DE /* MMXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867F1893867C00C318DE /* MMXGameViewController.m */; };
@@ -54,6 +54,8 @@
 		27B199A7190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */; };
 		27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
+		27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
+		27D391711937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C2791928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C27D1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C27C1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m */; };
@@ -116,8 +118,8 @@
 		279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXMainMenuViewController.m; sourceTree = "<group>"; };
 		27A086701890882F00C318DE /* MMXFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXFlatButton.h; sourceTree = "<group>"; };
 		27A086711890882F00C318DE /* MMXFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXFlatButton.m; sourceTree = "<group>"; };
-		27A086741891CB9000C318DE /* MMXGameConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXGameConfiguration.h; sourceTree = "<group>"; };
-		27A086751891CB9000C318DE /* MMXGameConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameConfiguration.m; sourceTree = "<group>"; };
+		27A086741891CB9000C318DE /* MMXGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXGameData.h; sourceTree = "<group>"; };
+		27A086751891CB9000C318DE /* MMXGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameData.m; sourceTree = "<group>"; };
 		27A0867918930F1200C318DE /* MMXPracticeMenuBetaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXPracticeMenuBetaViewController.h; sourceTree = "<group>"; };
 		27A0867A18930F1200C318DE /* MMXPracticeMenuBetaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXPracticeMenuBetaViewController.m; sourceTree = "<group>"; };
 		27A0867E1893867C00C318DE /* MMXGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXGameViewController.h; sourceTree = "<group>"; };
@@ -130,6 +132,8 @@
 		27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MMXColor.m"; sourceTree = "<group>"; };
 		27C687D818C438A50060D451 /* KMODecisionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMODecisionView.h; sourceTree = "<group>"; };
 		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
+		27D3916E1937867C0041BDB4 /* MMXTopScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTopScore.h; sourceTree = "<group>"; };
+		27D3916F1937867C0041BDB4 /* MMXTopScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTopScore.m; sourceTree = "<group>"; };
 		27F3C2761928F8DB00EB5D59 /* MMXClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassesViewController.h; sourceTree = "<group>"; };
 		27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassesViewController.m; sourceTree = "<group>"; };
 		27F3C27B1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassProgressTableViewCell.h; sourceTree = "<group>"; };
@@ -300,8 +304,10 @@
 		27C687D718C3BE9E0060D451 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				27A086741891CB9000C318DE /* MMXGameConfiguration.h */,
-				27A086751891CB9000C318DE /* MMXGameConfiguration.m */,
+				27A086741891CB9000C318DE /* MMXGameData.h */,
+				27A086751891CB9000C318DE /* MMXGameData.m */,
+				27D3916E1937867C0041BDB4 /* MMXTopScore.h */,
+				27D3916F1937867C0041BDB4 /* MMXTopScore.m */,
 				275500A318AB0DC2008B4DB4 /* MMXCard.h */,
 				275500A418AB0DC2008B4DB4 /* MMXCard.m */,
 			);
@@ -439,6 +445,7 @@
 			files = (
 				275500A818AB0DC2008B4DB4 /* MMXCard.m in Sources */,
 				27F3C27D1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */,
+				27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */,
 				27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
 				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
 				27F3C28C192A76B300EB5D59 /* MMXLessonTableViewCell.m in Sources */,
@@ -455,7 +462,7 @@
 				271DA31C1901953B00E81154 /* MMXResultsViewController.m in Sources */,
 				27A086801893867C00C318DE /* MMXGameViewController.m in Sources */,
 				279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */,
-				27A086761891CB9000C318DE /* MMXGameConfiguration.m in Sources */,
+				27A086761891CB9000C318DE /* MMXGameData.m in Sources */,
 				279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */,
 				27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */,
 				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
@@ -473,13 +480,14 @@
 				273592A31888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27F3C28D192A76B300EB5D59 /* MMXLessonTableViewCell.m in Sources */,
 				27F3C2851929178B00EB5D59 /* MMXClassStarTableViewCell.m in Sources */,
-				27A086771891CB9000C318DE /* MMXGameConfiguration.m in Sources */,
+				27A086771891CB9000C318DE /* MMXGameData.m in Sources */,
 				27F3C2791928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */,
 				279EC24E18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				27F3C27E1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */,
 				27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A086731890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				27D391711937867C0041BDB4 /* MMXTopScore.m in Sources */,
 				277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */,
 				27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
 				275500A918AB0DC2008B4DB4 /* MMXCard.m in Sources */,

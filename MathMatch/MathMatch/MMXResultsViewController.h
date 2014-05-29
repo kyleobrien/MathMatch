@@ -10,7 +10,7 @@
 
 @interface MMXResultsViewController : UIViewController <KMODecisionViewDelegate>
 
-@property (nonatomic, strong) MMXGameConfiguration *gameConfiguration;
+@property (nonatomic, strong) MMXGameData *gameConfiguration;
 
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *incorrectMatchesLabel;

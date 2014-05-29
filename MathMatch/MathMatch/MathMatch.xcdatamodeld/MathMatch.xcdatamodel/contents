@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MMXGameData" syncable="YES">
+        <relationship name="topScore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MMXTopScore" inverseName="gameData" inverseEntity="MMXTopScore" syncable="YES"/>
+    </entity>
+    <entity name="MMXTopScore" representedClassName="MMXTopScore" syncable="YES">
+        <attribute name="lessonID" attributeType="Integer 16" minValueString="101" maxValueString="999" syncable="YES"/>
+        <attribute name="stars" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="1" syncable="YES"/>
+        <attribute name="time" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="gameData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MMXGameData" inverseName="topScore" inverseEntity="MMXGameData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="MMXGameData" positionX="241" positionY="5" width="191" height="58"/>
+        <element name="MMXTopScore" positionX="0" positionY="0" width="128" height="103"/>
     </elements>
 </model>

@@ -11,11 +11,13 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-    #import <CoreData/CoreData.h>
+
+    @import UIKit;
+    @import Foundation;
+    @import CoreData;
 
     #import "MMXAudioManager.h"
-    #import "MMXGameConfiguration.h"
+    #import "MMXGameData.h"
     #import "UIColor+MMXColor.h"
+
 #endif

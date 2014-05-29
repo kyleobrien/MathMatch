@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
     MMXGameStateOver
 };
 
-@property (nonatomic, strong) MMXGameConfiguration *gameConfiguration;
+@property (nonatomic, strong) MMXGameData *gameConfiguration;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *pauseBarButtonItem;
 

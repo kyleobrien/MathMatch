@@ -11,7 +11,7 @@
 
 @interface MMXPracticeMenuAlphaViewController ()
 
-@property (nonatomic, strong) MMXGameConfiguration *gameConfiguration;
+@property (nonatomic, strong) MMXGameData *gameConfiguration;
 
 @end
 
@@ -27,7 +27,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.gameConfiguration = [[MMXGameConfiguration alloc] init];
+        self.gameConfiguration = [[MMXGameData alloc] init];
         self.gameConfiguration.gameType = MMXGameTypePractice;
         self.gameConfiguration.penaltyMultiplier = 5.0;
     }
@@ -79,27 +79,27 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     if (button == self.number8Button)
     {
-        self.gameConfiguration.numberOfCards = 8;
+        self.gameConfiguration.numberOfCards = @8;
         [userDefaults setInteger:8 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number12Button)
     {
-        self.gameConfiguration.numberOfCards = 12;
+        self.gameConfiguration.numberOfCards = @12;
         [userDefaults setInteger:12 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number16Button)
     {
-        self.gameConfiguration.numberOfCards = 16;
+        self.gameConfiguration.numberOfCards = @16;
         [userDefaults setInteger:16 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number20Button)
     {
-        self.gameConfiguration.numberOfCards = 20;
+        self.gameConfiguration.numberOfCards = @20;
         [userDefaults setInteger:20 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number24Button)
     {
-        self.gameConfiguration.numberOfCards = 24;
+        self.gameConfiguration.numberOfCards = @24;
         [userDefaults setInteger:24 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
 }
@@ -234,7 +234,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         numberOfCards = 8;
     }
     
-    self.gameConfiguration.numberOfCards = numberOfCards;
+    self.gameConfiguration.numberOfCards = @(numberOfCards);
     
     // Arithmetic Type --------------
     MMXArithmeticType arithmeticType = [userDefaults integerForKey:kMMXUserDefaultsPracticeArithmeticType];

@@ -49,9 +49,9 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     }
     
     self.targetNumber = targetNumber;
-    self.gameConfiguration.targetNumber = targetNumber;
+    self.gameConfiguration.targetNumber = @(targetNumber);
     
-    self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
+    self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -115,7 +115,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
             self.startBarButtonItem.enabled = YES;
             
             [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
-            self.gameConfiguration.targetNumber = self.targetNumber;
+            self.gameConfiguration.targetNumber = @(self.targetNumber);
         }
         
         self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.targetNumber];

@@ -85,7 +85,7 @@
         secondOption = NSLocalizedString(@"Show Lessons", nil);
     }
     
-    NSString *message = NSLocalizedString(@"The game is paused. What would you like to do?", nil);
+    NSString *message = NSLocalizedString(@"The game is over. What would you like to do?", nil);
     NSArray *otherButtonTitles = @[NSLocalizedString(@"Main Menu", nil), NSLocalizedString(@"Try Again", nil), secondOption];
     KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                     delegate:self

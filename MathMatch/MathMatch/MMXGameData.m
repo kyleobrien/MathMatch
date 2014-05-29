@@ -1,21 +1,21 @@
 //
-//  MMXGameConfiguration.m
+//  MMXGameData.m
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.1.23.
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import "MMXGameConfiguration.h"
+#import "MMXGameData.h"
 
-@implementation MMXGameConfiguration
+@implementation MMXGameData
 
 + (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson
 {
-    MMXGameConfiguration *gameConfiguration = [[MMXGameConfiguration alloc] init];
+    MMXGameData *gameConfiguration = [[MMXGameData alloc] init];
     
-    gameConfiguration.targetNumber = ((NSNumber *)lesson[@"targetNumber"]).integerValue;
-    gameConfiguration.numberOfCards = ((NSNumber *)lesson[@"numberOfCards"]).integerValue;
+    gameConfiguration.targetNumber = lesson[@"targetNumber"];
+    gameConfiguration.numberOfCards = lesson[@"numberOfCards"];
     
     gameConfiguration.gameType = MMXGameTypeCourse;
     
@@ -60,7 +60,7 @@
     // TODO: Need music tracks first.
     //"musicTrack" : ""
     
-    gameConfiguration.cardStyle = [MMXGameConfiguration selectRandomCardStyle];
+    gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
     
     gameConfiguration.penaltyMultiplier = ((NSNumber *)lesson[@"penaltyMultiplier"]).floatValue;
     
@@ -77,6 +77,9 @@
     self.totalElapsedTime = 0.0;
     self.attemptedMatches = 0;
     self.incorrectMatches = 0;
+    
+    self.totalTimeWithPenalty = 0.0;
+    self.starRating = 0;
 }
 
 @end

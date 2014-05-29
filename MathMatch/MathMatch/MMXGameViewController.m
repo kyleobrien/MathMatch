@@ -157,10 +157,10 @@
 
 - (void)createDeck
 {
-    MMXCardStyle randomStyle = [MMXGameConfiguration selectRandomCardStyle];
+    MMXCardStyle randomStyle = [MMXGameData selectRandomCardStyle];
     
     // EEGG: The shining card style if the target number is 237.
-    if (self.gameConfiguration.targetNumber == 237)
+    if (self.gameConfiguration.targetNumber.integerValue == 237)
     {
         randomStyle = MMXCardStyleOverlook;
     }
@@ -169,31 +169,31 @@
     CGFloat fontSize;
     NSArray *numberOfCardsInRow;
     
-    if (self.gameConfiguration.numberOfCards == 8)
+    if (self.gameConfiguration.numberOfCards.integerValue == 8)
     {
         size = CGSizeMake(90.0, 90.0);
         fontSize = 33.0;
         numberOfCardsInRow = @[@3, @2, @3];
     }
-    else if (self.gameConfiguration.numberOfCards == 12)
+    else if (self.gameConfiguration.numberOfCards.integerValue == 12)
     {
         size = CGSizeMake(80.0, 80.0);
         fontSize = 33.0;
         numberOfCardsInRow = @[@3, @3, @3, @3];
     }
-    else if (self.gameConfiguration.numberOfCards == 16)
+    else if (self.gameConfiguration.numberOfCards.integerValue == 16)
     {
         size = CGSizeMake(70.0, 70.0);
         fontSize = 22.0;
         numberOfCardsInRow = @[@4, @4, @4, @4];
     }
-    else if (self.gameConfiguration.numberOfCards == 20)
+    else if (self.gameConfiguration.numberOfCards.integerValue == 20)
     {
         size = CGSizeMake(60.0, 60.0);
         fontSize = 22.0;
         numberOfCardsInRow = @[@4, @4, @4, @4, @4];
     }
-    else if (self.gameConfiguration.numberOfCards == 24)
+    else if (self.gameConfiguration.numberOfCards.integerValue == 24)
     {
         size = CGSizeMake(60.0, 60.0);
         fontSize = 22.0;
@@ -209,41 +209,41 @@
     if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
         (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction))
     {
-        u_int32_t maxCardValue = floor(self.gameConfiguration.targetNumber / 2.0);
+        u_int32_t maxCardValue = floor(self.gameConfiguration.targetNumber.integerValue / 2.0);
         
-        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards)
+        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards.integerValue)
         {
             NSInteger randomValue = arc4random_uniform(maxCardValue + 1);
             
             [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber - randomValue)]];
+            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber.integerValue - randomValue)]];
         }
     }
     else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication) ||
              (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
     {
-        NSMutableArray *factors = [self factorizeNumber:self.gameConfiguration.targetNumber];
+        NSMutableArray *factors = [self factorizeNumber:self.gameConfiguration.targetNumber.integerValue];
         
         // Make sure the bucket we're selecting from has enough factors to choose from.
-        if (factors.count < self.gameConfiguration.numberOfCards)
+        if (factors.count < self.gameConfiguration.numberOfCards.integerValue)
         {
-            while ((unshuffledCardValues.count + factors.count) < self.gameConfiguration.numberOfCards)
+            while ((unshuffledCardValues.count + factors.count) < self.gameConfiguration.numberOfCards.integerValue)
             {
                 [unshuffledCardValues addObjectsFromArray:factors];
             }
         }
         
         // Use the factors to populate the unshuffled deck.
-        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards)
+        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards.integerValue)
         {
             // Select without replacement.
-            while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards)
+            while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards.integerValue)
             {
                 NSInteger randomIndex = arc4random_uniform((u_int32_t)factors.count);
                 NSInteger randomValue = ((NSNumber *)factors[randomIndex]).integerValue;
                 
                 [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-                [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber / randomValue)]];
+                [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber.integerValue / randomValue)]];
                 
                 [factors removeObjectAtIndex:randomIndex];
             }
@@ -255,7 +255,7 @@
     }
     
     
-    self.cardsList = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards];
+    self.cardsList = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards.integerValue];
     self.cardsGrid = [NSMutableArray arrayWithCapacity:numberOfCardsInRow.count];
     
     for (NSInteger i = 0; i < numberOfCardsInRow.count; i++)
@@ -375,19 +375,19 @@
     
     if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
     {
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
     {
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
     }
     else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
     }
     
     self.customNavigationBarTitle.text = @"";
@@ -448,7 +448,7 @@
     
     self.gameConfiguration.attemptedMatches += 1;
     
-    if (result == self.gameConfiguration.targetNumber)
+    if (result == self.gameConfiguration.targetNumber.integerValue)
     {
         [self highlightCorrectnessViewOnSuccess:YES];
         

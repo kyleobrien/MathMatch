@@ -8,4 +8,6 @@
 
 @interface MMXClassesViewController : UITableViewController
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @end

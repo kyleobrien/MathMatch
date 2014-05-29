@@ -33,16 +33,16 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIN-Wx-MXj" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="0.0" width="280" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIN-Wx-MXj" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="0.0" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Ymz-Fa-MPs"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-w3-IfP" customClass="MMXFlatButton">
-                                <rect key="frame" x="20" y="31" width="280" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-w3-IfP" customClass="MMXFlatButton">
+                                <rect key="frame" x="20" y="32" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.66666666669999997" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -58,16 +58,16 @@
                                     <segue destination="C6b-E3-CYH" kind="push" id="B9G-xZ-xlX"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="101" width="280" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="96" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="pp1-mN-EVJ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A" customClass="MMXFlatButton">
-                                <rect key="frame" x="20" y="132" width="280" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A" customClass="MMXFlatButton">
+                                <rect key="frame" x="20" y="128" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -84,16 +84,16 @@
                                     <segue destination="Fwk-8r-rWc" kind="push" id="u1b-1b-3us"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="196" width="280" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="192" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="rUg-b8-p3y"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO" customClass="MMXFlatButton">
-                                <rect key="frame" x="20" y="226" width="280" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO" customClass="MMXFlatButton">
+                                <rect key="frame" x="20" y="224" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -109,16 +109,16 @@
                                     <action selector="playerTappedMenuButton:" destination="k0x-YW-35a" eventType="touchUpInside" id="l1J-by-iJZ"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="290" width="280" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="288" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="uih-iF-VJh"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8" customClass="MMXFlatButton">
-                                <rect key="frame" x="20" y="321" width="280" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8" customClass="MMXFlatButton">
+                                <rect key="frame" x="20" y="320" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -134,8 +134,8 @@
                                     <action selector="playerTappedMenuButton:" destination="k0x-YW-35a" eventType="touchUpInside" id="7yq-Zy-Ywu"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="385" width="280" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="384" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -277,6 +277,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MMXLessonCell" rowHeight="80" id="pYi-cL-cd4" customClass="MMXLessonTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
@@ -427,7 +428,7 @@
                                     <constraint firstAttribute="height" constant="72" id="sgC-zx-rdU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7O-4k-JVo" userLabel="Spacer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7O-4k-JVo" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="86" width="280" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -435,7 +436,7 @@
                                     <constraint firstAttribute="width" constant="280" id="bk3-Mk-gEH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-d3-EXq" userLabel="Arithmetic View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-d3-EXq" userLabel="Arithmetic View">
                                 <rect key="frame" x="20" y="101" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -505,7 +506,7 @@
                                     <constraint firstAttribute="width" constant="280" id="MTm-he-huG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cq1-EE-6W1" userLabel="Spacer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cq1-EE-6W1" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="173" width="280" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -513,7 +514,7 @@
                                     <constraint firstAttribute="width" constant="280" id="cYH-Gt-hpq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZc-ys-LAC" userLabel="Memory Speed View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZc-ys-LAC" userLabel="Memory Speed View">
                                 <rect key="frame" x="20" y="188" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -570,7 +571,7 @@
                                     <constraint firstAttribute="height" constant="72" id="TWl-bM-QjJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-Nj-W7D" userLabel="Spacer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-Nj-W7D" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="260" width="280" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -578,7 +579,7 @@
                                     <constraint firstAttribute="width" constant="280" id="U8l-44-PPk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-UI-jrn" userLabel="Music View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-UI-jrn" userLabel="Music View">
                                 <rect key="frame" x="20" y="275" width="280" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -647,7 +648,7 @@
                                     <constraint firstAttribute="height" constant="124" id="zEC-fp-pTR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Unh-1c-SsE" userLabel="Spacer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unh-1c-SsE" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="403" width="280" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
