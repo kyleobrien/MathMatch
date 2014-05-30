@@ -120,7 +120,7 @@
         MMXGameData *gameConfiguration = [MMXGameData gameConfigurationFromLesson:lesson];
         
         MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
-        gameViewController.gameConfiguration = gameConfiguration;
+        gameViewController.gameData = gameConfiguration;
     }
 }
 

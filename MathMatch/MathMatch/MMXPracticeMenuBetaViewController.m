@@ -49,9 +49,9 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     }
     
     self.targetNumber = targetNumber;
-    self.gameConfiguration.targetNumber = @(targetNumber);
+    self.gameData.targetNumber = @(targetNumber);
     
-    self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
+    self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.targetNumber.integerValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,7 +66,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
-    gameViewController.gameConfiguration = self.gameConfiguration;
+    gameViewController.gameData = self.gameData;
 }
 
 #pragma mark - Player Action
@@ -115,7 +115,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
             self.startBarButtonItem.enabled = YES;
             
             [[NSUserDefaults standardUserDefaults] setInteger:self.targetNumber forKey:kMMXUserDefaultsPracticeTargetNumber];
-            self.gameConfiguration.targetNumber = @(self.targetNumber);
+            self.gameData.targetNumber = @(self.targetNumber);
         }
         
         self.targetNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.targetNumber];

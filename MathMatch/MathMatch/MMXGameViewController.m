@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *cardsList;
 
 @property (nonatomic, strong) NSTimer *gameClockTimer;
+@property (nonatomic, assign) NSTimeInterval gameClock;
 @property (nonatomic, strong) NSTimer *memorySpeedTimer;
 @property (nonatomic, assign) NSTimeInterval memoryTimeRemaining;
 
@@ -41,8 +42,8 @@
     
     // Draw bottom borders on the parts of the formula that the player provides.
     
-    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
-        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+    if ((self.gameData.arithmeticType == MMXArithmeticTypeSubtraction) ||
+        (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
     {
         CALayer *bottomBorderZ = [CALayer layer];
         bottomBorderZ.frame = CGRectMake(0.0, self.zNumberLabel.frame.size.height - 2.0, self.zNumberLabel.frame.size.width, 2.0);
@@ -50,8 +51,8 @@
         
         [self.zNumberLabel.layer addSublayer:bottomBorderZ];
     }
-    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+    else if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+             (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
     {
         CALayer *bottomBorderX = [CALayer layer];
         bottomBorderX.frame = CGRectMake(0.0, self.xNumberLabel.frame.size.height - 2.0, self.xNumberLabel.frame.size.width, 2.0);
@@ -66,19 +67,19 @@
     
     [self.yNumberLabel.layer addSublayer:bottomBorderY];
     
-    if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
+    if (self.gameData.arithmeticType == MMXArithmeticTypeAddition)
     {
         self.aFormulaLabel.text = @"+";
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
+    else if (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction)
     {
         self.aFormulaLabel.text = @"−";
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
+    else if (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication)
     {
         self.aFormulaLabel.text = @"×";
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
+    else if (self.gameData.arithmeticType == MMXArithmeticTypeDivision)
     {
         self.aFormulaLabel.text = @"÷";
     }
@@ -104,7 +105,7 @@
     if ([segue.identifier isEqualToString:@"MMXResultsSegue"])
     {
         MMXResultsViewController *resultsViewController = (MMXResultsViewController *)segue.destinationViewController;
-        resultsViewController.gameConfiguration = self.gameConfiguration;
+        resultsViewController.gameData = self.gameData;
     }
 }
 
@@ -122,7 +123,7 @@
     [self.gameClockTimer invalidate];
     
     NSString *secondOption;
-    if (self.gameConfiguration.gameType == MMXGameTypePractice)
+    if (self.gameData.gameType == MMXGameTypePractice)
     {
         secondOption = NSLocalizedString(@"Change Settings", nil);
     }
@@ -160,7 +161,7 @@
     MMXCardStyle randomStyle = [MMXGameData selectRandomCardStyle];
     
     // EEGG: The shining card style if the target number is 237.
-    if (self.gameConfiguration.targetNumber.integerValue == 237)
+    if (self.gameData.targetNumber.integerValue == 237)
     {
         randomStyle = MMXCardStyleOverlook;
     }
@@ -169,31 +170,31 @@
     CGFloat fontSize;
     NSArray *numberOfCardsInRow;
     
-    if (self.gameConfiguration.numberOfCards.integerValue == 8)
+    if (self.gameData.numberOfCards.integerValue == 8)
     {
         size = CGSizeMake(90.0, 90.0);
         fontSize = 33.0;
         numberOfCardsInRow = @[@3, @2, @3];
     }
-    else if (self.gameConfiguration.numberOfCards.integerValue == 12)
+    else if (self.gameData.numberOfCards.integerValue == 12)
     {
         size = CGSizeMake(80.0, 80.0);
         fontSize = 33.0;
         numberOfCardsInRow = @[@3, @3, @3, @3];
     }
-    else if (self.gameConfiguration.numberOfCards.integerValue == 16)
+    else if (self.gameData.numberOfCards.integerValue == 16)
     {
         size = CGSizeMake(70.0, 70.0);
         fontSize = 22.0;
         numberOfCardsInRow = @[@4, @4, @4, @4];
     }
-    else if (self.gameConfiguration.numberOfCards.integerValue == 20)
+    else if (self.gameData.numberOfCards.integerValue == 20)
     {
         size = CGSizeMake(60.0, 60.0);
         fontSize = 22.0;
         numberOfCardsInRow = @[@4, @4, @4, @4, @4];
     }
-    else if (self.gameConfiguration.numberOfCards.integerValue == 24)
+    else if (self.gameData.numberOfCards.integerValue == 24)
     {
         size = CGSizeMake(60.0, 60.0);
         fontSize = 22.0;
@@ -206,44 +207,44 @@
     
     NSMutableArray *unshuffledCardValues = [NSMutableArray arrayWithCapacity:0];
     
-    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction))
+    if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+        (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction))
     {
-        u_int32_t maxCardValue = floor(self.gameConfiguration.targetNumber.integerValue / 2.0);
+        u_int32_t maxCardValue = floor(self.gameData.targetNumber.integerValue / 2.0);
         
-        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards.integerValue)
+        while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
         {
             NSInteger randomValue = arc4random_uniform(maxCardValue + 1);
             
             [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber.integerValue - randomValue)]];
+            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameData.targetNumber.integerValue - randomValue)]];
         }
     }
-    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication) ||
-             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+    else if ((self.gameData.arithmeticType == MMXArithmeticTypeMultiplication) ||
+             (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
     {
-        NSMutableArray *factors = [self factorizeNumber:self.gameConfiguration.targetNumber.integerValue];
+        NSMutableArray *factors = [self factorizeNumber:self.gameData.targetNumber.integerValue];
         
         // Make sure the bucket we're selecting from has enough factors to choose from.
-        if (factors.count < self.gameConfiguration.numberOfCards.integerValue)
+        if (factors.count < self.gameData.numberOfCards.integerValue)
         {
-            while ((unshuffledCardValues.count + factors.count) < self.gameConfiguration.numberOfCards.integerValue)
+            while ((unshuffledCardValues.count + factors.count) < self.gameData.numberOfCards.integerValue)
             {
                 [unshuffledCardValues addObjectsFromArray:factors];
             }
         }
         
         // Use the factors to populate the unshuffled deck.
-        while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards.integerValue)
+        while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
         {
             // Select without replacement.
-            while (unshuffledCardValues.count < self.gameConfiguration.numberOfCards.integerValue)
+            while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
             {
                 NSInteger randomIndex = arc4random_uniform((u_int32_t)factors.count);
                 NSInteger randomValue = ((NSNumber *)factors[randomIndex]).integerValue;
                 
                 [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-                [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameConfiguration.targetNumber.integerValue / randomValue)]];
+                [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameData.targetNumber.integerValue / randomValue)]];
                 
                 [factors removeObjectAtIndex:randomIndex];
             }
@@ -255,8 +256,9 @@
     }
     
     
-    self.cardsList = [NSMutableArray arrayWithCapacity:self.gameConfiguration.numberOfCards.integerValue];
+    self.cardsList = [NSMutableArray arrayWithCapacity:self.gameData.numberOfCards.integerValue];
     self.cardsGrid = [NSMutableArray arrayWithCapacity:numberOfCardsInRow.count];
+    NSMutableArray *cardValues = [NSMutableArray arrayWithCapacity:self.gameData.numberOfCards.integerValue];
     
     for (NSInteger i = 0; i < numberOfCardsInRow.count; i++)
     {
@@ -269,13 +271,13 @@
             MMXCard *card = [[MMXCard alloc] initWithValue:[[unshuffledCardValues objectAtIndex:randomIndex] integerValue]];
             
             MMXCardViewController *cardViewController;
-            if (self.gameConfiguration.cardStyle == MMXCardStyleNone)
+            if (self.gameData.cardStyle == MMXCardStyleNone)
             {
                 cardViewController = [[MMXCardViewController alloc] initWithCardStyle:randomStyle];
             }
             else
             {
-                cardViewController = [[MMXCardViewController alloc] initWithCardStyle:self.gameConfiguration.cardStyle];
+                cardViewController = [[MMXCardViewController alloc] initWithCardStyle:self.gameData.cardStyle];
             }
             cardViewController.card = card;
             cardViewController.delegate = self;
@@ -286,10 +288,13 @@
             
             [rowOfCards addObject:cardViewController];
             [self.cardsList addObject:cardViewController];
+            [cardValues addObject:@(card.value)];
         }
         
         [self.cardsGrid addObject:rowOfCards];
     }
+    
+    self.gameData.cardsValues = cardValues;
 }
 
 - (void)arrangDeckOntoTableauAndStartDealing
@@ -361,33 +366,34 @@
     self.cardsGrid = nil;
     self.cardsList = nil;
     
+    self.gameClock = 0.0;
     self.gameClockTimer = nil;
     self.memorySpeedTimer = nil;
     self.memoryTimeRemaining = 0.0;
     
     self.shouldEndGameAfterAnimation = NO;
     
-    [self.gameConfiguration resetGameStatistics];
+    [self.gameData resetGameStatistics];
     
     self.xNumberLabel.text = @"";
     self.yNumberLabel.text = @"";
     self.zNumberLabel.text = @"";
     
-    if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition)
+    if (self.gameData.arithmeticType == MMXArithmeticTypeAddition)
     {
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.targetNumber.integerValue];
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction)
+    else if (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction)
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.targetNumber.integerValue];
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication)
+    else if (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication)
     {
-        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
+        self.zNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.targetNumber.integerValue];
     }
-    else if (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision)
+    else if (self.gameData.arithmeticType == MMXArithmeticTypeDivision)
     {
-        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.targetNumber.integerValue];
+        self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.targetNumber.integerValue];
     }
     
     self.customNavigationBarTitle.text = @"";
@@ -413,17 +419,17 @@
 
 - (void)updateClock
 {
-    self.gameConfiguration.totalElapsedTime += 1.0 / 60.0;
+    self.gameClock += 1.0 / 60.0;
     
     // Don't let the clock go past 90 minutes.
-    if (self.gameConfiguration.totalElapsedTime > (60.0 * 90.0))
+    if (self.gameClock > (60.0 * 90.0))
     {
         [self.gameClockTimer invalidate];
         
-        self.gameConfiguration.totalElapsedTime = 60.0 * 90.0;
+        self.gameClock = 60.0 * 90.0;
     }
     
-    NSString *time = [MMXTimeIntervalFormatter stringWithInterval:self.gameConfiguration.totalElapsedTime
+    NSString *time = [MMXTimeIntervalFormatter stringWithInterval:self.gameClock
                                                     forFormatType:MMXTimeIntervalFormatTypeShort];
     self.customNavigationBarTitle.text = [NSString stringWithFormat:@"Time - %@", time];
 }
@@ -431,13 +437,13 @@
 - (void)evaluateFormula
 {
     NSInteger result = -1;
-    if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-        (self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction))
+    if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+        (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction))
     {
         result = self.firstCardViewController.card.value + self.secondCardViewController.card.value;
     }
-    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication) ||
-             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+    else if ((self.gameData.arithmeticType == MMXArithmeticTypeMultiplication) ||
+             (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
     {
         result = self.firstCardViewController.card.value * self.secondCardViewController.card.value;
     }
@@ -446,9 +452,9 @@
         NSAssert(YES, @"MMX: Arithmetic Type not set.");
     }
     
-    self.gameConfiguration.attemptedMatches += 1;
+    self.gameData.attemptedMatches = [NSNumber numberWithInteger:(self.gameData.attemptedMatches.integerValue + 1)];
     
-    if (result == self.gameConfiguration.targetNumber.integerValue)
+    if (result == self.gameData.targetNumber.integerValue)
     {
         [self highlightCorrectnessViewOnSuccess:YES];
         
@@ -478,7 +484,7 @@
     }
     else
     {
-        self.gameConfiguration.incorrectMatches += 1;
+        self.gameData.incorrectMatches = [NSNumber numberWithInteger:(self.gameData.incorrectMatches.integerValue + 1)];
         
         [self highlightCorrectnessViewOnSuccess:NO];
         [self animateCardsAfterEvaluationSuccess:NO];
@@ -494,9 +500,10 @@
 
 - (void)endGameAndShowResults
 {
-    self.gameState = MMXGameStateOver;
-    
     [self.gameClockTimer invalidate];
+    
+    self.gameState = MMXGameStateOver;
+    self.gameData.completionTime = @(self.gameClock);
     
     [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
 }
@@ -522,7 +529,7 @@
                      {
                          if (finished && (index == (self.cardsList.count - 1)))
                          {
-                             if (self.gameConfiguration.memorySpeed != MMXMemorySpeedNone)
+                             if (self.gameData.memorySpeed != MMXMemorySpeedNone)
                              {
                                  [self flipCardFaceUpWithIndex:0];
                              }
@@ -588,7 +595,7 @@
     else
     {
         self.memoryTimeRemaining = 5.0;
-        if (self.gameConfiguration.memorySpeed == MMXMemorySpeedSlow)
+        if (self.gameData.memorySpeed == MMXMemorySpeedSlow)
         {
             self.memoryTimeRemaining = 10.0;
         }
@@ -643,14 +650,14 @@
         {
             self.equationCorrectnessView.backgroundColor = [UIColor mmx_whiteColor];
             
-            if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-                (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+            if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+                (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
             {
                 self.xNumberLabel.text = @"";
                 self.yNumberLabel.text = @"";
             }
-            else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
-                    (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+            else if ((self.gameData.arithmeticType == MMXArithmeticTypeSubtraction) ||
+                    (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
             {
                 self.yNumberLabel.text = @"";
                 self.zNumberLabel.text = @"";
@@ -929,8 +936,8 @@
     {
         return;
     }
-    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeAddition) ||
-             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeMultiplication))
+    else if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+             (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
@@ -941,8 +948,8 @@
             self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
     }
-    else if ((self.gameConfiguration.arithmeticType == MMXArithmeticTypeSubtraction) ||
-             (self.gameConfiguration.arithmeticType == MMXArithmeticTypeDivision))
+    else if ((self.gameData.arithmeticType == MMXArithmeticTypeSubtraction) ||
+             (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
@@ -986,7 +993,7 @@
     {
         [self terminateGameBeforeFinishing];
         
-        if (self.gameConfiguration.gameType == MMXGameTypePractice) // Player wanted to change the settings.
+        if (self.gameData.gameType == MMXGameTypePractice) // Player wanted to change the settings.
         {
             [self performSegueWithIdentifier:@"MMXUnwindToPracticeConfigurationSegue" sender:self];
         }

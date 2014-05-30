@@ -55,28 +55,26 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
     MMXCardStyleOverlook
 };
 
-@interface MMXGameData : NSObject
+@interface MMXGameData : NSManagedObject
 
 @property (nonatomic, assign) MMXGameType gameType;
 @property (nonatomic, strong) NSNumber *lessonID;
 
 @property (nonatomic, strong) NSNumber *targetNumber;
 @property (nonatomic, strong) NSNumber *numberOfCards;
-
+@property (nonatomic, strong) NSArray *cardsValues;
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXMemorySpeed memorySpeed;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;
-
 @property (nonatomic, assign) MMXCardStyle cardStyle;
 
-@property (nonatomic, assign) CGFloat penaltyMultiplier;
+@property (nonatomic, strong) NSNumber *completionTime;
+@property (nonatomic, strong) NSNumber *attemptedMatches;
+@property (nonatomic, strong) NSNumber *incorrectMatches;
+@property (nonatomic, strong) NSNumber *penaltyMultiplier;
 
-@property (nonatomic, assign) NSTimeInterval totalElapsedTime;
-@property (nonatomic, assign) NSInteger attemptedMatches;
-@property (nonatomic, assign) NSInteger incorrectMatches;
-
-@property (nonatomic, assign) NSTimeInterval totalTimeWithPenalty;
-@property (nonatomic, assign) NSInteger starRating;
+@property (nonatomic, strong) NSNumber *completionTimeWithPenalty;
+@property (nonatomic, strong) NSNumber *starRating;
 
 + (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson;
 

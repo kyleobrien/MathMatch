@@ -8,12 +8,12 @@
 
 #import "MMXTopScore.h"
 
-
 @implementation MMXTopScore
 
 @dynamic lessonID;
 @dynamic stars;
 @dynamic time;
+
 @dynamic gameData;
 
 @end

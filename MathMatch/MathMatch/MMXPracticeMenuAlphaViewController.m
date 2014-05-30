@@ -11,7 +11,7 @@
 
 @interface MMXPracticeMenuAlphaViewController ()
 
-@property (nonatomic, strong) MMXGameData *gameConfiguration;
+@property (nonatomic, strong) MMXGameData *gameData;
 
 @end
 
@@ -27,9 +27,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.gameConfiguration = [[MMXGameData alloc] init];
-        self.gameConfiguration.gameType = MMXGameTypePractice;
-        self.gameConfiguration.penaltyMultiplier = 5.0;
+        self.gameData = [[MMXGameData alloc] init];
+        self.gameData.gameType = MMXGameTypePractice;
+        self.gameData.penaltyMultiplier = @5.0;
     }
     
     return self;
@@ -61,7 +61,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MMXPracticeMenuBetaViewController *betaViewController = (MMXPracticeMenuBetaViewController *)segue.destinationViewController;
-    betaViewController.gameConfiguration = self.gameConfiguration;
+    betaViewController.gameData = self.gameData;
 }
 
 #pragma mark - Player Action
@@ -79,27 +79,27 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     if (button == self.number8Button)
     {
-        self.gameConfiguration.numberOfCards = @8;
+        self.gameData.numberOfCards = @8;
         [userDefaults setInteger:8 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number12Button)
     {
-        self.gameConfiguration.numberOfCards = @12;
+        self.gameData.numberOfCards = @12;
         [userDefaults setInteger:12 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number16Button)
     {
-        self.gameConfiguration.numberOfCards = @16;
+        self.gameData.numberOfCards = @16;
         [userDefaults setInteger:16 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number20Button)
     {
-        self.gameConfiguration.numberOfCards = @20;
+        self.gameData.numberOfCards = @20;
         [userDefaults setInteger:20 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
     else if (button == self.number24Button)
     {
-        self.gameConfiguration.numberOfCards = @24;
+        self.gameData.numberOfCards = @24;
         [userDefaults setInteger:24 forKey:kMMXUserDefaultsPracticeNumberOfCards];
     }
 }
@@ -116,22 +116,22 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     if (button == self.arithmeticAdditionButton)
     {
-        self.gameConfiguration.arithmeticType = MMXArithmeticTypeAddition;
+        self.gameData.arithmeticType = MMXArithmeticTypeAddition;
         [userDefaults setInteger:MMXArithmeticTypeAddition forKey:kMMXUserDefaultsPracticeArithmeticType];
     }
     else if (button == self.arithmeticSubtractionButton)
     {
-        self.gameConfiguration.arithmeticType = MMXArithmeticTypeSubtraction;
+        self.gameData.arithmeticType = MMXArithmeticTypeSubtraction;
         [userDefaults setInteger:MMXArithmeticTypeSubtraction forKey:kMMXUserDefaultsPracticeArithmeticType];
     }
     else if (button == self.arithmeticMultiplicationButton)
     {
-        self.gameConfiguration.arithmeticType = MMXArithmeticTypeMultiplication;
+        self.gameData.arithmeticType = MMXArithmeticTypeMultiplication;
         [userDefaults setInteger:MMXArithmeticTypeMultiplication forKey:kMMXUserDefaultsPracticeArithmeticType];
     }
     else if (button == self.arithmeticDivisionButton)
     {
-        self.gameConfiguration.arithmeticType = MMXArithmeticTypeDivision;
+        self.gameData.arithmeticType = MMXArithmeticTypeDivision;
         [userDefaults setInteger:MMXArithmeticTypeDivision forKey:kMMXUserDefaultsPracticeArithmeticType];
     }
 }
@@ -147,17 +147,17 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     if (button == self.memorySlowButton)
     {
-        self.gameConfiguration.memorySpeed = MMXMemorySpeedSlow;
+        self.gameData.memorySpeed = MMXMemorySpeedSlow;
         [userDefaults setInteger:MMXMemorySpeedSlow forKey:kMMXUserDefaultsPracticeMemorySpeed];
     }
     else if (button == self.memoryFastButton)
     {
-        self.gameConfiguration.memorySpeed = MMXMemorySpeedFast;
+        self.gameData.memorySpeed = MMXMemorySpeedFast;
         [userDefaults setInteger:MMXMemorySpeedFast forKey:kMMXUserDefaultsPracticeMemorySpeed];
     }
     else if (button == self.memoryNoneButton)
     {
-        self.gameConfiguration.memorySpeed = MMXMemorySpeedNone;
+        self.gameData.memorySpeed = MMXMemorySpeedNone;
         [userDefaults setInteger:MMXMemorySpeedNone forKey:kMMXUserDefaultsPracticeMemorySpeed];
     }
 }
@@ -174,22 +174,22 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     if (button == self.music1Button)
     {
-        self.gameConfiguration.musicTrack = MMXMusicTrack1;
+        self.gameData.musicTrack = MMXMusicTrack1;
         [userDefaults setInteger:MMXMusicTrack1 forKey:kMMXUserDefaultsPracticeMusic];
     }
     else if (button == self.music2Button)
     {
-        self.gameConfiguration.musicTrack = MMXMusicTrack2;
+        self.gameData.musicTrack = MMXMusicTrack2;
         [userDefaults setInteger:MMXMusicTrack2 forKey:kMMXUserDefaultsPracticeMusic];
     }
     else if (button == self.music3Button)
     {
-        self.gameConfiguration.musicTrack = MMXMusicTrack3;
+        self.gameData.musicTrack = MMXMusicTrack3;
         [userDefaults setInteger:MMXMusicTrack3 forKey:kMMXUserDefaultsPracticeMusic];
     }
     else if (button == self.musicOffButton)
     {
-        self.gameConfiguration.musicTrack = MMXMusicTrackOff;
+        self.gameData.musicTrack = MMXMusicTrackOff;
         [userDefaults setInteger:MMXMusicTrackOff forKey:kMMXUserDefaultsPracticeMusic];
     }
 }
@@ -234,7 +234,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         numberOfCards = 8;
     }
     
-    self.gameConfiguration.numberOfCards = @(numberOfCards);
+    self.gameData.numberOfCards = @(numberOfCards);
     
     // Arithmetic Type --------------
     MMXArithmeticType arithmeticType = [userDefaults integerForKey:kMMXUserDefaultsPracticeArithmeticType];
@@ -260,7 +260,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         arithmeticType = MMXArithmeticTypeAddition;
     }
     
-    self.gameConfiguration.arithmeticType = arithmeticType;
+    self.gameData.arithmeticType = arithmeticType;
     
     // Memory Speed --------------
     MMXMemorySpeed memorySpeed = [userDefaults integerForKey:kMMXUserDefaultsPracticeMemorySpeed];
@@ -282,7 +282,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         memorySpeed = MMXMemorySpeedSlow;
     }
     
-    self.gameConfiguration.memorySpeed = memorySpeed;
+    self.gameData.memorySpeed = memorySpeed;
     
     // Music Track --------------
     MMXMusicTrack musicTrack = [userDefaults integerForKey:kMMXUserDefaultsPracticeMusic];
@@ -308,7 +308,7 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         musicTrack = MMXMusicTrack1;
     }
     
-    self.gameConfiguration.musicTrack = musicTrack;
+    self.gameData.musicTrack = musicTrack;
 }
 
 @end

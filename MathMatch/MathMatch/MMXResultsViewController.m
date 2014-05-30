@@ -30,16 +30,17 @@
 {
     [super viewDidLoad];
     
-    self.timeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameConfiguration.totalElapsedTime
+    self.timeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTime.doubleValue
                                                          forFormatType:MMXTimeIntervalFormatTypeLong];
-    self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameConfiguration.incorrectMatches];
-    self.penaltyMultiplierLabel.text = [NSString stringWithFormat:@"x %2.1fs", self.gameConfiguration.penaltyMultiplier];
+    self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.incorrectMatches.integerValue];
+    self.penaltyMultiplierLabel.text = [NSString stringWithFormat:@"x %2.1fs", self.gameData.penaltyMultiplier.floatValue];
     
-    NSTimeInterval penaltyTime = self.gameConfiguration.incorrectMatches * self.gameConfiguration.penaltyMultiplier;
+    NSTimeInterval penaltyTime = self.gameData.incorrectMatches.integerValue * self.gameData.penaltyMultiplier.floatValue;
+    self.gameData.completionTimeWithPenalty = [NSNumber numberWithDouble:penaltyTime];
     self.penaltyTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:penaltyTime
                                                                 forFormatType:MMXTimeIntervalFormatTypeLong];
     
-    NSTimeInterval totalTime = self.gameConfiguration.totalElapsedTime + penaltyTime;
+    NSTimeInterval totalTime = self.gameData.completionTime.doubleValue + penaltyTime;
     self.totalTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:totalTime
                                                               forFormatType:MMXTimeIntervalFormatTypeLong];
     
@@ -76,7 +77,7 @@
 - (IBAction)playerTappedMenuButton:(id)sender
 {
     NSString *secondOption;
-    if (self.gameConfiguration.gameType == MMXGameTypePractice)
+    if (self.gameData.gameType == MMXGameTypePractice)
     {
         secondOption = NSLocalizedString(@"Change Settings", nil);
     }
@@ -115,7 +116,7 @@
     else if (buttonIndex == 3)
     {
         // Player wanted to change the settings or the course.
-        if (self.gameConfiguration.gameType == MMXGameTypePractice)
+        if (self.gameData.gameType == MMXGameTypePractice)
         {
             [self performSegueWithIdentifier:@"MMXUnwindToPracticeConfigurationSegue" sender:self];
         }

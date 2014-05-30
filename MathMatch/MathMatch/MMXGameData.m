@@ -10,6 +10,20 @@
 
 @implementation MMXGameData
 
+@dynamic lessonID;
+
+@dynamic targetNumber;
+@dynamic numberOfCards;
+@dynamic cardsValues;
+
+@dynamic completionTime;
+@dynamic attemptedMatches;
+@dynamic incorrectMatches;
+@dynamic penaltyMultiplier;
+
+@dynamic completionTimeWithPenalty;
+@dynamic starRating;
+
 + (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson
 {
     MMXGameData *gameConfiguration = [[MMXGameData alloc] init];
@@ -62,7 +76,7 @@
     
     gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
     
-    gameConfiguration.penaltyMultiplier = ((NSNumber *)lesson[@"penaltyMultiplier"]).floatValue;
+    gameConfiguration.penaltyMultiplier = lesson[@"penaltyMultiplier"];
     
     return gameConfiguration;
 }
@@ -74,12 +88,94 @@
 
 - (void)resetGameStatistics
 {
-    self.totalElapsedTime = 0.0;
-    self.attemptedMatches = 0;
-    self.incorrectMatches = 0;
+    self.completionTime = @0.0;
+    self.attemptedMatches = @0;
+    self.incorrectMatches = @0;
     
-    self.totalTimeWithPenalty = 0.0;
-    self.starRating = 0;
+    self.completionTimeWithPenalty = @0.0;
+    self.starRating = @0;
+}
+
+#pragma mark - Enum Properties for Core Data
+
+- (void)setGameType:(MMXGameType)gameType
+{
+    [self willChangeValueForKey:@"gameType"];
+    [self setPrimitiveValue:@(gameType) forKey:@"gameType"];
+    [self didChangeValueForKey:@"gameType"];
+}
+
+- (MMXGameType)gameType
+{
+    [self willAccessValueForKey:@"gameType"];
+    NSNumber *number = [self primitiveValueForKey:@"gameType"];
+    [self didAccessValueForKey:@"gameType"];
+    
+    return number.integerValue;
+}
+
+- (void)setArithmeticType:(MMXArithmeticType)arithmeticType
+{
+    [self willChangeValueForKey:@"arithmeticType"];
+    [self setPrimitiveValue:@(arithmeticType) forKey:@"arithmeticType"];
+    [self didChangeValueForKey:@"arithmeticType"];
+}
+
+- (MMXArithmeticType)arithmeticType
+{
+    [self willAccessValueForKey:@"arithmeticType"];
+    NSNumber *number = [self primitiveValueForKey:@"arithmeticType"];
+    [self didAccessValueForKey:@"arithmeticType"];
+    
+    return number.integerValue;
+}
+
+- (void)setMemorySpeed:(MMXMemorySpeed)memorySpeed
+{
+    [self willChangeValueForKey:@"memorySpeed"];
+    [self setPrimitiveValue:@(memorySpeed) forKey:@"memorySpeed"];
+    [self didChangeValueForKey:@"memorySpeed"];
+}
+
+- (MMXMemorySpeed)memorySpeed
+{
+    [self willAccessValueForKey:@"memorySpeed"];
+    NSNumber *number = [self primitiveValueForKey:@"memorySpeed"];
+    [self didAccessValueForKey:@"memorySpeed"];
+    
+    return number.integerValue;
+}
+
+- (void)setMusicTrack:(MMXMusicTrack)musicTrack
+{
+    [self willChangeValueForKey:@"musicTrack"];
+    [self setPrimitiveValue:@(musicTrack) forKey:@"musicTrack"];
+    [self didChangeValueForKey:@"musicTrack"];
+}
+
+- (MMXMusicTrack)musicTrack
+{
+    [self willAccessValueForKey:@"musicTrack"];
+    NSNumber *number = [self primitiveValueForKey:@"musicTrack"];
+    [self didAccessValueForKey:@"musicTrack"];
+    
+    return number.integerValue;
+}
+
+- (void)setCardStyle:(MMXCardStyle)cardStyle
+{
+    [self willChangeValueForKey:@"cardStyle"];
+    [self setPrimitiveValue:@(cardStyle) forKey:@"cardStyle"];
+    [self didChangeValueForKey:@"cardStyle"];
+}
+
+- (MMXCardStyle)cardStyle
+{
+    [self willAccessValueForKey:@"cardStyle"];
+    NSNumber *number = [self primitiveValueForKey:@"cardStyle"];
+    [self didAccessValueForKey:@"cardStyle"];
+    
+    return number.integerValue;
 }
 
 @end
