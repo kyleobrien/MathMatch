@@ -69,39 +69,42 @@
     
     
     
-    // Pull out top score.
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
-                                                         inManagedObjectContext:self.managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:entityDescription];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID == %@", self.gameData.lessonID];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *fetchError = nil;
-    NSArray *fetchedResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
-    
-    MMXTopScore *topScoreForLesson;
-    if (fetchedResults.count > 0)
+    if (self.gameData.gameType == MMXGameTypeCourse)
     {
-        topScoreForLesson = fetchedResults[0];
-        if (topScoreForLesson.time < self.gameData.completionTimeWithPenalty)
+        // Pull out top score.
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
+                                                             inManagedObjectContext:self.managedObjectContext];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:entityDescription];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID == %@", self.gameData.lessonID];
+        [fetchRequest setPredicate:predicate];
+        
+        NSError *fetchError = nil;
+        NSArray *fetchedResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+        
+        MMXTopScore *topScoreForLesson;
+        if (fetchedResults.count > 0)
         {
-            topScoreForLesson.lessonID = [self.gameData.lessonID copy];
-            topScoreForLesson.time = [self.gameData.completionTimeWithPenalty copy];
-            topScoreForLesson.stars = [self.gameData.starRating copy];
+            topScoreForLesson = fetchedResults[0];
+            if (topScoreForLesson.time < self.gameData.completionTimeWithPenalty)
+            {
+                topScoreForLesson.lessonID = [self.gameData.lessonID copy];
+                topScoreForLesson.time = [self.gameData.completionTimeWithPenalty copy];
+                topScoreForLesson.stars = [self.gameData.starRating copy];
+                topScoreForLesson.gameData = self.gameData;
+            }
+        }
+        else
+        {
+            topScoreForLesson = [NSEntityDescription insertNewObjectForEntityForName:@"MMXTopScore"
+                                                              inManagedObjectContext:self.managedObjectContext];
+            
+            topScoreForLesson.lessonID = self.gameData.lessonID;
+            topScoreForLesson.time = self.gameData.completionTimeWithPenalty;
+            topScoreForLesson.stars = self.gameData.starRating;
             topScoreForLesson.gameData = self.gameData;
         }
-    }
-    else
-    {
-        topScoreForLesson = [NSEntityDescription insertNewObjectForEntityForName:@"MMXTopScore"
-                                                          inManagedObjectContext:self.managedObjectContext];
-        
-        topScoreForLesson.lessonID = self.gameData.lessonID;
-        topScoreForLesson.time = self.gameData.completionTimeWithPenalty;
-        topScoreForLesson.stars = self.gameData.starRating;
-        topScoreForLesson.gameData = self.gameData;
     }
     
     
@@ -113,7 +116,10 @@
         NSLog(@"MOC: %@", error.description);
     }
     
-    [self.menuButton changeButtonToColor:[UIColor mmx_blueColor]];
+    if (self.gameData.gameType == MMXGameTypeCourse)
+    {
+        [self.menuButton changeButtonToColor:[UIColor mmx_blueColor]];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

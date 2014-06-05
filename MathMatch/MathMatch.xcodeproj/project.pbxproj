@@ -207,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				27A0867D18937D5800C318DE /* Main */,
+				27F3C27A1928FAC500EB5D59 /* Classes and Lessons */,
 				27A0867818930EE600C318DE /* Practice */,
 				27C687D718C3BE9E0060D451 /* Model */,
 				27572EA518A1FF56007EAF8A /* Component UI */,
@@ -219,7 +220,6 @@
 				275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */,
 				275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */,
 				275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */,
-				27F3C27A1928FAC500EB5D59 /* Classes and Lessons */,
 				279EC21E18884A890087E0DB /* Main_iPhone.storyboard */,
 				279EC22118884A890087E0DB /* Main_iPad.storyboard */,
 				279EC22718884A890087E0DB /* CLXMasterViewController.h */,

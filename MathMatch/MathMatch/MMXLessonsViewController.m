@@ -13,49 +13,17 @@
 
 @interface MMXLessonsViewController ()
 
-@property (nonatomic, strong) NSArray *fetchedResults;
+@property (nonatomic, strong) NSArray *fetchedTopScores;
 
 @end
 
 @implementation MMXLessonsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    NSMutableArray *lessonIDs = [NSMutableArray arrayWithCapacity:self.lessons.count];
-    for (NSDictionary *lesson in self.lessons)
-    {
-        [lessonIDs addObject:lesson[@"lessonID"]];
-    }
-    
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
-                                                         inManagedObjectContext:self.managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:entityDescription];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID IN %@", lessonIDs];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *fetchError = nil;
-    self.fetchedResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
-    
-    // TODO: Refresh and reload table when a game was played.
+    [self fetchTopScoresForLessonsInThisClass];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,13 +33,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blueColor];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -88,7 +50,7 @@
     NSDictionary *lesson = self.lessons[indexPath.row];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID == %@", lesson[@"lessonID"]];
-    NSArray *results = [self.fetchedResults filteredArrayUsingPredicate:predicate];
+    NSArray *results = [self.fetchedTopScores filteredArrayUsingPredicate:predicate];
     
     MMXLessonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXLessonCell" forIndexPath:indexPath];
     cell.lessonTitleLabel.text = lesson[@"title"];
@@ -107,47 +69,8 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"MMXBeginLessonSegue"])
@@ -164,6 +87,27 @@
 - (IBAction)unwindToLessonsSegue:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+
+#pragma mark - Helpers
+
+- (void)fetchTopScoresForLessonsInThisClass
+{
+    NSMutableArray *lessonIDsInThisClass = [NSMutableArray arrayWithCapacity:self.lessons.count];
+    for (NSDictionary *lesson in self.lessons)
+    {
+        [lessonIDsInThisClass addObject:lesson[@"lessonID"]];
+    }
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDescription];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"lessonID IN %@", lessonIDsInThisClass]];
+    
+    NSError *fetchError = nil;
+    self.fetchedTopScores = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
 }
 
 - (MMXGameData *)gameConfigurationFromLesson:(NSDictionary *)lesson
@@ -215,8 +159,7 @@
         NSAssert(YES, @"MMX: Memory Speed in JSON is not valid.");
     }
     
-    // TODO: Need music tracks first.
-    //"musicTrack" : ""
+    // TODO: Need music tracks .
     
     gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
     
