@@ -7,8 +7,11 @@
 //
 
 #import "KMODecisionView.h"
+#import "MMXFlatButton.h"
 
 @interface MMXResultsViewController : UIViewController <KMODecisionViewDelegate>
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) MMXGameData *gameData;
 
@@ -19,6 +22,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *totalTimeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *bestTimeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *recordLabel;
+
+@property (nonatomic, weak) IBOutlet MMXFlatButton *menuButton;
 
 - (IBAction)playerTappedMenuButton:(id)sender;
 

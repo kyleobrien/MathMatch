@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-@interface MMXNavigationController : UINavigationController
+@interface MMXNavigationController : UINavigationController <UINavigationControllerDelegate>
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end

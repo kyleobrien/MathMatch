@@ -66,6 +66,7 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
+    gameViewController.managedObjectContext = self.managedObjectContext;
     gameViewController.gameData = self.gameData;
 }
 

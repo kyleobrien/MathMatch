@@ -18,7 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.navController = (UINavigationController *)self.window.rootViewController;
+    self.navController = (MMXNavigationController *)self.window.rootViewController;
+    self.navController.managedObjectContext = self.managedObjectContext;
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

@@ -8,6 +8,7 @@
 
 #import "MMXResultsViewController.h"
 #import "MMXTimeIntervalFormatter.h"
+#import "MMXTopScore.h"
 
 @interface MMXResultsViewController ()
 
@@ -40,14 +41,79 @@
     self.penaltyTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:penaltyTime
                                                                 forFormatType:MMXTimeIntervalFormatTypeLong];
     
-    NSTimeInterval totalTime = self.gameData.completionTime.doubleValue + penaltyTime;
-    self.totalTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:totalTime
+    self.gameData.completionTimeWithPenalty = @(self.gameData.completionTime.doubleValue + penaltyTime);
+    self.totalTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
                                                               forFormatType:MMXTimeIntervalFormatTypeLong];
+    
+    if (self.gameData.gameType == MMXGameTypeCourse)
+    {
+        if (self.gameData.completionTimeWithPenalty.floatValue < self.gameData.threeStarTime.floatValue)
+        {
+            self.gameData.starRating = @3;
+        }
+        else if (self.gameData.completionTimeWithPenalty.floatValue < self.gameData.twoStarTime.floatValue)
+        {
+            self.gameData.starRating = @2;
+        }
+        else
+        {
+            self.gameData.starRating = @1;
+        }
+    }
+    
     
     // TODO: actaully implement the logic to show "new record".
     self.recordLabel.hidden = YES;
     
     // TODO: Make the best time bigger if it's a record, just like total time.
+    
+    
+    
+    // Pull out top score.
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID == %@", self.gameData.lessonID];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchedResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+    
+    MMXTopScore *topScoreForLesson;
+    if (fetchedResults.count > 0)
+    {
+        topScoreForLesson = fetchedResults[0];
+        if (topScoreForLesson.time < self.gameData.completionTimeWithPenalty)
+        {
+            topScoreForLesson.lessonID = [self.gameData.lessonID copy];
+            topScoreForLesson.time = [self.gameData.completionTimeWithPenalty copy];
+            topScoreForLesson.stars = [self.gameData.starRating copy];
+            topScoreForLesson.gameData = self.gameData;
+        }
+    }
+    else
+    {
+        topScoreForLesson = [NSEntityDescription insertNewObjectForEntityForName:@"MMXTopScore"
+                                                          inManagedObjectContext:self.managedObjectContext];
+        
+        topScoreForLesson.lessonID = self.gameData.lessonID;
+        topScoreForLesson.time = self.gameData.completionTimeWithPenalty;
+        topScoreForLesson.stars = self.gameData.starRating;
+        topScoreForLesson.gameData = self.gameData;
+    }
+    
+    
+    NSError *error = nil;
+    //[self.managedObjectContext save:&error];
+    
+    if (error)
+    {
+        NSLog(@"MOC: %@", error.description);
+    }
+    
+    [self.menuButton changeButtonToColor:[UIColor mmx_blueColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -8,6 +8,8 @@
 
 @interface MMXLessonsViewController : UITableViewController
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, strong) NSArray *lessons;
 
 - (IBAction)unwindToLessonsSegue:(UIStoryboardSegue *)unwindSegue;

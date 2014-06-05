@@ -105,6 +105,7 @@
     if ([segue.identifier isEqualToString:@"MMXResultsSegue"])
     {
         MMXResultsViewController *resultsViewController = (MMXResultsViewController *)segue.destinationViewController;
+        resultsViewController.managedObjectContext = self.managedObjectContext;
         resultsViewController.gameData = self.gameData;
     }
 }
@@ -150,6 +151,27 @@
 
 - (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue
 {
+    MMXGameData *gameData = [NSEntityDescription insertNewObjectForEntityForName:@"MMXGameData"
+                                                          inManagedObjectContext:self.managedObjectContext];
+    
+    gameData.gameType = self.gameData.gameType;
+    gameData.lessonID = [self.gameData.lessonID copy];
+    
+    gameData.targetNumber = @(self.gameData.targetNumber.intValue);
+    gameData.numberOfCards = @(self.gameData.numberOfCards.intValue);
+    
+    gameData.arithmeticType = self.gameData.arithmeticType;
+    gameData.memorySpeed = self.gameData.memorySpeed;
+    gameData.musicTrack = self.gameData.musicTrack;
+    gameData.cardStyle = self.gameData.cardStyle;
+    
+    gameData.penaltyMultiplier = @(self.gameData.penaltyMultiplier.floatValue);
+    gameData.twoStarTime = @(self.gameData.twoStarTime.floatValue);
+    gameData.threeStarTime = @(self.gameData.threeStarTime.floatValue);
+    
+    self.gameData = gameData;
+
+    
     self.customNavigationBarTitle.text = @"";
     [self removeCardFromTableauWithIndex:0];
 }
@@ -258,7 +280,10 @@
     
     self.cardsList = [NSMutableArray arrayWithCapacity:self.gameData.numberOfCards.integerValue];
     self.cardsGrid = [NSMutableArray arrayWithCapacity:numberOfCardsInRow.count];
-    NSMutableArray *cardValues = [NSMutableArray arrayWithCapacity:self.gameData.numberOfCards.integerValue];
+    
+    NSMutableString *commaSeparatedCardValues = [NSMutableString stringWithString:@""];
+    
+    self.gameData.cardsValuesSeparatedByCommas = @"";
     
     for (NSInteger i = 0; i < numberOfCardsInRow.count; i++)
     {
@@ -288,13 +313,21 @@
             
             [rowOfCards addObject:cardViewController];
             [self.cardsList addObject:cardViewController];
-            [cardValues addObject:@(card.value)];
+            
+            if (i == 0)
+            {
+                [commaSeparatedCardValues appendFormat:@"%ld", (long)card.value];
+            }
+            else
+            {
+                [commaSeparatedCardValues appendFormat:@",%ld", (long)card.value];
+            }
         }
         
         [self.cardsGrid addObject:rowOfCards];
     }
     
-    self.gameData.cardsValues = cardValues;
+    self.gameData.cardsValuesSeparatedByCommas = commaSeparatedCardValues;
 }
 
 - (void)arrangDeckOntoTableauAndStartDealing
@@ -896,7 +929,7 @@
     
     if (self.gameState == MMXGameStatePreGame)
     {
-        shouldFlip = YES;
+        //shouldFlip = YES;
     }
     else if ((self.gameState == MMXGameStateStarted) || (self.gameState == MMXGameStateNoCardsFlipped))
     {

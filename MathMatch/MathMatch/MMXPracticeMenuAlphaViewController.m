@@ -22,22 +22,13 @@ NSString * const kMMXUserDefaultsPracticeArithmeticType = @"MMXUserDefaultsPract
 NSString * const kMMXUserDefaultsPracticeMemorySpeed = @"MMXUserDefaultsPracticeMemorySpeed";
 NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic";
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        self.gameData = [[MMXGameData alloc] init];
-        self.gameData.gameType = MMXGameTypePractice;
-        self.gameData.penaltyMultiplier = @5.0;
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
+    self.gameData = [NSEntityDescription insertNewObjectForEntityForName:@"MMXGameData" inManagedObjectContext:self.managedObjectContext];
+    self.gameData.gameType = MMXGameTypePractice;
+    self.gameData.penaltyMultiplier = @5.0;
     
     [self loadUserDefaultsAndSetInterface];
 }
@@ -61,7 +52,13 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MMXPracticeMenuBetaViewController *betaViewController = (MMXPracticeMenuBetaViewController *)segue.destinationViewController;
+    betaViewController.managedObjectContext = self.managedObjectContext;
     betaViewController.gameData = self.gameData;
+}
+
+- (IBAction)unwindToPracticeConfiguration:(UIStoryboardSegue *)unwindSegue
+{
+    
 }
 
 #pragma mark - Player Action
@@ -192,11 +189,6 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
         self.gameData.musicTrack = MMXMusicTrackOff;
         [userDefaults setInteger:MMXMusicTrackOff forKey:kMMXUserDefaultsPracticeMusic];
     }
-}
-
-- (IBAction)unwindToPracticeConfiguration:(UIStoryboardSegue *)unwindSegue
-{
-    
 }
 
 #pragma mark - Other Instance Methods

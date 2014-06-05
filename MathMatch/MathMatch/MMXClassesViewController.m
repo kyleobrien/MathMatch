@@ -76,6 +76,7 @@
         
         MMXLessonsViewController *lessonsViewController = (MMXLessonsViewController *)segue.destinationViewController;
         lessonsViewController.title = class[@"title"];
+        lessonsViewController.managedObjectContext = self.managedObjectContext;
         lessonsViewController.lessons = class[@"lessons"];
     }
 }

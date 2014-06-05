@@ -10,6 +10,8 @@
 
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeTargetNumber;
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, strong) MMXGameData *gameData;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *startBarButtonItem;

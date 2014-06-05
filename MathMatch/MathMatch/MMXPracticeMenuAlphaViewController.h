@@ -13,6 +13,8 @@ FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeArithmeticType;
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMemorySpeed;
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMusic;
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, weak) IBOutlet UIButton *number8Button;
 @property (nonatomic, weak) IBOutlet UIButton *number12Button;
 @property (nonatomic, weak) IBOutlet UIButton *number16Button;

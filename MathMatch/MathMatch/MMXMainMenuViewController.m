@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+#import "MMXClassesViewController.h"
 #import "MMXMainMenuViewController.h"
+#import "MMXNavigationController.h"
+#import "MMXPracticeMenuAlphaViewController.h"
 
 @implementation MMXMainMenuViewController
 
@@ -27,8 +30,27 @@
 
 - (IBAction)playerTappedMenuButton:(id)sender
 {
+    //[MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectMenuButtonTap;
+    //[[MMXAudioManager sharedManager] playSoundEffect];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectMenuButtonTap;
     [[MMXAudioManager sharedManager] playSoundEffect];
+    
+    MMXNavigationController *navigationController = (MMXNavigationController *)self.navigationController;
+    
+    if ([segue.identifier isEqualToString:@"MMXClassesSegue"])
+    {
+        MMXClassesViewController *classesViewController = (MMXClassesViewController *)segue.destinationViewController;
+        classesViewController.managedObjectContext = navigationController.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"MMXPracticeSegue"])
+    {
+        MMXPracticeMenuAlphaViewController *practiceViewController = (MMXPracticeMenuAlphaViewController *)segue.destinationViewController;
+        practiceViewController.managedObjectContext = navigationController.managedObjectContext;
+    }
 }
 
 @end

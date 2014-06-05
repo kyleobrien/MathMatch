@@ -60,6 +60,15 @@ CGFloat const kMMXStepsToFade = 10;
             [[NSUserDefaults standardUserDefaults] setFloat:1.0 forKey:kMMXUserDefaultsTrackVolume];
             [[NSUserDefaults standardUserDefaults] setFloat:1.0 forKey:kMMXUserDefaultsSoundEffectVolume];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kMMXUserDefaultsAudioLevelsInitializedOnFirstRun];
+            
+            /*
+             * The first instantiation of an audio player is always slow. Bug? (Probably not).
+             * Instantiating, starting and stoping one to get past it.
+             */
+            
+            AVAudioPlayer *firstInstantiationIsAlwaysSlow = [[AVAudioPlayer alloc] initWithContentsOfURL:nil error:nil];
+            [firstInstantiationIsAlwaysSlow play];
+            [firstInstantiationIsAlwaysSlow stop];
         }
     });
     

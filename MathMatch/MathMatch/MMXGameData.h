@@ -8,12 +8,14 @@
 
 typedef NS_ENUM(NSUInteger, MMXGameType)
 {
+    MMXGameTypeNone,
     MMXGameTypeCourse,
     MMXGameTypePractice
 };
 
 typedef NS_ENUM(NSUInteger, MMXArithmeticType)
 {
+    MMXArithmeticTypeNone,
     MMXArithmeticTypeAddition,
     MMXArithmeticTypeSubtraction,
     MMXArithmeticTypeMultiplication,
@@ -22,17 +24,17 @@ typedef NS_ENUM(NSUInteger, MMXArithmeticType)
 
 typedef NS_ENUM(NSUInteger, MMXMemorySpeed)
 {
+    MMXMemorySpeedNone,
     MMXMemorySpeedSlow,
-    MMXMemorySpeedFast,
-    MMXMemorySpeedNone
+    MMXMemorySpeedFast
 };
 
 typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 {
+    MMXMusicTrackOff,
     MMXMusicTrack1,
     MMXMusicTrack2,
-    MMXMusicTrack3,
-    MMXMusicTrackOff
+    MMXMusicTrack3
 };
 
 typedef NS_ENUM(NSUInteger, MMXCardStyle)
@@ -62,21 +64,22 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 
 @property (nonatomic, strong) NSNumber *targetNumber;
 @property (nonatomic, strong) NSNumber *numberOfCards;
-@property (nonatomic, strong) NSArray *cardsValues;
+@property (nonatomic, strong) NSString *cardsValuesSeparatedByCommas;
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXMemorySpeed memorySpeed;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;
 @property (nonatomic, assign) MMXCardStyle cardStyle;
 
+@property (nonatomic, strong) NSNumber *penaltyMultiplier;
+@property (nonatomic, strong) NSNumber *twoStarTime;
+@property (nonatomic, strong) NSNumber *threeStarTime;
+
 @property (nonatomic, strong) NSNumber *completionTime;
 @property (nonatomic, strong) NSNumber *attemptedMatches;
 @property (nonatomic, strong) NSNumber *incorrectMatches;
-@property (nonatomic, strong) NSNumber *penaltyMultiplier;
 
 @property (nonatomic, strong) NSNumber *completionTimeWithPenalty;
 @property (nonatomic, strong) NSNumber *starRating;
-
-+ (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson;
 
 + (MMXCardStyle)selectRandomCardStyle;
 

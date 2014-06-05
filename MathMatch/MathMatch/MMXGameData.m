@@ -14,72 +14,18 @@
 
 @dynamic targetNumber;
 @dynamic numberOfCards;
-@dynamic cardsValues;
+@dynamic cardsValuesSeparatedByCommas;
+
+@dynamic penaltyMultiplier;
+@dynamic twoStarTime;
+@dynamic threeStarTime;
 
 @dynamic completionTime;
 @dynamic attemptedMatches;
 @dynamic incorrectMatches;
-@dynamic penaltyMultiplier;
 
 @dynamic completionTimeWithPenalty;
 @dynamic starRating;
-
-+ (instancetype)gameConfigurationFromLesson:(NSDictionary *)lesson
-{
-    MMXGameData *gameConfiguration = [[MMXGameData alloc] init];
-    
-    gameConfiguration.targetNumber = lesson[@"targetNumber"];
-    gameConfiguration.numberOfCards = lesson[@"numberOfCards"];
-    
-    gameConfiguration.gameType = MMXGameTypeCourse;
-    
-    if ([lesson[@"arithmeticType"] isEqualToString:@"addition"])
-    {
-        gameConfiguration.arithmeticType = MMXArithmeticTypeAddition;
-    }
-    else if ([lesson[@"arithmeticType"] isEqualToString:@"subtraction"])
-    {
-        gameConfiguration.arithmeticType = MMXArithmeticTypeSubtraction;
-    }
-    else if ([lesson[@"arithmeticType"] isEqualToString:@"multiplication"])
-    {
-        gameConfiguration.arithmeticType = MMXArithmeticTypeMultiplication;
-    }
-    else if ([lesson[@"arithmeticType"] isEqualToString:@"division"])
-    {
-        gameConfiguration.arithmeticType = MMXArithmeticTypeDivision;
-    }
-    else
-    {
-        NSAssert(YES, @"MMX: Arithmetic Type in JSON is not valid.");
-    }
-    
-    if ([lesson[@"memorySpeed"] isEqualToString:@"fast"])
-    {
-        gameConfiguration.memorySpeed = MMXMemorySpeedFast;
-    }
-    else if ([lesson[@"memorySpeed"] isEqualToString:@"slow"])
-    {
-        gameConfiguration.memorySpeed = MMXMemorySpeedSlow;
-    }
-    else if ([lesson[@"memorySpeed"] isEqualToString:@"none"])
-    {
-        gameConfiguration.memorySpeed = MMXMemorySpeedNone;
-    }
-    else
-    {
-        NSAssert(YES, @"MMX: Memory Speed in JSON is not valid.");
-    }
-    
-    // TODO: Need music tracks first.
-    //"musicTrack" : ""
-    
-    gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
-    
-    gameConfiguration.penaltyMultiplier = lesson[@"penaltyMultiplier"];
-    
-    return gameConfiguration;
-}
 
 + (MMXCardStyle)selectRandomCardStyle
 {
@@ -98,20 +44,20 @@
 
 #pragma mark - Enum Properties for Core Data
 
-- (void)setGameType:(MMXGameType)gameType
+- (void)setGameType:(enum MMXGameType)gameType
 {
     [self willChangeValueForKey:@"gameType"];
     [self setPrimitiveValue:@(gameType) forKey:@"gameType"];
     [self didChangeValueForKey:@"gameType"];
 }
 
-- (MMXGameType)gameType
+- (enum MMXGameType)gameType
 {
     [self willAccessValueForKey:@"gameType"];
     NSNumber *number = [self primitiveValueForKey:@"gameType"];
     [self didAccessValueForKey:@"gameType"];
     
-    return number.integerValue;
+    return (enum MMXGameType)number.integerValue;
 }
 
 - (void)setArithmeticType:(MMXArithmeticType)arithmeticType

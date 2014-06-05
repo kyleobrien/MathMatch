@@ -10,13 +10,18 @@
 
 @implementation MMXFlatButton
 
-- (void)awakeFromNib
+- (void)changeButtonToColor:(UIColor *)color
 {
-    [super awakeFromNib];
+    self.backgroundColor = color;
     
+    [self customizeColors];
+    [self setNeedsDisplay];
+}
+
+- (void)customizeColors
+{
     self.originalBackgroundColor = self.backgroundColor;
     
-    self.layer.borderWidth = 2.0;
     self.layer.borderColor = self.originalBackgroundColor.CGColor;
     
     self.backgroundColor = [UIColor clearColor];
@@ -25,6 +30,15 @@
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [self setTitleColor:[UIColor whiteColor] forState:(UIControlStateSelected | UIControlStateHighlighted)];
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.layer.borderWidth = 2.0;
+    
+    [self customizeColors];
 }
 
 - (void)setHighlighted:(BOOL)highlighted

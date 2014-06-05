@@ -4,22 +4,24 @@
         "lessons" :
         [
             {
+                "lessonID" : 101,
                 "title" : "Add to 10",
                 "arithmeticType" : "addition",
                 "targetNumber" : 10,
                 "numberOfCards" : 12,
                 "memorySpeed" : "fast",
                 "penaltyMultiplier" : 5.0,
-                "musicTrack" : ""
+                "starTimes" : [60.0, 30.0]
             },
             {
+                "lessonID" : 102,
                 "title" : "Subtract from 7",
                 "arithmeticType" : "subtraction",
                 "targetNumber" : 7,
                 "numberOfCards" : 12,
                 "memorySpeed" : "fast",
                 "penaltyMultiplier" : 5.0,
-                "musicTrack" : ""
+                "starTimes" : [60.0, 30.0]
             }
          ]
     },

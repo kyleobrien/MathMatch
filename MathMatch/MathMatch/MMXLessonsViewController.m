@@ -117,9 +117,10 @@
     if ([segue.identifier isEqualToString:@"MMXBeginLessonSegue"])
     {
         NSDictionary *lesson = self.lessons[self.tableView.indexPathForSelectedRow.row];
-        MMXGameData *gameConfiguration = [MMXGameData gameConfigurationFromLesson:lesson];
+        MMXGameData *gameConfiguration = [self gameConfigurationFromLesson:lesson];
         
         MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
+        gameViewController.managedObjectContext = self.managedObjectContext;
         gameViewController.gameData = gameConfiguration;
     }
 }
@@ -127,6 +128,69 @@
 - (IBAction)unwindToLessonsSegue:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+
+- (MMXGameData *)gameConfigurationFromLesson:(NSDictionary *)lesson
+{
+    MMXGameData *gameConfiguration = [NSEntityDescription insertNewObjectForEntityForName:@"MMXGameData"
+                                                                   inManagedObjectContext:self.managedObjectContext];
+    
+    gameConfiguration.gameType = MMXGameTypeCourse;
+    gameConfiguration.lessonID = lesson[@"lessonID"];
+    
+    gameConfiguration.targetNumber = lesson[@"targetNumber"];
+    gameConfiguration.numberOfCards = lesson[@"numberOfCards"];
+    
+    if ([lesson[@"arithmeticType"] isEqualToString:@"addition"])
+    {
+        gameConfiguration.arithmeticType = MMXArithmeticTypeAddition;
+    }
+    else if ([lesson[@"arithmeticType"] isEqualToString:@"subtraction"])
+    {
+        gameConfiguration.arithmeticType = MMXArithmeticTypeSubtraction;
+    }
+    else if ([lesson[@"arithmeticType"] isEqualToString:@"multiplication"])
+    {
+        gameConfiguration.arithmeticType = MMXArithmeticTypeMultiplication;
+    }
+    else if ([lesson[@"arithmeticType"] isEqualToString:@"division"])
+    {
+        gameConfiguration.arithmeticType = MMXArithmeticTypeDivision;
+    }
+    else
+    {
+        NSAssert(YES, @"MMX: Arithmetic Type in JSON is not valid.");
+    }
+    
+    if ([lesson[@"memorySpeed"] isEqualToString:@"fast"])
+    {
+        gameConfiguration.memorySpeed = MMXMemorySpeedFast;
+    }
+    else if ([lesson[@"memorySpeed"] isEqualToString:@"slow"])
+    {
+        gameConfiguration.memorySpeed = MMXMemorySpeedSlow;
+    }
+    else if ([lesson[@"memorySpeed"] isEqualToString:@"none"])
+    {
+        gameConfiguration.memorySpeed = MMXMemorySpeedNone;
+    }
+    else
+    {
+        NSAssert(YES, @"MMX: Memory Speed in JSON is not valid.");
+    }
+    
+    // TODO: Need music tracks first.
+    //"musicTrack" : ""
+    
+    gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
+    
+    gameConfiguration.penaltyMultiplier = lesson[@"penaltyMultiplier"];
+    
+    NSArray *starTimes = lesson[@"starTimes"];
+    gameConfiguration.twoStarTime = starTimes[0];
+    gameConfiguration.threeStarTime = starTimes[1];
+    
+    return gameConfiguration;
 }
 
 @end

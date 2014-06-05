@@ -10,4 +10,6 @@
 
 @property (nonatomic, strong) UIColor *originalBackgroundColor;
 
+- (void)changeButtonToColor:(UIColor *)color;
+
 @end

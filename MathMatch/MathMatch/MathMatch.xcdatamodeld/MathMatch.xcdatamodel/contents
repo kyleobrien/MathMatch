@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="MMXGameData" syncable="YES">
+    <entity name="MMXGameData" representedClassName="MMXGameData" syncable="YES">
+        <attribute name="arithmeticType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="attemptedMatches" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cardStyle" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cardsValuesSeparatedByCommas" attributeType="String" syncable="YES"/>
+        <attribute name="completionTime" attributeType="Double" defaultValueString="5400" syncable="YES"/>
+        <attribute name="completionTimeWithPenalty" attributeType="Double" defaultValueString="5400" syncable="YES"/>
+        <attribute name="gameType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="incorrectMatches" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lessonID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="memorySpeed" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="musicTrack" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfCards" attributeType="Integer 16" defaultValueString="8" syncable="YES"/>
+        <attribute name="penaltyMultiplier" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="starRating" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="targetNumber" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="threeStarTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="twoStarTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="topScore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MMXTopScore" inverseName="gameData" inverseEntity="MMXTopScore" syncable="YES"/>
     </entity>
     <entity name="MMXTopScore" representedClassName="MMXTopScore" syncable="YES">
@@ -10,7 +27,7 @@
         <relationship name="gameData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MMXGameData" inverseName="topScore" inverseEntity="MMXGameData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MMXGameData" positionX="241" positionY="5" width="191" height="58"/>
+        <element name="MMXGameData" positionX="241" positionY="5" width="191" height="313"/>
         <element name="MMXTopScore" positionX="0" positionY="0" width="128" height="103"/>
     </elements>
 </model>
