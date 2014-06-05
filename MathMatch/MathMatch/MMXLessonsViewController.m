@@ -9,8 +9,11 @@
 #import "MMXGameViewController.h"
 #import "MMXLessonTableViewCell.h"
 #import "MMXLessonsViewController.h"
+#import "MMXTopScore.h"
 
 @interface MMXLessonsViewController ()
+
+@property (nonatomic, strong) NSArray *fetchedResults;
 
 @end
 
@@ -34,6 +37,25 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSMutableArray *lessonIDs = [NSMutableArray arrayWithCapacity:self.lessons.count];
+    for (NSDictionary *lesson in self.lessons)
+    {
+        [lessonIDs addObject:lesson[@"lessonID"]];
+    }
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID IN %@", lessonIDs];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *fetchError = nil;
+    self.fetchedResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+    
+    // TODO: Refresh and reload table when a game was played.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,8 +87,22 @@
 {
     NSDictionary *lesson = self.lessons[indexPath.row];
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID == %@", lesson[@"lessonID"]];
+    NSArray *results = [self.fetchedResults filteredArrayUsingPredicate:predicate];
+    
     MMXLessonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXLessonCell" forIndexPath:indexPath];
     cell.lessonTitleLabel.text = lesson[@"title"];
+    
+    if (results.count > 0)
+    {
+        MMXTopScore *topScore = results[0];
+        cell.starCountLabel.text = [NSString stringWithFormat:@"%ld", (long)topScore.stars.integerValue];
+    }
+    else
+    {
+        cell.starCountLabel.hidden = YES;
+        cell.starImageView.hidden = YES;
+    }
     
     return cell;
 }

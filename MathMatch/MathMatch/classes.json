@@ -1,6 +1,6 @@
 [
     {
-        "title" : "First Grade",
+        "title" : "First Class",
         "lessons" :
         [
             {
@@ -22,22 +22,32 @@
                 "memorySpeed" : "fast",
                 "penaltyMultiplier" : 5.0,
                 "starTimes" : [60.0, 30.0]
+            },
+            {
+                "lessonID" : 103,
+                "title" : "Unplayed Lesson",
+                "arithmeticType" : "multiplication",
+                "targetNumber" : 24,
+                "numberOfCards" : 8,
+                "memorySpeed" : "none",
+                "penaltyMultiplier" : 1.0,
+                "starTimes" : [60.0, 30.0]
             }
          ]
     },
     {
-        "title" : "Second Grade"
+        "title" : "Second Class"
     },
     {
-        "title" : "Third Grade"
+        "title" : "Third Class"
     },
     {
-        "title" : "Fourth Grade"
+        "title" : "Fourth Class"
     },
     {
-        "title" : "Fifth Grade"
+        "title" : "Fifth Class"
     },
     {
-        "title" : "Sixth Grade"
+        "title" : "Sixth Class"
     }
 ]

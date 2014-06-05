@@ -10,10 +10,12 @@
 #import "MMXClassProgressTableViewCell.h"
 #import "MMXClassStarTableViewCell.h"
 #import "MMXLessonsViewController.h"
+#import "MMXTopScore.h"
 
 @interface MMXClassesViewController ()
 
 @property (nonatomic, strong) NSArray *classesFromJSON;
+@property (nonatomic, strong) NSMutableArray *accessoryLabelsForCells;
 
 @end
 
@@ -48,6 +50,58 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDescription];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchedResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+    
+    self.accessoryLabelsForCells = [NSMutableArray arrayWithCapacity:self.classesFromJSON.count];
+    
+    for (NSDictionary *class in self.classesFromJSON)
+    {
+        NSInteger completedLessons = 0;
+        NSInteger minimumStarRating = 3;
+        
+        NSArray *lessons = class[@"lessons"];
+        for (NSDictionary *lesson in lessons)
+        {
+            NSNumber *lessonID = lesson[@"lessonID"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lessonID == %@", lessonID];
+            NSArray *filteredLesson = [fetchedResults filteredArrayUsingPredicate:predicate];
+            if (filteredLesson.count > 0)
+            {
+                MMXTopScore *topScore = filteredLesson[0];
+                NSInteger starRating = topScore.stars.integerValue;
+                if (starRating < minimumStarRating)
+                {
+                    minimumStarRating = starRating;
+                }
+                
+                completedLessons += 1;
+            }
+        }
+        
+        NSDictionary *cellLabel;
+        if ((lessons.count == 0) || (completedLessons < lessons.count))
+        {
+            // Show X of Y
+            NSString *label = [NSString stringWithFormat:@"%ld of %ld", completedLessons, lessons.count];
+            cellLabel = @{@"shouldShowStars": @NO, @"label": label};
+        }
+        else
+        {
+            // Show star rating
+            NSString *label = [NSString stringWithFormat:@"%ld", minimumStarRating];
+            cellLabel = @{@"shouldShowStars": @YES, @"label": label};
+        }
+        
+        [self.accessoryLabelsForCells addObject:cellLabel];
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,6 +112,8 @@
     
     // Doesn't deselect on sipe back (bug?) so doing it manually.
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+    
+    // TODO: Need to update these if player finishes a game, then backs up to this screen.
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -95,24 +151,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MMXClassProgressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassProgressCell" forIndexPath:indexPath];
-    
     NSDictionary *class = self.classesFromJSON[indexPath.row];
-    NSInteger lessonCount = ((NSArray *)class[@"lessons"]).count;
+    NSDictionary *accessoryLabels = self.accessoryLabelsForCells[indexPath.row];
     
-    cell.classTitleLabel.text = class[@"title"];
-    cell.progressDescriptionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d of %ld", nil), 0, lessonCount];
-
-    /*
-    MMXClassStarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassStarCell" forIndexPath:indexPath];
-    
-    NSDictionary *class = self.classesFromJSON[indexPath.row];
-    
-    cell.classTitleLabel.text = class[@"title"];
-    cell.starCountLabel.text = @"2";
-     */
-    
-    return cell;
+    NSNumber *shouldShowStars = accessoryLabels[@"shouldShowStars"];
+    if (shouldShowStars.boolValue)
+    {
+        MMXClassStarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassStarCell" forIndexPath:indexPath];
+        cell.classTitleLabel.text = class[@"title"];
+        cell.starCountLabel.text = accessoryLabels[@"label"];
+        
+        return cell;
+    }
+    else
+    {
+        MMXClassProgressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassProgressCell" forIndexPath:indexPath];
+        cell.classTitleLabel.text = class[@"title"];
+        cell.progressDescriptionLabel.text = accessoryLabels[@"label"];
+        
+        return cell;
+    }
 }
 
 /*

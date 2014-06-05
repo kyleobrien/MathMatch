@@ -106,7 +106,7 @@
     
     
     NSError *error = nil;
-    //[self.managedObjectContext save:&error];
+    [self.managedObjectContext save:&error];
     
     if (error)
     {
