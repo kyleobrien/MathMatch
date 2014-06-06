@@ -14,6 +14,8 @@
 
 @end
 
+NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNotification";
+
 @implementation MMXResultsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -114,6 +116,10 @@
     if (error)
     {
         NSLog(@"MOC: %@", error.description);
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMMXResultsDidSaveGameNotification object:nil];
     }
     
     if (self.gameData.gameType == MMXGameTypeCourse)

@@ -8,9 +8,9 @@
 
 @import AVFoundation;
 
-FOUNDATION_EXPORT NSString * const kMMXNotificationTrackVolumeChanged;
-FOUNDATION_EXPORT NSString * const kMMXNotificationSoundEffectVolumeChanged;
-FOUNDATION_EXPORT NSString * const kMMXNotificationDictionaryVolumeKey;
+FOUNDATION_EXPORT NSString * const kMMXAudioManagerDidChangeTrackVolumeNotification;
+FOUNDATION_EXPORT NSString * const kMMXAudioManagerDidChangeSoundEffectVolumeNotification;
+FOUNDATION_EXPORT NSString * const kMMXAudioManagerDictionaryVolumeKey;
 
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsTrackVolume;
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsSoundEffectVolume;

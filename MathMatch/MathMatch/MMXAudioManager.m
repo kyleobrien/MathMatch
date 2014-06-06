@@ -32,9 +32,9 @@
 
 @implementation MMXAudioManager
 
-NSString * const kMMXNotificationTrackVolumeChanged = @"MMXNotificationTrackVolumeChanged";
-NSString * const kMMXNotificationSoundEffectVolumeChanged = @"MMXNotificationSoundEffectVolumeChanged";
-NSString * const kMMXNotificationDictionaryVolumeKey = @"MMXDictionaryVolumeKey";
+NSString * const kMMXAudioManagerDidChangeTrackVolumeNotification = @"MMXAudioManagerDidChangeTrackVolumeNotification";
+NSString * const kMMXAudioManagerDidChangeSoundEffectVolumeNotification = @"MMXAudioManagerDidChangeSoundEffectVolumeNotification";
+NSString * const kMMXAudioManagerDictionaryVolumeKey = @"MMXAudioManagerDictionaryVolumeKey";
 
 NSString * const kMMXUserDefaultsTrackVolume = @"MMXUserDefaultsTrackVolume";
 NSString * const kMMXUserDefaultsSoundEffectVolume = @"MMXUserDefaultsSoundEffectVolume";
@@ -82,12 +82,12 @@ CGFloat const kMMXStepsToFade = 10;
     {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(trackVolumeChanged:)
-                                                     name:kMMXNotificationTrackVolumeChanged
+                                                     name:kMMXAudioManagerDidChangeTrackVolumeNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(soundEffectVolumeChanged:)
-                                                     name:kMMXNotificationSoundEffectVolumeChanged
+                                                     name:kMMXAudioManagerDidChangeSoundEffectVolumeNotification
                                                    object:nil];
     }
     
@@ -97,11 +97,11 @@ CGFloat const kMMXStepsToFade = 10;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kMMXNotificationTrackVolumeChanged
+                                                    name:kMMXAudioManagerDidChangeTrackVolumeNotification
                                                   object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kMMXNotificationSoundEffectVolumeChanged
+                                                    name:kMMXAudioManagerDidChangeSoundEffectVolumeNotification
                                                   object:nil];
 }
 
@@ -273,7 +273,7 @@ CGFloat const kMMXStepsToFade = 10;
 
 - (void)trackVolumeChanged:(NSNotification *)notification
 {
-    NSNumber *volume = notification.userInfo[kMMXNotificationDictionaryVolumeKey];
+    NSNumber *volume = notification.userInfo[kMMXAudioManagerDictionaryVolumeKey];
     
     _trackAudioPlayer.volume = volume.floatValue;
     _bufferTrackAudioPlayer.volume = volume.floatValue;
@@ -283,7 +283,7 @@ CGFloat const kMMXStepsToFade = 10;
 
 - (void)soundEffectVolumeChanged:(NSNotification *)notification
 {
-    NSNumber *volume = notification.userInfo[kMMXNotificationDictionaryVolumeKey];
+    NSNumber *volume = notification.userInfo[kMMXAudioManagerDictionaryVolumeKey];
     
     _soundEffectAudioPlayer.volume = volume.floatValue;
     _bufferSoundEffectAudioPlayer.volume = volume.floatValue;

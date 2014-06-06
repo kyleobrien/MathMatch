@@ -9,6 +9,7 @@
 #import "MMXGameViewController.h"
 #import "MMXLessonTableViewCell.h"
 #import "MMXLessonsViewController.h"
+#import "MMXResultsViewController.h"
 #import "MMXTopScore.h"
 
 @interface MMXLessonsViewController ()
@@ -18,6 +19,25 @@
 @end
 
 @implementation MMXLessonsViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [[NSNotificationCenter defaultCenter] addObserverForName:kMMXResultsDidSaveGameNotification
+                                                          object:nil
+                                                           queue:[NSOperationQueue mainQueue]
+                                                      usingBlock:^(NSNotification *note)
+                                                      {
+                                                          [self fetchTopScoresForLessonsInThisClass];
+                                                          
+                                                          [self.tableView reloadData];
+                                                      }];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -31,6 +51,11 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blueColor];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource
@@ -59,6 +84,8 @@
     {
         MMXTopScore *topScore = results[0];
         cell.starCountLabel.text = [NSString stringWithFormat:@"%ld", (long)topScore.stars.integerValue];
+        cell.starCountLabel.hidden = NO;
+        cell.starImageView.hidden = NO;
     }
     else
     {

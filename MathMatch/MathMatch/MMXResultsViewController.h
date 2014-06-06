@@ -9,6 +9,8 @@
 #import "KMODecisionView.h"
 #import "MMXFlatButton.h"
 
+FOUNDATION_EXPORT NSString * const kMMXResultsDidSaveGameNotification;
+
 @interface MMXResultsViewController : UIViewController <KMODecisionViewDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;

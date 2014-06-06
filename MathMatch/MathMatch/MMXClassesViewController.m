@@ -10,6 +10,7 @@
 #import "MMXClassProgressTableViewCell.h"
 #import "MMXClassStarTableViewCell.h"
 #import "MMXLessonsViewController.h"
+#import "MMXResultsViewController.h"
 #import "MMXTopScore.h"
 
 @interface MMXClassesViewController ()
@@ -34,6 +35,17 @@
                                                                  error:&error];
         
         NSAssert(error == nil, @"JSON Parse Error!");
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kMMXResultsDidSaveGameNotification
+                                                          object:nil
+                                                           queue:[NSOperationQueue mainQueue]
+                                                      usingBlock:^(NSNotification *note)
+                                                      {
+                                                          [self generateAccessoryLabels];
+                                                          [self.tableView reloadData];
+                                                          
+                                                          NSLog(@"CLASSES");
+                                                      }];
     }
     
     return self;
@@ -63,6 +75,11 @@
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blackColor];
     
     [super viewWillDisappear:animated];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
