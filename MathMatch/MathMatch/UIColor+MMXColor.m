@@ -26,6 +26,14 @@
                            alpha:1.0];
 }
 
++ (UIColor *)mmx_yellowColor
+{
+    return [UIColor colorWithRed:(255.0 / 255.0)
+                           green:(206.0 / 255.0)
+                            blue:(1.0 / 255.0)
+                           alpha:1.0];
+}
+
 + (UIColor *)mmx_greenColor
 {
     return [UIColor colorWithRed:(76.0 / 255.0)

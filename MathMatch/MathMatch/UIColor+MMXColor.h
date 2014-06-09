@@ -10,6 +10,7 @@
 
 + (UIColor *)mmx_redColor;
 + (UIColor *)mmx_orangeColor;
++ (UIColor *)mmx_yellowColor;
 + (UIColor *)mmx_greenColor;
 + (UIColor *)mmx_blueColor;
 + (UIColor *)mmx_purpleColor;

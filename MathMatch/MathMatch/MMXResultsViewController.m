@@ -65,9 +65,22 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     
     
     // TODO: actaully implement the logic to show "new record".
-    self.recordLabel.hidden = YES;
-    
-    // TODO: Make the best time bigger if it's a record, just like total time.
+    self.recordLabel.hidden = NO;
+    self.recordLabel.textColor = [UIColor mmx_blueColor];
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+                     animations:^
+                     {
+                         self.recordLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         if (finished)
+                         {
+                             
+                         }
+                     }];
     
     
     
@@ -89,12 +102,21 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         if (fetchedResults.count > 0)
         {
             topScoreForLesson = fetchedResults[0];
-            if (topScoreForLesson.time < self.gameData.completionTimeWithPenalty)
+            if (self.gameData.completionTimeWithPenalty.floatValue < topScoreForLesson.time.floatValue)
             {
                 topScoreForLesson.lessonID = [self.gameData.lessonID copy];
                 topScoreForLesson.time = [self.gameData.completionTimeWithPenalty copy];
                 topScoreForLesson.stars = [self.gameData.starRating copy];
                 topScoreForLesson.gameData = self.gameData;
+                
+                // TODO: Make the best time bigger if it's a record, just like total time.
+                self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
+                                                                         forFormatType:MMXTimeIntervalFormatTypeLong];
+            }
+            else
+            {
+                self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:topScoreForLesson.time.floatValue
+                                                                         forFormatType:MMXTimeIntervalFormatTypeLong];
             }
         }
         else
@@ -106,7 +128,15 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
             topScoreForLesson.time = self.gameData.completionTimeWithPenalty;
             topScoreForLesson.stars = self.gameData.starRating;
             topScoreForLesson.gameData = self.gameData;
+            
+            // TODO: Make the best time bigger if it's a record, just like total time.
+            self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
+                                                                     forFormatType:MMXTimeIntervalFormatTypeLong];
         }
+    }
+    else
+    {
+        self.bestTimeLabel.text = NSLocalizedString(@"- -", nil);
     }
     
     
@@ -173,6 +203,24 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     decisionView.fontName = @"Futura-Medium";
     
     [decisionView showAndDimBackgroundWithPercent:0.50];
+}
+
+- (void)rainbowizeNewRecordLabel
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.recordLabel.attributedText.string];
+    NSArray *colors = @[[UIColor mmx_redColor], [UIColor mmx_orangeColor], [UIColor mmx_yellowColor], [UIColor mmx_greenColor],
+                        [UIColor mmx_blueColor], [UIColor mmx_purpleColor]];
+    
+    [attributedString beginEditing];
+    for (NSInteger i = 0; i < self.recordLabel.text.length; i++)
+    {
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                                 value:colors[i % colors.count]
+                                 range:NSMakeRange(i, 1)];
+    }
+    [attributedString endEditing];
+    
+    self.recordLabel.attributedText = attributedString;
 }
 
 #pragma mark - KMODecisionViewDelegate

@@ -43,8 +43,6 @@
                                                       {
                                                           [self generateAccessoryLabels];
                                                           [self.tableView reloadData];
-                                                          
-                                                          NSLog(@"CLASSES");
                                                       }];
     }
     
