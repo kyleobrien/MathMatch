@@ -64,9 +64,9 @@
         }
         else if (cardStyle == MMXCardStyleGrass)
         {
-            self.edgeColor = [UIColor colorWithRed:(64.0 / 255.0)
-                                             green:(192.0 / 255.0)
-                                              blue:(203.0 / 255.0)
+            self.edgeColor = [UIColor colorWithRed:(174.0 / 255.0)
+                                             green:(226.0 / 255.0)
+                                              blue:(57.0 / 255.0)
                                              alpha:1.0];
             self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleGrass"];
         }
@@ -151,18 +151,18 @@
     
     self.containerView.layer.cornerRadius = 6.0;
     self.containerView.layer.borderColor = self.edgeColor.CGColor;
-    self.containerView.layer.borderWidth = 5.0;
+    self.containerView.layer.borderWidth = 2.0;
     self.containerView.clipsToBounds = YES;
     
     self.faceUpButton.layer.cornerRadius = 6.0;
     self.faceUpButton.layer.borderColor = self.edgeColor.CGColor;
-    self.faceUpButton.layer.borderWidth = 5.0;
+    self.faceUpButton.layer.borderWidth = 2.0;
     self.faceUpButton.clipsToBounds = YES;
     self.faceUpButton.backgroundColor = self.edgeColor;
     
     self.faceDownButton.layer.cornerRadius = 6.0;
     self.faceDownButton.layer.borderColor = self.edgeColor.CGColor;
-    self.faceDownButton.layer.borderWidth = 5.0;
+    self.faceDownButton.layer.borderWidth = 2.0;
     self.faceDownButton.clipsToBounds = YES;
     
     [self.faceUpButton setTitle:[NSString stringWithFormat:@"%ld", (long)self.card.value]
@@ -176,13 +176,15 @@
     {
         [self.faceDownButton setBackgroundColor:[UIColor mmx_blackColor]];
     }
+    
+    self.faceUpButton.contentEdgeInsets = UIEdgeInsetsMake(4.0, 0.0, 0.0, 0.0);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
         
-    self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"Futura" size:self.fontSize];
+    self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:self.fontSize];
     self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = NO;
 }
 

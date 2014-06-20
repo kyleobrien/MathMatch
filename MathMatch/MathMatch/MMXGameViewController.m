@@ -46,7 +46,7 @@
         (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
     {
         CALayer *bottomBorderZ = [CALayer layer];
-        bottomBorderZ.frame = CGRectMake(0.0, self.zNumberLabel.frame.size.height - 2.0, self.zNumberLabel.frame.size.width, 2.0);
+        bottomBorderZ.frame = CGRectMake(0.0, self.zNumberLabel.frame.size.height - 3.0, self.zNumberLabel.frame.size.width, 3.0);
         bottomBorderZ.backgroundColor = [UIColor mmx_blackColor].CGColor;
         
         [self.zNumberLabel.layer addSublayer:bottomBorderZ];
@@ -55,14 +55,14 @@
              (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
     {
         CALayer *bottomBorderX = [CALayer layer];
-        bottomBorderX.frame = CGRectMake(0.0, self.xNumberLabel.frame.size.height - 2.0, self.xNumberLabel.frame.size.width, 2.0);
+        bottomBorderX.frame = CGRectMake(0.0, self.xNumberLabel.frame.size.height - 3.0, self.xNumberLabel.frame.size.width, 3.0);
         bottomBorderX.backgroundColor = [UIColor mmx_blackColor].CGColor;
         
         [self.xNumberLabel.layer addSublayer:bottomBorderX];
     }
     
     CALayer *bottomBorderY = [CALayer layer];
-    bottomBorderY.frame = CGRectMake(0.0, self.yNumberLabel.frame.size.height - 2.0, self.yNumberLabel.frame.size.width, 2.0);
+    bottomBorderY.frame = CGRectMake(0.0, self.yNumberLabel.frame.size.height - 3.0, self.yNumberLabel.frame.size.width, 3.0);
     bottomBorderY.backgroundColor = [UIColor mmx_blackColor].CGColor;
     
     [self.yNumberLabel.layer addSublayer:bottomBorderY];
@@ -119,7 +119,7 @@
 
 #pragma mark - Player Action
 
-- (IBAction)playerTappedPauseButton:(id)sender
+- (void)playerTappedPauseButton:(id)sender
 {
     [self.gameClockTimer invalidate];
     
@@ -207,7 +207,7 @@
     else if (self.gameData.numberOfCards.integerValue == 16)
     {
         size = CGSizeMake(70.0, 70.0);
-        fontSize = 22.0;
+        fontSize = 28.0;
         numberOfCardsInRow = @[@4, @4, @4, @4];
     }
     else if (self.gameData.numberOfCards.integerValue == 20)
@@ -890,10 +890,10 @@
     // Hack to prevent the label from recentering. This is the widest it will be, so set the label based on it.
     // Will mean the countdown is slightly off center, but fuck it.
     
-    UIFont *font = [UIFont fontWithName:@"Futura-Medium" size:17.0];
+    UIFont *font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:18.0];
     CGSize size = [title sizeWithAttributes:@{NSFontAttributeName: font}];
     
-    self.customNavigationBarTitle = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, size.width, size.height)];
+    self.customNavigationBarTitle = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, size.width, 44.0)];
     self.customNavigationBarTitle.textAlignment = NSTextAlignmentJustified;
     self.customNavigationBarTitle.textColor = [UIColor whiteColor];
     self.customNavigationBarTitle.font = font;

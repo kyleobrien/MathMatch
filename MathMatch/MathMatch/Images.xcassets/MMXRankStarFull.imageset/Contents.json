@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "gear.png"
+      "filename" : "star-full.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "gear@2x.png"
+      "filename" : "star-full@2x.png"
     }
   ],
   "info" : {

@@ -21,6 +21,12 @@ FOUNDATION_EXPORT NSString * const kMMXResultsDidSaveGameNotification;
 @property (nonatomic, weak) IBOutlet UILabel *incorrectMatchesLabel;
 @property (nonatomic, weak) IBOutlet UILabel *penaltyMultiplierLabel;
 @property (nonatomic, weak) IBOutlet UILabel *penaltyTimeLabel;
+
+@property (nonatomic, weak) IBOutlet UIView *rankContainerView;
+@property (nonatomic, weak) IBOutlet UIImageView *rankStar1ImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *rankStar2ImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *rankStar3ImageView;
+
 @property (nonatomic, weak) IBOutlet UILabel *totalTimeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *bestTimeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *recordLabel;

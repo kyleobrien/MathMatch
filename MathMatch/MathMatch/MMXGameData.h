@@ -39,22 +39,22 @@ typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 
 typedef NS_ENUM(NSUInteger, MMXCardStyle)
 {
-    MMXCardStyleNone,
-    MMXCardStyleBeach,
-    MMXCardStyleCheckers,
-    MMXCardStyleCitrus,
-    MMXCardStyleCupcake,
-    MMXCardStyleEmerald,
-    MMXCardStyleGrass,
-    MMXCardStyleHoney,
-    MMXCardStyleMoon,
-    MMXCardStyleStars,
-    MMXCardStyleSteel,
-    MMXCardStyleSushi,
-    MMXCardStyleThatch,
-    MMXCardStyleVelvet,
-    MMXCardStyleCount,
-    MMXCardStyleOverlook
+    MMXCardStyleNone = 0,
+    MMXCardStyleBeach = 1,
+    MMXCardStyleCheckers = 2,
+    MMXCardStyleCitrus = 3,
+    MMXCardStyleCupcake = 4,
+    MMXCardStyleEmerald = 5,
+    MMXCardStyleGrass = 6,
+    MMXCardStyleHoney = 7,
+    MMXCardStyleMoon = 8,
+    MMXCardStyleStars = 9,
+    MMXCardStyleSteel = 10,
+    MMXCardStyleSushi = 11,
+    MMXCardStyleThatch = 12,
+    MMXCardStyleVelvet = 13,
+    MMXCardStyleCount = 14,
+    MMXCardStyleOverlook = 237
 };
 
 @interface MMXGameData : NSManagedObject

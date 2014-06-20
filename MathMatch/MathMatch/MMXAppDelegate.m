@@ -40,7 +40,7 @@
         //controller.managedObjectContext = self.managedObjectContext;
     }
     
-    NSDictionary *attricbutes = @{NSFontAttributeName: [UIFont fontWithName:@"Futura-Medium" size:18.0],
+    NSDictionary *attricbutes = @{NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-DemiBold" size:18.0],
                                   NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [[UINavigationBar appearance] setTitleTextAttributes:attricbutes];

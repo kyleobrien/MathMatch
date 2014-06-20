@@ -63,27 +63,6 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         }
     }
     
-    
-    // TODO: actaully implement the logic to show "new record".
-    self.recordLabel.hidden = NO;
-    self.recordLabel.textColor = [UIColor mmx_blueColor];
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
-                     animations:^
-                     {
-                         self.recordLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
-                     }
-                     completion:^(BOOL finished)
-                     {
-                         if (finished)
-                         {
-                             
-                         }
-                     }];
-    
-    
-    
     if (self.gameData.gameType == MMXGameTypeCourse)
     {
         // Pull out top score.
@@ -102,21 +81,28 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         if (fetchedResults.count > 0)
         {
             topScoreForLesson = fetchedResults[0];
-            if (self.gameData.completionTimeWithPenalty.floatValue < topScoreForLesson.time.floatValue)
+            
+            self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:topScoreForLesson.time.floatValue
+                                                                     forFormatType:MMXTimeIntervalFormatTypeLong];
+            
+            if (floorf(self.gameData.completionTimeWithPenalty.floatValue) < floorf(topScoreForLesson.time.floatValue))
             {
                 topScoreForLesson.lessonID = [self.gameData.lessonID copy];
                 topScoreForLesson.time = [self.gameData.completionTimeWithPenalty copy];
                 topScoreForLesson.stars = [self.gameData.starRating copy];
                 topScoreForLesson.gameData = self.gameData;
                 
-                // TODO: Make the best time bigger if it's a record, just like total time.
-                self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
-                                                                         forFormatType:MMXTimeIntervalFormatTypeLong];
-            }
-            else
-            {
-                self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:topScoreForLesson.time.floatValue
-                                                                         forFormatType:MMXTimeIntervalFormatTypeLong];
+                // TODO: Play kid horray sound!
+                self.recordLabel.hidden = NO;
+                [self rainbowizeNewRecordLabel];
+                [UIView animateWithDuration:0.75
+                                      delay:0.0
+                                    options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+                                 animations:^
+                                 {
+                                     self.recordLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
+                                 }
+                                 completion:nil];
             }
         }
         else
@@ -129,14 +115,12 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
             topScoreForLesson.stars = self.gameData.starRating;
             topScoreForLesson.gameData = self.gameData;
             
-            // TODO: Make the best time bigger if it's a record, just like total time.
-            self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
-                                                                     forFormatType:MMXTimeIntervalFormatTypeLong];
+            self.bestTimeLabel.text = NSLocalizedString(@"---", nil);
         }
     }
     else
     {
-        self.bestTimeLabel.text = NSLocalizedString(@"- -", nil);
+        self.bestTimeLabel.text = NSLocalizedString(@"---", nil);
     }
     
     
@@ -155,6 +139,15 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     if (self.gameData.gameType == MMXGameTypeCourse)
     {
         [self.menuButton changeButtonToColor:[UIColor mmx_blueColor]];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        {
+            [self beginStarAnimationForStar:1];
+        });
+    }
+    else
+    {
+        self.rankContainerView.hidden = YES;
     }
 }
 
@@ -208,8 +201,8 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 - (void)rainbowizeNewRecordLabel
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.recordLabel.attributedText.string];
-    NSArray *colors = @[[UIColor mmx_redColor], [UIColor mmx_orangeColor], [UIColor mmx_yellowColor], [UIColor mmx_greenColor],
-                        [UIColor mmx_blueColor], [UIColor mmx_purpleColor]];
+    NSArray *colors = @[[UIColor mmx_redColor], [UIColor mmx_blueColor], [UIColor mmx_greenColor],
+                        [UIColor mmx_orangeColor], [UIColor mmx_purpleColor]];
     
     [attributedString beginEditing];
     for (NSInteger i = 0; i < self.recordLabel.text.length; i++)
@@ -221,6 +214,61 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     [attributedString endEditing];
     
     self.recordLabel.attributedText = attributedString;
+}
+
+- (void)beginStarAnimationForStar:(NSInteger)starNumber
+{
+    CGAffineTransform scaleStart = CGAffineTransformMakeScale(25.0, 25.0);
+    CGAffineTransform rotateStart = CGAffineTransformMakeRotation(-M_PI_4);
+    CGAffineTransform scaleAndRotateStart = CGAffineTransformConcat(scaleStart, rotateStart);
+    
+    if (starNumber == 1)
+    {
+        self.rankStar1ImageView.transform = scaleAndRotateStart;
+        self.rankStar1ImageView.hidden = NO;
+    }
+    else if (starNumber == 2)
+    {
+        self.rankStar2ImageView.transform = scaleAndRotateStart;
+        self.rankStar2ImageView.hidden = NO;
+    }
+    else if (starNumber == 3)
+    {
+        self.rankStar3ImageView.transform = scaleAndRotateStart;
+        self.rankStar3ImageView.hidden = NO;
+    }
+
+    __block NSInteger starNumberForBlock = starNumber;
+    
+    [UIView animateWithDuration:0.20
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^
+                     {
+                         CGAffineTransform scaleEnd = CGAffineTransformMakeScale(1.0, 1.0);
+                         CGAffineTransform rotateEnd = CGAffineTransformMakeRotation(0.0);
+                         CGAffineTransform scaleAndRotateEnd = CGAffineTransformConcat(scaleEnd, rotateEnd);
+                         
+                         if (starNumber == 1)
+                         {
+                             self.rankStar1ImageView.transform = scaleAndRotateEnd;
+                         }
+                         else if (starNumber == 2)
+                         {
+                             self.rankStar2ImageView.transform = scaleAndRotateEnd;
+                         }
+                         else if (starNumber == 3)
+                         {
+                             self.rankStar3ImageView.transform = scaleAndRotateEnd;
+                         }
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         if (starNumber < self.gameData.starRating.integerValue)
+                         {
+                             [self beginStarAnimationForStar:(starNumberForBlock + 1)];
+                         }
+                     }];
 }
 
 #pragma mark - KMODecisionViewDelegate

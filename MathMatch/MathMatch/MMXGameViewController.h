@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 
 @property (nonatomic, strong) MMXGameData *gameData;
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *pauseBarButtonItem;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *pauseBarButtonItem;
 
 @property (nonatomic, weak) IBOutlet UIView *equationContainerView;
 @property (nonatomic, weak) IBOutlet UIView *equationCorrectnessView;

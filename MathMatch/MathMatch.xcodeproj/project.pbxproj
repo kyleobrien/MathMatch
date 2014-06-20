@@ -48,6 +48,8 @@
 		27A086811893867C00C318DE /* MMXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867F1893867C00C318DE /* MMXGameViewController.m */; };
 		27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
+		27A7894C195498D9007E4018 /* MMXSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894B195498D9007E4018 /* MMXSettingsTableViewController.m */; };
+		27A789501954A733007E4018 /* MMXVolumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894F1954A733007E4018 /* MMXVolumeCell.m */; };
 		27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B199A6190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */; };
@@ -126,6 +128,10 @@
 		27A0867F1893867C00C318DE /* MMXGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameViewController.m; sourceTree = "<group>"; };
 		27A1D938188F0B8100255231 /* MMXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXNavigationController.h; sourceTree = "<group>"; };
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
+		27A7894A195498D9007E4018 /* MMXSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXSettingsTableViewController.h; sourceTree = "<group>"; };
+		27A7894B195498D9007E4018 /* MMXSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsTableViewController.m; sourceTree = "<group>"; };
+		27A7894E1954A733007E4018 /* MMXVolumeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXVolumeCell.h; sourceTree = "<group>"; };
+		27A7894F1954A733007E4018 /* MMXVolumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXVolumeCell.m; sourceTree = "<group>"; };
 		27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		27B199A4190ADCBA00C38E8F /* UIColor+MMXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MMXColor.h"; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 				279EC22818884A890087E0DB /* CLXMasterViewController.m */,
 				279EC22A18884A890087E0DB /* CLXDetailViewController.h */,
 				279EC22B18884A890087E0DB /* CLXDetailViewController.m */,
+				27A7894D1954A6FC007E4018 /* Settings */,
 				279EC22D18884A890087E0DB /* Images.xcassets */,
 				279EC22418884A890087E0DB /* MathMatch.xcdatamodeld */,
 				279EC21318884A890087E0DB /* Supporting Files */,
@@ -286,6 +293,17 @@
 				279EC24C18884CF70087E0DB /* MMXMainMenuViewController.m */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		27A7894D1954A6FC007E4018 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				27A7894A195498D9007E4018 /* MMXSettingsTableViewController.h */,
+				27A7894B195498D9007E4018 /* MMXSettingsTableViewController.m */,
+				27A7894E1954A733007E4018 /* MMXVolumeCell.h */,
+				27A7894F1954A733007E4018 /* MMXVolumeCell.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		27B199961909BD5900C38E8F /* Utilities */ = {
@@ -455,6 +473,7 @@
 				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
 				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
+				27A789501954A733007E4018 /* MMXVolumeCell.m in Sources */,
 				27F3C2841929178B00EB5D59 /* MMXClassStarTableViewCell.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
 				27B199A6190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */,
@@ -467,6 +486,7 @@
 				27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */,
 				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
 				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
+				27A7894C195498D9007E4018 /* MMXSettingsTableViewController.m in Sources */,
 				279EC21918884A890087E0DB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
