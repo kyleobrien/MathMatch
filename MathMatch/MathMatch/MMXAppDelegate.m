@@ -21,6 +21,15 @@
     self.navController = (MMXNavigationController *)self.window.rootViewController;
     self.navController.managedObjectContext = self.managedObjectContext;
     
+    NSError *error = nil;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&error];
+    [[AVAudioSession sharedInstance] setActive:YES error:&error];
+    
+    if (error)
+    {
+        NSLog(@"ERRORZ!");
+    }
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         /*
@@ -46,6 +55,9 @@
     [[UINavigationBar appearance] setTitleTextAttributes:attricbutes];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UIBarButtonItem appearance] setTitleTextAttributes:attricbutes forState:UIControlStateNormal];
+    
+    [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+    [[MMXAudioManager sharedManager] playTrack];
     
     return YES;
 }

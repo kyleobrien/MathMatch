@@ -25,17 +25,19 @@
 {
     if (self.volumeSettingType == MMXVolumeSettingTypeTrack)
     {
+        NSDictionary *userInfo = @{kMMXAudioManagerDictionaryVolumeKey: [NSNumber numberWithFloat:self.volumeSlider.value]};
         [[NSNotificationCenter defaultCenter] postNotificationName:kMMXAudioManagerDidChangeTrackVolumeNotification
                                                             object:nil
-                                                          userInfo:@{@"currentVolume": [NSNumber numberWithFloat:self.volumeSlider.value]}];
+                                                          userInfo:userInfo];
         
         [[NSUserDefaults standardUserDefaults] setFloat:self.volumeSlider.value forKey:kMMXUserDefaultsTrackVolume];
     }
     else if (self.volumeSettingType == MMXVolumeSettingTypeSFX)
     {
+        NSDictionary *userInfo = @{kMMXAudioManagerDictionaryVolumeKey: [NSNumber numberWithFloat:self.volumeSlider.value]};
         [[NSNotificationCenter defaultCenter] postNotificationName:kMMXAudioManagerDidChangeSoundEffectVolumeNotification
                                                             object:nil
-                                                          userInfo:@{@"currentVolume": [NSNumber numberWithFloat:self.volumeSlider.value]}];
+                                                          userInfo:userInfo];
         
         [[NSUserDefaults standardUserDefaults] setFloat:self.volumeSlider.value forKey:kMMXUserDefaultsSoundEffectVolume];
     }

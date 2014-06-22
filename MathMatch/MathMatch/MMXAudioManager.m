@@ -25,7 +25,7 @@
 - (void)configureTrackPlayer;
 - (void)configureSoundEffectPlayer;
 
-- (void)fadeTrackOut;
+- (void)fadeTrackOutWithCrossfade:(BOOL)shouldCrossfadeAfterCompletion;
 - (void)fadeTrackIn;
 
 @end
@@ -80,6 +80,8 @@ CGFloat const kMMXStepsToFade = 10;
     self = [super init];
     if (self)
     {
+        _volumeBeforeFading = [[NSUserDefaults standardUserDefaults] floatForKey:kMMXUserDefaultsTrackVolume];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(trackVolumeChanged:)
                                                      name:kMMXAudioManagerDidChangeTrackVolumeNotification
@@ -88,6 +90,16 @@ CGFloat const kMMXStepsToFade = 10;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(soundEffectVolumeChanged:)
                                                      name:kMMXAudioManagerDidChangeSoundEffectVolumeNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidBecomeActive:)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillResignActive:)
+                                                     name:UIApplicationWillResignActiveNotification
                                                    object:nil];
     }
     
@@ -102,6 +114,10 @@ CGFloat const kMMXStepsToFade = 10;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:kMMXAudioManagerDidChangeSoundEffectVolumeNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidBecomeActiveNotification
                                                   object:nil];
 }
 
@@ -120,12 +136,7 @@ CGFloat const kMMXStepsToFade = 10;
     }
     else
     {
-        _volumeBeforeFading = _trackAudioPlayer.volume;
-        _fadeTimer = [NSTimer scheduledTimerWithTimeInterval:(kMMXFadeTimeInSeconds / kMMXStepsToFade)
-                                                  target:self
-                                                selector:@selector(fadeTrackOut)
-                                                userInfo:nil
-                                                 repeats:YES];
+        [self fadeTrackOutWithCrossfade:YES];
     }
 }
 
@@ -187,7 +198,17 @@ CGFloat const kMMXStepsToFade = 10;
     }
 }
 
-- (void)fadeTrackOut
+- (void)fadeTrackOutWithCrossfade:(BOOL)shouldCrossfadeAfterCompletion
+{
+    _volumeBeforeFading = _trackAudioPlayer.volume;
+    _fadeTimer = [NSTimer scheduledTimerWithTimeInterval:(kMMXFadeTimeInSeconds / kMMXStepsToFade)
+                                                  target:self
+                                                selector:@selector(adjustVolumeForFadeOut:)
+                                                userInfo:@(shouldCrossfadeAfterCompletion)
+                                                 repeats:YES];
+}
+
+- (void)adjustVolumeForFadeOut:(NSTimer *)timer
 {
     float adjustedVolume = _trackAudioPlayer.volume - (_volumeBeforeFading / kMMXStepsToFade);
     if (adjustedVolume < 0.0)
@@ -199,30 +220,45 @@ CGFloat const kMMXStepsToFade = 10;
     
     if (_trackAudioPlayer.volume == 0.0)
     {
+        /*
+         * Invalidating the timer causes it to drop it's reference to the user info object,
+         * so trying to access it after it's been released is an obvious exception.
+         * Unboxing first so we can use it.
+         */
+        BOOL shouldCrossfadeAfterCompletion = ((NSNumber *)timer.userInfo).boolValue;
+        
         [_fadeTimer invalidate];
         [_trackAudioPlayer stop];
         
-        _trackAudioPlayer = _bufferTrackAudioPlayer;
-        
-        _trackAudioPlayer.volume = 0.0;
-        [_trackAudioPlayer play];
-        
-        _fadeTimer = [NSTimer scheduledTimerWithTimeInterval:(kMMXFadeTimeInSeconds / kMMXStepsToFade)
-                                                  target:self
-                                                selector:@selector(fadeTrackIn)
-                                                userInfo:nil
-                                                 repeats:YES];
+        if (shouldCrossfadeAfterCompletion)
+        {
+            _trackAudioPlayer = _bufferTrackAudioPlayer;
+
+            [self fadeTrackIn];
+        }
     }
 }
 
 - (void)fadeTrackIn
+{
+    _trackAudioPlayer.volume = 0.0;
+    [_trackAudioPlayer play];
+    
+    _fadeTimer = [NSTimer scheduledTimerWithTimeInterval:(kMMXFadeTimeInSeconds / kMMXStepsToFade)
+                                                  target:self
+                                                selector:@selector(adjustVolumeForFadeIn:)
+                                                userInfo:nil
+                                                 repeats:YES];
+}
+
+- (void)adjustVolumeForFadeIn:(NSTimer *)timer
 {
     float adjustedVolume = _trackAudioPlayer.volume + (_volumeBeforeFading / kMMXStepsToFade);
     if (adjustedVolume > _volumeBeforeFading)
     {
         adjustedVolume = _volumeBeforeFading;
     }
-    
+        
     _trackAudioPlayer.volume = adjustedVolume;
     
     if (_trackAudioPlayer.volume == _volumeBeforeFading)
@@ -291,14 +327,28 @@ CGFloat const kMMXStepsToFade = 10;
     [[NSUserDefaults standardUserDefaults] setFloat:volume.floatValue forKey:kMMXUserDefaultsSoundEffectVolume];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    if ([[AVAudioSession sharedInstance] isOtherAudioPlaying])
+    {
+        // Don't do anything. The player is listening to audio from another source.
+    }
+    else
+    {
+        [self fadeTrackIn];
+    }
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+    [self fadeTrackOutWithCrossfade:NO];
+}
+
 #pragma mark - AVAudioPlayerDelegate
 
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player withOptions:(NSUInteger)flags
 {
-    if (player == _trackAudioPlayer)
-    {
-        [self playTrack];
-    }
+    
 }
 
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
