@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsEnabledCards;
+
 typedef NS_ENUM(NSUInteger, MMXGameType)
 {
     MMXGameTypeNone,
@@ -82,6 +84,7 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 @property (nonatomic, strong) NSNumber *starRating;
 
 + (MMXCardStyle)selectRandomCardStyle;
++ (NSString *)imageNameForStyle:(MMXCardStyle)cardStyle;
 
 - (void)resetGameStatistics;
 

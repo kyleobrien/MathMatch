@@ -50,6 +50,8 @@
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A7894C195498D9007E4018 /* MMXSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894B195498D9007E4018 /* MMXSettingsTableViewController.m */; };
 		27A789501954A733007E4018 /* MMXVolumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894F1954A733007E4018 /* MMXVolumeCell.m */; };
+		27A7895919589B1B007E4018 /* MMXEnabledCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7895819589B1B007E4018 /* MMXEnabledCardsViewController.m */; };
+		27A7895C19589DD5007E4018 /* MMXEnabledCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7895B19589DD5007E4018 /* MMXEnabledCardCell.m */; };
 		27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B199A6190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */; };
@@ -132,6 +134,10 @@
 		27A7894B195498D9007E4018 /* MMXSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsTableViewController.m; sourceTree = "<group>"; };
 		27A7894E1954A733007E4018 /* MMXVolumeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXVolumeCell.h; sourceTree = "<group>"; };
 		27A7894F1954A733007E4018 /* MMXVolumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXVolumeCell.m; sourceTree = "<group>"; };
+		27A7895719589B1B007E4018 /* MMXEnabledCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXEnabledCardsViewController.h; sourceTree = "<group>"; };
+		27A7895819589B1B007E4018 /* MMXEnabledCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXEnabledCardsViewController.m; sourceTree = "<group>"; };
+		27A7895A19589DD5007E4018 /* MMXEnabledCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXEnabledCardCell.h; sourceTree = "<group>"; };
+		27A7895B19589DD5007E4018 /* MMXEnabledCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXEnabledCardCell.m; sourceTree = "<group>"; };
 		27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		27B199A4190ADCBA00C38E8F /* UIColor+MMXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MMXColor.h"; sourceTree = "<group>"; };
@@ -302,6 +308,10 @@
 				27A7894B195498D9007E4018 /* MMXSettingsTableViewController.m */,
 				27A7894E1954A733007E4018 /* MMXVolumeCell.h */,
 				27A7894F1954A733007E4018 /* MMXVolumeCell.m */,
+				27A7895719589B1B007E4018 /* MMXEnabledCardsViewController.h */,
+				27A7895819589B1B007E4018 /* MMXEnabledCardsViewController.m */,
+				27A7895A19589DD5007E4018 /* MMXEnabledCardCell.h */,
+				27A7895B19589DD5007E4018 /* MMXEnabledCardCell.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -462,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				275500A818AB0DC2008B4DB4 /* MMXCard.m in Sources */,
+				27A7895C19589DD5007E4018 /* MMXEnabledCardCell.m in Sources */,
 				27F3C27D1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */,
 				27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */,
 				27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
@@ -484,6 +495,7 @@
 				27A086761891CB9000C318DE /* MMXGameData.m in Sources */,
 				279EC22918884A890087E0DB /* CLXMasterViewController.m in Sources */,
 				27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */,
+				27A7895919589B1B007E4018 /* MMXEnabledCardsViewController.m in Sources */,
 				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
 				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				27A7894C195498D9007E4018 /* MMXSettingsTableViewController.m in Sources */,
@@ -612,7 +624,7 @@
 				INFOPLIST_FILE = "MathMatch/MathMatch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F4AF046B-6E5D-4D32-A0EC-76CED942C96C";
+				PROVISIONING_PROFILE = "169D18AD-0BEE-436A-8BE1-F3DF92064A01";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad-Hoc";
@@ -723,7 +735,7 @@
 				INFOPLIST_FILE = "MathMatch/MathMatch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A4571BC-0363-46B1-ADF6-21F4D6267AB6";
+				PROVISIONING_PROFILE = "A814FD50-E950-457A-B430-8EB5253D9DEB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -734,7 +746,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kyle OBrien (4R42LNL6YL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MathMatch/MathMatch-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;

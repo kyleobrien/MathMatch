@@ -126,7 +126,7 @@
     NSString *secondOption;
     if (self.gameData.gameType == MMXGameTypePractice)
     {
-        secondOption = NSLocalizedString(@"Change Settings", nil);
+        secondOption = NSLocalizedString(@"Practice Settings", nil);
     }
     else
     {
