@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-@interface MMXSettingsTableViewController : UITableViewController
+#import "KMODecisionView.h"
+
+@interface MMXSettingsTableViewController : UITableViewController <KMODecisionViewDelegate>
 
 - (IBAction)playerTappedDoneButton:(id)sender;
 

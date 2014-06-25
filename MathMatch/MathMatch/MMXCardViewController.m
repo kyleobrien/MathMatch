@@ -244,7 +244,7 @@
     }
     
     [UIView transitionWithView:self.containerView
-                      duration:0.3
+                      duration:0.20
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^
                     {
@@ -270,7 +270,7 @@
         [self.card flip];
         
         [UIView transitionWithView:self.containerView
-                          duration:0.3
+                          duration:0.20
                            options:UIViewAnimationOptionTransitionFlipFromRight
                         animations:^
                         {

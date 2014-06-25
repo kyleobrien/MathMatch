@@ -50,9 +50,11 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
         _message = message;
         _color = [UIColor blackColor];
         
+        _destructiveButtonIndex = -1;
+        _destructiveColor = [UIColor redColor];
+        
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
-        
         
         // We're just estimating the height here. It'll get recomputed during layoutView and set accordingly.
         self.containerView = [[UIView alloc] initWithFrame:CGRectMake((self.bounds.size.width - 264.0) / 2.0,
@@ -107,7 +109,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
             
             [self.containerView addSubview:otherButton];
         }
-        
         
         [self addSubview:self.containerView];
         [self layoutView];
@@ -177,7 +178,7 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                                           self.containerView.frame.size.width,
                                           self.containerView.frame.size.height);
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self];
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
     _visible = YES;
     
     dispatch_async(dispatch_get_main_queue(), ^
@@ -269,15 +270,23 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 {
     _color = color;
     
-    self.cancelButton.layer.borderColor = self.color.CGColor;
-    [self.cancelButton setTitleColor:self.color forState:UIControlStateNormal];
+    [self updateButtonColors];
+    [self layoutView];
+}
+
+- (void)setDestructiveButtonIndex:(NSInteger)destructiveButtonIndex
+{
+    _destructiveButtonIndex = destructiveButtonIndex;
     
-    for (UIButton *otherButton in self.otherButtons)
-    {
-        otherButton.layer.borderColor = self.color.CGColor;
-        [otherButton setTitleColor:self.color forState:UIControlStateNormal];
-    }
+    [self updateButtonColors];
+    [self layoutView];
+}
+
+- (void)setDestructiveColor:(UIColor *)destructiveColor
+{
+    _destructiveColor = destructiveColor;
     
+    [self updateButtonColors];
     [self layoutView];
 }
 
@@ -328,7 +337,16 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                                                 117.0,
                                                 44.0);
             
-            UIImage *firstOtherBackground = [self backgroundImageForButton:firstOtherButton withColor:self.color];
+            UIImage *firstOtherBackground;
+            if (self.destructiveButtonIndex == 1)
+            {
+                firstOtherBackground = [self backgroundImageForButton:firstOtherButton withColor:self.destructiveColor];
+            }
+            else
+            {
+                firstOtherBackground = [self backgroundImageForButton:firstOtherButton withColor:self.color];
+            }
+    
             [firstOtherButton setBackgroundImage:firstOtherBackground forState:UIControlStateHighlighted];
         }
         else
@@ -336,14 +354,25 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
             // We'll use the N-row, 1-column approach.
             
             double yCoordinateTracker = self.messageLabel.frame.origin.y + self.messageLabel.frame.size.height + 10.0;
-            for (UIButton *otherButton in self.otherButtons)
+            for (NSInteger i = 0; i < self.otherButtons.count; i++)
             {
+                UIButton *otherButton = self.otherButtons[i];
+                
                 otherButton.frame = CGRectMake(10.0,
                                                yCoordinateTracker,
                                                244.0,
                                                44.0);
                 
-                UIImage *otherBackground = [self backgroundImageForButton:otherButton withColor:self.color];
+                UIImage *otherBackground;
+                if (self.destructiveButtonIndex == (i + 1))
+                {
+                    otherBackground = [self backgroundImageForButton:otherButton withColor:self.destructiveColor];
+                }
+                else
+                {
+                    otherBackground = [self backgroundImageForButton:otherButton withColor:self.color];
+                }
+
                 [otherButton setBackgroundImage:otherBackground forState:UIControlStateHighlighted];
                 
                 yCoordinateTracker += otherButton.frame.size.height + 10.0;
@@ -366,7 +395,17 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     }
     
     
-    UIImage *cancelBackground = [self backgroundImageForButton:self.cancelButton withColor:self.color];
+    UIColor *backgroundColor;
+    if (self.destructiveButtonIndex == 0)
+    {
+        backgroundColor = self.destructiveColor;
+    }
+    else
+    {
+        backgroundColor = self.color;
+    }
+    
+    UIImage *cancelBackground = [self backgroundImageForButton:self.cancelButton withColor:backgroundColor];
     [self.cancelButton setBackgroundImage:cancelBackground forState:UIControlStateHighlighted];
     
     // Now that everything is positioned, make sure the container view is appropriately positioned and sized.
@@ -440,6 +479,28 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     CGPathRelease(backgroundRect);
     
     return image;
+}
+
+- (void)updateButtonColors
+{
+    self.cancelButton.layer.borderColor = self.color.CGColor;
+    [self.cancelButton setTitleColor:self.color forState:UIControlStateNormal];
+    
+    for (NSInteger i = 0; i < self.otherButtons.count; i++)
+    {
+        UIButton *otherButton = self.otherButtons[i];
+        
+        if (self.destructiveButtonIndex == (i + 1))
+        {
+            otherButton.layer.borderColor = self.destructiveColor.CGColor;
+            [otherButton setTitleColor:self.destructiveColor forState:UIControlStateNormal];
+        }
+        else
+        {
+            otherButton.layer.borderColor = self.color.CGColor;
+            [otherButton setTitleColor:self.color forState:UIControlStateNormal];
+        }
+    }
 }
 
 @end

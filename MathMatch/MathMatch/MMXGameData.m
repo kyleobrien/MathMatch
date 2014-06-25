@@ -56,7 +56,7 @@ NSString * const kMMXUserDefaultsEnabledCards = @"MMXUserDefaultsEnabledCards";
     }
     else
     {
-        NSNumber *choosenStyle = enabledStylesBag[arc4random_uniform(enabledStylesBag.count)];
+        NSNumber *choosenStyle = enabledStylesBag[arc4random_uniform((u_int32_t)enabledStylesBag.count)];
         
         return choosenStyle.integerValue;
     }

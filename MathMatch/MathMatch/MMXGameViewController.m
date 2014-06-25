@@ -173,6 +173,8 @@
 
     
     self.customNavigationBarTitle.text = @"";
+    self.equationCorrectnessView.backgroundColor = [UIColor mmx_whiteColor];
+    
     [self removeCardFromTableauWithIndex:0];
 }
 
@@ -411,6 +413,8 @@
     self.xNumberLabel.text = @"";
     self.yNumberLabel.text = @"";
     self.zNumberLabel.text = @"";
+    
+    self.equationCorrectnessView.backgroundColor = [UIColor mmx_whiteColor];
     
     if (self.gameData.arithmeticType == MMXArithmeticTypeAddition)
     {
@@ -677,26 +681,8 @@
 
 - (void)animateCardsAfterEvaluationSuccess:(BOOL)success
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
-        [UIView animateWithDuration:0.1 animations:^
-        {
-            self.equationCorrectnessView.backgroundColor = [UIColor mmx_whiteColor];
-            
-            if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
-                (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
-            {
-                self.xNumberLabel.text = @"";
-                self.yNumberLabel.text = @"";
-            }
-            else if ((self.gameData.arithmeticType == MMXArithmeticTypeSubtraction) ||
-                    (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
-            {
-                self.yNumberLabel.text = @"";
-                self.zNumberLabel.text = @"";
-            }
-        }];
-                       
         if (success)
         {
             self.gameState = MMXGameStateAnimating;
@@ -717,19 +703,25 @@
             // Remember, 0.02 is a fudge factor based on what looks the best.
             CGFloat animationDurationFirstCard = 0.30 - (self.firstCardViewController.row * 0.02);
             CGFloat animationDurationSecondCard = 0.30 - (self.secondCardViewController.row * 0.02);
-                               
+            
+            __block MMXCardViewController *firstDiscardViewController = self.firstCardViewController;
+            __block MMXCardViewController *secondDiscardViewController = self.secondCardViewController;
+            
+            [self.view sendSubviewToBack:self.firstCardViewController.view];
+            [self.view sendSubviewToBack:self.secondCardViewController.view];
+            
             [UIView animateWithDuration:animationDurationFirstCard
                                   delay:0.0
                                 options:UIViewAnimationOptionCurveEaseOut
                              animations:^
                              {
                                  CGFloat center = self.view.frame.size.width / 2.0;
-                                 CGFloat randomOffset = arc4random_uniform(self.firstCardViewController.view.frame.size.width);
-                                 CGFloat randomX = center - self.firstCardViewController.view.frame.size.width + randomOffset;
-                                 self.firstCardViewController.view.frame = CGRectMake(randomX,
-                                                                                      [UIScreen mainScreen].bounds.size.height,
-                                                                                      self.firstCardViewController.view.bounds.size.width,
-                                                                                      self.firstCardViewController.view.bounds.size.height);
+                                 CGFloat randomOffset = arc4random_uniform(firstDiscardViewController.view.frame.size.width);
+                                 CGFloat randomX = center - firstDiscardViewController.view.frame.size.width + randomOffset;
+                                 firstDiscardViewController.view.frame = CGRectMake(randomX,
+                                                                                    [UIScreen mainScreen].bounds.size.height,
+                                                                                    firstDiscardViewController.view.bounds.size.width,
+                                                                                    firstDiscardViewController.view.bounds.size.height);
                                     
                                 NSInteger randomAngle = arc4random_uniform(20) + 10;
                                 if (arc4random_uniform(2) == 0)
@@ -737,18 +729,18 @@
                                     randomAngle = -randomAngle;
                                 }
                                     
-                                self.firstCardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180.0);
+                                firstDiscardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180.0);
                             }
                             completion:^(BOOL finished)
                             {
                                 if (finished)
                                 {
-                                    [self.firstCardViewController removeCardFromTable];
+                                    [firstDiscardViewController removeCardFromTable];
                                     
                                     if (firstCardExitsLast)
                                     {
-                                        self.firstCardViewController = nil;
-                                        self.secondCardViewController = nil;
+                                        //self.firstCardViewController = nil;
+                                        //self.secondCardViewController = nil;
                                         
                                         if (self.shouldEndGameAfterAnimation)
                                         {
@@ -756,12 +748,12 @@
                                         }
                                         else
                                         {
-                                            self.gameState = MMXGameStateNoCardsFlipped;
+                                            //self.gameState = MMXGameStateNoCardsFlipped;
                                         }
                                     }
                                 }
                             }];
-                               
+            
             [UIView animateWithDuration:animationDurationSecondCard
                                   delay:0.0
                                 options:UIViewAnimationOptionCurveEaseOut
@@ -770,10 +762,10 @@
                                  CGFloat center = self.view.frame.size.width / 2.0;
                                  CGFloat randomOffset = arc4random_uniform(self.secondCardViewController.view.frame.size.width);
                                  CGFloat randomX = center - self.secondCardViewController.view.frame.size.width + randomOffset;
-                                 self.secondCardViewController.view.frame = CGRectMake(randomX,
-                                                                                          [UIScreen mainScreen].bounds.size.height,
-                                                                                          self.secondCardViewController.view.bounds.size.width,
-                                                                                          self.secondCardViewController.view.bounds.size.height);
+                                 secondDiscardViewController.view.frame = CGRectMake(randomX,
+                                                                                     [UIScreen mainScreen].bounds.size.height,
+                                                                                     secondDiscardViewController.view.bounds.size.width,
+                                                                                     secondDiscardViewController.view.bounds.size.height);
                                     
                                 NSInteger randomAngle = arc4random_uniform(20) + 10;
                                 if (arc4random_uniform(2) == 0)
@@ -781,18 +773,18 @@
                                     randomAngle = -randomAngle;
                                 }
                                     
-                                self.secondCardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
+                                secondDiscardViewController.view.transform = CGAffineTransformMakeRotation(randomAngle * M_PI / 180);
                             }
                             completion:^(BOOL finished)
                             {
                                 if (finished)
                                 {
-                                    [self.secondCardViewController removeCardFromTable];
+                                    [secondDiscardViewController removeCardFromTable];
                                     
                                     if (!firstCardExitsLast)
                                     {
-                                        self.firstCardViewController = nil;
-                                        self.secondCardViewController = nil;
+                                        //self.firstCardViewController = nil;
+                                        //self.secondCardViewController = nil;
                                         
                                         if (self.shouldEndGameAfterAnimation)
                                         {
@@ -800,11 +792,13 @@
                                         }
                                         else
                                         {
-                                            self.gameState = MMXGameStateNoCardsFlipped;
+                                            //self.gameState = MMXGameStateNoCardsFlipped;
                                         }
                                     }
                                 }
                             }];
+            
+            self.gameState = MMXGameStateNoCardsFlipped;
         }
         else
         {
@@ -884,6 +878,24 @@
 }
 
 #pragma mark - Helpers
+
+- (void)clearEquation
+{
+     self.equationCorrectnessView.backgroundColor = [UIColor mmx_whiteColor];
+     
+     if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+         (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
+     {
+         self.xNumberLabel.text = @"";
+         self.yNumberLabel.text = @"";
+     }
+     else if ((self.gameData.arithmeticType == MMXArithmeticTypeSubtraction) ||
+              (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
+     {
+         self.yNumberLabel.text = @"";
+         self.zNumberLabel.text = @"";
+     }
+}
 
 - (void)generateCustomNavigationBarViewForTitle:(NSString *)title
 {
@@ -974,6 +986,7 @@
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
+            [self clearEquation];
             self.xNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
         else if ([cardViewController isEqual:self.secondCardViewController])
@@ -986,6 +999,7 @@
     {
         if ([cardViewController isEqual:self.firstCardViewController])
         {
+            [self clearEquation];
             self.yNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)cardViewController.card.value];
         }
         else if ([cardViewController isEqual:self.secondCardViewController])

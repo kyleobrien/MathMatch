@@ -38,6 +38,9 @@ FOUNDATION_EXPORT CGFloat const kKMODecisionViewButtonFontSize;
 @property (nonatomic, copy) NSString *fontName;
 @property (nonatomic, strong) UIColor *color;
 
+@property (nonatomic, assign) NSInteger destructiveButtonIndex;
+@property (nonatomic, strong) UIColor *destructiveColor;
+
 @property (nonatomic, readonly) NSInteger numberOfButtons;
 @property (nonatomic, assign, readonly, getter = isVisible) BOOL visible;
 

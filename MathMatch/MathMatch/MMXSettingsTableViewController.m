@@ -75,6 +75,25 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == 2) && (indexPath.row == 1))
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        NSString *message = NSLocalizedString(@"You're about to reset all progress, including stars, best times and completed game stats. Are you sure? You cannot undue this action.", nil);
+        KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
+                                                                        delegate:self
+                                                               cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                               otherButtonTitles:@[NSLocalizedString(@"Yes, Reset", nil)]];
+        decisionView.fontName = @"Futura-Medium";
+        decisionView.destructiveButtonIndex = 1;
+        decisionView.destructiveColor = [UIColor mmx_redColor];
+        
+        [decisionView showAndDimBackgroundWithPercent:0.50];
+    }
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
