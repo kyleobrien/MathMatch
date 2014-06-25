@@ -1,5 +1,5 @@
 //
-//  MMXSettingsTableViewController.h
+//  MMXSettingsViewController.h
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.6.20.
@@ -8,7 +8,7 @@
 
 #import "KMODecisionView.h"
 
-@interface MMXSettingsTableViewController : UITableViewController <KMODecisionViewDelegate>
+@interface MMXSettingsViewController : UITableViewController <KMODecisionViewDelegate>
 
 - (IBAction)playerTappedDoneButton:(id)sender;
 

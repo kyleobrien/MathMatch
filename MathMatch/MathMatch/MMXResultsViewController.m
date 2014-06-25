@@ -123,6 +123,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         self.bestTimeLabel.text = NSLocalizedString(@"---", nil);
     }
     
+    NSLog(@"%@", self.gameData);
     
     NSError *error = nil;
     [self.managedObjectContext save:&error];

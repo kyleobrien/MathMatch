@@ -21,10 +21,10 @@
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
-        <!--Settings Table View Controller - Settings-->
+        <!--Settings View Controller - Settings-->
         <scene sceneID="wgr-3M-pxp">
             <objects>
-                <tableViewController id="tbY-En-PYT" customClass="MMXSettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="tbY-En-PYT" customClass="MMXSettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="UCk-vf-zgO">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -398,7 +398,7 @@
                         <barButtonItem key="backBarButtonItem" title="Menu" id="Apg-2T-0uZ"/>
                         <barButtonItem key="rightBarButtonItem" image="GearIcon" id="Ypd-Og-J4w">
                             <connections>
-                                <segue destination="bor-vM-9fh" kind="modal" id="yuC-3D-RyT"/>
+                                <segue destination="bor-vM-9fh" kind="modal" identifier="MMXSettingsSegue" id="yuC-3D-RyT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

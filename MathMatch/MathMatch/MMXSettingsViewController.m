@@ -1,19 +1,22 @@
 //
-//  MMXSettingsTableViewController.m
+//  MMXSettingsViewController.m
 //  MathMatch
 //
 //  Created by Kyle O'Brien on 2014.6.20.
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import "MMXSettingsTableViewController.h"
+#import "MMXNavigationController.h"
+#import "MMXSettingsViewController.h"
 #import "MMXVolumeCell.h"
 
-@interface MMXSettingsTableViewController ()
+#import "MMXTopScore.h"
+
+@interface MMXSettingsViewController ()
 
 @end
 
-@implementation MMXSettingsTableViewController
+@implementation MMXSettingsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -142,5 +145,40 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - KMODecisionViewDelegate
+
+- (void)decisionView:(KMODecisionView *)decisionView tappedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self deleteAllEntities];
+    }
+}
+
+#pragma mark - Helpers
+
+- (void)deleteAllEntities
+{
+    NSManagedObjectContext *managedObjectContext = ((MMXNavigationController *)self.navigationController).managedObjectContext;
+    
+    NSFetchRequest *dataFetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *dataEntityDescription = [NSEntityDescription entityForName:@"MMXGameData"
+                                                             inManagedObjectContext:managedObjectContext];
+    
+    [dataFetchRequest setEntity:dataEntityDescription];
+    [dataFetchRequest setIncludesPropertyValues:NO];
+    
+    NSError *fetchError = nil;
+    NSArray *allGameDataEntities = [managedObjectContext executeFetchRequest:dataFetchRequest error:&fetchError];
+    
+    for (MMXGameData *gameData in allGameDataEntities)
+    {
+        [managedObjectContext deleteObject:gameData];
+    }
+    
+    NSError *saveError = nil;
+    [managedObjectContext save:&saveError];
+}
 
 @end

@@ -10,6 +10,7 @@
 #import "MMXMainMenuViewController.h"
 #import "MMXNavigationController.h"
 #import "MMXPracticeMenuAlphaViewController.h"
+#import "MMXSettingsViewController.h"
 
 @implementation MMXMainMenuViewController
 
@@ -47,6 +48,11 @@
     {
         MMXPracticeMenuAlphaViewController *practiceViewController = (MMXPracticeMenuAlphaViewController *)segue.destinationViewController;
         practiceViewController.managedObjectContext = navigationController.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"MMXSettingsSegue"])
+    {
+        MMXNavigationController *modalNavigationController = (MMXNavigationController *)segue.destinationViewController;
+        modalNavigationController.managedObjectContext = navigationController.managedObjectContext;
     }
 }
 

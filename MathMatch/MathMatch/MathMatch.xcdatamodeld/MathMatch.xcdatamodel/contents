@@ -18,7 +18,7 @@
         <attribute name="targetNumber" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="threeStarTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="twoStarTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="topScore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MMXTopScore" inverseName="gameData" inverseEntity="MMXTopScore" syncable="YES"/>
+        <relationship name="topScore" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MMXTopScore" inverseName="gameData" inverseEntity="MMXTopScore" syncable="YES"/>
     </entity>
     <entity name="MMXTopScore" representedClassName="MMXTopScore" syncable="YES">
         <attribute name="lessonID" attributeType="Integer 16" minValueString="101" maxValueString="999" syncable="YES"/>
