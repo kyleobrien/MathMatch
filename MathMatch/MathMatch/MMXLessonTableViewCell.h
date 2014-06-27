@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-@interface MMXLessonTableViewCell : UITableViewCell
+#import "MMXClassTableViewCell.h"
+
+@interface MMXLessonTableViewCell : MMXClassTableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *lessonTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *starCountLabel;

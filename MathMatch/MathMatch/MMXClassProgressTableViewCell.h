@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-@interface MMXClassProgressTableViewCell : UITableViewCell
+#import "MMXClassTableViewCell.h"
+
+@interface MMXClassProgressTableViewCell : MMXClassTableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *classTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *progressDescriptionLabel;

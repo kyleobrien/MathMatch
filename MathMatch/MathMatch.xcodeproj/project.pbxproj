@@ -19,6 +19,8 @@
 		275500AD18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */; };
 		275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
 		275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
+		2757A21E195C858500294D5C /* MMXClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A21D195C858500294D5C /* MMXClassTableViewCell.m */; };
+		2757A221195C8B5A00294D5C /* MMXSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */; };
 		277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
 		277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
 		277A1F26192289CB00E09050 /* button-44.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F25192289CB00E09050 /* button-44.caf */; };
@@ -95,6 +97,10 @@
 		275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXCardViewController.m; sourceTree = "<group>"; };
 		275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~ipad.xib"; sourceTree = "<group>"; };
 		275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~iphone.xib"; sourceTree = "<group>"; };
+		2757A21C195C858500294D5C /* MMXClassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassTableViewCell.h; sourceTree = "<group>"; };
+		2757A21D195C858500294D5C /* MMXClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassTableViewCell.m; sourceTree = "<group>"; };
+		2757A21F195C8B5A00294D5C /* MMXSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXSettingsTableViewCell.h; sourceTree = "<group>"; };
+		2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsTableViewCell.m; sourceTree = "<group>"; };
 		277A1F1E192268BC00E09050 /* MMXAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXAudioManager.h; sourceTree = "<group>"; };
 		277A1F1F192268BC00E09050 /* MMXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXAudioManager.m; sourceTree = "<group>"; };
 		277A1F25192289CB00E09050 /* button-44.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "button-44.caf"; sourceTree = "<group>"; };
@@ -306,6 +312,8 @@
 			children = (
 				27A7894A195498D9007E4018 /* MMXSettingsViewController.h */,
 				27A7894B195498D9007E4018 /* MMXSettingsViewController.m */,
+				2757A21F195C8B5A00294D5C /* MMXSettingsTableViewCell.h */,
+				2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */,
 				27A7894E1954A733007E4018 /* MMXVolumeCell.h */,
 				27A7894F1954A733007E4018 /* MMXVolumeCell.m */,
 				27A7895719589B1B007E4018 /* MMXEnabledCardsViewController.h */,
@@ -347,6 +355,8 @@
 			children = (
 				27F3C2761928F8DB00EB5D59 /* MMXClassesViewController.h */,
 				27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */,
+				2757A21C195C858500294D5C /* MMXClassTableViewCell.h */,
+				2757A21D195C858500294D5C /* MMXClassTableViewCell.m */,
 				27F3C27B1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.h */,
 				27F3C27C1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m */,
 				27F3C2821929178B00EB5D59 /* MMXClassStarTableViewCell.h */,
@@ -478,10 +488,12 @@
 				27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
 				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
 				27F3C28C192A76B300EB5D59 /* MMXLessonTableViewCell.m in Sources */,
+				2757A21E195C858500294D5C /* MMXClassTableViewCell.m in Sources */,
 				27F3C290192A774E00EB5D59 /* MMXLessonsViewController.m in Sources */,
 				275500AA18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */,
 				277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */,
 				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
+				2757A221195C8B5A00294D5C /* MMXSettingsTableViewCell.m in Sources */,
 				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27A789501954A733007E4018 /* MMXVolumeCell.m in Sources */,
