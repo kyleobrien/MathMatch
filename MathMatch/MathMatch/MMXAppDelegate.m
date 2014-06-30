@@ -52,8 +52,14 @@
     NSDictionary *attricbutes = @{NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-DemiBold" size:18.0],
                                   NSForegroundColorAttributeName: [UIColor whiteColor]};
     
+    [[UINavigationBar appearanceWhenContainedIn:[MMXNavigationController class], nil] setTitleTextAttributes:attricbutes];
+    [[UINavigationBar appearanceWhenContainedIn:[MMXNavigationController class], nil] setTintColor:[UIColor whiteColor]];
+    [[UIBarButtonItem appearanceWhenContainedIn:[MMXNavigationController class], nil] setTitleTextAttributes:attricbutes
+                                                                                                    forState:UIControlStateNormal];
+    
+    attricbutes = @{NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-DemiBold" size:18.0]};
+    
     [[UINavigationBar appearance] setTitleTextAttributes:attricbutes];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UIBarButtonItem appearance] setTitleTextAttributes:attricbutes forState:UIControlStateNormal];
     
     [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;

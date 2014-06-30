@@ -10,8 +10,6 @@
 #import "MMXSettingsViewController.h"
 #import "MMXVolumeCell.h"
 
-#import "MMXTopScore.h"
-
 @interface MMXSettingsViewController ()
 
 @end
@@ -94,6 +92,31 @@
         decisionView.destructiveColor = [UIColor mmx_redColor];
         
         [decisionView showAndDimBackgroundWithPercent:0.50];
+    }
+    else if ((indexPath.section == 3) && (indexPath.row == 0))
+    {
+        if ([MFMailComposeViewController canSendMail])
+        {
+            MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+            [mailComposeViewController setSubject:@"Math Match - Feedback"];
+            [mailComposeViewController setToRecipients:@[@"support@connectrelatecreate.com"]];
+            [mailComposeViewController setMessageBody:@"" isHTML:NO];
+            
+            mailComposeViewController.navigationBar.tintColor = [UIColor mmx_purpleColor];
+            mailComposeViewController.mailComposeDelegate = self;
+            
+            [self presentViewController:mailComposeViewController animated:YES completion:nil];
+        }
+        else
+        {
+            NSString *message = NSLocalizedString(@"Can't send because no email account is configured on this device.", nil);
+            
+            KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
+                                                                            delegate:nil
+                                                                   cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                                                                   otherButtonTitles:nil];
+            [decisionView showAndDimBackgroundWithPercent:0.50];
+        }
     }
 }
 
@@ -179,6 +202,23 @@
     
     NSError *saveError = nil;
     [managedObjectContext save:&saveError];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (result == MFMailComposeResultFailed)
+    {
+        NSString *message = NSLocalizedString(@"Couldn't send the email. Try again later.", nil);
+        KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
+                                                                        delegate:nil
+                                                               cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                                                               otherButtonTitles:nil];
+        [decisionView showAndDimBackgroundWithPercent:0.50];
+    }
 }
 
 @end

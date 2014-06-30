@@ -115,6 +115,8 @@
     [super viewDidDisappear:animated];
     
     [UIApplication sharedApplication].idleTimerDisabled = NO;
+    
+    [self.gameClockTimer invalidate];
 }
 
 #pragma mark - Player Action
