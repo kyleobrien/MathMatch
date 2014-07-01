@@ -10,39 +10,10 @@
 #import "MMXSettingsViewController.h"
 #import "MMXVolumeCell.h"
 
-@interface MMXSettingsViewController ()
-
-@end
-
 @implementation MMXSettingsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - Player action
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - 
 - (IBAction)playerTappedDoneButton:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
@@ -87,9 +58,9 @@
                                                                         delegate:self
                                                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                                                otherButtonTitles:@[NSLocalizedString(@"Yes, Reset", nil)]];
-        decisionView.fontName = @"Futura-Medium";
         decisionView.destructiveButtonIndex = 1;
         decisionView.destructiveColor = [UIColor mmx_redColor];
+        decisionView.fontName = @"Futura-Medium";
         
         [decisionView showAndDimBackgroundWithPercent:0.50];
     }
@@ -120,54 +91,22 @@
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#pragma mark - MFMailComposeViewControllerDelegate
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (result == MFMailComposeResultFailed)
+    {
+        NSString *message = NSLocalizedString(@"Couldn't send the email. Try again later.", nil);
+        KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
+                                                                        delegate:nil
+                                                               cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                                                               otherButtonTitles:nil];
+        [decisionView showAndDimBackgroundWithPercent:0.50];
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - KMODecisionViewDelegate
 
@@ -202,23 +141,6 @@
     
     NSError *saveError = nil;
     [managedObjectContext save:&saveError];
-}
-
-#pragma mark - MFMailComposeViewControllerDelegate
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    if (result == MFMailComposeResultFailed)
-    {
-        NSString *message = NSLocalizedString(@"Couldn't send the email. Try again later.", nil);
-        KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
-                                                                        delegate:nil
-                                                               cancelButtonTitle:NSLocalizedString(@"Okay", nil)
-                                                               otherButtonTitles:nil];
-        [decisionView showAndDimBackgroundWithPercent:0.50];
-    }
 }
 
 @end

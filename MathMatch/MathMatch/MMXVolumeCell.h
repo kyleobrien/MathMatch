@@ -15,9 +15,9 @@ typedef NS_ENUM(NSInteger, VolumeSettingType)
 
 @interface MMXVolumeCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UISlider *volumeSlider;
+@property (nonatomic, weak) IBOutlet UISlider *volumeSlider;
 
-@property (assign) VolumeSettingType volumeSettingType;
+@property (nonatomic, assign) VolumeSettingType volumeSettingType;
 
 - (IBAction)volumeSliderValueChanged:(id)sender;
 

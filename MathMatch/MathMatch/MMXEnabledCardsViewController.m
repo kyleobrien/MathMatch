@@ -29,7 +29,7 @@
         {
             self.enabledCards = [NSMutableArray arrayWithCapacity:MMXCardStyleCount];
             
-            // Adding a dummy object to the front so that the enabled cards array lines up with the card style enum.
+            // Including an enabled card for the 'none' style, since we don't ever want that disabled.
             for (NSInteger i = 0; i < MMXCardStyleCount; i++)
             {
                 [self.enabledCards addObject:@YES];
@@ -45,15 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.collectionView.allowsMultipleSelection = YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc
@@ -62,22 +55,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // Subtracting 1 from the count since we don't want to show the 'None' style.
+    // Subtracting 1 from the count since we don't want to show the 'none' style.
     return MMXCardStyleCount - 1;
 }
 

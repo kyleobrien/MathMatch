@@ -9,7 +9,7 @@
 @import MessageUI;
 #import "KMODecisionView.h"
 
-@interface MMXSettingsViewController : UITableViewController <KMODecisionViewDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate>
+@interface MMXSettingsViewController : UITableViewController <KMODecisionViewDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 - (IBAction)playerTappedDoneButton:(id)sender;
 

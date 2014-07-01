@@ -12,27 +12,29 @@
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-    [self shouldHighlightOrSelect:highlighted];
-    
     [super setHighlighted:highlighted];
+    
+    [self shouldHighlightOrSelect:highlighted];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
-    [self shouldHighlightOrSelect:highlighted];
-    
     [super setHighlighted:highlighted animated:animated];
+    
+    [self shouldHighlightOrSelect:highlighted];
 }
 
 - (void)setSelected:(BOOL)selected
 {
-    [self shouldHighlightOrSelect:selected];
-    
     [super setSelected:selected];
+    
+    [self shouldHighlightOrSelect:selected];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
+    [super setSelected:selected animated:animated];
+    
     if (animated)
     {
         [UIView animateWithDuration:0.3
@@ -45,8 +47,6 @@
     {
         [self shouldHighlightOrSelect:selected];
     }
-    
-    [super setSelected:selected animated:animated];
 }
 
 - (void)shouldHighlightOrSelect:(BOOL)shouldHighlightOrSelect
@@ -57,7 +57,7 @@
         
         [[UIColor mmx_purpleColor] getRed:&red green:&green blue:&blue alpha:&alpha];
         
-        self.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:(alpha / 6.0)];
+        self.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:(alpha / 8.0)];
     }
     else
     {
