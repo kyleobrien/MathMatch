@@ -8,8 +8,6 @@
 
 #import "MMXAppDelegate.h"
 
-#import "CLXMasterViewController.h"
-
 @implementation MMXAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;

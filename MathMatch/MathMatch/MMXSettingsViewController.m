@@ -89,6 +89,32 @@
             [decisionView showAndDimBackgroundWithPercent:0.50];
         }
     }
+    else if ((indexPath.section == 3) && (indexPath.row == 1))
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=655895325&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+    }
+    else if ((indexPath.section == 3) && (indexPath.row == 2))
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        NSString *message = NSLocalizedString(@"Check out Math Match, a game of solitaire and arithmetic available on the App Store!", nil);
+        NSURL *appStoreURL = [NSURL URLWithString:@"http://itunes.com/apps/vesper"];
+        
+        NSArray *items = @[message, appStoreURL];
+        
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
+                                                                                             applicationActivities:nil];
+        
+        [self presentViewController:activityViewController animated:YES completion:nil];
+    }
+    else if ((indexPath.section == 4) && (indexPath.row == 0))
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://connectrelatecreate.com/mathmatch/"]];
+    }
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
