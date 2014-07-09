@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -439,23 +439,34 @@ Thank you.</string>
                                     <constraint firstAttribute="width" constant="280" id="Ymz-Fa-MPs"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-w3-IfP">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-mg-MX8" userLabel="Classes Item">
                                 <rect key="frame" x="20" y="32" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0039215686269999999" green="0.66666666669999997" blue="0.89019607840000003" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7u-rZ-Ib1">
+                                        <rect key="frame" x="70" y="0.0" width="210" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                                        <state key="normal" title="Classes">
+                                            <color key="titleColor" red="0.0039215686269999999" green="0.66666666669999997" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playerTappedClassesButton:" destination="k0x-YW-35a" eventType="touchUpInside" id="vCk-ST-azx"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5z-ld-ON0" userLabel="Card Placeholder View">
+                                        <rect key="frame" x="0.0" y="2" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="dQ6-wg-z20"/>
-                                    <constraint firstAttribute="width" constant="280" id="euP-IW-wIu"/>
+                                    <constraint firstAttribute="width" constant="280" id="Gtl-qE-PeN"/>
+                                    <constraint firstAttribute="height" constant="64" id="SDa-pH-PCl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="44"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Classes">
-                                    <color key="titleColor" red="0.0039215686269999999" green="0.66666666669999997" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="C6b-E3-CYH" kind="push" identifier="MMXClassesSegue" id="B9G-xZ-xlX"/>
-                                </connections>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="96" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -464,24 +475,35 @@ Thank you.</string>
                                     <constraint firstAttribute="width" constant="280" id="pp1-mN-EVJ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-iS-e6a" userLabel="Practice Item">
                                 <rect key="frame" x="20" y="128" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A">
+                                        <rect key="frame" x="70" y="0.0" width="210" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Practice">
+                                            <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playerTappedPracticeButton:" destination="k0x-YW-35a" eventType="touchUpInside" id="O15-6f-gt4"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Skj-dX-lq2">
+                                        <rect key="frame" x="0.0" y="2" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="P2x-pC-prM"/>
-                                    <constraint firstAttribute="width" constant="280" id="wTn-Gf-jrQ"/>
+                                    <constraint firstAttribute="width" constant="280" id="7sK-Vr-rSk"/>
+                                    <constraint firstAttribute="height" constant="64" id="zb2-dX-QHK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="44"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Practice">
-                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Fwk-8r-rWc" kind="push" identifier="MMXPracticeSegue" id="u1b-1b-3us"/>
-                                </connections>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="192" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -490,21 +512,35 @@ Thank you.</string>
                                     <constraint firstAttribute="width" constant="280" id="rUg-b8-p3y"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q24-qe-uJT" userLabel="How to Play Item">
                                 <rect key="frame" x="20" y="224" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
+                                        <rect key="frame" x="70" y="0.0" width="210" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="How to Play">
+                                            <color key="titleColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playerTappedHowToPlayButton:" destination="k0x-YW-35a" eventType="touchUpInside" id="2Y9-y7-wcj"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ur0-vX-P2L">
+                                        <rect key="frame" x="0.0" y="2" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="jzv-Jw-cO3"/>
-                                    <constraint firstAttribute="height" constant="64" id="qpu-Js-3gb"/>
+                                    <constraint firstAttribute="height" constant="64" id="S9w-oy-L5H"/>
+                                    <constraint firstAttribute="width" constant="280" id="uh8-bs-xIO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="44"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="How to Play">
-                                    <color key="titleColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="288" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -513,21 +549,35 @@ Thank you.</string>
                                     <constraint firstAttribute="width" constant="280" id="uih-iF-VJh"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-vo-tXn" userLabel="Report Card Item">
                                 <rect key="frame" x="20" y="320" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.25098039220000001" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
+                                        <rect key="frame" x="70" y="0.0" width="210" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.25098039220000001" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Report Card">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playerTappedReportCardButton:" destination="k0x-YW-35a" eventType="touchUpInside" id="Cvv-QV-Ioa"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OA6-4g-Qkz">
+                                        <rect key="frame" x="0.0" y="2" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="7yk-ML-shO"/>
-                                    <constraint firstAttribute="width" constant="280" id="J4V-7T-Qvl"/>
+                                    <constraint firstAttribute="width" constant="280" id="KOq-UP-SbQ"/>
+                                    <constraint firstAttribute="height" constant="64" id="QrA-jT-dSG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="44"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Report Card">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="384" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -539,28 +589,28 @@ Thank you.</string>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="xk1-lB-v2A" firstAttribute="top" secondItem="jkq-Qt-S5r" secondAttribute="bottom" id="9g0-Sr-VQg"/>
-                            <constraint firstItem="5ZN-pU-Nfv" firstAttribute="top" secondItem="6fv-DM-rfO" secondAttribute="bottom" id="CnO-Qf-wvu"/>
-                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="top" secondItem="YCh-w3-IfP" secondAttribute="bottom" id="Ian-dP-FDr"/>
-                            <constraint firstAttribute="centerX" secondItem="YCh-w3-IfP" secondAttribute="centerX" id="MJO-ss-uje"/>
-                            <constraint firstItem="YCh-w3-IfP" firstAttribute="top" secondItem="zIN-Wx-MXj" secondAttribute="bottom" id="OHO-Uh-0b5"/>
+                            <constraint firstItem="Quq-vo-tXn" firstAttribute="top" secondItem="5ZN-pU-Nfv" secondAttribute="bottom" id="E5M-10-UtM"/>
                             <constraint firstAttribute="centerX" secondItem="Zf2-B6-3Wd" secondAttribute="centerX" id="P13-uv-7iV"/>
                             <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="SYZ-Pw-490" secondAttribute="height" id="QL3-6F-wsx"/>
-                            <constraint firstAttribute="centerX" secondItem="6fv-DM-rfO" secondAttribute="centerX" id="Rg9-L2-L0f"/>
+                            <constraint firstAttribute="centerX" secondItem="q24-qe-uJT" secondAttribute="centerX" id="Rot-Ed-0T8"/>
                             <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="5ZN-pU-Nfv" secondAttribute="height" id="SIf-4p-Kpq"/>
                             <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="Zf2-B6-3Wd" secondAttribute="height" id="SmO-wm-4ex"/>
                             <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="zIN-Wx-MXj" secondAttribute="height" id="SoN-hG-rQ6"/>
-                            <constraint firstAttribute="centerX" secondItem="JF7-IU-aB8" secondAttribute="centerX" id="VKT-vN-i92"/>
-                            <constraint firstItem="SYZ-Pw-490" firstAttribute="top" secondItem="xk1-lB-v2A" secondAttribute="bottom" id="Yr4-M5-j4G"/>
-                            <constraint firstAttribute="centerX" secondItem="xk1-lB-v2A" secondAttribute="centerX" id="aVP-RC-SQ6"/>
+                            <constraint firstItem="q24-qe-uJT" firstAttribute="top" secondItem="SYZ-Pw-490" secondAttribute="bottom" id="TF4-yc-srn"/>
+                            <constraint firstItem="nRe-mg-MX8" firstAttribute="top" secondItem="zIN-Wx-MXj" secondAttribute="bottom" id="UyA-zQ-sJ2"/>
+                            <constraint firstItem="SYZ-Pw-490" firstAttribute="top" secondItem="HNZ-iS-e6a" secondAttribute="bottom" id="cNf-2u-a9S"/>
                             <constraint firstAttribute="centerX" secondItem="5ZN-pU-Nfv" secondAttribute="centerX" id="ccu-E1-hk0"/>
-                            <constraint firstItem="JF7-IU-aB8" firstAttribute="top" secondItem="5ZN-pU-Nfv" secondAttribute="bottom" id="haF-NB-cI2"/>
+                            <constraint firstAttribute="centerX" secondItem="HNZ-iS-e6a" secondAttribute="centerX" id="fwN-gf-uIo"/>
+                            <constraint firstItem="Zf2-B6-3Wd" firstAttribute="top" secondItem="Quq-vo-tXn" secondAttribute="bottom" id="gdq-h0-k7J"/>
                             <constraint firstAttribute="centerX" secondItem="zIN-Wx-MXj" secondAttribute="centerX" id="lHM-LY-RFy"/>
+                            <constraint firstAttribute="centerX" secondItem="Quq-vo-tXn" secondAttribute="centerX" id="mTJ-fm-9Ek"/>
                             <constraint firstItem="zIN-Wx-MXj" firstAttribute="top" secondItem="e5h-gw-ZgO" secondAttribute="bottom" id="oyg-io-fd5"/>
                             <constraint firstAttribute="centerX" secondItem="jkq-Qt-S5r" secondAttribute="centerX" id="qYT-Qq-KRT"/>
+                            <constraint firstItem="5ZN-pU-Nfv" firstAttribute="top" secondItem="q24-qe-uJT" secondAttribute="bottom" id="t25-Kg-fpq"/>
+                            <constraint firstAttribute="centerX" secondItem="nRe-mg-MX8" secondAttribute="centerX" id="tGu-Wu-WQj"/>
                             <constraint firstAttribute="centerX" secondItem="SYZ-Pw-490" secondAttribute="centerX" id="vpr-yQ-gos"/>
-                            <constraint firstItem="6fv-DM-rfO" firstAttribute="top" secondItem="SYZ-Pw-490" secondAttribute="bottom" id="vxZ-PX-IN7"/>
-                            <constraint firstItem="Zf2-B6-3Wd" firstAttribute="top" secondItem="JF7-IU-aB8" secondAttribute="bottom" id="waU-x9-z02"/>
+                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="top" secondItem="nRe-mg-MX8" secondAttribute="bottom" id="w0d-Tp-RSQ"/>
+                            <constraint firstItem="HNZ-iS-e6a" firstAttribute="top" secondItem="jkq-Qt-S5r" secondAttribute="bottom" id="xPO-SG-369"/>
                             <constraint firstItem="JTZ-bv-TUy" firstAttribute="top" secondItem="Zf2-B6-3Wd" secondAttribute="bottom" id="yGI-iO-Qxt"/>
                         </constraints>
                     </view>
@@ -572,6 +622,15 @@ Thank you.</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="classesCardContainerView" destination="Z5z-ld-ON0" id="wP4-ps-A5D"/>
+                        <outlet property="howToPlayCardContainerView" destination="Ur0-vX-P2L" id="O7p-1a-jXW"/>
+                        <outlet property="practiceCardContainerView" destination="Skj-dX-lq2" id="9nz-qs-CZZ"/>
+                        <outlet property="reportCardCardContainerView" destination="OA6-4g-Qkz" id="AzS-nw-FBm"/>
+                        <outlet property="settingsButton" destination="Ypd-Og-J4w" id="eZC-i5-2La"/>
+                        <segue destination="C6b-E3-CYH" kind="push" identifier="MMXClassesSegue" id="Les-01-ICa"/>
+                        <segue destination="Fwk-8r-rWc" kind="push" identifier="MMXPracticeSegue" id="JdO-QE-dCc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kl3-Ms-aKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1340,7 +1399,7 @@ Thank you.</string>
         <!--Game View Controller-->
         <scene sceneID="nK5-zM-rpC">
             <objects>
-                <viewController id="Yb9-LP-y4W" customClass="MMXGameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameViewControllerID" id="Yb9-LP-y4W" customClass="MMXGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NMl-dV-0Gk"/>
                         <viewControllerLayoutGuide type="bottom" id="5LU-Ge-xK4"/>

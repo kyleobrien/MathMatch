@@ -91,7 +91,10 @@
 {
     [super viewDidAppear:animated];
     
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    if (self.gameData.gameType != MMXGameTypeAutoPlay)
+    {
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+    }
     
     if (!self.haveAlreadyArrangedOnce)
     {
@@ -114,7 +117,10 @@
 {
     [super viewDidDisappear:animated];
     
-    [UIApplication sharedApplication].idleTimerDisabled = NO;
+    if (self.gameData.gameType != MMXGameTypeAutoPlay)
+    {
+        [UIApplication sharedApplication].idleTimerDisabled = NO;
+    }
     
     [self.gameClockTimer invalidate];
 }
@@ -204,9 +210,18 @@
     }
     else if (self.gameData.numberOfCards.integerValue == 12)
     {
-        size = CGSizeMake(80.0, 80.0);
-        fontSize = 33.0;
-        numberOfCardsInRow = @[@3, @3, @3, @3];
+        if ([UIScreen mainScreen].bounds.size.height == 480.0)
+        {
+            size = CGSizeMake(70.0, 70.0);
+            fontSize = 28.0;
+            numberOfCardsInRow = @[@3, @3, @3, @3];
+        }
+        else
+        {
+            size = CGSizeMake(80.0, 80.0);
+            fontSize = 33.0;
+            numberOfCardsInRow = @[@3, @3, @3, @3];
+        }
     }
     else if (self.gameData.numberOfCards.integerValue == 16)
     {
@@ -222,9 +237,18 @@
     }
     else if (self.gameData.numberOfCards.integerValue == 24)
     {
-        size = CGSizeMake(60.0, 60.0);
-        fontSize = 22.0;
-        numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+        if ([UIScreen mainScreen].bounds.size.height == 480.0)
+        {
+            size = CGSizeMake(50.0, 50.0);
+            fontSize = 22.0;
+            numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+        }
+        else
+        {
+            size = CGSizeMake(60.0, 60.0);
+            fontSize = 22.0;
+            numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+        }
     }
     else
     {
@@ -449,15 +473,27 @@
     
     [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Time - 00:00", nil)];
     
-    self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
-                                                           target:self
-                                                         selector:@selector(updateClock)
-                                                         userInfo:nil
-                                                          repeats:YES];
+    NSLog(@"%ld - %ld", (long)self.gameData.gameType, (long)MMXGameTypeAutoPlay);
+    
+    NSLog(@"%@", self.gameData);
+    
+    if (self.gameData.gameType != MMXGameTypeAutoPlay)
+    {
+        NSLog(@"HERE");
+        /*
+        self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
+                                                               target:self
+                                                             selector:@selector(updateClock)
+                                                             userInfo:nil
+                                                              repeats:YES];
+         */
+    }
 }
 
 - (void)updateClock
 {
+    NSLog(@"DERP");
+    
     self.gameClock += 1.0 / 60.0;
     
     // Don't let the clock go past 90 minutes.
@@ -539,12 +575,19 @@
 
 - (void)endGameAndShowResults
 {
-    [self.gameClockTimer invalidate];
-    
-    self.gameState = MMXGameStateOver;
-    self.gameData.completionTime = @(self.gameClock);
-    
-    [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
+    if (self.gameData.gameType == MMXGameTypeAutoPlay)
+    {
+        // TODO: Start again.
+    }
+    else
+    {
+        [self.gameClockTimer invalidate];
+        
+        self.gameState = MMXGameStateOver;
+        self.gameData.completionTime = @(self.gameClock);
+        
+        [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
+    }
 }
 
 #pragma mark - Animation
@@ -1027,6 +1070,7 @@
     }
     else if (buttonIndex == 1) // Player decided to keep playing. Resume.
     {
+        NSLog(@"THERE");
         self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
                                                                target:self
                                                              selector:@selector(updateClock)

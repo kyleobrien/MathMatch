@@ -205,6 +205,18 @@
     }
 }
 
+/*
+#pragma mark - Setters
+
+- (void)setFontSize:(CGFloat)fontSize
+{
+    _fontSize = fontSize;
+    
+    self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:self.fontSize];
+    self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = NO;
+}
+ */
+
 #pragma mark - Helpers
 
 - (void)prepareCardForDealingInView:(UIView *)view

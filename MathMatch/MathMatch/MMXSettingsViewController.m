@@ -12,6 +12,13 @@
 
 @implementation MMXSettingsViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Doesn't deselect on swipe back (bug?) so doing it manually.
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+}
 #pragma mark - Player action
 
 - (IBAction)playerTappedDoneButton:(id)sender
@@ -93,14 +100,14 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
                 
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=655895325&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=896517401&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
     }
     else if ((indexPath.section == 3) && (indexPath.row == 2))
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        NSString *message = NSLocalizedString(@"Check out Math Match, a game of solitaire and arithmetic available on the App Store!", nil);
-        NSURL *appStoreURL = [NSURL URLWithString:@"http://itunes.com/apps/vesper"];
+        NSString *message = NSLocalizedString(@"Check out Math Match, a game of concentration, memory, and arithmetic available on the App Store!", nil);
+        NSURL *appStoreURL = [NSURL URLWithString:@"http://appstore.com/mathmatchagameofconcentrationmemoryandarithmetic"];
         
         NSArray *items = @[message, appStoreURL];
         

@@ -12,7 +12,8 @@ typedef NS_ENUM(NSUInteger, MMXGameType)
 {
     MMXGameTypeNone,
     MMXGameTypeCourse,
-    MMXGameTypePractice
+    MMXGameTypePractice,
+    MMXGameTypeAutoPlay
 };
 
 typedef NS_ENUM(NSUInteger, MMXArithmeticType)
