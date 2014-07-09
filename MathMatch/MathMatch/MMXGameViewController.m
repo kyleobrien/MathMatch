@@ -473,27 +473,18 @@
     
     [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Time - 00:00", nil)];
     
-    NSLog(@"%ld - %ld", (long)self.gameData.gameType, (long)MMXGameTypeAutoPlay);
-    
-    NSLog(@"%@", self.gameData);
-    
     if (self.gameData.gameType != MMXGameTypeAutoPlay)
     {
-        NSLog(@"HERE");
-        /*
         self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
                                                                target:self
                                                              selector:@selector(updateClock)
                                                              userInfo:nil
                                                               repeats:YES];
-         */
     }
 }
 
 - (void)updateClock
 {
-    NSLog(@"DERP");
-    
     self.gameClock += 1.0 / 60.0;
     
     // Don't let the clock go past 90 minutes.
@@ -1070,7 +1061,6 @@
     }
     else if (buttonIndex == 1) // Player decided to keep playing. Resume.
     {
-        NSLog(@"THERE");
         self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
                                                                target:self
                                                              selector:@selector(updateClock)
