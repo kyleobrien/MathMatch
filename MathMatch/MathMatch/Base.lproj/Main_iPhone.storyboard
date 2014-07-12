@@ -374,7 +374,7 @@
                                 <rect key="frame" x="20" y="235" width="280" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <string key="text">This app is designed, developed and maintained by a two-person team near Buffalo, New York.  Your purchase directly supports our family and lets us do what we love.
+                                <string key="text">This app is designed, developed and maintained by a wife and husband team near Buffalo, New York.  Your purchase directly supports our family and lets us do what we love.
 
 Thank you.</string>
                                 <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1775,7 +1775,7 @@ Thank you.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AboutAppIcon" width="23" height="28"/>
+        <image name="AboutAppIcon" width="120" height="120"/>
         <image name="GearIcon" width="20" height="20"/>
         <image name="MMXGreenCheckmark" width="28" height="28"/>
         <image name="MMXRankStarEmpty" width="44" height="41"/>

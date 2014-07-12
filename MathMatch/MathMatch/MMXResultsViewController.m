@@ -12,6 +12,10 @@
 
 @interface MMXResultsViewController ()
 
+@property (nonatomic, strong) CAEmitterLayer *rankStar1EmitterLayer;
+@property (nonatomic, strong) CAEmitterLayer *rankStar2EmitterLayer;
+@property (nonatomic, strong) CAEmitterLayer *rankStar3EmitterLayer;
+
 @end
 
 NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNotification";
@@ -123,8 +127,6 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         self.bestTimeLabel.text = NSLocalizedString(@"---", nil);
     }
     
-    NSLog(@"%@", self.gameData);
-    
     NSError *error = nil;
     [self.managedObjectContext save:&error];
     
@@ -150,6 +152,47 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     {
         self.rankContainerView.hidden = YES;
     }
+    
+    
+    // START - PARTICLE EMMITER TEST CODE
+    /*
+    CGFloat emitterWidth = (self.rankStar3ImageView.frame.origin.x + self.rankStar3ImageView.bounds.size.width) -
+                            self.rankStar1ImageView.frame.origin.x;
+    
+    CGFloat emitterHeight = self.rankStar1ImageView.bounds.size.height;
+    
+    NSLog(@"%f", emitterHeight);
+    
+    CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
+    emitterLayer.emitterShape = kCAEmitterLayerRectangle;
+    emitterLayer.emitterPosition = CGPointMake(self.rankStar1ImageView.frame.origin.x + (emitterWidth / 2.0),
+                                               self.rankStar1ImageView.frame.origin.y + emitterHeight);
+    emitterLayer.emitterSize = CGSizeMake(emitterWidth, emitterHeight);
+    emitterLayer.emitterZPosition = 10;
+    
+    self.emitterLayer = emitterLayer;
+    
+    CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
+    emitterCell.scale = 0.5;
+    emitterCell.scaleRange = 0.25;
+    emitterCell.emissionLongitude = (CGFloat)-M_PI_2;
+    emitterCell.emissionRange = (CGFloat)(M_PI_4);
+    emitterCell.lifetime = 5.0;
+    emitterCell.birthRate = 5;
+    emitterCell.velocity = 100.0;
+    emitterCell.velocityRange = 25.0;
+    emitterCell.yAcceleration = 100.0;
+    
+    emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
+    
+    self.emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
+
+    [self.rankContainerView.layer addSublayer:emitterLayer];
+    */
+    
+    self.view.clipsToBounds = YES;
+    
+    // END - PARTICLE EMMITER TEST CODE
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -269,7 +312,49 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                          {
                              [self beginStarAnimationForStar:(starNumberForBlock + 1)];
                          }
+                         else
+                         {
+                             if (self.gameData.starRating.integerValue == 3)
+                             {
+                                 self.rankStar1EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar1ImageView];
+                                 self.rankStar2EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar2ImageView];
+                                 self.rankStar3EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar3ImageView];
+                                 
+                                 [self.rankStar1ImageView.layer addSublayer:self.rankStar1EmitterLayer];
+                                 [self.rankStar2ImageView.layer addSublayer:self.rankStar2EmitterLayer];
+                                 [self.rankStar3ImageView.layer addSublayer:self.rankStar3EmitterLayer];
+                             }
+                         }
                      }];
+}
+
+#pragma mark - Helpers
+
+- (CAEmitterLayer *)generateEmitterLayerForRankStarImageView:(UIImageView *)rankStarImageView
+{
+    CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
+    emitterLayer.emitterShape = kCAEmitterLayerPoint;
+    emitterLayer.emitterPosition = CGPointMake(rankStarImageView.bounds.origin.x + (rankStarImageView.bounds.size.width / 2.0),
+                                               rankStarImageView.bounds.origin.y + (rankStarImageView.bounds.size.width / 2.0));
+    emitterLayer.emitterZPosition = 10;
+    
+    CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
+    emitterCell.scale = 0.5;
+    emitterCell.scaleRange = 0.0;
+    emitterCell.emissionLongitude = (CGFloat)-M_PI_2;
+    emitterCell.emissionRange = (CGFloat)(M_PI_4);
+    emitterCell.lifetime = 5.0;
+    emitterCell.birthRate = (150 + arc4random_uniform(26)) / 100.0;
+    emitterCell.velocity = 300.0;
+    emitterCell.velocityRange = 25.0;
+    emitterCell.yAcceleration = 250.0;
+    emitterCell.spin = 0;
+    emitterCell.spinRange = (CGFloat)M_PI_2;
+    emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
+    
+    emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
+    
+    return emitterLayer;
 }
 
 #pragma mark - KMODecisionViewDelegate
