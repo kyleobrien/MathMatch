@@ -178,6 +178,8 @@
     }
     
     self.faceUpButton.contentEdgeInsets = UIEdgeInsetsMake(4.0, 0.0, 0.0, 0.0);
+    
+    [self.faceUpButton setTitleColor:self.edgeColor forState:UIControlStateSelected];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -192,30 +194,27 @@
 
 - (IBAction)playerRequestedCardFlip:(id)sender
 {
-    if (self.card.isFaceUp)
+    if (self.shouldUseSelctionInsteadOfFlip)
     {
-        // Don't let the player flip it back down.
+        if (!self.card.selected)
+        {
+            if ([self.delegate requestedFlipFor:self])
+            {
+                [self selectCard];
+            }
+        }
     }
     else
     {
-        if ([self.delegate requestedFlipFor:self])
+        if (!self.card.isFaceUp)
         {
-            [self flipCardFaceUp];
+            if ([self.delegate requestedFlipFor:self])
+            {
+                [self flipCardFaceUp];
+            }
         }
     }
 }
-
-/*
-#pragma mark - Setters
-
-- (void)setFontSize:(CGFloat)fontSize
-{
-    _fontSize = fontSize;
-    
-    self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:self.fontSize];
-    self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = NO;
-}
- */
 
 #pragma mark - Helpers
 
@@ -246,6 +245,41 @@
                                  self.tableLocation.y,
                                  self.view.frame.size.width,
                                  self.view.frame.size.height);
+}
+
+- (void)selectCard
+{
+    self.card.selected = YES;
+    
+    self.faceUpButton.selected = YES;
+    [self.faceUpButton setBackgroundColor:[UIColor whiteColor]];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFaceUpFor:)])
+    {
+        [self.delegate finishedFlippingFaceUpFor:self];
+    }
+}
+
+- (void)deselectCard
+{
+    [UIView animateWithDuration:0.20
+                     animations:^
+                     {
+                         self.faceUpButton.selected = NO;
+                         [self.faceUpButton setBackgroundColor:self.edgeColor];
+                     }
+                     completion:^(BOOL finished)
+                     {
+                         if (finished)
+                         {
+                             self.card.selected = NO;
+                             
+                             if (self.delegate && [self.delegate respondsToSelector:@selector(finishedFlippingFaceDownFor:)])
+                             {
+                                 [self.delegate finishedFlippingFaceDownFor:self];
+                             }
+                         }
+                     }];
 }
 
 - (void)flipCardFaceDown

@@ -169,7 +169,7 @@
     gameData.numberOfCards = @(self.gameData.numberOfCards.intValue);
     
     gameData.arithmeticType = self.gameData.arithmeticType;
-    gameData.memorySpeed = self.gameData.memorySpeed;
+    gameData.startingPositionType = self.gameData.startingPositionType;
     gameData.musicTrack = self.gameData.musicTrack;
     gameData.cardStyle = self.gameData.cardStyle;
     
@@ -336,6 +336,11 @@
             cardViewController.delegate = self;
             cardViewController.cardSize = size;
             cardViewController.fontSize = fontSize;
+            
+            if (self.gameData.startingPositionType == MMXStartingPositionTypeFaceUp)
+            {
+                cardViewController.shouldUseSelctionInsteadOfFlip = YES;
+            }
             
             [unshuffledCardValues removeObjectAtIndex:randomIndex];
             
@@ -533,9 +538,20 @@
             for (NSInteger j = 0; j < row.count; j++)
             {
                 MMXCardViewController *cardViewController = row[j];
-                if (!cardViewController.card.isFaceUp)
+                
+                if (self.gameData.startingPositionType == MMXStartingPositionTypeFaceUp)
                 {
-                    stopPlaying = NO;
+                    if (!cardViewController.card.selected)
+                    {
+                        stopPlaying = NO;
+                    }
+                }
+                else
+                {
+                    if (!cardViewController.card.isFaceUp)
+                    {
+                        stopPlaying = NO;
+                    }
                 }
             }
         }
@@ -602,7 +618,7 @@
                      {
                          if (finished && (index == (self.cardsList.count - 1)))
                          {
-                             if (self.gameData.memorySpeed != MMXMemorySpeedNone)
+                             if (self.gameData.startingPositionType != MMXStartingPositionTypeFaceDown)
                              {
                                  [self flipCardFaceUpWithIndex:0];
                              }
@@ -668,10 +684,6 @@
     else
     {
         self.memoryTimeRemaining = 5.0;
-        if (self.gameData.memorySpeed == MMXMemorySpeedSlow)
-        {
-            self.memoryTimeRemaining = 10.0;
-        }
         
         [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Memorize - 0:00", nil)];
         self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
@@ -838,9 +850,17 @@
         }
         else
         {
-            [self.firstCardViewController flipCardFaceDown];
-            [self.secondCardViewController flipCardFaceDown];
-                               
+            if (self.gameData.startingPositionType == MMXStartingPositionTypeFaceUp)
+            {
+                [self.firstCardViewController deselectCard];
+                [self.secondCardViewController deselectCard];
+            }
+            else
+            {
+                [self.firstCardViewController flipCardFaceDown];
+                [self.secondCardViewController flipCardFaceDown];
+            }
+            
             self.firstCardViewController = nil;
             self.secondCardViewController = nil;
                                
@@ -1011,7 +1031,14 @@
 {
     if ((self.gameState == MMXGameStatePreGame) && (cardViewController == self.cardsList.lastObject))
     {
-        [self tickMemorySpeedCountdownTimer];
+        if (self.gameData.startingPositionType == MMXStartingPositionTypeMemorize)
+        {
+            [self tickMemorySpeedCountdownTimer];
+        }
+        else if (self.gameData.startingPositionType == MMXStartingPositionTypeFaceUp)
+        {
+            [self allowPlayerInputAndStartGame];
+        }
     }
     else if (self.gameState == MMXGameStateAnimating)
     {

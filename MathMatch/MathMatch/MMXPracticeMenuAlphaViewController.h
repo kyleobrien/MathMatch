@@ -10,7 +10,7 @@
 
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeNumberOfCards;
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeArithmeticType;
-FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMemorySpeed;
+FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeStartingPosition;
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMusic;
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -26,9 +26,9 @@ FOUNDATION_EXPORT NSString * const kMMXUserDefaultsPracticeMusic;
 @property (nonatomic, weak) IBOutlet UIButton *arithmeticMultiplicationButton;
 @property (nonatomic, weak) IBOutlet UIButton *arithmeticDivisionButton;
 
-@property (nonatomic, weak) IBOutlet UIButton *memorySlowButton;
-@property (nonatomic, weak) IBOutlet UIButton *memoryFastButton;
-@property (nonatomic, weak) IBOutlet UIButton *memoryNoneButton;
+@property (nonatomic, weak) IBOutlet UIButton *startingPositionFaceUpButton;
+@property (nonatomic, weak) IBOutlet UIButton *startingPositionMemorizeButton;
+@property (nonatomic, weak) IBOutlet UIButton *startingPositionFaceDownButton;
 
 @property (nonatomic, weak) IBOutlet UIButton *music1Button;
 @property (nonatomic, weak) IBOutlet UIButton *music2Button;

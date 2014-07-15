@@ -9,7 +9,7 @@
                 "arithmeticType" : "addition",
                 "targetNumber" : 10,
                 "numberOfCards" : 12,
-                "memorySpeed" : "fast",
+                "startingPositionType" : "face up",
                 "penaltyMultiplier" : 5.0,
                 "starTimes" : [60.0, 30.0]
             },
@@ -19,7 +19,7 @@
                 "arithmeticType" : "subtraction",
                 "targetNumber" : 7,
                 "numberOfCards" : 12,
-                "memorySpeed" : "fast",
+                "startingPositionType" : "memorize",
                 "penaltyMultiplier" : 5.0,
                 "starTimes" : [60.0, 30.0]
             },
@@ -29,7 +29,7 @@
                 "arithmeticType" : "multiplication",
                 "targetNumber" : 24,
                 "numberOfCards" : 8,
-                "memorySpeed" : "none",
+                "startingPositionType" : "face down",
                 "penaltyMultiplier" : 1.0,
                 "starTimes" : [60.0, 30.0]
             }

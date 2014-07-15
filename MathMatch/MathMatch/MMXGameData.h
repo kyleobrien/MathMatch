@@ -25,11 +25,11 @@ typedef NS_ENUM(NSUInteger, MMXArithmeticType)
     MMXArithmeticTypeDivision
 };
 
-typedef NS_ENUM(NSUInteger, MMXMemorySpeed)
+typedef NS_ENUM(NSUInteger, MMXStartingPositionType)
 {
-    MMXMemorySpeedNone,
-    MMXMemorySpeedSlow,
-    MMXMemorySpeedFast
+    MMXStartingPositionTypeFaceUp,
+    MMXStartingPositionTypeMemorize,
+    MMXStartingPositionTypeFaceDown
 };
 
 typedef NS_ENUM(NSUInteger, MMXMusicTrack)
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 @property (nonatomic, strong) NSNumber *numberOfCards;
 @property (nonatomic, strong) NSString *cardsValuesSeparatedByCommas;
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
-@property (nonatomic, assign) MMXMemorySpeed memorySpeed;
+@property (nonatomic, assign) MMXStartingPositionType startingPositionType;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;
 @property (nonatomic, assign) MMXCardStyle cardStyle;
 

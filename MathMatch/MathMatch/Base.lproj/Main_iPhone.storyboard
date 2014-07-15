@@ -26,7 +26,7 @@
             <objects>
                 <tableViewController id="tbY-En-PYT" customClass="MMXSettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="UCk-vf-zgO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -278,7 +278,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="hok-83-lwb" customClass="MMXEnabledCardsViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="eFe-Bp-8UL">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="JuK-2b-V28">
@@ -339,7 +339,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HVe-Ss-hNv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3wa-Kh-RQG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AM0-jt-Wyj">
@@ -371,7 +371,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcA-qL-Zad">
-                                <rect key="frame" x="20" y="235" width="280" height="161"/>
+                                <rect key="frame" x="20" y="235" width="280" height="249"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <string key="text">This app is designed, developed and maintained by a wife and husband team near Buffalo, New York.  Your purchase directly supports our family and lets us do what we love.
@@ -428,11 +428,11 @@ Thank you.</string>
                         <viewControllerLayoutGuide type="bottom" id="JTZ-bv-TUy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DmC-0O-hV9">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIN-Wx-MXj" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="0.0" width="280" height="32"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -440,7 +440,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-mg-MX8" userLabel="Classes Item">
-                                <rect key="frame" x="20" y="32" width="280" height="64"/>
+                                <rect key="frame" x="20" y="51" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7u-rZ-Ib1">
@@ -468,7 +468,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="96" width="280" height="32"/>
+                                <rect key="frame" x="20" y="115" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -476,7 +476,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-iS-e6a" userLabel="Practice Item">
-                                <rect key="frame" x="20" y="128" width="280" height="64"/>
+                                <rect key="frame" x="20" y="165" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A">
@@ -505,7 +505,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="192" width="280" height="32"/>
+                                <rect key="frame" x="20" y="229" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -513,7 +513,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q24-qe-uJT" userLabel="How to Play Item">
-                                <rect key="frame" x="20" y="224" width="280" height="64"/>
+                                <rect key="frame" x="20" y="278" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
@@ -542,7 +542,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="288" width="280" height="32"/>
+                                <rect key="frame" x="20" y="342" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -550,7 +550,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-vo-tXn" userLabel="Report Card Item">
-                                <rect key="frame" x="20" y="320" width="280" height="64"/>
+                                <rect key="frame" x="20" y="391" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
@@ -579,7 +579,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="384" width="280" height="32"/>
+                                <rect key="frame" x="20" y="455" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -641,7 +641,7 @@ Thank you.</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="C6b-E3-CYH" customClass="MMXClassesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="1O3-1a-r6e">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -731,7 +731,7 @@ Thank you.</string>
             <objects>
                 <tableViewController id="fm7-LP-WHa" customClass="MMXLessonsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="D2c-Gj-q7g">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -791,11 +791,11 @@ Thank you.</string>
                         <viewControllerLayoutGuide type="bottom" id="ddM-bC-P2A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BFw-Xc-GWq">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-Wf-eQN" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="0.0" width="280" height="14"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -803,7 +803,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-n7-4BR" userLabel="Number View">
-                                <rect key="frame" x="20" y="14" width="280" height="72"/>
+                                <rect key="frame" x="20" y="32" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruF-TR-8Rb">
@@ -891,7 +891,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7O-4k-JVo" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="86" width="280" height="33"/>
+                                <rect key="frame" x="20" y="104" width="280" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -980,7 +980,7 @@ Thank you.</string>
                                 <rect key="frame" x="20" y="242" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Memory Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-ao-gRo">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Starting Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-ao-gRo">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
@@ -991,9 +991,9 @@ Thank you.</string>
                                         <rect key="frame" x="0.0" y="28" width="88" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Slow">
+                                        <state key="normal" title="Face Up">
                                             <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1005,9 +1005,9 @@ Thank you.</string>
                                         <rect key="frame" x="96" y="28" width="88" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Fast">
+                                        <state key="normal" title="Memorize">
                                             <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1019,9 +1019,9 @@ Thank you.</string>
                                         <rect key="frame" x="192" y="28" width="88" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="None">
+                                        <state key="normal" title="Face Down">
                                             <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1165,9 +1165,6 @@ Thank you.</string>
                         <outlet property="arithmeticDivisionButton" destination="Ury-pk-nbJ" id="181-6Q-6kV"/>
                         <outlet property="arithmeticMultiplicationButton" destination="kOt-Sa-d7K" id="e4Y-UW-oUp"/>
                         <outlet property="arithmeticSubtractionButton" destination="EFE-3w-eVF" id="Xcd-x4-1iN"/>
-                        <outlet property="memoryFastButton" destination="3te-fA-Qys" id="3L6-Ul-hei"/>
-                        <outlet property="memoryNoneButton" destination="zzT-Fl-qJZ" id="fal-BQ-uij"/>
-                        <outlet property="memorySlowButton" destination="t4w-w4-ta0" id="2Ib-Xc-Qrg"/>
                         <outlet property="music1Button" destination="UjU-0L-bXg" id="bVv-rR-ttw"/>
                         <outlet property="music2Button" destination="Nfw-Hl-c93" id="481-tV-EoS"/>
                         <outlet property="music3Button" destination="hZS-NR-9Fj" id="Bnp-Um-x5T"/>
@@ -1177,6 +1174,9 @@ Thank you.</string>
                         <outlet property="number20Button" destination="s1K-3C-nQo" id="Nr1-7I-PnW"/>
                         <outlet property="number24Button" destination="lng-py-aHX" id="ZVo-t4-gl4"/>
                         <outlet property="number8Button" destination="Yjr-yG-5dI" id="gNr-g7-bsb"/>
+                        <outlet property="startingPositionFaceDownButton" destination="zzT-Fl-qJZ" id="rU3-Zy-HZ8"/>
+                        <outlet property="startingPositionFaceUpButton" destination="t4w-w4-ta0" id="7tq-dt-QIx"/>
+                        <outlet property="startingPositionMemorizeButton" destination="3te-fA-Qys" id="NvG-8R-hBI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0B-pz-wvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1192,11 +1192,11 @@ Thank you.</string>
                         <viewControllerLayoutGuide type="bottom" id="g8y-zy-LEc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V9x-Vg-j9t">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFK-3Y-vUK" userLabel="Keypad">
-                                <rect key="frame" x="0.0" y="176" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="264" width="320" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" tag="17" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddi-Jn-X2u" customClass="MMXFlatButton">
@@ -1361,7 +1361,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwM-AN-VAS">
-                                <rect key="frame" x="20" y="20" width="280" height="148"/>
+                                <rect key="frame" x="20" y="20" width="280" height="236"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="qGH-nD-iWA"/>
@@ -1405,7 +1405,7 @@ Thank you.</string>
                         <viewControllerLayoutGuide type="bottom" id="5LU-Ge-xK4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0ym-2z-HbT">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YJ-Gz-CcR" userLabel="View - equationContainerView">
@@ -1496,7 +1496,7 @@ Thank you.</string>
                         <viewControllerLayoutGuide type="bottom" id="ifq-CO-ebh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="S0q-Qx-Ubp">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5j-eC-V7J">
@@ -1544,7 +1544,7 @@ Thank you.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKe-YK-M2z">
-                                <rect key="frame" x="20" y="237" width="150" height="26"/>
+                                <rect key="frame" x="20" y="325" width="150" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="WKS-Af-JUS"/>
@@ -1555,7 +1555,7 @@ Thank you.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-bI-uiI">
-                                <rect key="frame" x="20" y="277" width="150" height="26"/>
+                                <rect key="frame" x="20" y="365" width="150" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="JuU-aU-cWq"/>
@@ -1566,7 +1566,7 @@ Thank you.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnF-y4-gyq">
-                                <rect key="frame" x="20" y="317" width="280" height="21"/>
+                                <rect key="frame" x="20" y="405" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="B79-IE-j6d"/>
@@ -1628,7 +1628,7 @@ Thank you.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbP-Nu-zEf" customClass="MMXFlatButton">
-                                <rect key="frame" x="20" y="352" width="280" height="44"/>
+                                <rect key="frame" x="20" y="440" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1644,7 +1644,7 @@ Thank you.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKY-RS-9XW">
-                                <rect key="frame" x="200" y="237" width="100" height="26"/>
+                                <rect key="frame" x="200" y="325" width="100" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="2Hb-eG-DcZ"/>
@@ -1655,7 +1655,7 @@ Thank you.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2e-82-obX">
-                                <rect key="frame" x="200" y="277" width="100" height="26"/>
+                                <rect key="frame" x="200" y="365" width="100" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="AGu-Mh-ay7"/>
@@ -1666,31 +1666,31 @@ Thank you.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2w-h2-qmq" userLabel="Star Container">
-                                <rect key="frame" x="20" y="180" width="280" height="43"/>
+                                <rect key="frame" x="20" y="180" width="280" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMXRankStarEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="tug-Ry-9Ad">
-                                        <rect key="frame" x="52" y="1" width="44" height="41"/>
+                                        <rect key="frame" x="52" y="45" width="44" height="41"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMXRankStarFull" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-zl-wMT">
-                                        <rect key="frame" x="52" y="1" width="44" height="41"/>
+                                        <rect key="frame" x="52" y="45" width="44" height="41"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMXRankStarEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-cj-ci1">
-                                        <rect key="frame" x="118" y="1" width="44" height="41"/>
+                                        <rect key="frame" x="118" y="45" width="44" height="41"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMXRankStarFull" translatesAutoresizingMaskIntoConstraints="NO" id="YW6-Ik-ewz">
-                                        <rect key="frame" x="118" y="1" width="44" height="41"/>
+                                        <rect key="frame" x="118" y="45" width="44" height="41"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMXRankStarEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="VUG-KI-sUQ">
-                                        <rect key="frame" x="184" y="1" width="44" height="41"/>
+                                        <rect key="frame" x="184" y="45" width="44" height="41"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MMXRankStarFull" translatesAutoresizingMaskIntoConstraints="NO" id="w03-AR-07N">
-                                        <rect key="frame" x="184" y="1" width="44" height="41"/>
+                                        <rect key="frame" x="184" y="45" width="44" height="41"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
@@ -1787,7 +1787,7 @@ Thank you.</string>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="JuB-Ao-fmW"/>

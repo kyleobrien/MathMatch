@@ -169,21 +169,21 @@
         NSAssert(YES, @"MMX: Arithmetic Type in JSON is not valid.");
     }
     
-    if ([lesson[@"memorySpeed"] isEqualToString:@"fast"])
+    if ([lesson[@"startingPositionType"] isEqualToString:@"face up"])
     {
-        gameConfiguration.memorySpeed = MMXMemorySpeedFast;
+        gameConfiguration.startingPositionType = MMXStartingPositionTypeFaceUp;
     }
-    else if ([lesson[@"memorySpeed"] isEqualToString:@"slow"])
+    else if ([lesson[@"startingPositionType"] isEqualToString:@"memorize"])
     {
-        gameConfiguration.memorySpeed = MMXMemorySpeedSlow;
+        gameConfiguration.startingPositionType = MMXStartingPositionTypeMemorize;
     }
-    else if ([lesson[@"memorySpeed"] isEqualToString:@"none"])
+    else if ([lesson[@"startingPositionType"] isEqualToString:@"face down"])
     {
-        gameConfiguration.memorySpeed = MMXMemorySpeedNone;
+        gameConfiguration.startingPositionType = MMXStartingPositionTypeFaceDown;
     }
     else
     {
-        NSAssert(YES, @"MMX: Memory Speed in JSON is not valid.");
+        NSAssert(YES, @"MMX: Starting position type in JSON is not valid.");
     }
     
     // TODO: Need music tracks .

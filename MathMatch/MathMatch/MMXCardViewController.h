@@ -23,6 +23,8 @@
 @property (nonatomic, assign) NSInteger row;
 @property (nonatomic, assign) CGFloat fontSize;
 
+@property (nonatomic, assign) BOOL shouldUseSelctionInsteadOfFlip;
+
 @property (nonatomic, weak) id<MMXCardViewControllerDelegate> delegate;
 
 - (id)initWithCardStyle:(MMXCardStyle)cardStyle;
@@ -33,6 +35,7 @@
 - (void)dealCard;
 - (void)flipCardFaceUp;
 - (void)flipCardFaceDown;
+- (void)deselectCard;
 - (void)removeCardFromTable;
 
 @end

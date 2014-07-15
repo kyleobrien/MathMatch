@@ -19,7 +19,7 @@
 
 NSString * const kMMXUserDefaultsPracticeNumberOfCards = @"MMXUserDefaultsPracticeNumberOfCards";
 NSString * const kMMXUserDefaultsPracticeArithmeticType = @"MMXUserDefaultsPracticeArithmeticType";
-NSString * const kMMXUserDefaultsPracticeMemorySpeed = @"MMXUserDefaultsPracticeMemorySpeed";
+NSString * const kMMXUserDefaultsPracticeStartingPosition = @"MMXUserDefaultsPracticeStartingPosition";
 NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic";
 
 - (void)viewDidLoad
@@ -138,24 +138,24 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     UIButton *button = (UIButton *)sender;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    self.memorySlowButton.selected = (button == self.memorySlowButton);
-    self.memoryFastButton.selected = (button == self.memoryFastButton);
-    self.memoryNoneButton.selected = (button == self.memoryNoneButton);
+    self.startingPositionFaceUpButton.selected = (button == self.startingPositionFaceUpButton);
+    self.startingPositionMemorizeButton.selected = (button == self.startingPositionMemorizeButton);
+    self.startingPositionFaceDownButton.selected = (button == self.startingPositionFaceDownButton);
     
-    if (button == self.memorySlowButton)
+    if (button == self.startingPositionFaceUpButton)
     {
-        self.gameData.memorySpeed = MMXMemorySpeedSlow;
-        [userDefaults setInteger:MMXMemorySpeedSlow forKey:kMMXUserDefaultsPracticeMemorySpeed];
+        self.gameData.startingPositionType = MMXStartingPositionTypeFaceUp;
+        [userDefaults setInteger:MMXStartingPositionTypeFaceUp forKey:kMMXUserDefaultsPracticeStartingPosition];
     }
-    else if (button == self.memoryFastButton)
+    else if (button == self.startingPositionMemorizeButton)
     {
-        self.gameData.memorySpeed = MMXMemorySpeedFast;
-        [userDefaults setInteger:MMXMemorySpeedFast forKey:kMMXUserDefaultsPracticeMemorySpeed];
+        self.gameData.startingPositionType = MMXStartingPositionTypeMemorize;
+        [userDefaults setInteger:MMXStartingPositionTypeMemorize forKey:kMMXUserDefaultsPracticeStartingPosition];
     }
-    else if (button == self.memoryNoneButton)
+    else if (button == self.startingPositionFaceDownButton)
     {
-        self.gameData.memorySpeed = MMXMemorySpeedNone;
-        [userDefaults setInteger:MMXMemorySpeedNone forKey:kMMXUserDefaultsPracticeMemorySpeed];
+        self.gameData.startingPositionType = MMXStartingPositionTypeFaceDown;
+        [userDefaults setInteger:MMXStartingPositionTypeFaceDown forKey:kMMXUserDefaultsPracticeStartingPosition];
     }
 }
 
@@ -254,27 +254,27 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     self.gameData.arithmeticType = arithmeticType;
     
-    // Memory Speed --------------
-    MMXMemorySpeed memorySpeed = [userDefaults integerForKey:kMMXUserDefaultsPracticeMemorySpeed];
-    if (memorySpeed == MMXMemorySpeedSlow)
+    // Starting Position --------------
+    MMXStartingPositionType startingPositionType = [userDefaults integerForKey:kMMXUserDefaultsPracticeStartingPosition];
+    if (startingPositionType == MMXStartingPositionTypeFaceUp)
     {
-        self.memorySlowButton.selected = YES;
+        self.startingPositionFaceUpButton.selected = YES;
     }
-    else if (memorySpeed == MMXMemorySpeedFast)
+    else if (startingPositionType == MMXStartingPositionTypeMemorize)
     {
-        self.memoryFastButton.selected = YES;
+        self.startingPositionMemorizeButton.selected = YES;
     }
-    else if (memorySpeed == MMXMemorySpeedNone)
+    else if (startingPositionType == MMXStartingPositionTypeFaceDown)
     {
-        self.memoryNoneButton.selected = YES;
+        self.startingPositionFaceDownButton.selected = YES;
     }
     else
     {
-        self.memorySlowButton.selected = YES;
-        memorySpeed = MMXMemorySpeedSlow;
+        self.startingPositionFaceUpButton.selected = YES;
+        startingPositionType = MMXStartingPositionTypeFaceUp;
     }
     
-    self.gameData.memorySpeed = memorySpeed;
+    self.gameData.startingPositionType = startingPositionType;
     
     // Music Track --------------
     MMXMusicTrack musicTrack = [userDefaults integerForKey:kMMXUserDefaultsPracticeMusic];

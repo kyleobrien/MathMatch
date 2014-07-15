@@ -169,18 +169,18 @@ NSString * const kMMXUserDefaultsEnabledCards = @"MMXUserDefaultsEnabledCards";
     return number.integerValue;
 }
 
-- (void)setMemorySpeed:(MMXMemorySpeed)memorySpeed
+- (void)setStartingPositionType:(MMXStartingPositionType)startingPositionType
 {
-    [self willChangeValueForKey:@"memorySpeed"];
-    [self setPrimitiveValue:@(memorySpeed) forKey:@"memorySpeed"];
-    [self didChangeValueForKey:@"memorySpeed"];
+    [self willChangeValueForKey:@"startingPositionType"];
+    [self setPrimitiveValue:@(startingPositionType) forKey:@"startingPositionType"];
+    [self didChangeValueForKey:@"startingPositionType"];
 }
 
-- (MMXMemorySpeed)memorySpeed
+- (MMXStartingPositionType)startingPositionType
 {
-    [self willAccessValueForKey:@"memorySpeed"];
-    NSNumber *number = [self primitiveValueForKey:@"memorySpeed"];
-    [self didAccessValueForKey:@"memorySpeed"];
+    [self willAccessValueForKey:@"startingPositionType"];
+    NSNumber *number = [self primitiveValueForKey:@"startingPositionType"];
+    [self didAccessValueForKey:@"startingPositionType"];
     
     return number.integerValue;
 }

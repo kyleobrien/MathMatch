@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="MMXGameData" representedClassName="MMXGameData" syncable="YES">
         <attribute name="arithmeticType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="attemptedMatches" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -10,11 +10,11 @@
         <attribute name="gameType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="incorrectMatches" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="lessonID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="memorySpeed" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="musicTrack" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="numberOfCards" attributeType="Integer 16" defaultValueString="8" syncable="YES"/>
         <attribute name="penaltyMultiplier" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="starRating" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startingPositionType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="targetNumber" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="threeStarTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="twoStarTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
