@@ -4,7 +4,7 @@
         <attribute name="arithmeticType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="attemptedMatches" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="cardStyle" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="cardsValuesSeparatedByCommas" attributeType="String" syncable="YES"/>
+        <attribute name="cardValuesSeparatedByCommas" attributeType="String" syncable="YES"/>
         <attribute name="completionTime" attributeType="Double" defaultValueString="5400" syncable="YES"/>
         <attribute name="completionTimeWithPenalty" attributeType="Double" defaultValueString="5400" syncable="YES"/>
         <attribute name="gameType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

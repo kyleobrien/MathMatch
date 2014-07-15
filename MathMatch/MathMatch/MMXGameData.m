@@ -16,7 +16,7 @@ NSString * const kMMXUserDefaultsEnabledCards = @"MMXUserDefaultsEnabledCards";
 
 @dynamic targetNumber;
 @dynamic numberOfCards;
-@dynamic cardsValuesSeparatedByCommas;
+@dynamic cardValuesSeparatedByCommas;
 
 @dynamic penaltyMultiplier;
 @dynamic twoStarTime;

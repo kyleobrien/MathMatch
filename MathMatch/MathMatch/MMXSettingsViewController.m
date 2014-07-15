@@ -19,6 +19,7 @@
     // Doesn't deselect on swipe back (bug?) so doing it manually.
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
+
 #pragma mark - Player action
 
 - (IBAction)playerTappedDoneButton:(id)sender

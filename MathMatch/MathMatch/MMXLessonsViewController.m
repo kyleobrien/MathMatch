@@ -108,6 +108,7 @@
         MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
         gameViewController.managedObjectContext = self.managedObjectContext;
         gameViewController.gameData = gameConfiguration;
+        gameViewController.manuallySpecifiedCardValues = lesson[@"cardValues"];
     }
 }
 
@@ -186,7 +187,7 @@
         NSAssert(YES, @"MMX: Starting position type in JSON is not valid.");
     }
     
-    // TODO: Need music tracks .
+    // TODO: Need music tracks.
     
     gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
     

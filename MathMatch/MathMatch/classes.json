@@ -32,6 +32,28 @@
                 "startingPositionType" : "face down",
                 "penaltyMultiplier" : 1.0,
                 "starTimes" : [60.0, 30.0]
+            },
+            {
+                "lessonID" : 104,
+                "title" : "Manual Exact",
+                "arithmeticType" : "addition",
+                "targetNumber" : 20,
+                "numberOfCards" : 12,
+                "cardValues" : [10, 10, 11, 9, 12, 8, 13, 7, 14, 6, 15, 5],
+                "startingPositionType" : "face up",
+                "penaltyMultiplier" : 1.0,
+                "starTimes" : [60.0, 30.0]
+            },
+            {
+                "lessonID" : 105,
+                "title" : "Manual Over",
+                 "arithmeticType" : "addition",
+                 "targetNumber" : 30,
+                 "numberOfCards" : 12,
+                 "cardValues" : [20, 10, 21, 9, 22, 8, 23, 7, 24, 6, 25, 5, 26, 4, 27, 3, 28, 2, 29, 1, 30, 0],
+                 "startingPositionType" : "face up",
+                 "penaltyMultiplier" : 1.0,
+                 "starTimes" : [60.0, 30.0]
             }
          ]
     },

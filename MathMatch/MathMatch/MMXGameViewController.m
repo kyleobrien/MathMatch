@@ -257,52 +257,107 @@
     
     NSMutableArray *unshuffledCardValues = [NSMutableArray arrayWithCapacity:0];
     
-    if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
-        (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction))
+    if (self.manuallySpecifiedCardValues)
     {
-        u_int32_t maxCardValue = floor(self.gameData.targetNumber.integerValue / 2.0);
-        
-        while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
+        if (self.manuallySpecifiedCardValues.count == self.gameData.numberOfCards.integerValue)
         {
-            NSInteger randomValue = arc4random_uniform(maxCardValue + 1);
-            
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-            [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameData.targetNumber.integerValue - randomValue)]];
+            unshuffledCardValues = [NSMutableArray arrayWithArray:self.manuallySpecifiedCardValues];
         }
-    }
-    else if ((self.gameData.arithmeticType == MMXArithmeticTypeMultiplication) ||
-             (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
-    {
-        NSMutableArray *factors = [self factorizeNumber:self.gameData.targetNumber.integerValue];
-        
-        // Make sure the bucket we're selecting from has enough factors to choose from.
-        if (factors.count < self.gameData.numberOfCards.integerValue)
+        else if (self.manuallySpecifiedCardValues.count > self.gameData.numberOfCards.integerValue)
         {
-            while ((unshuffledCardValues.count + factors.count) < self.gameData.numberOfCards.integerValue)
-            {
-                [unshuffledCardValues addObjectsFromArray:factors];
-            }
-        }
-        
-        // Use the factors to populate the unshuffled deck.
-        while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
-        {
-            // Select without replacement.
+            NSMutableArray *bucket = [NSMutableArray arrayWithArray:self.manuallySpecifiedCardValues];
             while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
             {
-                NSInteger randomIndex = arc4random_uniform((u_int32_t)factors.count);
-                NSInteger randomValue = ((NSNumber *)factors[randomIndex]).integerValue;
+                NSInteger randomIndex = arc4random_uniform(bucket.count);
+                NSInteger selectedNumber = ((NSNumber *)bucket[randomIndex]).integerValue;
                 
-                [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
-                [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameData.targetNumber.integerValue / randomValue)]];
+                [unshuffledCardValues addObject:bucket[randomIndex]];
+                [bucket removeObjectAtIndex:randomIndex];
                 
-                [factors removeObjectAtIndex:randomIndex];
+                NSInteger numberToNuke;
+                if (self.gameData.arithmeticType == MMXArithmeticTypeAddition)
+                {
+                    numberToNuke = self.gameData.targetNumber.integerValue - selectedNumber;
+                }
+                else if (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction)
+                {
+                    numberToNuke = self.gameData.targetNumber.integerValue + selectedNumber;
+                }
+                else if (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication)
+                {
+                    numberToNuke = (NSInteger)(self.gameData.targetNumber.integerValue / selectedNumber);
+                }
+                else if (self.gameData.arithmeticType == MMXArithmeticTypeDivision)
+                {
+                    numberToNuke = (NSInteger)(self.gameData.targetNumber.integerValue * selectedNumber);
+                }
+                
+                [unshuffledCardValues addObject:[NSNumber numberWithInteger:numberToNuke]];
+                
+                for (NSNumber *number in bucket)
+                {
+                    if (number.integerValue == numberToNuke)
+                    {
+                        [bucket removeObject:number];
+                        break;
+                    }
+                }
             }
+        }
+        else
+        {
+            NSAssert(YES, @"MMX: Manually specified deck has fewer cards than it should.");
         }
     }
     else
     {
-        NSAssert(YES, @"MMX: Arithmetic Type not set.");
+        if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+            (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction))
+        {
+            u_int32_t maxCardValue = floor(self.gameData.targetNumber.integerValue / 2.0);
+            
+            while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
+            {
+                NSInteger randomValue = arc4random_uniform(maxCardValue + 1);
+                
+                [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
+                [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameData.targetNumber.integerValue - randomValue)]];
+            }
+        }
+        else if ((self.gameData.arithmeticType == MMXArithmeticTypeMultiplication) ||
+                 (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
+        {
+            NSMutableArray *factors = [self factorizeNumber:self.gameData.targetNumber.integerValue];
+            
+            // Make sure the bucket we're selecting from has enough factors to choose from.
+            if (factors.count < self.gameData.numberOfCards.integerValue)
+            {
+                while ((unshuffledCardValues.count + factors.count) < self.gameData.numberOfCards.integerValue)
+                {
+                    [unshuffledCardValues addObjectsFromArray:factors];
+                }
+            }
+            
+            // Use the factors to populate the unshuffled deck.
+            while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
+            {
+                // Select without replacement.
+                while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
+                {
+                    NSInteger randomIndex = arc4random_uniform((u_int32_t)factors.count);
+                    NSInteger randomValue = ((NSNumber *)factors[randomIndex]).integerValue;
+                    
+                    [unshuffledCardValues addObject:[NSNumber numberWithInteger:randomValue]];
+                    [unshuffledCardValues addObject:[NSNumber numberWithInteger:(self.gameData.targetNumber.integerValue / randomValue)]];
+                    
+                    [factors removeObjectAtIndex:randomIndex];
+                }
+            }
+        }
+        else
+        {
+            NSAssert(YES, @"MMX: Arithmetic Type not set.");
+        }
     }
     
     
@@ -311,7 +366,7 @@
     
     NSMutableString *commaSeparatedCardValues = [NSMutableString stringWithString:@""];
     
-    self.gameData.cardsValuesSeparatedByCommas = @"";
+    self.gameData.cardValuesSeparatedByCommas = @"";
     
     for (NSInteger i = 0; i < numberOfCardsInRow.count; i++)
     {
@@ -360,7 +415,7 @@
         [self.cardsGrid addObject:rowOfCards];
     }
     
-    self.gameData.cardsValuesSeparatedByCommas = commaSeparatedCardValues;
+    self.gameData.cardValuesSeparatedByCommas = commaSeparatedCardValues;
 }
 
 - (void)arrangDeckOntoTableauAndStartDealing

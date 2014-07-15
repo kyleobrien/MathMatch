@@ -67,7 +67,7 @@ typedef NS_ENUM(NSUInteger, MMXCardStyle)
 
 @property (nonatomic, strong) NSNumber *targetNumber;
 @property (nonatomic, strong) NSNumber *numberOfCards;
-@property (nonatomic, strong) NSString *cardsValuesSeparatedByCommas;
+@property (nonatomic, strong) NSString *cardValuesSeparatedByCommas;
 @property (nonatomic, assign) MMXArithmeticType arithmeticType;
 @property (nonatomic, assign) MMXStartingPositionType startingPositionType;
 @property (nonatomic, assign) MMXMusicTrack musicTrack;

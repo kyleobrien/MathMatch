@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) MMXGameData *gameData;
+@property (nonatomic, strong) NSArray *manuallySpecifiedCardValues;
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *pauseBarButtonItem;
 
