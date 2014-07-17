@@ -61,6 +61,7 @@
 		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27D391711937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
+		27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */; };
 		27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C2791928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C27D1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C27C1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m */; };
@@ -149,6 +150,8 @@
 		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
 		27D3916E1937867C0041BDB4 /* MMXTopScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTopScore.h; sourceTree = "<group>"; };
 		27D3916F1937867C0041BDB4 /* MMXTopScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTopScore.m; sourceTree = "<group>"; };
+		27E4B32E1976DFF000B1D885 /* MMXReportCardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXReportCardTableViewController.h; sourceTree = "<group>"; };
+		27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXReportCardTableViewController.m; sourceTree = "<group>"; };
 		27F3C2761928F8DB00EB5D59 /* MMXClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassesViewController.h; sourceTree = "<group>"; };
 		27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassesViewController.m; sourceTree = "<group>"; };
 		27F3C27B1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassProgressTableViewCell.h; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 				27A0867D18937D5800C318DE /* Main */,
 				27F3C27A1928FAC500EB5D59 /* Classes and Lessons */,
 				27A0867818930EE600C318DE /* Practice */,
+				27E4B331197816E300B1D885 /* Report Card */,
 				27A7894D1954A6FC007E4018 /* Settings */,
 				27572EA518A1FF56007EAF8A /* Component UI */,
 				27C687D718C3BE9E0060D451 /* Data Model */,
@@ -343,6 +347,15 @@
 				275500A418AB0DC2008B4DB4 /* MMXCard.m */,
 			);
 			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		27E4B331197816E300B1D885 /* Report Card */ = {
+			isa = PBXGroup;
+			children = (
+				27E4B32E1976DFF000B1D885 /* MMXReportCardTableViewController.h */,
+				27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */,
+			);
+			name = "Report Card";
 			sourceTree = "<group>";
 		};
 		27F3C27A1928FAC500EB5D59 /* Classes and Lessons */ = {
@@ -503,6 +516,7 @@
 				27A7895919589B1B007E4018 /* MMXEnabledCardsViewController.m in Sources */,
 				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
 				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
+				27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */,
 				27A7894C195498D9007E4018 /* MMXSettingsViewController.m in Sources */,
 				279EC21918884A890087E0DB /* main.m in Sources */,
 				27A6BD7619631841003B7325 /* MMXAboutViewController.m in Sources */,

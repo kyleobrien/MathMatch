@@ -91,10 +91,7 @@
 {
     [super viewDidAppear:animated];
     
-    if (self.gameData.gameType != MMXGameTypeAutoPlay)
-    {
-        [UIApplication sharedApplication].idleTimerDisabled = YES;
-    }
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     if (!self.haveAlreadyArrangedOnce)
     {
@@ -117,10 +114,7 @@
 {
     [super viewDidDisappear:animated];
     
-    if (self.gameData.gameType != MMXGameTypeAutoPlay)
-    {
-        [UIApplication sharedApplication].idleTimerDisabled = NO;
-    }
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
     
     [self.gameClockTimer invalidate];
 }
@@ -533,14 +527,11 @@
     
     [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Time - 00:00", nil)];
     
-    if (self.gameData.gameType != MMXGameTypeAutoPlay)
-    {
-        self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
-                                                               target:self
-                                                             selector:@selector(updateClock)
-                                                             userInfo:nil
-                                                              repeats:YES];
-    }
+    self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
+                                                           target:self
+                                                         selector:@selector(updateClock)
+                                                         userInfo:nil
+                                                          repeats:YES];
 }
 
 - (void)updateClock
@@ -637,19 +628,12 @@
 
 - (void)endGameAndShowResults
 {
-    if (self.gameData.gameType == MMXGameTypeAutoPlay)
-    {
-        // TODO: Start again.
-    }
-    else
-    {
-        [self.gameClockTimer invalidate];
-        
-        self.gameState = MMXGameStateOver;
-        self.gameData.completionTime = @(self.gameClock);
-        
-        [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
-    }
+    [self.gameClockTimer invalidate];
+    
+    self.gameState = MMXGameStateOver;
+    self.gameData.completionTime = @(self.gameClock);
+    
+    [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
 }
 
 #pragma mark - Animation

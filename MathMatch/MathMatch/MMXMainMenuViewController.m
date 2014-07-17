@@ -10,6 +10,7 @@
 #import "MMXMainMenuViewController.h"
 #import "MMXNavigationController.h"
 #import "MMXPracticeMenuAlphaViewController.h"
+#import "MMXReportCardTableViewController.h"
 #import "MMXSettingsViewController.h"
 
 @interface MMXMainMenuViewController ()
@@ -90,6 +91,11 @@
     {
         MMXPracticeMenuAlphaViewController *practiceViewController = (MMXPracticeMenuAlphaViewController *)segue.destinationViewController;
         practiceViewController.managedObjectContext = navigationController.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"MMXReportCardSegue"])
+    {
+        MMXReportCardTableViewController *reportCardTableViewController = (MMXReportCardTableViewController *)segue.destinationViewController;
+        reportCardTableViewController.managedObjectContext = navigationController.managedObjectContext;
     }
     else if ([segue.identifier isEqualToString:@"MMXSettingsSegue"])
     {
@@ -181,13 +187,13 @@
     {
         segue = @"MMXPracticeSegue";
     }
-    else if (cardViewController == self.practiceCardViewController)
+    else if (cardViewController == self.howToPlayCardViewController)
     {
         
     }
-    else if (cardViewController == self.practiceCardViewController)
+    else if (cardViewController == self.reportCardCardViewController)
     {
-        
+        segue = @"MMXReportCardSegue";
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.14 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
