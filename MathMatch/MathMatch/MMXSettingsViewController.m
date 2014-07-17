@@ -125,6 +125,55 @@
     }
 }
 
+#pragma mark - UITableViewControllerDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 64.0;
+    }
+    
+    return 44.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, 21.0)];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.0,
+                                                               15.0 + (section == 0 ? 20.0 : 0.0),
+                                                               view.bounds.size.width - 15.0,
+                                                               21.0)];
+    label.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:15.0];
+    label.textColor = [UIColor mmx_purpleColor];
+    
+    if (section == 0)
+    {
+        label.text = NSLocalizedString(@"Music Volume", nil);
+    }
+    else if (section == 1)
+    {
+        label.text = NSLocalizedString(@"Sound Effects Volume", nil);
+    }
+    else if (section == 2)
+    {
+        label.text = NSLocalizedString(@"Options", nil);
+    }
+    else if (section == 3)
+    {
+        label.text = NSLocalizedString(@"More", nil);
+    }
+    else if (section == 4)
+    {
+        label.text = NSLocalizedString(@"About", nil);
+    }
+    
+    [view addSubview:label];
+    
+    return view;
+}
+
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
