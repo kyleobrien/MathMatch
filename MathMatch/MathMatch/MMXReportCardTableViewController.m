@@ -60,9 +60,17 @@
             self.timePlayed += gameData.completionTime.doubleValue;
         }
         
-        self.correctPercentage = self.correctMatches / (CGFloat)(self.correctMatches + self.incorrectMatches);
-        self.correctPercentage = floorf(self.correctPercentage * 1000) / 10;
-        self.incorrectPercentage = 100.0 - self.correctPercentage;
+        if ((self.correctMatches == 0) && (self.incorrectMatches == 0))
+        {
+            self.correctPercentage = 0.0;
+            self.incorrectPercentage = 0.0;
+        }
+        else
+        {
+            self.correctPercentage = self.correctMatches / (CGFloat)(self.correctMatches + self.incorrectMatches);
+            self.correctPercentage = floorf(self.correctPercentage * 1000) / 10;
+            self.incorrectPercentage = 100.0 - self.correctPercentage;
+        }
     }
     
     

@@ -316,13 +316,18 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                          {
                              if (self.gameData.starRating.integerValue == 3)
                              {
-                                 self.rankStar1EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar1ImageView];
-                                 self.rankStar2EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar2ImageView];
-                                 self.rankStar3EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar3ImageView];
+                                 self.rankStar1EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar1ImageView
+                                                                                                    withName:@"star1"];
+                                 self.rankStar2EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar2ImageView
+                                                                                                    withName:@"star2"];
+                                 self.rankStar3EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar3ImageView
+                                                                                                    withName:@"star3"];
                                  
                                  [self.rankStar1ImageView.layer addSublayer:self.rankStar1EmitterLayer];
                                  [self.rankStar2ImageView.layer addSublayer:self.rankStar2EmitterLayer];
                                  [self.rankStar3ImageView.layer addSublayer:self.rankStar3EmitterLayer];
+                                 
+                                 [self performSelector:@selector(stopParticles) withObject:nil afterDelay:5.0];
                              }
                          }
                      }];
@@ -330,7 +335,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 
 #pragma mark - Helpers
 
-- (CAEmitterLayer *)generateEmitterLayerForRankStarImageView:(UIImageView *)rankStarImageView
+- (CAEmitterLayer *)generateEmitterLayerForRankStarImageView:(UIImageView *)rankStarImageView withName:(NSString *)name
 {
     CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
     emitterLayer.emitterShape = kCAEmitterLayerPoint;
@@ -351,10 +356,31 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     emitterCell.spin = 0;
     emitterCell.spinRange = (CGFloat)M_PI_2;
     emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
+    emitterCell.name = name;
     
     emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
     
     return emitterLayer;
+}
+
+- (void)stopParticles
+{
+    ((CAEmitterCell *)self.rankStar1EmitterLayer.emitterCells[0]).birthRate = 0.0;
+    ((CAEmitterCell *)self.rankStar2EmitterLayer.emitterCells[0]).birthRate = 0.0;
+    ((CAEmitterCell *)self.rankStar3EmitterLayer.emitterCells[0]).birthRate = 0.0;
+    
+    [self.rankStar1EmitterLayer setValue:@0.0 forKeyPath:@"emitterCells.star1.birthrate"];
+    [self.rankStar2EmitterLayer setValue:@0.0 forKeyPath:@"emitterCells.star2.birthrate"];
+    [self.rankStar3EmitterLayer setValue:@0.0 forKeyPath:@"emitterCells.star3.birthrate"];
+    
+    NSLog(@"%p", ((CAEmitterCell *)self.rankStar1EmitterLayer.emitterCells[0]));
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        [self.rankStar1EmitterLayer removeFromSuperlayer];
+        [self.rankStar2EmitterLayer removeFromSuperlayer];
+        [self.rankStar3EmitterLayer removeFromSuperlayer];
+    });
 }
 
 #pragma mark - KMODecisionViewDelegate

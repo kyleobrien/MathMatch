@@ -59,6 +59,7 @@
 		27B199A7190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */; };
 		27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
+		27CA5AA11986E84F00CC29FC /* classes.json in Resources */ = {isa = PBXBuildFile; fileRef = 27CA5AA01986E84F00CC29FC /* classes.json */; };
 		27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27D391711937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */; };
@@ -66,8 +67,6 @@
 		27F3C2791928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C27D1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C27C1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m */; };
 		27F3C27E1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C27C1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m */; };
-		27F3C2801928FDD900EB5D59 /* classes.json in Resources */ = {isa = PBXBuildFile; fileRef = 27F3C27F1928FDD900EB5D59 /* classes.json */; };
-		27F3C2811928FDD900EB5D59 /* classes.json in Resources */ = {isa = PBXBuildFile; fileRef = 27F3C27F1928FDD900EB5D59 /* classes.json */; };
 		27F3C2841929178B00EB5D59 /* MMXClassStarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2831929178B00EB5D59 /* MMXClassStarTableViewCell.m */; };
 		27F3C2851929178B00EB5D59 /* MMXClassStarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2831929178B00EB5D59 /* MMXClassStarTableViewCell.m */; };
 		27F3C28C192A76B300EB5D59 /* MMXLessonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C28B192A76B300EB5D59 /* MMXLessonTableViewCell.m */; };
@@ -148,6 +147,7 @@
 		27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MMXColor.m"; sourceTree = "<group>"; };
 		27C687D818C438A50060D451 /* KMODecisionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMODecisionView.h; sourceTree = "<group>"; };
 		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
+		27CA5AA01986E84F00CC29FC /* classes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = classes.json; sourceTree = "<group>"; };
 		27D3916E1937867C0041BDB4 /* MMXTopScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTopScore.h; sourceTree = "<group>"; };
 		27D3916F1937867C0041BDB4 /* MMXTopScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTopScore.m; sourceTree = "<group>"; };
 		27E4B32E1976DFF000B1D885 /* MMXReportCardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXReportCardTableViewController.h; sourceTree = "<group>"; };
@@ -156,7 +156,6 @@
 		27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassesViewController.m; sourceTree = "<group>"; };
 		27F3C27B1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassProgressTableViewCell.h; sourceTree = "<group>"; };
 		27F3C27C1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassProgressTableViewCell.m; sourceTree = "<group>"; };
-		27F3C27F1928FDD900EB5D59 /* classes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = classes.json; sourceTree = "<group>"; };
 		27F3C2821929178B00EB5D59 /* MMXClassStarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassStarTableViewCell.h; sourceTree = "<group>"; };
 		27F3C2831929178B00EB5D59 /* MMXClassStarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassStarTableViewCell.m; sourceTree = "<group>"; };
 		27F3C28A192A76B300EB5D59 /* MMXLessonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXLessonTableViewCell.h; sourceTree = "<group>"; };
@@ -183,7 +182,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27572EA518A1FF56007EAF8A /* Component UI */ = {
+		27572EA518A1FF56007EAF8A /* Custom User Interface */ = {
 			isa = PBXGroup;
 			children = (
 				27A086701890882F00C318DE /* MMXFlatButton.h */,
@@ -191,7 +190,7 @@
 				27C687D818C438A50060D451 /* KMODecisionView.h */,
 				27C687D918C438A50060D451 /* KMODecisionView.m */,
 			);
-			name = "Component UI";
+			name = "Custom User Interface";
 			sourceTree = "<group>";
 		};
 		277A1F24192289CB00E09050 /* Audio */ = {
@@ -229,7 +228,7 @@
 				27A0867818930EE600C318DE /* Practice */,
 				27E4B331197816E300B1D885 /* Report Card */,
 				27A7894D1954A6FC007E4018 /* Settings */,
-				27572EA518A1FF56007EAF8A /* Component UI */,
+				27572EA518A1FF56007EAF8A /* Custom User Interface */,
 				27C687D718C3BE9E0060D451 /* Data Model */,
 				27B199961909BD5900C38E8F /* Utilities */,
 				27A0867E1893867C00C318DE /* MMXGameViewController.h */,
@@ -257,7 +256,7 @@
 				279EC21518884A890087E0DB /* InfoPlist.strings */,
 				279EC21818884A890087E0DB /* main.m */,
 				279EC21A18884A890087E0DB /* MathMatch-Prefix.pch */,
-				27F3C27F1928FDD900EB5D59 /* classes.json */,
+				27CA5AA01986E84F00CC29FC /* classes.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -462,9 +461,9 @@
 				277A1F2919229B4F00E09050 /* destination-01.caf in Resources */,
 				279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */,
 				277A1F26192289CB00E09050 /* button-44.caf in Resources */,
+				27CA5AA11986E84F00CC29FC /* classes.json in Resources */,
 				275500AC18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */,
 				275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
-				27F3C2801928FDD900EB5D59 /* classes.json in Resources */,
 				279EC21718884A890087E0DB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,7 +473,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				275500AD18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */,
-				27F3C2811928FDD900EB5D59 /* classes.json in Resources */,
 				277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */,
 				275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
 				277A1F27192289CB00E09050 /* button-44.caf in Resources */,

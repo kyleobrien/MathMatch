@@ -269,21 +269,15 @@
                 [bucket removeObjectAtIndex:randomIndex];
                 
                 NSInteger numberToNuke;
-                if (self.gameData.arithmeticType == MMXArithmeticTypeAddition)
+                if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+                    (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction))
                 {
                     numberToNuke = self.gameData.targetNumber.integerValue - selectedNumber;
                 }
-                else if (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction)
-                {
-                    numberToNuke = self.gameData.targetNumber.integerValue + selectedNumber;
-                }
-                else if (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication)
+                else if ((self.gameData.arithmeticType == MMXArithmeticTypeMultiplication) ||
+                         (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
                 {
                     numberToNuke = (NSInteger)(self.gameData.targetNumber.integerValue / selectedNumber);
-                }
-                else if (self.gameData.arithmeticType == MMXArithmeticTypeDivision)
-                {
-                    numberToNuke = (NSInteger)(self.gameData.targetNumber.integerValue * selectedNumber);
                 }
                 
                 [unshuffledCardValues addObject:[NSNumber numberWithInteger:numberToNuke]];
