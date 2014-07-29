@@ -43,9 +43,9 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     {
         targetNumber = 10;
     }
-    else if (targetNumber > 999)
+    else if (targetNumber > 1000)
     {
-        targetNumber = 10;
+        targetNumber = 1000;
     }
     
     self.targetNumber = targetNumber;
@@ -93,8 +93,8 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
         
         if (self.haveAnyButtonsBeenTapped)
         {
-            // Capping the target at 999 by ignoring input if it would make the target greater or equal to 100.
-            if (((self.targetNumber > 0) || (digit > 0)) && (self.targetNumber < 100))
+            // Capping the target at 1000.
+            if (((self.targetNumber > 0) || (digit > 0)) && (((self.targetNumber < 100)) || ((self.targetNumber == 100) && digit == 0)))
             {
                 self.targetNumber = (self.targetNumber * 10) + digit;
             }

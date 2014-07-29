@@ -262,7 +262,7 @@
             NSMutableArray *bucket = [NSMutableArray arrayWithArray:self.manuallySpecifiedCardValues];
             while (unshuffledCardValues.count < self.gameData.numberOfCards.integerValue)
             {
-                NSInteger randomIndex = arc4random_uniform(bucket.count);
+                NSInteger randomIndex = arc4random_uniform((u_int32_t)bucket.count);
                 NSInteger selectedNumber = ((NSNumber *)bucket[randomIndex]).integerValue;
                 
                 [unshuffledCardValues addObject:bucket[randomIndex]];

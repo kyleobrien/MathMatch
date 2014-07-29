@@ -187,7 +187,8 @@
     [super viewWillAppear:animated];
         
     self.faceUpButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBold" size:self.fontSize];
-    self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = NO;
+    self.faceUpButton.titleLabel.minimumScaleFactor = 0.75;
+    self.faceUpButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 #pragma mark - Player Action
