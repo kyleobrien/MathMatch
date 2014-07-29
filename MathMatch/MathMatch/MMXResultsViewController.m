@@ -327,7 +327,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                                  [self.rankStar2ImageView.layer addSublayer:self.rankStar2EmitterLayer];
                                  [self.rankStar3ImageView.layer addSublayer:self.rankStar3EmitterLayer];
                                  
-                                 [self performSelector:@selector(stopParticles) withObject:nil afterDelay:5.0];
+                                 [self performSelector:@selector(stopParticles) withObject:nil afterDelay:1.5];
                              }
                          }
                      }];
@@ -338,6 +338,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 - (CAEmitterLayer *)generateEmitterLayerForRankStarImageView:(UIImageView *)rankStarImageView withName:(NSString *)name
 {
     CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
+    emitterLayer.seed = arc4random();
     emitterLayer.emitterShape = kCAEmitterLayerPoint;
     emitterLayer.emitterPosition = CGPointMake(rankStarImageView.bounds.origin.x + (rankStarImageView.bounds.size.width / 2.0),
                                                rankStarImageView.bounds.origin.y + (rankStarImageView.bounds.size.width / 2.0));
@@ -345,14 +346,14 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     
     CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
     emitterCell.scale = 0.5;
-    emitterCell.scaleRange = 0.0;
+    emitterCell.scaleRange = 0.25;
     emitterCell.emissionLongitude = (CGFloat)-M_PI_2;
     emitterCell.emissionRange = (CGFloat)(M_PI_4);
     emitterCell.lifetime = 5.0;
-    emitterCell.birthRate = (150 + arc4random_uniform(26)) / 100.0;
-    emitterCell.velocity = 300.0;
+    emitterCell.birthRate = (275 + arc4random_uniform(26)) / 100.0;
+    emitterCell.velocity = 325.0;
     emitterCell.velocityRange = 25.0;
-    emitterCell.yAcceleration = 250.0;
+    emitterCell.yAcceleration = 275.0;
     emitterCell.spin = 0;
     emitterCell.spinRange = (CGFloat)M_PI_2;
     emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
