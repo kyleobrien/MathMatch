@@ -39,9 +39,9 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     // Sanity check to make sure the stored target number isn't something crazy.
     
     NSInteger targetNumber = [[NSUserDefaults standardUserDefaults] integerForKey:kMMXUserDefaultsPracticeTargetNumber];
-    if (targetNumber <= 0)
+    if (targetNumber < 1)
     {
-        targetNumber = 10;
+        targetNumber = 1;
     }
     else if (targetNumber > 1000)
     {

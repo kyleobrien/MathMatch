@@ -22,17 +22,6 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 
 @implementation MMXResultsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-    
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -69,7 +58,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     
     if (self.gameData.gameType == MMXGameTypeCourse)
     {
-        // Pull out top score.
+        // Pull out top score for this lesson.
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"MMXTopScore"
                                                              inManagedObjectContext:self.managedObjectContext];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -97,11 +86,13 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                 topScoreForLesson.gameData = self.gameData;
                 
                 // TODO: Play kid horray sound!
+                
                 self.recordLabel.hidden = NO;
                 [self rainbowizeNewRecordLabel];
+                
                 [UIView animateWithDuration:0.75
                                       delay:0.0
-                                    options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+                                    options:(UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat)
                                  animations:^
                                  {
                                      self.recordLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
@@ -130,11 +121,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     NSError *error = nil;
     [self.managedObjectContext save:&error];
     
-    if (error)
-    {
-        NSLog(@"MOC: %@", error.description);
-    }
-    else
+    if (!error)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:kMMXResultsDidSaveGameNotification object:nil];
     }
@@ -143,7 +130,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     {
         [self.menuButton changeButtonToColor:[UIColor mmx_blueColor]];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.66 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
         {
             [self beginStarAnimationForStar:1];
         });
@@ -153,46 +140,8 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         self.rankContainerView.hidden = YES;
     }
     
-    
-    // START - PARTICLE EMMITER TEST CODE
-    /*
-    CGFloat emitterWidth = (self.rankStar3ImageView.frame.origin.x + self.rankStar3ImageView.bounds.size.width) -
-                            self.rankStar1ImageView.frame.origin.x;
-    
-    CGFloat emitterHeight = self.rankStar1ImageView.bounds.size.height;
-    
-    NSLog(@"%f", emitterHeight);
-    
-    CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
-    emitterLayer.emitterShape = kCAEmitterLayerRectangle;
-    emitterLayer.emitterPosition = CGPointMake(self.rankStar1ImageView.frame.origin.x + (emitterWidth / 2.0),
-                                               self.rankStar1ImageView.frame.origin.y + emitterHeight);
-    emitterLayer.emitterSize = CGSizeMake(emitterWidth, emitterHeight);
-    emitterLayer.emitterZPosition = 10;
-    
-    self.emitterLayer = emitterLayer;
-    
-    CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
-    emitterCell.scale = 0.5;
-    emitterCell.scaleRange = 0.25;
-    emitterCell.emissionLongitude = (CGFloat)-M_PI_2;
-    emitterCell.emissionRange = (CGFloat)(M_PI_4);
-    emitterCell.lifetime = 5.0;
-    emitterCell.birthRate = 5;
-    emitterCell.velocity = 100.0;
-    emitterCell.velocityRange = 25.0;
-    emitterCell.yAcceleration = 100.0;
-    
-    emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
-    
-    self.emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
-
-    [self.rankContainerView.layer addSublayer:emitterLayer];
-    */
-    
+    // Don't want the particle effects to appear if the user pops the navigation controller while animation is ongoing.
     self.view.clipsToBounds = YES;
-    
-    // END - PARTICLE EMMITER TEST CODE
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -202,22 +151,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     self.navigationItem.hidesBackButton = YES;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - Player action
 
 - (IBAction)playerTappedMenuButton:(id)sender
 {
@@ -242,23 +176,7 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     [decisionView showAndDimBackgroundWithPercent:0.50];
 }
 
-- (void)rainbowizeNewRecordLabel
-{
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.recordLabel.attributedText.string];
-    NSArray *colors = @[[UIColor mmx_redColor], [UIColor mmx_blueColor], [UIColor mmx_greenColor],
-                        [UIColor mmx_orangeColor], [UIColor mmx_purpleColor]];
-    
-    [attributedString beginEditing];
-    for (NSInteger i = 0; i < self.recordLabel.text.length; i++)
-    {
-        [attributedString addAttribute:NSForegroundColorAttributeName
-                                 value:colors[i % colors.count]
-                                 range:NSMakeRange(i, 1)];
-    }
-    [attributedString endEditing];
-    
-    self.recordLabel.attributedText = attributedString;
-}
+#pragma mark - Helpers
 
 - (void)beginStarAnimationForStar:(NSInteger)starNumber
 {
@@ -281,10 +199,10 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         self.rankStar3ImageView.transform = scaleAndRotateStart;
         self.rankStar3ImageView.hidden = NO;
     }
-
+    
     __block NSInteger starNumberForBlock = starNumber;
     
-    [UIView animateWithDuration:0.20
+    [UIView animateWithDuration:0.33
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^
@@ -308,73 +226,92 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                      }
                      completion:^(BOOL finished)
                      {
-                         if (starNumber < self.gameData.starRating.integerValue)
+                         if (finished)
                          {
-                             [self beginStarAnimationForStar:(starNumberForBlock + 1)];
-                         }
-                         else
-                         {
-                             if (self.gameData.starRating.integerValue == 3)
+                             if (starNumber < self.gameData.starRating.integerValue)
                              {
-                                 self.rankStar1EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar1ImageView
-                                                                                                    withName:@"star1"];
-                                 self.rankStar2EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar2ImageView
-                                                                                                    withName:@"star2"];
-                                 self.rankStar3EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar3ImageView
-                                                                                                    withName:@"star3"];
-                                 
-                                 [self.rankStar1ImageView.layer addSublayer:self.rankStar1EmitterLayer];
-                                 [self.rankStar2ImageView.layer addSublayer:self.rankStar2EmitterLayer];
-                                 [self.rankStar3ImageView.layer addSublayer:self.rankStar3EmitterLayer];
-                                 
-                                 [self performSelector:@selector(stopParticles) withObject:nil afterDelay:1.5];
+                                 [self beginStarAnimationForStar:(starNumberForBlock + 1)];
+                             }
+                             else
+                             {
+                                 if (self.gameData.starRating.integerValue == 3)
+                                 {
+                                     self.rankStar1EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar1ImageView
+                                                                                                        withName:@"star1"];
+                                     self.rankStar2EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar2ImageView
+                                                                                                        withName:@"star2"];
+                                     self.rankStar3EmitterLayer = [self generateEmitterLayerForRankStarImageView:self.rankStar3ImageView
+                                                                                                        withName:@"star3"];
+                                     
+                                     [self.rankStar1ImageView.layer addSublayer:self.rankStar1EmitterLayer];
+                                     [self.rankStar2ImageView.layer addSublayer:self.rankStar2EmitterLayer];
+                                     [self.rankStar3ImageView.layer addSublayer:self.rankStar3EmitterLayer];
+                                     
+                                     [self performSelector:@selector(stopParticles) withObject:nil afterDelay:1.5];
+                                 }
                              }
                          }
                      }];
 }
 
-#pragma mark - Helpers
-
 - (CAEmitterLayer *)generateEmitterLayerForRankStarImageView:(UIImageView *)rankStarImageView withName:(NSString *)name
 {
     CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
-    emitterLayer.seed = arc4random();
-    emitterLayer.emitterShape = kCAEmitterLayerPoint;
     emitterLayer.emitterPosition = CGPointMake(rankStarImageView.bounds.origin.x + (rankStarImageView.bounds.size.width / 2.0),
                                                rankStarImageView.bounds.origin.y + (rankStarImageView.bounds.size.width / 2.0));
+    emitterLayer.emitterShape = kCAEmitterLayerPoint;
     emitterLayer.emitterZPosition = 10;
+    emitterLayer.seed = arc4random();
     
     CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
-    emitterCell.scale = 0.5;
-    emitterCell.scaleRange = 0.25;
+    emitterCell.birthRate = (275 + arc4random_uniform(26)) / 100.0;
     emitterCell.emissionLongitude = (CGFloat)-M_PI_2;
     emitterCell.emissionRange = (CGFloat)(M_PI_4);
+    emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
     emitterCell.lifetime = 5.0;
-    emitterCell.birthRate = (275 + arc4random_uniform(26)) / 100.0;
+    emitterCell.name = name;
+    emitterCell.scale = 0.5;
+    emitterCell.scaleRange = 0.25;
+    emitterCell.spin = 0;
+    emitterCell.spinRange = (CGFloat)M_PI_2;
     emitterCell.velocity = 325.0;
     emitterCell.velocityRange = 25.0;
     emitterCell.yAcceleration = 275.0;
-    emitterCell.spin = 0;
-    emitterCell.spinRange = (CGFloat)M_PI_2;
-    emitterCell.contents = (id)[[UIImage imageNamed:@"MMXRankStarFull"] CGImage];
-    emitterCell.name = name;
     
     emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
     
     return emitterLayer;
 }
 
+- (void)rainbowizeNewRecordLabel
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.recordLabel.attributedText.string];
+    NSArray *colors = @[[UIColor mmx_redColor], [UIColor mmx_blueColor], [UIColor mmx_greenColor],
+                        [UIColor mmx_orangeColor], [UIColor mmx_purpleColor]];
+    
+    [attributedString beginEditing];
+    for (NSInteger i = 0; i < self.recordLabel.text.length; i++)
+    {
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                                 value:colors[i % colors.count]
+                                 range:NSMakeRange(i, 1)];
+    }
+    [attributedString endEditing];
+    
+    self.recordLabel.attributedText = attributedString;
+}
+
 - (void)stopParticles
 {
+    // Not sure why I need both of these to make it work, but I should investigate this in the future.
+    
     ((CAEmitterCell *)self.rankStar1EmitterLayer.emitterCells[0]).birthRate = 0.0;
     ((CAEmitterCell *)self.rankStar2EmitterLayer.emitterCells[0]).birthRate = 0.0;
     ((CAEmitterCell *)self.rankStar3EmitterLayer.emitterCells[0]).birthRate = 0.0;
-    
+ 
     [self.rankStar1EmitterLayer setValue:@0.0 forKeyPath:@"emitterCells.star1.birthrate"];
     [self.rankStar2EmitterLayer setValue:@0.0 forKeyPath:@"emitterCells.star2.birthrate"];
     [self.rankStar3EmitterLayer setValue:@0.0 forKeyPath:@"emitterCells.star3.birthrate"];
-    
-    NSLog(@"%p", ((CAEmitterCell *)self.rankStar1EmitterLayer.emitterCells[0]));
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {

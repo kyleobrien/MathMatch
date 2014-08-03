@@ -344,46 +344,20 @@
 
 - (void)applyGLow
 {
-    NSLog(@"HERE");
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^
-                     {
-                         self.containerView.layer.borderColor = [UIColor mmx_orangeColor].CGColor;
-                         self.containerView.layer.borderWidth = 4.0;
-                     }
-                     completion:^(BOOL finished) {
-                         if (finished)
-                         {
-                             [self reverseGlow];
-                         }
-                     }];
-}
-
-- (void)reverseGlow
-{
-    NSLog(@"BLORGfdfsdfsd");
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^
-     {
-         self.containerView.layer.borderColor = self.edgeColor.CGColor;
-         self.containerView.layer.borderWidth = 2.0;
-     }
-                     completion:^(BOOL finished) {
-                         if (finished)
-                         {
-                             [self applyGLow];
-                         }
-                     }];
-
+    CABasicAnimation *color = [CABasicAnimation animationWithKeyPath:@"borderColor"];
+    color.autoreverses = YES;
+    color.repeatCount = HUGE_VALF;
+    color.duration = 1.0;
+    color.fromValue = (id)self.edgeColor.CGColor;
+    color.toValue = (id)[UIColor mmx_orangeColor].CGColor;
+    self.containerView.layer.backgroundColor = [UIColor mmx_orangeColor].CGColor;
+    
+    [self.containerView.layer addAnimation:color forKey:@"glowColor"];
 }
 
 - (void)removeGlow
 {
-    
+    [self.containerView.layer removeAnimationForKey:@"glowColor"];
 }
 
 @end

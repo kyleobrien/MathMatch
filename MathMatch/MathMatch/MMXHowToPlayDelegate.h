@@ -12,9 +12,15 @@ typedef NS_ENUM(NSUInteger, MMXTutorialStep)
 {
     MMXTutorialStep01,
     MMXTutorialStep02,
+    MMXTutorialStep03,
+    MMXTutorialStep04,
+    MMXTutorialStep05,
+    MMXTutorialStep06,
     MMXTutorialStepComplete
 };
 
 @interface MMXHowToPlayDelegate : NSObject <KMODecisionViewDelegate, MMXGameDelegate>
+
+@property (nonatomic, strong) NSTimer *suggestionTimer;
 
 @end

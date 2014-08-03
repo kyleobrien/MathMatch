@@ -229,6 +229,7 @@
 				27A0867D18937D5800C318DE /* Main */,
 				27F3C27A1928FAC500EB5D59 /* Classes and Lessons */,
 				27A0867818930EE600C318DE /* Practice */,
+				27F70449198ED10B00FD6BE4 /* Game and Results */,
 				27E4B331197816E300B1D885 /* Report Card */,
 				27A7894D1954A6FC007E4018 /* Settings */,
 				27572EA518A1FF56007EAF8A /* Custom User Interface */,
@@ -238,8 +239,6 @@
 				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
 				27CA5AAB19887BB600CC29FC /* MMXHowToPlayDelegate.h */,
 				27CA5AAC19887BB600CC29FC /* MMXHowToPlayDelegate.m */,
-				271DA31A1901953B00E81154 /* MMXResultsViewController.h */,
-				271DA31B1901953B00E81154 /* MMXResultsViewController.m */,
 				275500A518AB0DC2008B4DB4 /* MMXCardViewController.h */,
 				275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */,
 				275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */,
@@ -379,6 +378,15 @@
 				27F3C28B192A76B300EB5D59 /* MMXLessonTableViewCell.m */,
 			);
 			name = "Classes and Lessons";
+			sourceTree = "<group>";
+		};
+		27F70449198ED10B00FD6BE4 /* Game and Results */ = {
+			isa = PBXGroup;
+			children = (
+				271DA31A1901953B00E81154 /* MMXResultsViewController.h */,
+				271DA31B1901953B00E81154 /* MMXResultsViewController.m */,
+			);
+			name = "Game and Results";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -183,6 +183,7 @@
 
 - (void)playerTappedStopButton:(id)sender
 {
+    [self.howToPlayDelegate.suggestionTimer invalidate];
     self.howToPlayDelegate = nil;
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -554,13 +555,16 @@
     
     self.pauseBarButtonItem.enabled = YES;
     
-    [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Time - 00:00", nil)];
-    
-    self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
-                                                           target:self
-                                                         selector:@selector(updateClock)
-                                                         userInfo:nil
-                                                          repeats:YES];
+    if (self.gameData.gameType != MMXGameTypeHowToPlay)
+    {
+        [self generateCustomNavigationBarViewForTitle:NSLocalizedString(@"Time - 00:00", nil)];
+        
+        self.gameClockTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / 60.0)
+                                                               target:self
+                                                             selector:@selector(updateClock)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    }
 }
 
 - (void)updateClock
@@ -1080,19 +1084,43 @@
     }
     else if ((self.gameState == MMXGameStateStarted) || (self.gameState == MMXGameStateNoCardsFlipped))
     {
-        shouldFlip = YES;
+        if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(shouldFlipCard:)])
+        {
+            shouldFlip = [self.howToPlayDelegate shouldFlipCard:cardViewController.card];
+        }
+        else
+        {
+            shouldFlip = YES;
+        }
         
-        self.gameState = MMXGameStateOneCardFlipped;
-        
-        self.firstCardViewController = cardViewController;
+        if (shouldFlip)
+        {
+            [self.howToPlayDelegate advanceTutorialForGameViewController:self];
+            
+            self.gameState = MMXGameStateOneCardFlipped;
+            
+            self.firstCardViewController = cardViewController;
+        }
     }
     else if (self.gameState == MMXGameStateOneCardFlipped)
     {
-        shouldFlip = YES;
+        if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(shouldFlipCard:)])
+        {
+            shouldFlip = [self.howToPlayDelegate shouldFlipCard:cardViewController.card];
+        }
+        else
+        {
+            shouldFlip = YES;
+        }
         
-        self.gameState = MMXGameStateTwoCardsFlipped;
-        
-        self.secondCardViewController = cardViewController;
+        if (shouldFlip)
+        {
+            [self.howToPlayDelegate advanceTutorialForGameViewController:self];
+            
+            self.gameState = MMXGameStateTwoCardsFlipped;
+            
+            self.secondCardViewController = cardViewController;
+        }
     }
     
     return shouldFlip;
