@@ -60,6 +60,7 @@
 		27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27C687DB18C438A50060D451 /* KMODecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C687D918C438A50060D451 /* KMODecisionView.m */; };
 		27CA5AA11986E84F00CC29FC /* classes.json in Resources */ = {isa = PBXBuildFile; fileRef = 27CA5AA01986E84F00CC29FC /* classes.json */; };
+		27CA5AAD19887BB600CC29FC /* MMXHowToPlayDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA5AAC19887BB600CC29FC /* MMXHowToPlayDelegate.m */; };
 		27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27D391711937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */; };
@@ -148,6 +149,8 @@
 		27C687D818C438A50060D451 /* KMODecisionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMODecisionView.h; sourceTree = "<group>"; };
 		27C687D918C438A50060D451 /* KMODecisionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMODecisionView.m; sourceTree = "<group>"; };
 		27CA5AA01986E84F00CC29FC /* classes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = classes.json; sourceTree = "<group>"; };
+		27CA5AAB19887BB600CC29FC /* MMXHowToPlayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXHowToPlayDelegate.h; sourceTree = "<group>"; };
+		27CA5AAC19887BB600CC29FC /* MMXHowToPlayDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXHowToPlayDelegate.m; sourceTree = "<group>"; };
 		27D3916E1937867C0041BDB4 /* MMXTopScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTopScore.h; sourceTree = "<group>"; };
 		27D3916F1937867C0041BDB4 /* MMXTopScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTopScore.m; sourceTree = "<group>"; };
 		27E4B32E1976DFF000B1D885 /* MMXReportCardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXReportCardTableViewController.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				27B199961909BD5900C38E8F /* Utilities */,
 				27A0867E1893867C00C318DE /* MMXGameViewController.h */,
 				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
+				27CA5AAB19887BB600CC29FC /* MMXHowToPlayDelegate.h */,
+				27CA5AAC19887BB600CC29FC /* MMXHowToPlayDelegate.m */,
 				271DA31A1901953B00E81154 /* MMXResultsViewController.h */,
 				271DA31B1901953B00E81154 /* MMXResultsViewController.m */,
 				275500A518AB0DC2008B4DB4 /* MMXCardViewController.h */,
@@ -492,6 +497,7 @@
 				27F3C27D1928FB2B00EB5D59 /* MMXClassProgressTableViewCell.m in Sources */,
 				27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */,
 				27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */,
+				27CA5AAD19887BB600CC29FC /* MMXHowToPlayDelegate.m in Sources */,
 				279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */,
 				27F3C28C192A76B300EB5D59 /* MMXLessonTableViewCell.m in Sources */,
 				2757A21E195C858500294D5C /* MMXClassTableViewCell.m in Sources */,

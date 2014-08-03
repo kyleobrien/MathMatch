@@ -341,5 +341,49 @@
 {
     [self.view removeFromSuperview];
 }
+
+- (void)applyGLow
+{
+    NSLog(@"HERE");
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^
+                     {
+                         self.containerView.layer.borderColor = [UIColor mmx_orangeColor].CGColor;
+                         self.containerView.layer.borderWidth = 4.0;
+                     }
+                     completion:^(BOOL finished) {
+                         if (finished)
+                         {
+                             [self reverseGlow];
+                         }
+                     }];
+}
+
+- (void)reverseGlow
+{
+    NSLog(@"BLORGfdfsdfsd");
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^
+     {
+         self.containerView.layer.borderColor = self.edgeColor.CGColor;
+         self.containerView.layer.borderWidth = 2.0;
+     }
+                     completion:^(BOOL finished) {
+                         if (finished)
+                         {
+                             [self applyGLow];
+                         }
+                     }];
+
+}
+
+- (void)removeGlow
+{
     
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MMXGameViewController.h"
+#import "MMXHowToPlayDelegate.h"
 #import "MMXResultsViewController.h"
 #import "MMXTimeIntervalFormatter.h"
 
@@ -18,7 +19,6 @@
 @property (nonatomic, strong) MMXCardViewController *secondCardViewController;
 
 @property (nonatomic, strong) NSMutableArray *cardsGrid;
-@property (nonatomic, strong) NSMutableArray *cardsList;
 
 @property (nonatomic, strong) NSTimer *gameClockTimer;
 @property (nonatomic, assign) NSTimeInterval gameClock;
@@ -84,19 +84,49 @@
         self.aFormulaLabel.text = @"÷";
     }
     
+    if (self.gameData.gameType == MMXGameTypeHowToPlay)
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Stop", nil)
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(playerTappedStopButton:)];
+        
+        self.howToPlayDelegate = [[MMXHowToPlayDelegate alloc] init];
+    }
+    
     [self startNewGame];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.gameData.gameType == MMXGameTypeHowToPlay)
+    {
+        self.navigationController.navigationBar.barTintColor = [UIColor mmx_greenColor];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
-    
-    if (!self.haveAlreadyArrangedOnce)
+    if (self.gameData.gameType != MMXGameTypeHowToPlay)
     {
-        self.haveAlreadyArrangedOnce = YES;
-        [self arrangDeckOntoTableauAndStartDealing];
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+        
+        if (!self.haveAlreadyArrangedOnce)
+        {
+            self.haveAlreadyArrangedOnce = YES;
+            [self arrangDeckOntoTableauAndStartDealing];
+        }
+    }
+    else
+    {
+        if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(advanceTutorialForGameViewController:)])
+        {
+            [self.howToPlayDelegate advanceTutorialForGameViewController:self];
+        }
     }
 }
 
@@ -121,7 +151,7 @@
 
 #pragma mark - Player Action
 
-- (void)playerTappedPauseButton:(id)sender
+- (IBAction)playerTappedPauseButton:(id)sender
 {
     [self.gameClockTimer invalidate];
     
@@ -149,6 +179,13 @@
     self.view.layer.shouldRasterize = YES;
     
     [decisionView showAndDimBackgroundWithPercent:0.50];
+}
+
+- (void)playerTappedStopButton:(id)sender
+{
+    self.howToPlayDelegate = nil;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue
@@ -452,8 +489,6 @@
             cardViewController.row = i;
             cardViewController.tableLocation = CGPointMake(roundf(xCoordinate), roundf(yCoordinate));
             
-            //[self.view addSubview:cardViewController.view];
-            
             xCoordinate += cardViewController.cardSize.width + widthOfGap;
         }
         
@@ -657,7 +692,18 @@
                              }
                              else
                              {
-                                 [self allowPlayerInputAndStartGame];
+                                 if (self.gameData.gameType == MMXGameTypeHowToPlay)
+                                 {
+                                     if (self.howToPlayDelegate &&
+                                         [self.howToPlayDelegate respondsToSelector:@selector(advanceTutorialForGameViewController:)])
+                                     {
+                                         [self.howToPlayDelegate advanceTutorialForGameViewController:self];
+                                     }
+                                 }
+                                 else
+                                 {
+                                     [self allowPlayerInputAndStartGame];
+                                 }
                              }
                          }
                      }];
@@ -1070,7 +1116,15 @@
         }
         else if (self.gameData.startingPositionType == MMXStartingPositionTypeFaceUp)
         {
-            [self allowPlayerInputAndStartGame];
+            if (self.howToPlayDelegate &&
+                [self.howToPlayDelegate respondsToSelector:@selector(advanceTutorialForGameViewController:)])
+            {
+                [self.howToPlayDelegate advanceTutorialForGameViewController:self];
+            }
+            else
+            {
+                [self allowPlayerInputAndStartGame];
+            }
         }
     }
     else if (self.gameState == MMXGameStateAnimating)

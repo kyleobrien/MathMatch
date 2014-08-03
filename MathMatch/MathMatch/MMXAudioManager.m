@@ -258,7 +258,7 @@ CGFloat const kMMXStepsToFade = 10;
     {
         adjustedVolume = _volumeBeforeFading;
     }
-        
+    
     _trackAudioPlayer.volume = adjustedVolume;
     
     if (_trackAudioPlayer.volume == _volumeBeforeFading)
@@ -341,7 +341,14 @@ CGFloat const kMMXStepsToFade = 10;
 
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
-    [self fadeTrackOutWithCrossfade:NO];
+    if ([[AVAudioSession sharedInstance] isOtherAudioPlaying])
+    {
+        // Don't do anything. The player is listening to audio from another source.
+    }
+    else
+    {
+        [self fadeTrackOutWithCrossfade:NO];
+    }
 }
 
 #pragma mark - AVAudioPlayerDelegate

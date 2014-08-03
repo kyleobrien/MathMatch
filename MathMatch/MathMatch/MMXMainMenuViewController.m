@@ -7,6 +7,7 @@
 //
 
 #import "MMXClassesViewController.h"
+#import "MMXGameViewController.h"
 #import "MMXMainMenuViewController.h"
 #import "MMXNavigationController.h"
 #import "MMXPracticeMenuAlphaViewController.h"
@@ -91,6 +92,22 @@
     {
         MMXPracticeMenuAlphaViewController *practiceViewController = (MMXPracticeMenuAlphaViewController *)segue.destinationViewController;
         practiceViewController.managedObjectContext = navigationController.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"MMXHowToPlaySegue"])
+    {
+        MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
+        gameViewController.managedObjectContext = navigationController.managedObjectContext;
+        gameViewController.gameData = [NSEntityDescription insertNewObjectForEntityForName:@"MMXGameData"
+                                                                     inManagedObjectContext:navigationController.managedObjectContext];
+        gameViewController.gameData.gameType = MMXGameTypeHowToPlay;
+        gameViewController.gameData.targetNumber = @10.0;
+        gameViewController.gameData.numberOfCards = @12.0;
+        gameViewController.gameData.arithmeticType = MMXArithmeticTypeAddition;
+        gameViewController.gameData.startingPositionType = MMXStartingPositionTypeFaceUp;
+        // TODO: Music track!
+        //howToPlayViewController.gameData.musicTrack = ;
+        gameViewController.gameData.cardStyle = MMXCardStyleThatch;
+        gameViewController.manuallySpecifiedCardValues = @[@6, @4, @3, @7, @8, @2, @9, @1, @10, @0, @5, @5];
     }
     else if ([segue.identifier isEqualToString:@"MMXReportCardSegue"])
     {
@@ -189,7 +206,7 @@
     }
     else if (cardViewController == self.howToPlayCardViewController)
     {
-        
+        segue = @"MMXHowToPlaySegue";
     }
     else if (cardViewController == self.reportCardCardViewController)
     {

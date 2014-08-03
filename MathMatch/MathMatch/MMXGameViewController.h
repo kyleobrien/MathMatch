@@ -9,6 +9,15 @@
 #import "KMODecisionView.h"
 #import "MMXCardViewController.h"
 
+@class MMXGameViewController;
+@class MMXHowToPlayDelegate;
+
+@protocol MMXGameDelegate <NSObject>
+
+- (void)advanceTutorialForGameViewController:(MMXGameViewController *)gameViewControlller;
+
+@end
+
 @interface MMXGameViewController : UIViewController <KMODecisionViewDelegate, MMXCardViewControllerDelegate>
 
 typedef NS_ENUM(NSUInteger, MMXGameState)
@@ -25,6 +34,8 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) MMXGameData *gameData;
+@property (nonatomic, strong) MMXHowToPlayDelegate *howToPlayDelegate;
+
 @property (nonatomic, strong) NSArray *manuallySpecifiedCardValues;
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *pauseBarButtonItem;
@@ -38,8 +49,11 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 @property (nonatomic, weak) IBOutlet UILabel *aFormulaLabel;
 @property (nonatomic, weak) IBOutlet UILabel *bFormulaLabel;
 
-- (IBAction)playerTappedPauseButton:(id)sender;
+@property (nonatomic, strong) NSMutableArray *cardsList;
 
+- (IBAction)playerTappedPauseButton:(id)sender;
 - (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue;
+
+- (void)arrangDeckOntoTableauAndStartDealing;
 
 @end

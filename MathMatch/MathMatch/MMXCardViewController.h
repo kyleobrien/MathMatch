@@ -38,6 +38,9 @@
 - (void)deselectCard;
 - (void)removeCardFromTable;
 
+- (void)applyGLow;
+- (void)removeGlow;
+
 @end
 
 @protocol MMXCardViewControllerDelegate <NSObject>
