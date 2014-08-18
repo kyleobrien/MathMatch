@@ -10,7 +10,7 @@
 
 @implementation MMXCard
 
-- (id)initWithValue:(NSInteger)value
+- (instancetype)initWithValue:(NSInteger)value
 {
     self = [super init];
     if (self)

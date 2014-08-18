@@ -12,7 +12,7 @@
 @property (nonatomic, assign, getter = isFaceUp) BOOL faceUp;
 @property (nonatomic, assign, getter = isSelected) BOOL selected;
 
-- (id)initWithValue:(NSInteger)value;
+- (instancetype)initWithValue:(NSInteger)value;
 - (void)flip;
 
 @end

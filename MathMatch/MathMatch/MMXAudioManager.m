@@ -75,7 +75,7 @@ CGFloat const kMMXStepsToFade = 10;
     return sharedManager;
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)

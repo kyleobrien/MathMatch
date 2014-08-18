@@ -27,7 +27,7 @@
 
 @property (nonatomic, weak) id<MMXCardViewControllerDelegate> delegate;
 
-- (id)initWithCardStyle:(MMXCardStyle)cardStyle;
+- (instancetype)initWithCardStyle:(MMXCardStyle)cardStyle;
 
 - (IBAction)playerRequestedCardFlip:(id)sender;
 
@@ -35,6 +35,7 @@
 - (void)dealCard;
 - (void)flipCardFaceUp;
 - (void)flipCardFaceDown;
+- (void)selectCard;
 - (void)deselectCard;
 - (void)removeCardFromTable;
 

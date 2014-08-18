@@ -86,10 +86,10 @@
     
     if (self.gameData.gameType == MMXGameTypeHowToPlay)
     {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Stop", nil)
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Quit Tutorial", nil)
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
-                                                                                 action:@selector(playerTappedStopButton:)];
+                                                                                 action:@selector(playerTappedQuitTutorialButton:)];
         
         self.howToPlayDelegate = [[MMXHowToPlayDelegate alloc] init];
     }
@@ -181,7 +181,7 @@
     [decisionView showAndDimBackgroundWithPercent:0.50];
 }
 
-- (void)playerTappedStopButton:(id)sender
+- (void)playerTappedQuitTutorialButton:(id)sender
 {
     [self.howToPlayDelegate.suggestionTimer invalidate];
     self.howToPlayDelegate = nil;
@@ -666,7 +666,14 @@
     self.gameState = MMXGameStateOver;
     self.gameData.completionTime = @(self.gameClock);
     
-    [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
+    if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(completedGameForGameViewController:)])
+    {
+        [self.howToPlayDelegate completedGameForGameViewController:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
+    }
 }
 
 #pragma mark - Animation
@@ -1011,7 +1018,15 @@
         else
         {
             [self startNewGame];
-            [self arrangDeckOntoTableauAndStartDealing];
+            
+            if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(finishedClearingTableauForGameViewController:)])
+            {
+                [self.howToPlayDelegate finishedClearingTableauForGameViewController:self];
+            }
+            else
+            {
+                [self arrangDeckOntoTableauAndStartDealing];
+            }
         }
     });
 }
@@ -1087,6 +1102,12 @@
         if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(shouldFlipCard:)])
         {
             shouldFlip = [self.howToPlayDelegate shouldFlipCard:cardViewController.card];
+            
+            if (!shouldFlip)
+            {
+                [self.howToPlayDelegate respondToIncorrectSelectionOfCardViewController:cardViewController
+                                                                  andGameViewController:self];
+            }
         }
         else
         {
@@ -1107,6 +1128,12 @@
         if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(shouldFlipCard:)])
         {
             shouldFlip = [self.howToPlayDelegate shouldFlipCard:cardViewController.card];
+            
+            if (!shouldFlip)
+            {
+                [self.howToPlayDelegate respondToIncorrectSelectionOfCardViewController:cardViewController
+                                                                  andGameViewController:self];
+            }
         }
         else
         {
@@ -1130,7 +1157,14 @@
 {
     if ((self.gameState == MMXGameStatePreGame) && (cardViewController == self.cardsList.lastObject))
     {
-        [self allowPlayerInputAndStartGame];
+        if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(advanceTutorialForGameViewController:)])
+        {
+            [self.howToPlayDelegate advanceTutorialForGameViewController:self];
+        }
+        else
+        {
+            [self allowPlayerInputAndStartGame];
+        }
     }
 }
 

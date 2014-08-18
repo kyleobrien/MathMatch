@@ -17,7 +17,7 @@
 
 @implementation MMXCardViewController
 
-- (id)initWithCardStyle:(MMXCardStyle)cardStyle
+- (instancetype)initWithCardStyle:(MMXCardStyle)cardStyle
 {
     self = [super initWithNibName:@"MMXCardViewController" bundle:[NSBundle mainBundle]];
     if (self)
@@ -344,13 +344,21 @@
 
 - (void)applyGLow
 {
+    self.containerView.layer.borderWidth = 4.0;
+    
+    CGFloat red, green, blue, alpha;
+    [[UIColor mmx_greenColor] getRed:&red green:&green blue:&blue alpha:&alpha];
+    
+    UIColor *alphaOrange = [UIColor colorWithRed:red green:green blue:blue alpha:0.75];
+    
     CABasicAnimation *color = [CABasicAnimation animationWithKeyPath:@"borderColor"];
     color.autoreverses = YES;
     color.repeatCount = HUGE_VALF;
     color.duration = 1.0;
-    color.fromValue = (id)self.edgeColor.CGColor;
-    color.toValue = (id)[UIColor mmx_orangeColor].CGColor;
-    self.containerView.layer.backgroundColor = [UIColor mmx_orangeColor].CGColor;
+    color.fromValue = (id)alphaOrange.CGColor;
+    color.toValue = (id)[UIColor mmx_greenColor].CGColor;
+    self.containerView.layer.backgroundColor = [UIColor mmx_greenColor].CGColor;
+    self.containerView.layer.borderWidth = 4.0;
     
     [self.containerView.layer addAnimation:color forKey:@"glowColor"];
 }
@@ -358,6 +366,8 @@
 - (void)removeGlow
 {
     [self.containerView.layer removeAnimationForKey:@"glowColor"];
+    
+    self.containerView.layer.borderWidth = 2.0;
 }
 
 @end

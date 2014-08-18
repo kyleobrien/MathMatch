@@ -32,10 +32,10 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 @synthesize visible = _visible;
 
-- (id)initWithMessage:(NSString *)message
-             delegate:(id)delegate
-    cancelButtonTitle:(NSString *)cancelButtonTitle
-    otherButtonTitles:(NSArray *)otherButtonTitles
+- (instancetype)initWithMessage:(NSString *)message
+                       delegate:(id)delegate
+              cancelButtonTitle:(NSString *)cancelButtonTitle
+              otherButtonTitles:(NSArray *)otherButtonTitles
 {
     self = [super initWithFrame:CGRectMake(0.0,
                                            0.0,

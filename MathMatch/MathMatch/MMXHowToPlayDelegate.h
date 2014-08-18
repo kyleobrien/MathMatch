@@ -16,6 +16,14 @@ typedef NS_ENUM(NSUInteger, MMXTutorialStep)
     MMXTutorialStep04,
     MMXTutorialStep05,
     MMXTutorialStep06,
+    MMXTutorialStep07,
+    MMXTutorialStep08,
+    MMXTutorialStep09,
+    MMXTutorialStep10,
+    MMXTutorialStep11,
+    MMXTutorialStep12,
+    MMXTutorialStep13,
+    MMXTutorialStep14,
     MMXTutorialStepComplete
 };
 

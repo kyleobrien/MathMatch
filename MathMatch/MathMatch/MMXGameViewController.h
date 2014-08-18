@@ -15,7 +15,11 @@
 @protocol MMXGameDelegate <NSObject>
 
 - (void)advanceTutorialForGameViewController:(MMXGameViewController *)gameViewControlller;
+- (void)respondToIncorrectSelectionOfCardViewController:(MMXCardViewController *)cardViewController
+                                  andGameViewController:(MMXGameViewController *)gameViewController;
+- (void)finishedClearingTableauForGameViewController:(MMXGameViewController *)gameViewController;
 - (BOOL)shouldFlipCard:(MMXCard *)card;
+- (void)completedGameForGameViewController:(MMXGameViewController *)gameViewController;
 
 @end
 
@@ -55,7 +59,10 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 - (IBAction)playerTappedPauseButton:(id)sender;
 - (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue;
 
+- (void)startNewGame;
 - (void)allowPlayerInputAndStartGame;
 - (void)arrangDeckOntoTableauAndStartDealing;
+- (void)removeCardFromTableauWithIndex:(NSInteger)index;
+- (void)clearEquation;
 
 @end

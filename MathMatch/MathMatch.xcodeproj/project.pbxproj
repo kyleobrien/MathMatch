@@ -185,6 +185,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2740244119A2A93C005CA7C9 /* How to Play */ = {
+			isa = PBXGroup;
+			children = (
+				27CA5AAB19887BB600CC29FC /* MMXHowToPlayDelegate.h */,
+				27CA5AAC19887BB600CC29FC /* MMXHowToPlayDelegate.m */,
+			);
+			name = "How to Play";
+			sourceTree = "<group>";
+		};
 		27572EA518A1FF56007EAF8A /* Custom User Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +239,7 @@
 				27F3C27A1928FAC500EB5D59 /* Classes and Lessons */,
 				27A0867818930EE600C318DE /* Practice */,
 				27F70449198ED10B00FD6BE4 /* Game and Results */,
+				2740244119A2A93C005CA7C9 /* How to Play */,
 				27E4B331197816E300B1D885 /* Report Card */,
 				27A7894D1954A6FC007E4018 /* Settings */,
 				27572EA518A1FF56007EAF8A /* Custom User Interface */,
@@ -237,8 +247,6 @@
 				27B199961909BD5900C38E8F /* Utilities */,
 				27A0867E1893867C00C318DE /* MMXGameViewController.h */,
 				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
-				27CA5AAB19887BB600CC29FC /* MMXHowToPlayDelegate.h */,
-				27CA5AAC19887BB600CC29FC /* MMXHowToPlayDelegate.m */,
 				275500A518AB0DC2008B4DB4 /* MMXCardViewController.h */,
 				275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */,
 				275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */,

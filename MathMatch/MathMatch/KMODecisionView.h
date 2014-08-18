@@ -44,10 +44,10 @@ FOUNDATION_EXPORT CGFloat const kKMODecisionViewButtonFontSize;
 @property (nonatomic, readonly) NSInteger numberOfButtons;
 @property (nonatomic, assign, readonly, getter = isVisible) BOOL visible;
 
-- (id)initWithMessage:(NSString *)message
-             delegate:(id)delegate
-    cancelButtonTitle:(NSString *)cancelButtonTitle
-    otherButtonTitles:(NSArray *)otherButtonTitles;
+- (instancetype)initWithMessage:(NSString *)message
+                       delegate:(id)delegate
+              cancelButtonTitle:(NSString *)cancelButtonTitle
+    	otherButtonTitles:(NSArray *)otherButtonTitles;
 
 - (NSInteger)addButtonWithTitle:(NSString *)title;
 - (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
