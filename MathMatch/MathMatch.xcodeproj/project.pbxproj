@@ -15,10 +15,10 @@
 		275500A918AB0DC2008B4DB4 /* MMXCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 275500A418AB0DC2008B4DB4 /* MMXCard.m */; };
 		275500AA18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */; };
 		275500AB18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */; };
-		275500AC18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */; };
-		275500AD18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */; };
-		275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
-		275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
+		275500AC18AB0DC2008B4DB4 /* MMXCardViewController-blam.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500A718AB0DC2008B4DB4 /* MMXCardViewController-blam.xib */; };
+		275500AD18AB0DC2008B4DB4 /* MMXCardViewController-blam.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500A718AB0DC2008B4DB4 /* MMXCardViewController-blam.xib */; };
+		275500AF18AED9B9008B4DB4 /* MMXCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController.xib */; };
+		275500B018AED9B9008B4DB4 /* MMXCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController.xib */; };
 		2757A21E195C858500294D5C /* MMXClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A21D195C858500294D5C /* MMXClassTableViewCell.m */; };
 		2757A221195C8B5A00294D5C /* MMXSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */; };
 		277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
@@ -95,8 +95,8 @@
 		275500A418AB0DC2008B4DB4 /* MMXCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXCard.m; sourceTree = "<group>"; };
 		275500A518AB0DC2008B4DB4 /* MMXCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXCardViewController.h; sourceTree = "<group>"; };
 		275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXCardViewController.m; sourceTree = "<group>"; };
-		275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~ipad.xib"; sourceTree = "<group>"; };
-		275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~iphone.xib"; sourceTree = "<group>"; };
+		275500A718AB0DC2008B4DB4 /* MMXCardViewController-blam.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController-blam.xib"; sourceTree = "<group>"; };
+		275500AE18AED9B9008B4DB4 /* MMXCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMXCardViewController.xib; sourceTree = "<group>"; };
 		2757A21C195C858500294D5C /* MMXClassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassTableViewCell.h; sourceTree = "<group>"; };
 		2757A21D195C858500294D5C /* MMXClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassTableViewCell.m; sourceTree = "<group>"; };
 		2757A21F195C8B5A00294D5C /* MMXSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXSettingsTableViewCell.h; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 				27A0867F1893867C00C318DE /* MMXGameViewController.m */,
 				275500A518AB0DC2008B4DB4 /* MMXCardViewController.h */,
 				275500A618AB0DC2008B4DB4 /* MMXCardViewController.m */,
-				275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */,
-				275500A718AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib */,
+				275500AE18AED9B9008B4DB4 /* MMXCardViewController.xib */,
+				275500A718AB0DC2008B4DB4 /* MMXCardViewController-blam.xib */,
 				279EC21E18884A890087E0DB /* Main_iPhone.storyboard */,
 				279EC22118884A890087E0DB /* Main_iPad.storyboard */,
 				279EC22D18884A890087E0DB /* Images.xcassets */,
@@ -483,8 +483,8 @@
 				279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */,
 				277A1F26192289CB00E09050 /* button-44.caf in Resources */,
 				27CA5AA11986E84F00CC29FC /* classes.json in Resources */,
-				275500AC18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */,
-				275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
+				275500AC18AB0DC2008B4DB4 /* MMXCardViewController-blam.xib in Resources */,
+				275500AF18AED9B9008B4DB4 /* MMXCardViewController.xib in Resources */,
 				279EC21718884A890087E0DB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,9 +493,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275500AD18AB0DC2008B4DB4 /* MMXCardViewController~ipad.xib in Resources */,
+				275500AD18AB0DC2008B4DB4 /* MMXCardViewController-blam.xib in Resources */,
 				277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */,
-				275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
+				275500B018AED9B9008B4DB4 /* MMXCardViewController.xib in Resources */,
 				277A1F27192289CB00E09050 /* button-44.caf in Resources */,
 				279EC24018884A890087E0DB /* InfoPlist.strings in Resources */,
 			);

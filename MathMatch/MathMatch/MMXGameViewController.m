@@ -27,6 +27,7 @@
 
 @property (nonatomic, assign) BOOL haveAlreadyArrangedOnce;
 @property (nonatomic, assign) BOOL shouldEndGameAfterAnimation;
+@property (nonatomic, assign) BOOL endingGameHasCommenced;
 
 @property (nonatomic, strong) UILabel *customNavigationBarTitle;
 
@@ -517,6 +518,7 @@
     self.memoryTimeRemaining = 0.0;
     
     self.shouldEndGameAfterAnimation = NO;
+    self.endingGameHasCommenced = NO;
     
     [self.gameData resetGameStatistics];
     
@@ -661,18 +663,24 @@
 
 - (void)endGameAndShowResults
 {
-    [self.gameClockTimer invalidate];
-    
-    self.gameState = MMXGameStateOver;
-    self.gameData.completionTime = @(self.gameClock);
-    
-    if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(completedGameForGameViewController:)])
+    // Prevents a race condition if you're matching the last pairs really fast and this method gets called twice.
+    if (!self.endingGameHasCommenced)
     {
-        [self.howToPlayDelegate completedGameForGameViewController:self];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
+        self.endingGameHasCommenced = YES;
+        
+        [self.gameClockTimer invalidate];
+        
+        self.gameState = MMXGameStateOver;
+        self.gameData.completionTime = @(self.gameClock);
+        
+        if (self.howToPlayDelegate && [self.howToPlayDelegate respondsToSelector:@selector(completedGameForGameViewController:)])
+        {
+            [self.howToPlayDelegate completedGameForGameViewController:self];
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"MMXResultsSegue" sender:nil];
+        }
     }
 }
 

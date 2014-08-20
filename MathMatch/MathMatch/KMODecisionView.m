@@ -198,6 +198,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                          {
                              if (finished)
                              {
+                                 self.userInteractionEnabled = YES;
+                                 
                                  if (self.delegate && [self.delegate respondsToSelector:@selector(didPresentDecisionView:)])
                                  {
                                      [self.delegate didPresentDecisionView:self];
@@ -221,6 +223,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 - (void)userTappedCancelButton
 {
+    self.userInteractionEnabled = NO;
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(decisionView:tappedButtonAtIndex:)])
     {
         [self.delegate decisionView:self tappedButtonAtIndex:0];
@@ -231,6 +235,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 - (void)userTappedOtherButton:(id)sender
 {
+    self.userInteractionEnabled = NO;
+    
     // Increment by 1 to account for the cancel button.
     NSInteger index = [self.otherButtons indexOfObject:sender] + 1;
     

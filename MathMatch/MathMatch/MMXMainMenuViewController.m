@@ -116,6 +116,12 @@
     }
     else if ([segue.identifier isEqualToString:@"MMXSettingsSegue"])
     {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
+            popoverController.backgroundColor = [UIColor mmx_purpleColor];
+        }
+        
         MMXNavigationController *modalNavigationController = (MMXNavigationController *)segue.destinationViewController;
         modalNavigationController.managedObjectContext = navigationController.managedObjectContext;
     }
@@ -127,13 +133,19 @@
                                                          withStyle:(MMXCardStyle)cardStyle
                                                          andNumber:(NSInteger)number
 {
+    CGFloat sizeMultiplier = 1.0;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        sizeMultiplier = 2.0;
+    }
+    
     MMXCardViewController *cardViewController = [[MMXCardViewController alloc] initWithCardStyle:cardStyle];
     cardViewController.card = [[MMXCard alloc] initWithValue:number];
     cardViewController.delegate = self;
-    cardViewController.cardSize = CGSizeMake(60.0, 60.0);
-    cardViewController.fontSize = 36.0;
+    cardViewController.cardSize = CGSizeMake(60.0 * sizeMultiplier, 60.0 * sizeMultiplier);
+    cardViewController.fontSize = 36.0 * sizeMultiplier;
     
-    cardViewController.view.frame = CGRectMake(0.0, 0.0, 60.0, 60.0);
+    cardViewController.view.frame = CGRectMake(0.0, 0.0, 60.0 * sizeMultiplier, 60.0 * sizeMultiplier);
     
     [self addChildViewController:cardViewController];
     [containerView addSubview:cardViewController.view];

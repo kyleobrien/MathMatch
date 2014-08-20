@@ -432,16 +432,16 @@ Thank you.</string>
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIN-Wx-MXj" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="0.0" width="280" height="51"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIN-Wx-MXj" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="0.0" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Ymz-Fa-MPs"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-mg-MX8" userLabel="Classes Item">
-                                <rect key="frame" x="20" y="51" width="280" height="64"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-mg-MX8" userLabel="Classes Item">
+                                <rect key="frame" x="20" y="49" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7u-rZ-Ib1">
@@ -468,16 +468,17 @@ Thank you.</string>
                                     <constraint firstAttribute="height" constant="64" id="SDa-pH-PCl"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="115" width="280" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkq-Qt-S5r" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="113" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eY4-G7-gA9"/>
                                     <constraint firstAttribute="width" constant="280" id="pp1-mN-EVJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-iS-e6a" userLabel="Practice Item">
-                                <rect key="frame" x="20" y="165" width="280" height="64"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-iS-e6a" userLabel="Practice Item">
+                                <rect key="frame" x="20" y="163" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-lB-v2A">
@@ -505,16 +506,17 @@ Thank you.</string>
                                     <constraint firstAttribute="height" constant="64" id="zb2-dX-QHK"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="229" width="280" height="49"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Pw-490" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="227" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kMt-yT-kvH"/>
                                     <constraint firstAttribute="width" constant="280" id="rUg-b8-p3y"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q24-qe-uJT" userLabel="How to Play Item">
-                                <rect key="frame" x="20" y="278" width="280" height="64"/>
+                                <rect key="frame" x="20" y="277" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
@@ -542,15 +544,16 @@ Thank you.</string>
                                     <constraint firstAttribute="width" constant="280" id="uh8-bs-xIO"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="342" width="280" height="49"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-pU-Nfv" userLabel="Spacer View">
+                                <rect key="frame" x="20" y="341" width="280" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ggk-Z1-ZQK"/>
                                     <constraint firstAttribute="width" constant="280" id="uih-iF-VJh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-vo-tXn" userLabel="Report Card Item">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-vo-tXn" userLabel="Report Card Item">
                                 <rect key="frame" x="20" y="391" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -579,7 +582,7 @@ Thank you.</string>
                                     <constraint firstAttribute="height" constant="64" id="QrA-jT-dSG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-B6-3Wd" userLabel="Spacer View">
                                 <rect key="frame" x="20" y="455" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -591,28 +594,27 @@ Thank you.</string>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Quq-vo-tXn" firstAttribute="top" secondItem="5ZN-pU-Nfv" secondAttribute="bottom" id="E5M-10-UtM"/>
+                            <constraint firstItem="SYZ-Pw-490" firstAttribute="height" secondItem="jkq-Qt-S5r" secondAttribute="height" id="KIw-Au-Imr"/>
                             <constraint firstAttribute="centerX" secondItem="Zf2-B6-3Wd" secondAttribute="centerX" id="P13-uv-7iV"/>
-                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="SYZ-Pw-490" secondAttribute="height" id="QL3-6F-wsx"/>
                             <constraint firstAttribute="centerX" secondItem="q24-qe-uJT" secondAttribute="centerX" id="Rot-Ed-0T8"/>
-                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="5ZN-pU-Nfv" secondAttribute="height" id="SIf-4p-Kpq"/>
-                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="Zf2-B6-3Wd" secondAttribute="height" id="SmO-wm-4ex"/>
-                            <constraint firstItem="jkq-Qt-S5r" firstAttribute="height" secondItem="zIN-Wx-MXj" secondAttribute="height" id="SoN-hG-rQ6"/>
                             <constraint firstItem="q24-qe-uJT" firstAttribute="top" secondItem="SYZ-Pw-490" secondAttribute="bottom" id="TF4-yc-srn"/>
                             <constraint firstItem="nRe-mg-MX8" firstAttribute="top" secondItem="zIN-Wx-MXj" secondAttribute="bottom" id="UyA-zQ-sJ2"/>
+                            <constraint firstItem="zIN-Wx-MXj" firstAttribute="height" secondItem="Zf2-B6-3Wd" secondAttribute="height" id="att-Kb-kUL"/>
                             <constraint firstItem="SYZ-Pw-490" firstAttribute="top" secondItem="HNZ-iS-e6a" secondAttribute="bottom" id="cNf-2u-a9S"/>
                             <constraint firstAttribute="centerX" secondItem="5ZN-pU-Nfv" secondAttribute="centerX" id="ccu-E1-hk0"/>
+                            <constraint firstItem="SYZ-Pw-490" firstAttribute="height" secondItem="5ZN-pU-Nfv" secondAttribute="height" id="d54-Vm-sov"/>
+                            <constraint firstItem="zIN-Wx-MXj" firstAttribute="top" secondItem="e5h-gw-ZgO" secondAttribute="bottom" id="dar-jy-HMo"/>
                             <constraint firstAttribute="centerX" secondItem="HNZ-iS-e6a" secondAttribute="centerX" id="fwN-gf-uIo"/>
                             <constraint firstItem="Zf2-B6-3Wd" firstAttribute="top" secondItem="Quq-vo-tXn" secondAttribute="bottom" id="gdq-h0-k7J"/>
                             <constraint firstAttribute="centerX" secondItem="zIN-Wx-MXj" secondAttribute="centerX" id="lHM-LY-RFy"/>
                             <constraint firstAttribute="centerX" secondItem="Quq-vo-tXn" secondAttribute="centerX" id="mTJ-fm-9Ek"/>
-                            <constraint firstItem="zIN-Wx-MXj" firstAttribute="top" secondItem="e5h-gw-ZgO" secondAttribute="bottom" id="oyg-io-fd5"/>
                             <constraint firstAttribute="centerX" secondItem="jkq-Qt-S5r" secondAttribute="centerX" id="qYT-Qq-KRT"/>
                             <constraint firstItem="5ZN-pU-Nfv" firstAttribute="top" secondItem="q24-qe-uJT" secondAttribute="bottom" id="t25-Kg-fpq"/>
                             <constraint firstAttribute="centerX" secondItem="nRe-mg-MX8" secondAttribute="centerX" id="tGu-Wu-WQj"/>
                             <constraint firstAttribute="centerX" secondItem="SYZ-Pw-490" secondAttribute="centerX" id="vpr-yQ-gos"/>
                             <constraint firstItem="jkq-Qt-S5r" firstAttribute="top" secondItem="nRe-mg-MX8" secondAttribute="bottom" id="w0d-Tp-RSQ"/>
+                            <constraint firstItem="JTZ-bv-TUy" firstAttribute="top" secondItem="Zf2-B6-3Wd" secondAttribute="bottom" id="w44-pW-Yji"/>
                             <constraint firstItem="HNZ-iS-e6a" firstAttribute="top" secondItem="jkq-Qt-S5r" secondAttribute="bottom" id="xPO-SG-369"/>
-                            <constraint firstItem="JTZ-bv-TUy" firstAttribute="top" secondItem="Zf2-B6-3Wd" secondAttribute="bottom" id="yGI-iO-Qxt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Math Match" id="E1A-dv-7wY">

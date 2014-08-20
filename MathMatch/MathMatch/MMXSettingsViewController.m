@@ -12,6 +12,13 @@
 
 @implementation MMXSettingsViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.tableView.backgroundColor = [UIColor mmx_whiteColor];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -74,6 +81,8 @@
     }
     else if ((indexPath.section == 3) && (indexPath.row == 0))
     {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
         if ([MFMailComposeViewController canSendMail])
         {
             MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
