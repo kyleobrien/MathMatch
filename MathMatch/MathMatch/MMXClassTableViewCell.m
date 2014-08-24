@@ -61,7 +61,7 @@
     }
     else
     {
-        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor mmx_whiteColor];
     }
 }
 
