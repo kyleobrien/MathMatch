@@ -8,9 +8,13 @@
 
 @interface MMXLessonsViewController : UITableViewController
 
+FOUNDATION_EXPORT NSString * const kMMXLessonsViewControolerDidShowNotification;
+
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) NSArray *lessons;
+
+@property (nonatomic, assign) NSInteger indexOfNextLesson;
 
 - (IBAction)unwindToLessonsSegue:(UIStoryboardSegue *)unwindSegue;
 

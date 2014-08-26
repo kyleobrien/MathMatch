@@ -45,6 +45,13 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     {
         self.delegate = delegate;
         
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(deviceOrientationChange:)
+                                                     name:UIDeviceOrientationDidChangeNotification
+                                                   object:nil];
+
+        
         // 14.0 is a dummy value, I'm only interested in the name.
         _fontName = [UIFont systemFontOfSize:14.0].fontName;
         _message = message;
@@ -117,6 +124,12 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+}
+
 - (NSInteger)addButtonWithTitle:(NSString *)title
 {
     UIButton *otherButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -173,12 +186,15 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
         [self.delegate willPresentDecisionView:self];
     }
     
-    self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
-                                          self.containerView.frame.origin.y - self.bounds.size.height,
+    [self layoutView];
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    self.containerView.frame = CGRectMake((rootViewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                          self.containerView.frame.origin.y - rootViewController.view.bounds.size.height,
                                           self.containerView.frame.size.width,
                                           self.containerView.frame.size.height);
     
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self];
+    
     _visible = YES;
     
     dispatch_async(dispatch_get_main_queue(), ^
@@ -189,8 +205,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                          animations:^
                          {
                              self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:dimPercent];
-                             self.containerView.frame = CGRectMake((self.bounds.size.width - self.containerView.frame.size.width) / 2.0,
-                                                                   (self.bounds.size.height - self.containerView.frame.size.height) / 2.0,
+                             self.containerView.frame = CGRectMake((rootViewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                                                   (rootViewController.view.bounds.size.height - self.containerView.frame.size.height) / 2.0,
                                                                    self.containerView.frame.size.width,
                                                                    self.containerView.frame.size.height);
                          }
@@ -313,9 +329,23 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 {
     self.messageLabel.text = self.message;
     
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    // Extend the frame (which is the dimmed background) so that we don't see any of the root view controller on rotation.
+    CGFloat extension = rootViewController.view.bounds.size.width - rootViewController.view.bounds.size.height;
+    if (extension < 0)
+    {
+        extension = -extension;
+    }
+    
+    self.frame = CGRectMake(0.0,
+                            0.0,
+                            rootViewController.view.bounds.size.width + extension,
+                            rootViewController.view.bounds.size.height + extension);
+    
     // Calculating the height of the message so we can adjust the label to the proper size.
     
-    CGSize maxSize = CGSizeMake(self.containerView.bounds.size.width - 20.0, [UIScreen mainScreen].bounds.size.height);
+    CGSize maxSize = CGSizeMake(self.containerView.bounds.size.width - 20.0, rootViewController.view.bounds.size.height);
     CGSize actualSize = [self.messageLabel sizeThatFits:maxSize];
     
     self.messageLabel.frame = CGRectMake(10.0,
@@ -416,8 +446,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     
     // Now that everything is positioned, make sure the container view is appropriately positioned and sized.
     double newHeight = self.cancelButton.frame.origin.y + self.cancelButton.frame.size.height + 10.0;
-    self.containerView.frame = CGRectMake(self.containerView.frame.origin.x,
-                                          (self.bounds.size.height - newHeight) / 2.0,
+    self.containerView.frame = CGRectMake((rootViewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                          (rootViewController.view.bounds.size.height - newHeight) / 2.0,
                                           self.containerView.frame.size.width,
                                           newHeight);
 }
@@ -507,6 +537,12 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
             [otherButton setTitleColor:self.color forState:UIControlStateNormal];
         }
     }
+}
+
+- (void)deviceOrientationChange:(NSNotification *)notification
+{
+    NSLog(@"HERE");
+    [self layoutView];
 }
 
 @end

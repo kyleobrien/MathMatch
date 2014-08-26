@@ -35,6 +35,11 @@
     if ([viewController class] == [MMXMainMenuViewController class] || [viewController class] == [MMXLessonsViewController class])
     {
         [self.managedObjectContext rollback];
+        
+        if ([viewController class] == [MMXLessonsViewController class])
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kMMXLessonsViewControolerDidShowNotification object:nil];
+        }
     }
 }
 

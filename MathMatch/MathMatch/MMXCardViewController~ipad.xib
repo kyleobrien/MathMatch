@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MMXCardViewController">
+            <connections>
+                <outlet property="containerView" destination="6Ec-L1-T2u" id="5Tf-fo-FOV"/>
+                <outlet property="faceDownButton" destination="5m8-7W-6xB" id="LtR-0C-dGG"/>
+                <outlet property="faceUpButton" destination="z5L-oA-KKj" id="XV0-Mn-1IV"/>
+                <outlet property="view" destination="Mxt-Ah-BhJ" id="KPr-RE-Jzj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Mxt-Ah-BhJ">
+            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-L1-T2u" userLabel="Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5L-oA-KKj" userLabel="Face Up Button">
+                            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="33"/>
+                            <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="0.0" colorSpace="calibratedRGB"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="playerRequestedCardFlip:" destination="-1" eventType="touchUpInside" id="3Na-jA-yUw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m8-7W-6xB" userLabel="Face Down Button">
+                            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="33"/>
+                            <state key="normal">
+                                <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="playerRequestedCardFlip:" destination="-1" eventType="touchUpInside" id="rxG-MJ-WGI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.66666666669999997" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="z5L-oA-KKj" firstAttribute="leading" secondItem="6Ec-L1-T2u" secondAttribute="leading" id="0qd-2g-xtn"/>
+                        <constraint firstItem="5m8-7W-6xB" firstAttribute="leading" secondItem="6Ec-L1-T2u" secondAttribute="leading" id="P7u-ir-vce"/>
+                        <constraint firstAttribute="bottom" secondItem="z5L-oA-KKj" secondAttribute="bottom" id="V8o-ct-Cja"/>
+                        <constraint firstAttribute="trailing" secondItem="5m8-7W-6xB" secondAttribute="trailing" id="Vgq-V7-7ND"/>
+                        <constraint firstItem="5m8-7W-6xB" firstAttribute="top" secondItem="6Ec-L1-T2u" secondAttribute="top" id="X1k-Wq-GFe"/>
+                        <constraint firstItem="z5L-oA-KKj" firstAttribute="top" secondItem="6Ec-L1-T2u" secondAttribute="top" id="cnA-E4-Zrd"/>
+                        <constraint firstAttribute="bottom" secondItem="5m8-7W-6xB" secondAttribute="bottom" id="u91-uG-lTg"/>
+                        <constraint firstAttribute="trailing" secondItem="z5L-oA-KKj" secondAttribute="trailing" id="wT3-D0-Xj1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.0" blue="0.25098039220000001" alpha="0.0" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="6Ec-L1-T2u" firstAttribute="top" secondItem="Mxt-Ah-BhJ" secondAttribute="top" id="Ikb-Rt-tZQ"/>
+                <constraint firstItem="6Ec-L1-T2u" firstAttribute="leading" secondItem="Mxt-Ah-BhJ" secondAttribute="leading" id="Th1-Va-KXv"/>
+                <constraint firstAttribute="bottom" secondItem="6Ec-L1-T2u" secondAttribute="bottom" id="Yjz-SD-RzG"/>
+                <constraint firstAttribute="trailing" secondItem="6Ec-L1-T2u" secondAttribute="trailing" id="sRK-dN-9rE"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

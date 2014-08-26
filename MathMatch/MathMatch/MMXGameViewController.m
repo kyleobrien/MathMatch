@@ -119,7 +119,7 @@
         if (!self.haveAlreadyArrangedOnce)
         {
             self.haveAlreadyArrangedOnce = YES;
-            [self arrangDeckOntoTableauAndStartDealing];
+            [self arrangDeckOntoTableauAndStartDealing:YES];
         }
     }
     else
@@ -138,6 +138,7 @@
         MMXResultsViewController *resultsViewController = (MMXResultsViewController *)segue.destinationViewController;
         resultsViewController.managedObjectContext = self.managedObjectContext;
         resultsViewController.gameData = self.gameData;
+        resultsViewController.indexOfNextLesson = self.indexOfNextLesson;
     }
 }
 
@@ -148,6 +149,13 @@
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     
     [self.gameClockTimer invalidate];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    [self arrangDeckOntoTableauAndStartDealing:NO];
 }
 
 #pragma mark - Player Action
@@ -237,50 +245,95 @@
     
     if (self.gameData.numberOfCards.integerValue == 8)
     {
-        size = CGSizeMake(90.0, 90.0);
-        fontSize = 33.0;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            size = CGSizeMake(120.0, 120.0);
+            fontSize = 38.0;
+        }
+        else
+        {
+            size = CGSizeMake(90.0, 90.0);
+            fontSize = 33.0;
+        }
+        
         numberOfCardsInRow = @[@3, @2, @3];
     }
     else if (self.gameData.numberOfCards.integerValue == 12)
     {
-        if ([UIScreen mainScreen].bounds.size.height == 480.0)
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
-            size = CGSizeMake(70.0, 70.0);
-            fontSize = 28.0;
+            size = CGSizeMake(110.0, 110.0);
+            fontSize = 38.0;
             numberOfCardsInRow = @[@3, @3, @3, @3];
         }
         else
         {
-            size = CGSizeMake(80.0, 80.0);
-            fontSize = 33.0;
-            numberOfCardsInRow = @[@3, @3, @3, @3];
+            if ([UIScreen mainScreen].bounds.size.height == 480.0)
+            {
+                size = CGSizeMake(70.0, 70.0);
+                fontSize = 28.0;
+                numberOfCardsInRow = @[@3, @3, @3, @3];
+            }
+            else
+            {
+                size = CGSizeMake(80.0, 80.0);
+                fontSize = 33.0;
+                numberOfCardsInRow = @[@3, @3, @3, @3];
+            }
         }
     }
     else if (self.gameData.numberOfCards.integerValue == 16)
     {
-        size = CGSizeMake(70.0, 70.0);
-        fontSize = 28.0;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            size = CGSizeMake(100.0, 100.0);
+            fontSize = 33.0;
+        }
+        else
+        {
+            size = CGSizeMake(70.0, 70.0);
+            fontSize = 28.0;
+        }
+        
         numberOfCardsInRow = @[@4, @4, @4, @4];
     }
     else if (self.gameData.numberOfCards.integerValue == 20)
     {
-        size = CGSizeMake(60.0, 60.0);
-        fontSize = 22.0;
-        numberOfCardsInRow = @[@4, @4, @4, @4, @4];
-    }
-    else if (self.gameData.numberOfCards.integerValue == 24)
-    {
-        if ([UIScreen mainScreen].bounds.size.height == 480.0)
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
-            size = CGSizeMake(50.0, 50.0);
-            fontSize = 22.0;
-            numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+            size = CGSizeMake(90.0, 90.0);
+            fontSize = 28.0;
         }
         else
         {
             size = CGSizeMake(60.0, 60.0);
             fontSize = 22.0;
+        }
+        
+        numberOfCardsInRow = @[@4, @4, @4, @4, @4];
+    }
+    else if (self.gameData.numberOfCards.integerValue == 24)
+    {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            size = CGSizeMake(70.0, 70.0);
+            fontSize = 22.0;
             numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+        }
+        else
+        {
+            if ([UIScreen mainScreen].bounds.size.height == 480.0)
+            {
+                size = CGSizeMake(50.0, 50.0);
+                fontSize = 22.0;
+                numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+            }
+            else
+            {
+                size = CGSizeMake(60.0, 60.0);
+                fontSize = 22.0;
+                numberOfCardsInRow = @[@4, @4, @4, @4, @4, @4];
+            }
         }
     }
     else
@@ -445,7 +498,7 @@
     self.gameData.cardValuesSeparatedByCommas = commaSeparatedCardValues;
 }
 
-- (void)arrangDeckOntoTableauAndStartDealing
+- (void)arrangDeckOntoTableauAndStartDealing:(BOOL)deal
 {
     MMXCardViewController *prototypeCardViewController = self.cardsList[0];
     
@@ -484,12 +537,23 @@
         {
             MMXCardViewController *cardViewController = row[j];
             
-            cardViewController.view.frame = CGRectMake(0.0,
-                                                       [UIScreen mainScreen].bounds.size.height,
-                                                       cardViewController.cardSize.width,
-                                                       cardViewController.cardSize.height);
             cardViewController.row = i;
             cardViewController.tableLocation = CGPointMake(roundf(xCoordinate), roundf(yCoordinate));
+            
+            if (deal)
+            {
+                cardViewController.view.frame = CGRectMake(0.0,
+                                                           [UIScreen mainScreen].bounds.size.height,
+                                                           cardViewController.cardSize.width,
+                                                           cardViewController.cardSize.height);
+            }
+            else
+            {
+                cardViewController.view.frame = CGRectMake(cardViewController.tableLocation.x,
+                                                           cardViewController.tableLocation.y,
+                                                           cardViewController.cardSize.width,
+                                                           cardViewController.cardSize.height);
+            }
             
             xCoordinate += cardViewController.cardSize.width + widthOfGap;
         }
@@ -497,7 +561,10 @@
         yCoordinate += prototypeCardViewController.cardSize.height + heightOfGap;
     }
     
-    [self dealCardWithIndex:0];
+    if (deal)
+    {
+        [self dealCardWithIndex:0];
+    }
 }
 
 #pragma mark - Game State
@@ -581,9 +648,10 @@
         self.gameClock = 60.0 * 90.0;
     }
     
-    NSString *time = [MMXTimeIntervalFormatter stringWithInterval:self.gameClock
-                                                    forFormatType:MMXTimeIntervalFormatTypeShort];
-    self.customNavigationBarTitle.text = [NSString stringWithFormat:@"Time - %@", time];
+    NSArray *temp = [MMXTimeIntervalFormatter stringWithInterval:self.gameClock
+                                                   forFormatType:MMXTimeIntervalFormatTypeShort];;
+    self.customNavigationBarTitle.text = [NSString stringWithFormat:NSLocalizedString(@"Time - %@", nil), temp[0]];
+    self.customNavigationBarTitle.accessibilityLabel = [NSString stringWithFormat:NSLocalizedString(@"Time %@", nil), temp[1]];
 }
 
 - (void)evaluateFormula
@@ -1033,7 +1101,7 @@
             }
             else
             {
-                [self arrangDeckOntoTableauAndStartDealing];
+                [self arrangDeckOntoTableauAndStartDealing:YES];
             }
         }
     });

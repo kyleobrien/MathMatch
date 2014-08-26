@@ -304,6 +304,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="0.75" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                            </accessibility>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MMXGreenCheckmark" translatesAutoresizingMaskIntoConstraints="NO" id="IdJ-wm-Dq3">
                                             <rect key="frame" x="48" y="48" width="28" height="28"/>
@@ -350,6 +353,9 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AboutAppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HgF-Ml-Czj">
                                         <rect key="frame" x="80" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Math Match Icon">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Math Match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMA-FL-pTS">
                                         <rect key="frame" x="0.0" y="140" width="280" height="46"/>
@@ -619,7 +625,7 @@ Thank you.</string>
                     </view>
                     <navigationItem key="navigationItem" title="Math Match" id="E1A-dv-7wY">
                         <barButtonItem key="backBarButtonItem" title="Menu" id="Apg-2T-0uZ"/>
-                        <barButtonItem key="rightBarButtonItem" image="GearIcon" id="Ypd-Og-J4w">
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="Ypd-Og-J4w">
                             <connections>
                                 <segue destination="bor-vM-9fh" kind="modal" identifier="MMXSettingsSegue" id="yuC-3D-RyT"/>
                             </connections>
@@ -898,7 +904,7 @@ Thank you.</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGJ-FB-8Fs">
-                                            <rect key="frame" x="244" y="24" width="30" height="34"/>
+                                            <rect key="frame" x="244" y="25" width="30" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
                                             <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -940,7 +946,7 @@ Thank you.</string>
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="D2c-Gj-q7g">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MMXLessonCell" rowHeight="80" id="pYi-cL-cd4" customClass="MMXLessonTableViewCell">
@@ -951,14 +957,14 @@ Thank you.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lesson Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RY2-xh-0Ws">
-                                            <rect key="frame" x="14" y="15" width="206" height="58"/>
+                                            <rect key="frame" x="14" y="15" width="208" height="58"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                             <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L53-hY-9CA">
-                                            <rect key="frame" x="244" y="24" width="30" height="34"/>
+                                            <rect key="frame" x="244" y="25" width="30" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
                                             <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1783,7 +1789,7 @@ Thank you.</string>
                                     <fragment content="New Record!">
                                         <attributes>
                                             <color key="NSColor" red="0.37254901959999998" green="0.25098039220000001" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="Futura-Medium"/>
+                                            <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
@@ -1983,13 +1989,13 @@ Thank you.</string>
     </scenes>
     <resources>
         <image name="AboutAppIcon" width="120" height="120"/>
-        <image name="GearIcon" width="20" height="20"/>
         <image name="MMXGreenCheckmark" width="28" height="28"/>
         <image name="MMXRankStarEmpty" width="44" height="41"/>
         <image name="MMXRankStarFull" width="44" height="41"/>
         <image name="MMXRatingStar" width="28" height="26"/>
         <image name="MMXSoundMax" width="28" height="28"/>
         <image name="MMXSoundMin" width="23" height="28"/>
+        <image name="Settings" width="20" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1997,7 +2003,7 @@ Thank you.</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ZIz-ak-tx8"/>
         <segue reference="dVO-eu-3qc"/>
-        <segue reference="JuB-Ao-fmW"/>
     </inferredMetricsTieBreakers>
 </document>

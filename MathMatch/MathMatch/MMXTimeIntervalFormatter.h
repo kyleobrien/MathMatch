@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, MMXTimeIntervalFormatType)
 
 @interface MMXTimeIntervalFormatter : NSObject
 
-+ (NSString *)stringWithInterval:(NSTimeInterval)interval forFormatType:(MMXTimeIntervalFormatType)formatType;
-+ (NSString *)reportCardFormatWithInterval:(NSTimeInterval)interval;
++ (NSArray *)stringWithInterval:(NSTimeInterval)interval forFormatType:(MMXTimeIntervalFormatType)formatType;
++ (NSArray *)reportCardFormatWithInterval:(NSTimeInterval)interval;
 
 @end

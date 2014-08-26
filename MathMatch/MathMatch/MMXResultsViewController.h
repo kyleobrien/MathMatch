@@ -17,6 +17,8 @@ FOUNDATION_EXPORT NSString * const kMMXResultsDidSaveGameNotification;
 
 @property (nonatomic, strong) MMXGameData *gameData;
 
+@property (nonatomic, assign) NSInteger indexOfNextLesson;
+
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *incorrectMatchesLabel;
 @property (nonatomic, weak) IBOutlet UILabel *penaltyMultiplierLabel;

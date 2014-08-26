@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+#import "MMXLessonsViewController.h"
 #import "MMXResultsViewController.h"
 #import "MMXTimeIntervalFormatter.h"
 #import "MMXTopScore.h"
@@ -15,6 +16,8 @@
 @property (nonatomic, strong) CAEmitterLayer *rankStar1EmitterLayer;
 @property (nonatomic, strong) CAEmitterLayer *rankStar2EmitterLayer;
 @property (nonatomic, strong) CAEmitterLayer *rankStar3EmitterLayer;
+
+@property (nonatomic, assign) BOOL shouldShowNextLesson;
 
 @end
 
@@ -26,19 +29,30 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 {
     [super viewDidLoad];
     
-    self.timeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTime.doubleValue
-                                                         forFormatType:MMXTimeIntervalFormatTypeLong];
+    NSArray *temp = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTime.doubleValue
+                                                   forFormatType:MMXTimeIntervalFormatTypeLong];
+    self.timeLabel.text = temp[0];
+    self.timeLabel.accessibilityLabel = temp[1];
+    
     self.incorrectMatchesLabel.text = [NSString stringWithFormat:@"%ld", (long)self.gameData.incorrectMatches.integerValue];
+    
     self.penaltyMultiplierLabel.text = [NSString stringWithFormat:@"x %2.1fs", self.gameData.penaltyMultiplier.floatValue];
+    self.penaltyMultiplierLabel.accessibilityLabel = [NSString stringWithFormat:NSLocalizedString(@"times %2.1f seconds", nil), self.gameData.penaltyMultiplier.floatValue];
     
     NSTimeInterval penaltyTime = self.gameData.incorrectMatches.integerValue * self.gameData.penaltyMultiplier.floatValue;
     self.gameData.completionTimeWithPenalty = [NSNumber numberWithDouble:penaltyTime];
-    self.penaltyTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:penaltyTime
-                                                                forFormatType:MMXTimeIntervalFormatTypeLong];
+    
+    temp = [MMXTimeIntervalFormatter stringWithInterval:penaltyTime
+                                          forFormatType:MMXTimeIntervalFormatTypeLong];
+    self.penaltyTimeLabel.text = temp[0];
+    self.penaltyTimeLabel.accessibilityLabel = temp[1];
     
     self.gameData.completionTimeWithPenalty = @(self.gameData.completionTime.doubleValue + penaltyTime);
-    self.totalTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
-                                                              forFormatType:MMXTimeIntervalFormatTypeLong];
+    
+    temp = [MMXTimeIntervalFormatter stringWithInterval:self.gameData.completionTimeWithPenalty.floatValue
+                                          forFormatType:MMXTimeIntervalFormatTypeLong];
+    self.totalTimeLabel.text = temp[0];
+    self.totalTimeLabel.accessibilityLabel = temp[1];
     
     if (self.gameData.gameType == MMXGameTypeCourse)
     {
@@ -75,8 +89,10 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         {
             topScoreForLesson = fetchedResults[0];
             
-            self.bestTimeLabel.text = [MMXTimeIntervalFormatter stringWithInterval:topScoreForLesson.time.floatValue
-                                                                     forFormatType:MMXTimeIntervalFormatTypeLong];
+            temp = [MMXTimeIntervalFormatter stringWithInterval:topScoreForLesson.time.floatValue
+                                                  forFormatType:MMXTimeIntervalFormatTypeLong];
+            self.bestTimeLabel.text = temp[0];
+            self.bestTimeLabel.accessibilityLabel = temp[1];
             
             if (floorf(self.gameData.completionTimeWithPenalty.floatValue) < floorf(topScoreForLesson.time.floatValue))
             {
@@ -111,11 +127,13 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
             topScoreForLesson.gameData = self.gameData;
             
             self.bestTimeLabel.text = NSLocalizedString(@"---", nil);
+            self.bestTimeLabel.accessibilityLabel = NSLocalizedString(@"Not Applicable", nil);
         }
     }
     else
     {
         self.bestTimeLabel.text = NSLocalizedString(@"---", nil);
+        self.bestTimeLabel.accessibilityLabel = NSLocalizedString(@"Not Applicable", nil);
     }
     
     NSError *error = nil;
@@ -151,6 +169,15 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     self.navigationItem.hidesBackButton = YES;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"MMXUnwindToLessonsSegue"] && self.shouldShowNextLesson)
+    {
+        MMXLessonsViewController *lessonsViewController = (MMXLessonsViewController *)segue.destinationViewController;
+        lessonsViewController.indexOfNextLesson = self.indexOfNextLesson;
+    }
+}
+
 #pragma mark - Player action
 
 - (IBAction)playerTappedMenuButton:(id)sender
@@ -166,7 +193,15 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     }
     
     NSString *message = NSLocalizedString(@"The game is over. What would you like to do?", nil);
-    NSArray *otherButtonTitles = @[NSLocalizedString(@"Main Menu", nil), NSLocalizedString(@"Try Again", nil), secondOption];
+    NSMutableArray *otherButtonTitles = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"Main Menu", nil),
+                                                                         NSLocalizedString(@"Try Again", nil),
+                                                                         secondOption]];
+    
+    if ((self.gameData.gameType == MMXGameTypeCourse) && (self.indexOfNextLesson > 0))
+    {
+        [otherButtonTitles addObject:NSLocalizedString(@"Next Lesson", nil)];
+    }
+    
     KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                     delegate:self
                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -348,6 +383,11 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         {
             [self performSegueWithIdentifier:@"MMXUnwindToLessonsSegue" sender:self];
         }
+    }
+    else if (buttonIndex == 4)
+    {
+        self.shouldShowNextLesson = YES;
+        [self performSegueWithIdentifier:@"MMXUnwindToLessonsSegue" sender:self];
     }
 }
 

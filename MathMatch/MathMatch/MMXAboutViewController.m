@@ -17,6 +17,8 @@
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     
     self.versionLabel.text = [NSString stringWithFormat:@"Version %@", info[@"CFBundleShortVersionString"]];
+    self.versionLabel.accessibilityLabel = [self.versionLabel.text stringByReplacingOccurrencesOfString:@"."
+                                                                                             withString:NSLocalizedString(@" dot ", nil)];
 }
 
 @end

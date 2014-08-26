@@ -180,6 +180,8 @@
     self.faceUpButton.contentEdgeInsets = UIEdgeInsetsMake(4.0, 0.0, 0.0, 0.0);
     
     [self.faceUpButton setTitleColor:self.edgeColor forState:UIControlStateSelected];
+    
+    self.faceDownButton.accessibilityLabel = NSLocalizedString(@"Face Down Card", nil);
 }
 
 - (void)viewWillAppear:(BOOL)animated

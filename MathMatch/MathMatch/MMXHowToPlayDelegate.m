@@ -375,7 +375,7 @@
     {
         case MMXTutorialStep01:
         {
-            [self.currentGameViewController arrangDeckOntoTableauAndStartDealing];
+            [self.currentGameViewController arrangDeckOntoTableauAndStartDealing:YES];
                         
             break;
         }
@@ -440,7 +440,7 @@
         }
         case MMXTutorialStep07:
         {
-            [self.currentGameViewController arrangDeckOntoTableauAndStartDealing];
+            [self.currentGameViewController arrangDeckOntoTableauAndStartDealing:YES];
             
             break;
         }
@@ -513,7 +513,7 @@
         }
         case MMXTutorialStep13:
         {
-            [self.currentGameViewController arrangDeckOntoTableauAndStartDealing];
+            [self.currentGameViewController arrangDeckOntoTableauAndStartDealing:YES];
             
             break;
         }

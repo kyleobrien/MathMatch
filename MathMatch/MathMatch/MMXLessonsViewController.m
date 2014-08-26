@@ -18,6 +18,8 @@
 
 @end
 
+NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsViewControolerDidShowNotification";
+
 @implementation MMXLessonsViewController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -33,6 +35,24 @@
                                                           [self fetchTopScoresForLessonsInThisClass];
                                                           
                                                           [self.tableView reloadData];
+                                                      }];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kMMXLessonsViewControolerDidShowNotification
+                                                          object:nil
+                                                           queue:[NSOperationQueue mainQueue]
+                                                      usingBlock:^(NSNotification *note)
+                                                      {
+                                                          if (self.indexOfNextLesson > 0)
+                                                          {
+                                                              NSLog(@"BLAM: %ld", (long)self.indexOfNextLesson);
+                                                              [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexOfNextLesson inSection:0]
+                                                                                          animated:YES
+                                                                                    scrollPosition:UITableViewScrollPositionNone];
+                                                              
+                                                              self.indexOfNextLesson = 0;
+                                                              
+                                                              [self performSegueWithIdentifier:@"MMXBeginLessonSegue" sender:nil];
+                                                          }
                                                       }];
     }
     
@@ -109,6 +129,11 @@
         gameViewController.managedObjectContext = self.managedObjectContext;
         gameViewController.gameData = gameConfiguration;
         gameViewController.manuallySpecifiedCardValues = lesson[@"cardValues"];
+        
+        if (self.tableView.indexPathForSelectedRow.row < (self.lessons.count - 1))
+        {
+            gameViewController.indexOfNextLesson = self.tableView.indexPathForSelectedRow.row + 1;
+        }
     }
 }
 

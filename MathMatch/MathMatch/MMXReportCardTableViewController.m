@@ -173,7 +173,9 @@
     }
     else if ((indexPath.section == 2) && (indexPath.row == 1))
     {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [MMXTimeIntervalFormatter reportCardFormatWithInterval:self.timePlayed]];
+        NSArray *temp = [MMXTimeIntervalFormatter reportCardFormatWithInterval:self.timePlayed];
+        cell.detailTextLabel.text = temp[0];
+        cell.detailTextLabel.accessibilityLabel = temp[1];
     }
     
     return cell;

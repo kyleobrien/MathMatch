@@ -21,20 +21,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyQ-kq-3sQ" userLabel="Face Up Button">
+                        <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyQ-kq-3sQ" userLabel="Face Up Button">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                             <state key="normal">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected">
-                                <color key="titleColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="highlighted">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="playerRequestedCardFlip:" destination="-1" eventType="touchUpInside" id="Fl2-dj-1ki"/>
@@ -43,11 +43,14 @@
                         <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pc-sc-0HR" userLabel="Face Down Button">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="33"/>
+                            <color key="backgroundColor" red="0.0039215686269999999" green="0.66666666669999997" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="33"/>
                             <state key="normal">
                                 <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="highlighted">
                                 <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,25 +60,25 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.37254901959999998" green="0.25098039220000001" blue="0.87058823529999996" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="hyQ-kq-3sQ" firstAttribute="leading" secondItem="bvR-yl-FLj" secondAttribute="leading" id="L0w-sP-N2a"/>
-                        <constraint firstItem="hyQ-kq-3sQ" firstAttribute="top" secondItem="bvR-yl-FLj" secondAttribute="top" id="Nkq-IW-zP1"/>
-                        <constraint firstItem="9Pc-sc-0HR" firstAttribute="leading" secondItem="bvR-yl-FLj" secondAttribute="leading" id="bk3-8m-qUR"/>
-                        <constraint firstAttribute="bottom" secondItem="9Pc-sc-0HR" secondAttribute="bottom" id="bxU-DH-IHc"/>
-                        <constraint firstItem="9Pc-sc-0HR" firstAttribute="top" secondItem="bvR-yl-FLj" secondAttribute="top" id="dat-tB-OlG"/>
-                        <constraint firstAttribute="bottom" secondItem="hyQ-kq-3sQ" secondAttribute="bottom" id="hRs-di-mN4"/>
-                        <constraint firstAttribute="trailing" secondItem="hyQ-kq-3sQ" secondAttribute="trailing" id="lT3-dY-Vce"/>
-                        <constraint firstAttribute="trailing" secondItem="9Pc-sc-0HR" secondAttribute="trailing" id="zwr-Wz-tOI"/>
+                        <constraint firstItem="9Pc-sc-0HR" firstAttribute="top" secondItem="bvR-yl-FLj" secondAttribute="top" id="0vg-j1-OhT"/>
+                        <constraint firstAttribute="trailing" secondItem="hyQ-kq-3sQ" secondAttribute="trailing" id="7Lw-zl-hV8"/>
+                        <constraint firstItem="hyQ-kq-3sQ" firstAttribute="top" secondItem="bvR-yl-FLj" secondAttribute="top" id="AIx-qr-iQV"/>
+                        <constraint firstItem="hyQ-kq-3sQ" firstAttribute="leading" secondItem="bvR-yl-FLj" secondAttribute="leading" id="LgV-fA-kEU"/>
+                        <constraint firstAttribute="trailing" secondItem="9Pc-sc-0HR" secondAttribute="trailing" id="R9K-hF-OXp"/>
+                        <constraint firstAttribute="bottom" secondItem="hyQ-kq-3sQ" secondAttribute="bottom" id="XIt-z0-0sD"/>
+                        <constraint firstItem="9Pc-sc-0HR" firstAttribute="leading" secondItem="bvR-yl-FLj" secondAttribute="leading" id="tai-79-cki"/>
+                        <constraint firstAttribute="bottom" secondItem="9Pc-sc-0HR" secondAttribute="bottom" id="vTj-pY-jrb"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.0039215686269999999" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="bvR-yl-FLj" secondAttribute="trailing" id="Ljm-rS-dvR"/>
-                <constraint firstItem="bvR-yl-FLj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Q0h-UY-b7a"/>
-                <constraint firstItem="bvR-yl-FLj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dF3-KI-2ia"/>
-                <constraint firstAttribute="bottom" secondItem="bvR-yl-FLj" secondAttribute="bottom" id="r43-Hz-2mI"/>
+                <constraint firstItem="bvR-yl-FLj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KHc-zB-RQt"/>
+                <constraint firstAttribute="bottom" secondItem="bvR-yl-FLj" secondAttribute="bottom" id="QNR-3O-WP3"/>
+                <constraint firstItem="bvR-yl-FLj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="duA-r7-AAg"/>
+                <constraint firstAttribute="trailing" secondItem="bvR-yl-FLj" secondAttribute="trailing" id="pWK-bu-dsH"/>
             </constraints>
         </view>
     </objects>

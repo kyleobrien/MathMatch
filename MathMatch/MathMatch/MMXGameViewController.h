@@ -56,12 +56,14 @@ typedef NS_ENUM(NSUInteger, MMXGameState)
 
 @property (nonatomic, strong) NSMutableArray *cardsList;
 
+@property (nonatomic, assign) NSInteger indexOfNextLesson;
+
 - (IBAction)playerTappedPauseButton:(id)sender;
 - (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue;
 
 - (void)startNewGame;
 - (void)allowPlayerInputAndStartGame;
-- (void)arrangDeckOntoTableauAndStartDealing;
+- (void)arrangDeckOntoTableauAndStartDealing:(BOOL)deal;
 - (void)removeCardFromTableauWithIndex:(NSInteger)index;
 - (void)clearEquation;
 

@@ -136,7 +136,7 @@
     CGFloat sizeMultiplier = 1.0;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        sizeMultiplier = 2.0;
+        sizeMultiplier = 1.5;
     }
     
     MMXCardViewController *cardViewController = [[MMXCardViewController alloc] initWithCardStyle:cardStyle];
@@ -150,6 +150,23 @@
     [self addChildViewController:cardViewController];
     [containerView addSubview:cardViewController.view];
     [cardViewController didMoveToParentViewController:self];
+    
+    if (number == 1)
+    {
+        cardViewController.faceDownButton.accessibilityLabel = NSLocalizedString(@"Classes Card", nil);
+    }
+    else if (number == 2)
+    {
+        cardViewController.faceDownButton.accessibilityLabel = NSLocalizedString(@"Practice Card", nil);
+    }
+    else if (number == 3)
+    {
+        cardViewController.faceDownButton.accessibilityLabel = NSLocalizedString(@"How to Play Card", nil);
+    }
+    else if (number == 4)
+    {
+        cardViewController.faceDownButton.accessibilityLabel = NSLocalizedString(@"Report Card Card", nil);
+    }
     
     return cardViewController;
 }
