@@ -192,13 +192,13 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                                           self.containerView.frame.origin.y - rootViewController.view.bounds.size.height,
                                           self.containerView.frame.size.width,
                                           self.containerView.frame.size.height);
-    
-    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self];
-    
-    _visible = YES;
-    
+
     dispatch_async(dispatch_get_main_queue(), ^
     {
+        [rootViewController.view addSubview:self];
+        
+        _visible = YES;
+        
         [UIView animateWithDuration:0.3
                               delay:0.0
                             options:UIViewAnimationOptionCurveEaseInOut
@@ -541,7 +541,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 - (void)deviceOrientationChange:(NSNotification *)notification
 {
-    NSLog(@"HERE");
     [self layoutView];
 }
 

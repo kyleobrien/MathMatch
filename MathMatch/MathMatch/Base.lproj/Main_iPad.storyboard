@@ -542,6 +542,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="0.75" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration" hint=" " label="Testing">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MMXGreenCheckmark" translatesAutoresizingMaskIntoConstraints="NO" id="Wff-4f-M6w">
                                             <rect key="frame" x="48" y="48" width="28" height="28"/>
@@ -1938,7 +1941,7 @@ Thank you.</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Menu">
+                                <state key="normal" title="Done">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>

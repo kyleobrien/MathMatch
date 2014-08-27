@@ -80,6 +80,9 @@
     cell.disabledCardView.hidden = enabled.boolValue;
     cell.checkmarkImageView.hidden = !enabled.boolValue;
     
+    cell.isAccessibilityElement = YES;
+    cell.accessibilityLabel = [self cardTitleForCardStyle:(indexPath.row + 1)];
+    
     return cell;
 }
 
@@ -114,6 +117,67 @@
         cell.disabledCardView.hidden = NO;
         cell.checkmarkImageView.hidden = YES;
     }
+}
+
+- (NSString *)cardTitleForCardStyle:(MMXCardStyle)cardStyle
+{
+    NSString *cardTitle = nil;
+    
+    if (cardStyle == MMXCardStyleBeach)
+    {
+        cardTitle = NSLocalizedString(@"Beach", nil);
+    }
+    else if (cardStyle == MMXCardStyleCheckers)
+    {
+        cardTitle = NSLocalizedString(@"Checkers", nil);
+    }
+    else if (cardStyle == MMXCardStyleCitrus)
+    {
+        cardTitle = NSLocalizedString(@"Citrus", nil);
+    }
+    else if (cardStyle == MMXCardStyleCupcake)
+    {
+        cardTitle = NSLocalizedString(@"Cupcake", nil);
+    }
+    else if (cardStyle == MMXCardStyleEmerald)
+    {
+        cardTitle = NSLocalizedString(@"Emerald", nil);
+    }
+    else if (cardStyle == MMXCardStyleGrass)
+    {
+        cardTitle = NSLocalizedString(@"Grass", nil);
+    }
+    else if (cardStyle == MMXCardStyleHoney)
+    {
+        cardTitle = NSLocalizedString(@"Honey", nil);
+    }
+    else if (cardStyle == MMXCardStyleMoon)
+    {
+        cardTitle = NSLocalizedString(@"Moon", nil);
+    }
+    else if (cardStyle == MMXCardStyleStars)
+    {
+        cardTitle = NSLocalizedString(@"Stars", nil);
+    }
+    else if (cardStyle == MMXCardStyleSteel)
+    {
+        cardTitle = NSLocalizedString(@"Steel", nil);
+    }
+    else if (cardStyle == MMXCardStyleSushi)
+    {
+        cardTitle = NSLocalizedString(@"Sushi", nil);
+    }
+    else if (cardStyle == MMXCardStyleThatch)
+    {
+        cardTitle = NSLocalizedString(@"Thatch", nil);
+    }
+    else if (cardStyle == MMXCardStyleVelvet)
+    {
+        cardTitle = NSLocalizedString(@"Velvet", nil);
+    }
+    
+    
+    return cardTitle;
 }
 
 @end
