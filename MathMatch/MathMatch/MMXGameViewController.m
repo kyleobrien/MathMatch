@@ -112,6 +112,18 @@
 {
     [super viewDidAppear:animated];
     
+    if ((self.gameData.arithmeticType == MMXArithmeticTypeSubtraction) ||
+        (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
+    {
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.xNumberLabel);
+    }
+    else if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
+             (self.gameData.arithmeticType == MMXArithmeticTypeMultiplication))
+    {
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.zNumberLabel);
+    }
+    
+    
     if (self.gameData.gameType != MMXGameTypeHowToPlay)
     {
         [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -187,11 +199,14 @@
     self.view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     self.view.layer.shouldRasterize = YES;
     
-    [decisionView showAndDimBackgroundWithPercent:0.50];
+    [decisionView showInViewController:self.navigationController andDimBackgroundWithPercent:0.50];
 }
 
 - (void)playerTappedQuitTutorialButton:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     [self.howToPlayDelegate.suggestionTimer invalidate];
     self.howToPlayDelegate = nil;
     
@@ -837,6 +852,15 @@
             }
             else
             {
+                if ((self.memoryTimeRemaining >= (5.0 - (1.0 / 60.0))) ||
+                    (self.memoryTimeRemaining < (4.0 + (1.0 / 60.0)) && self.memoryTimeRemaining > (4.0 - (1.0 / 60.0))) ||
+                    (self.memoryTimeRemaining < (3.0 + (1.0 / 60.0)) && self.memoryTimeRemaining > (3.0 - (1.0 / 60.0))) ||
+                    (self.memoryTimeRemaining < (2.0 + (1.0 / 60.0)) && self.memoryTimeRemaining > (2.0 - (1.0 / 60.0))) ||
+                    (self.memoryTimeRemaining < (1.0 + (1.0 / 60.0)) && self.memoryTimeRemaining > (1.0 - (1.0 / 60.0))))
+                {
+                    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectCountdownTone;
+                    [[MMXAudioManager sharedManager] playSoundEffect];
+                }
                 self.customNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %01.2f", NSLocalizedString(@"Memorize -", nil), self.memoryTimeRemaining];
             }
             
@@ -879,6 +903,9 @@
 {
     if (success)
     {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectSuccess;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+        
         [UIView animateWithDuration:0.1 animations:^
         {
             self.equationCorrectnessView.backgroundColor = [UIColor mmx_greenColor];
@@ -886,6 +913,9 @@
     }
     else
     {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectFail;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+        
         [UIView animateWithDuration:0.1 animations:^
         {
             self.equationCorrectnessView.backgroundColor = [UIColor mmx_redColor];
@@ -963,6 +993,7 @@
                                         else
                                         {
                                             //self.gameState = MMXGameStateNoCardsFlipped;
+                                            UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.pauseBarButtonItem);
                                         }
                                     }
                                 }
@@ -1007,6 +1038,7 @@
                                         else
                                         {
                                             //self.gameState = MMXGameStateNoCardsFlipped;
+                                            UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.pauseBarButtonItem);
                                         }
                                     }
                                 }
@@ -1306,6 +1338,9 @@
 
 - (void)decisionView:(KMODecisionView *)decisionView tappedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     if (buttonIndex == 0) // Player quit.
     {
         [self terminateGameBeforeFinishing];

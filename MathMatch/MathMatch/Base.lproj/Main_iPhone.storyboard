@@ -118,7 +118,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="hok-83-lwb" kind="push" id="x61-zD-XKJ"/>
+                                            <segue destination="hok-83-lwb" kind="push" identifier="MMXShowCardStylesSegue" id="x61-zD-XKJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qWX-w8-m2E" style="IBUITableViewCellStyleDefault" id="vY3-8H-tRX" customClass="MMXSettingsTableViewCell">
@@ -251,7 +251,7 @@
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="S0i-hl-1sf" kind="push" id="J2T-sH-VdZ"/>
+                                            <segue destination="S0i-hl-1sf" kind="push" identifier="MMXShowAboutSegue" id="J2T-sH-VdZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1908,6 +1908,9 @@ Thank you.</string>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.25098039220000001" blue="0.87058823529999996" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Star Count">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="tug-Ry-9Ad" secondAttribute="centerY" id="307-jm-kWa"/>
                                     <constraint firstAttribute="centerY" secondItem="VUG-KI-sUQ" secondAttribute="centerY" id="AMP-4H-2WX"/>

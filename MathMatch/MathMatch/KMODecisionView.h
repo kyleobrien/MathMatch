@@ -52,8 +52,8 @@ FOUNDATION_EXPORT CGFloat const kKMODecisionViewButtonFontSize;
 - (NSInteger)addButtonWithTitle:(NSString *)title;
 - (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
 
-- (void)show;
-- (void)showAndDimBackgroundWithPercent:(CGFloat)dimPercent;
+- (void)showInViewController:(UIViewController *)viewController;
+- (void)showInViewController:(UIViewController *)viewController andDimBackgroundWithPercent:(CGFloat)dimPercent;
 - (void)dismissWithTappedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
 
 @end

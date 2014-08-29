@@ -42,15 +42,24 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blackColor];
     
-    [super viewWillDisappear:animated];
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     MMXPracticeMenuBetaViewController *betaViewController = (MMXPracticeMenuBetaViewController *)segue.destinationViewController;
     betaViewController.managedObjectContext = self.managedObjectContext;
     betaViewController.gameData = self.gameData;
@@ -65,6 +74,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 
 - (IBAction)numberButtonWasTapped:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     UIButton *button = (UIButton *)sender;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -103,6 +115,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 
 - (IBAction)arithmeticButtonWasTapped:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     UIButton *button = (UIButton *)sender;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -135,6 +150,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 
 - (IBAction)memoryButtonWasTapped:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     UIButton *button = (UIButton *)sender;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -161,6 +179,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
 
 - (IBAction)musicButtonWasTapped:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     UIButton *button = (UIButton *)sender;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     

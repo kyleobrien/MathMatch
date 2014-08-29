@@ -137,7 +137,18 @@
                                                                         delegate:nil
                                                                cancelButtonTitle:NSLocalizedString(@"Okay", nil)
                                                                otherButtonTitles:nil];
-        [decisionView showAndDimBackgroundWithPercent:0.50];
+        [decisionView showInViewController:self.navigationController andDimBackgroundWithPercent:0.50];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
     }
 }
 

@@ -31,8 +31,17 @@ typedef NS_ENUM(NSUInteger, MMXAudioTrack)
 typedef NS_ENUM(NSUInteger, MMXAudioSoundEffect)
 {
     MMXAudioSoundEffectNone,
-    MMXAudioSoundEffectMenuButtonTap,
-    MMXAudioSoundEffectFlip
+    MMXAudioSoundEffectFlip,
+    MMXAudioSoundEffectTapForward,
+    MMXAudioSoundEffectTapBackward,
+    MMXAudioSoundEffectTapNeutral,
+    MMXAudioSoundEffectSuccess,
+    MMXAudioSoundEffectFail,
+    MMXAudioSoundEffectDeal1,
+    MMXAudioSoundEffectDeal2,
+    MMXAudioSoundEffectCountdownTone,
+    MMXAudioSoundEffectFireworks,
+    MMXAudioSoundEffectWhoosh
 };
 
 @interface MMXAudioManager : NSObject <AVAudioPlayerDelegate>

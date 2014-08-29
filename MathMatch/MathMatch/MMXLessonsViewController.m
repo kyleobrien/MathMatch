@@ -73,6 +73,17 @@ NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsView
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blueColor];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -106,6 +117,13 @@ NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsView
         cell.starCountLabel.text = [NSString stringWithFormat:@"%ld", (long)topScore.stars.integerValue];
         cell.starCountLabel.hidden = NO;
         cell.starImageView.hidden = NO;
+        
+        NSString *pluralStars = @"Stars";
+        if ([cell.starCountLabel.text isEqualToString:@"1"])
+        {
+            pluralStars = @"Star";
+        }
+        cell.accessibilityLabel = [NSString stringWithFormat:@"%@, %@ %@", cell.lessonTitleLabel.text, cell.starCountLabel.text, pluralStars];
     }
     else
     {
@@ -122,6 +140,9 @@ NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsView
 {
     if ([segue.identifier isEqualToString:@"MMXBeginLessonSegue"])
     {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+        
         NSDictionary *lesson = self.lessons[self.tableView.indexPathForSelectedRow.row];
         MMXGameData *gameConfiguration = [self gameConfigurationFromLesson:lesson];
         

@@ -18,7 +18,9 @@
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) NSMutableArray *otherButtons;
 
-- (void)layoutView;
+@property (nonatomic, weak) UIViewController *presentingViewController;
+
+- (void)layoutViewInViewController:(UIViewController *)viewController;
 - (void)removeAfterTappingButtonIndex:(NSInteger)index withAnimation:(BOOL)animated;
 
 - (UIImage *)backgroundImageForButton:(UIButton *)button withColor:(UIColor *)color;
@@ -118,7 +120,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
         }
         
         [self addSubview:self.containerView];
-        [self layoutView];
     }
     
     return self;
@@ -145,7 +146,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     [self.otherButtons addObject:otherButton];
     
     [self.containerView addSubview:otherButton];
-    [self layoutView];
     
     // Adding 1 to the index (by not subtracting 1) since 0 is reserved for the cancel button.
     return [self.otherButtons count];
@@ -174,28 +174,29 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     }
 }
 
-- (void)show
+- (void)showInViewController:(UIViewController *)viewController
 {
-    [self showAndDimBackgroundWithPercent:0.25];
+    [self showInViewController:viewController andDimBackgroundWithPercent:0.25];
 }
 
-- (void)showAndDimBackgroundWithPercent:(CGFloat)dimPercent
+- (void)showInViewController:(UIViewController *)viewController andDimBackgroundWithPercent:(CGFloat)dimPercent
 {
+    self.presentingViewController = viewController;
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(willPresentDecisionView:)])
     {
         [self.delegate willPresentDecisionView:self];
     }
     
-    [self layoutView];
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    self.containerView.frame = CGRectMake((rootViewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
-                                          self.containerView.frame.origin.y - rootViewController.view.bounds.size.height,
+    [self layoutViewInViewController:viewController];
+    self.containerView.frame = CGRectMake((viewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                          self.containerView.frame.origin.y - viewController.view.bounds.size.height,
                                           self.containerView.frame.size.width,
                                           self.containerView.frame.size.height);
 
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        [rootViewController.view addSubview:self];
+        [viewController.view addSubview:self];
         
         _visible = YES;
         
@@ -205,8 +206,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                          animations:^
                          {
                              self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:dimPercent];
-                             self.containerView.frame = CGRectMake((rootViewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
-                                                                   (rootViewController.view.bounds.size.height - self.containerView.frame.size.height) / 2.0,
+                             self.containerView.frame = CGRectMake((viewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                                                   (viewController.view.bounds.size.height - self.containerView.frame.size.height) / 2.0,
                                                                    self.containerView.frame.size.width,
                                                                    self.containerView.frame.size.height);
                          }
@@ -269,8 +270,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 - (void)setMessage:(NSString *)message
 {
     _message = message;
-    
-    [self layoutView];
 }
 
 - (void)setFontName:(NSString *)fontName
@@ -284,8 +283,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     {
         otherButton.titleLabel.font = [UIFont fontWithName:self.fontName size:kKMODecisionViewButtonFontSize];
     }
-    
-    [self layoutView];
 }
 
 - (void)setColor:(UIColor *)color
@@ -293,7 +290,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     _color = color;
     
     [self updateButtonColors];
-    [self layoutView];
 }
 
 - (void)setDestructiveButtonIndex:(NSInteger)destructiveButtonIndex
@@ -301,7 +297,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     _destructiveButtonIndex = destructiveButtonIndex;
     
     [self updateButtonColors];
-    [self layoutView];
 }
 
 - (void)setDestructiveColor:(UIColor *)destructiveColor
@@ -309,7 +304,6 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     _destructiveColor = destructiveColor;
     
     [self updateButtonColors];
-    [self layoutView];
 }
 
 - (NSInteger)numberOfButtons
@@ -325,14 +319,12 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 #pragma mark - Internal helper methods
 
-- (void)layoutView
+- (void)layoutViewInViewController:(UIViewController *)viewController
 {
     self.messageLabel.text = self.message;
     
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
     // Extend the frame (which is the dimmed background) so that we don't see any of the root view controller on rotation.
-    CGFloat extension = rootViewController.view.bounds.size.width - rootViewController.view.bounds.size.height;
+    CGFloat extension = viewController.view.bounds.size.width - viewController.view.bounds.size.height;
     if (extension < 0)
     {
         extension = -extension;
@@ -340,12 +332,12 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     
     self.frame = CGRectMake(0.0,
                             0.0,
-                            rootViewController.view.bounds.size.width + extension,
-                            rootViewController.view.bounds.size.height + extension);
+                            viewController.view.bounds.size.width + extension,
+                            viewController.view.bounds.size.height + extension);
     
     // Calculating the height of the message so we can adjust the label to the proper size.
     
-    CGSize maxSize = CGSizeMake(self.containerView.bounds.size.width - 20.0, rootViewController.view.bounds.size.height);
+    CGSize maxSize = CGSizeMake(self.containerView.bounds.size.width - 20.0, viewController.view.bounds.size.height);
     CGSize actualSize = [self.messageLabel sizeThatFits:maxSize];
     
     self.messageLabel.frame = CGRectMake(10.0,
@@ -446,8 +438,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
     
     // Now that everything is positioned, make sure the container view is appropriately positioned and sized.
     double newHeight = self.cancelButton.frame.origin.y + self.cancelButton.frame.size.height + 10.0;
-    self.containerView.frame = CGRectMake((rootViewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
-                                          (rootViewController.view.bounds.size.height - newHeight) / 2.0,
+    self.containerView.frame = CGRectMake((viewController.view.bounds.size.width - self.containerView.frame.size.width) / 2.0,
+                                          (viewController.view.bounds.size.height - newHeight) / 2.0,
                                           self.containerView.frame.size.width,
                                           newHeight);
 }
@@ -480,6 +472,8 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
                                  {
                                      [self removeFromSuperview];
                                      _visible = NO;
+                                     
+                                     self.presentingViewController = nil;
                                      
                                      if (self.delegate && [self.delegate respondsToSelector:@selector(decisionView:didDismissWithButtonIndex:)])
                                      {
@@ -541,7 +535,7 @@ CGFloat const kKMODecisionViewButtonFontSize = 21.0;
 
 - (void)deviceOrientationChange:(NSNotification *)notification
 {
-    [self layoutView];
+    [self layoutViewInViewController:self.presentingViewController];
 }
 
 @end

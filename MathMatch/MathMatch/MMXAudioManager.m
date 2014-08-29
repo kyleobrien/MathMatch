@@ -181,9 +181,46 @@ CGFloat const kMMXStepsToFade = 10;
 - (void)configureSoundEffectPlayer
 {
     NSString *filenameWithoutExtension = nil;
-    if (_soundEffect == MMXAudioSoundEffectMenuButtonTap)
+
+    if (_soundEffect == MMXAudioSoundEffectTapForward)
     {
-        filenameWithoutExtension = @"button-44";
+        filenameWithoutExtension = @"sfx_tap_forward";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectTapBackward)
+    {
+        filenameWithoutExtension = @"sfx_tap_backward";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectTapNeutral)
+    {
+        filenameWithoutExtension = @"sfx_tap_neutral";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectSuccess)
+    {
+        filenameWithoutExtension = @"sfx_success";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectFail)
+    {
+        filenameWithoutExtension = @"sfx_fail";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectDeal1)
+    {
+        filenameWithoutExtension = @"sfx_deal_1";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectDeal2)
+    {
+        filenameWithoutExtension = @"sfx_deal_2";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectCountdownTone)
+    {
+        filenameWithoutExtension = @"sfx_countdown_tone";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectFireworks)
+    {
+        filenameWithoutExtension = @"sfx_fireworks";
+    }
+    else if (_soundEffect == MMXAudioSoundEffectWhoosh)
+    {
+        filenameWithoutExtension = @"sfx_whoosh";
     }
     
     if (filenameWithoutExtension)

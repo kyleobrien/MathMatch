@@ -140,6 +140,8 @@
             
             self.faceDownImage = nil;
         }
+        
+        self.shouldPlaySoundEffect = YES;
     }
     
     return self;
@@ -241,7 +243,7 @@
 }
 
 - (void)dealCard
-{
+{    
     self.view.transform = CGAffineTransformIdentity;
 
     self.view.frame = CGRectMake(self.tableLocation.x,
@@ -253,6 +255,9 @@
 - (void)selectCard
 {
     self.card.selected = YES;
+    
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectDeal2;
+    [[MMXAudioManager sharedManager] playSoundEffect];
     
     self.faceUpButton.selected = YES;
     [self.faceUpButton setBackgroundColor:[UIColor whiteColor]];
@@ -317,6 +322,12 @@
     if (!self.card.isFaceUp)
     {
         [self.card flip];
+        
+        if (self.shouldPlaySoundEffect)
+        {
+            [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectDeal2;
+            [[MMXAudioManager sharedManager] playSoundEffect];
+        }
         
         [UIView transitionWithView:self.containerView
                           duration:0.20

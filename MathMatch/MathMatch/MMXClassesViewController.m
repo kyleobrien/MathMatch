@@ -70,9 +70,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_blackColor];
     
-    [super viewWillDisappear:animated];
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
 }
 
 - (void)dealloc
@@ -84,6 +90,9 @@
 {
     if ([segue.identifier isEqualToString:@"MMXProgressCellToLessonsSegue"] || [segue.identifier isEqualToString:@"MMXStarCellToLessonsSegue"])
     {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+        
         NSDictionary *class = self.classesFromJSON[self.tableView.indexPathForSelectedRow.row];
         
         MMXLessonsViewController *lessonsViewController = (MMXLessonsViewController *)segue.destinationViewController;
@@ -120,6 +129,13 @@
             cell.classTitleLabel.text = class[@"title"];
             cell.starCountLabel.text = accessoryLabels[@"label"];
             
+            NSString *pluralStars = @"Stars";
+            if ([cell.starCountLabel.text isEqualToString:@"1"])
+            {
+                pluralStars = @"Star";
+            }
+            cell.accessibilityLabel = [NSString stringWithFormat:@"%@, %@ %@", cell.classTitleLabel.text, cell.starCountLabel.text, pluralStars];
+            
             return cell;
         }
         else
@@ -128,6 +144,8 @@
             cell.classTitleLabel.text = class[@"title"];
             cell.progressDescriptionLabel.text = accessoryLabels[@"label"];
             
+            cell.accessibilityLabel = nil;
+            
             return cell;
         }
     }
@@ -135,6 +153,8 @@
     {
         MMXClassProgressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MMXClassProgressCell" forIndexPath:indexPath];
         cell.classTitleLabel.text = class[@"title"];
+        
+        cell.accessibilityLabel = nil;
         
         return cell;
     }

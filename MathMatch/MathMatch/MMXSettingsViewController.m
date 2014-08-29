@@ -32,10 +32,27 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"MMXShowCardStylesSegue"])
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
+    else if ([segue.identifier isEqualToString:@"MMXShowAboutSegue"])
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
+}
+
 #pragma mark - Player action
 
 - (IBAction)playerTappedDoneButton:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -73,6 +90,9 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+        
         NSString *message = NSLocalizedString(@"You're about to reset all progress, including stars, best times and completed game stats. Are you sure? You cannot undue this action.", nil);
         KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                         delegate:self
@@ -82,11 +102,22 @@
         decisionView.destructiveColor = [UIColor mmx_redColor];
         decisionView.fontName = @"Futura-Medium";
         
-        [decisionView showAndDimBackgroundWithPercent:0.50];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            [decisionView showInViewController:self andDimBackgroundWithPercent:0.50];
+        }
+        else
+        {
+            [decisionView showInViewController:self.navigationController andDimBackgroundWithPercent:0.50];
+        }
+        
     }
     else if ((indexPath.section == 3) && (indexPath.row == 0))
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+        [[MMXAudioManager sharedManager] playSoundEffect];
         
         if ([MFMailComposeViewController canSendMail])
         {
@@ -108,18 +139,24 @@
                                                                             delegate:nil
                                                                    cancelButtonTitle:NSLocalizedString(@"Okay", nil)
                                                                    otherButtonTitles:nil];
-            [decisionView showAndDimBackgroundWithPercent:0.50];
+            [decisionView showInViewController:self andDimBackgroundWithPercent:0.50];
         }
     }
     else if ((indexPath.section == 3) && (indexPath.row == 1))
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+        [[MMXAudioManager sharedManager] playSoundEffect];
                 
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=896517401&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
     }
     else if ((indexPath.section == 3) && (indexPath.row == 2))
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+        [[MMXAudioManager sharedManager] playSoundEffect];
         
         NSString *message = NSLocalizedString(@"Check out Math Match, a game of concentration, memory, and arithmetic available on the App Store!", nil);
         NSURL *appStoreURL = [NSURL URLWithString:@"http://appstore.com/mathmatchagameofconcentrationmemoryandarithmetic"];
@@ -134,6 +171,9 @@
     else if ((indexPath.section == 4) && (indexPath.row == 0))
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+        [[MMXAudioManager sharedManager] playSoundEffect];
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://connectrelatecreate.com/mathmatch/"]];
     }
@@ -201,7 +241,7 @@
                                                                         delegate:nil
                                                                cancelButtonTitle:NSLocalizedString(@"Okay", nil)
                                                                otherButtonTitles:nil];
-        [decisionView showAndDimBackgroundWithPercent:0.50];
+        [decisionView showInViewController:self andDimBackgroundWithPercent:0.50];
     }
 }
 
@@ -209,6 +249,9 @@
 
 - (void)decisionView:(KMODecisionView *)decisionView tappedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     if (buttonIndex == 1)
     {
         [self deleteAllEntities];

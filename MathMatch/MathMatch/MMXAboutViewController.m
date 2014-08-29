@@ -21,4 +21,15 @@
                                                                                              withString:NSLocalizedString(@" dot ", nil)];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
+}
+
 @end

@@ -49,6 +49,17 @@
     self.collectionView.allowsMultipleSelection = YES;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
+}
+
 - (void)dealloc
 {
     [[NSUserDefaults standardUserDefaults] setObject:self.enabledCards forKey:kMMXUserDefaultsEnabledCards];
@@ -102,6 +113,9 @@
 
 - (void)flipEnabledForIndexPath:(NSIndexPath *)indexPath
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     NSNumber *enabled = self.enabledCards[indexPath.row + 1];
     self.enabledCards[indexPath.row + 1] = [NSNumber numberWithBool:!enabled.boolValue];
     

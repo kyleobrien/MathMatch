@@ -61,10 +61,24 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
     self.navigationController.navigationBar.barTintColor = [UIColor mmx_orangeColor];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController)
+    {
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
+        [[MMXAudioManager sharedManager] playSoundEffect];
+    }
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     MMXGameViewController *gameViewController = (MMXGameViewController *)segue.destinationViewController;
     gameViewController.managedObjectContext = self.managedObjectContext;
     gameViewController.gameData = self.gameData;
@@ -74,6 +88,9 @@ NSString * const kMMXUserDefaultsPracticeTargetNumber = @"MMXUserDefaultsPractic
 
 - (IBAction)numberButtonWasTapped:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     UIButton *numberButton = (UIButton *)sender;
     NSInteger digit = numberButton.tag - 10;
     

@@ -355,7 +355,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="Lh4-uz-4oQ" kind="push" id="CdQ-00-Vtd"/>
+                                            <segue destination="Lh4-uz-4oQ" kind="push" identifier="MMXShowCardStylesSegue" id="CdQ-00-Vtd"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aKR-Z3-wJb" style="IBUITableViewCellStyleDefault" id="bA2-jJ-p3A" customClass="MMXSettingsTableViewCell">
@@ -489,7 +489,7 @@
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Zmf-14-gwM" kind="push" id="vn6-iG-QXn"/>
+                                            <segue destination="Zmf-14-gwM" kind="push" identifier="MMXShowAboutSegue" id="vn6-iG-QXn"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2008,6 +2008,9 @@ Thank you.</string>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.25098039220000001" blue="0.87058823529999996" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Star Count">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="00x-ZK-6lk"/>
                                     <constraint firstItem="wq4-8f-C24" firstAttribute="centerY" secondItem="KhI-e6-0Ec" secondAttribute="centerY" id="0RZ-WU-rPV"/>
@@ -2102,6 +2105,6 @@ Thank you.</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="VzH-uZ-Q22"/>
-        <segue reference="Efu-YO-IbH"/>
+        <segue reference="MdF-Dw-wLK"/>
     </inferredMetricsTieBreakers>
 </document>

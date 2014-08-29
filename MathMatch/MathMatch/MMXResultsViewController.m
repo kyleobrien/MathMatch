@@ -68,6 +68,14 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         {
             self.gameData.starRating = @1;
         }
+        
+        NSString *pluralStars = NSLocalizedString(@"Stars", nil);
+        if (self.gameData.starRating.integerValue == 1)
+        {
+            pluralStars = NSLocalizedString(@"Star", nil);
+        }
+        self.rankContainerView.accessibilityLabel = [NSString stringWithFormat:NSLocalizedString(@"%ld %@", nil),
+                                                     (long)self.gameData.starRating.integerValue, pluralStars];
     }
     
     if (self.gameData.gameType == MMXGameTypeCourse)
@@ -182,6 +190,9 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 
 - (IBAction)playerTappedMenuButton:(id)sender
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     NSString *secondOption;
     if (self.gameData.gameType == MMXGameTypePractice)
     {
@@ -208,13 +219,16 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                                                            otherButtonTitles:otherButtonTitles];
     decisionView.fontName = @"Futura-Medium";
     
-    [decisionView showAndDimBackgroundWithPercent:0.50];
+    [decisionView showInViewController:self.navigationController andDimBackgroundWithPercent:0.50];
 }
 
 #pragma mark - Helpers
 
 - (void)beginStarAnimationForStar:(NSInteger)starNumber
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectWhoosh;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     CGAffineTransform scaleStart = CGAffineTransformMakeScale(25.0, 25.0);
     CGAffineTransform rotateStart = CGAffineTransformMakeRotation(-M_PI_4);
     CGAffineTransform scaleAndRotateStart = CGAffineTransformConcat(scaleStart, rotateStart);
@@ -282,7 +296,10 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                                      [self.rankStar2ImageView.layer addSublayer:self.rankStar2EmitterLayer];
                                      [self.rankStar3ImageView.layer addSublayer:self.rankStar3EmitterLayer];
                                      
-                                     [self performSelector:@selector(stopParticles) withObject:nil afterDelay:1.5];
+                                     [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectFireworks;
+                                     [[MMXAudioManager sharedManager] playSoundEffect];
+                                     
+                                     [self performSelector:@selector(stopParticles) withObject:nil afterDelay:1.0];
                                  }
                              }
                          }
@@ -360,6 +377,9 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
 
 - (void)decisionView:(KMODecisionView *)decisionView tappedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     if (buttonIndex == 0)
     {
         // Player cancelled. Do nothing.

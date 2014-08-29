@@ -124,6 +124,9 @@
         
         MMXNavigationController *modalNavigationController = (MMXNavigationController *)segue.destinationViewController;
         modalNavigationController.managedObjectContext = navigationController.managedObjectContext;
+        
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+        [[MMXAudioManager sharedManager] playSoundEffect];
     }
 }
 
@@ -144,6 +147,7 @@
     cardViewController.delegate = self;
     cardViewController.cardSize = CGSizeMake(60.0 * sizeMultiplier, 60.0 * sizeMultiplier);
     cardViewController.fontSize = 36.0 * sizeMultiplier;
+    cardViewController.shouldPlaySoundEffect = NO;
     
     cardViewController.view.frame = CGRectMake(0.0, 0.0, 60.0 * sizeMultiplier, 60.0 * sizeMultiplier);
     
@@ -173,7 +177,7 @@
 
 - (void)flipForViewController:(MMXCardViewController *)cardViewController
 {
-    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectMenuButtonTap;
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
     [[MMXAudioManager sharedManager] playSoundEffect];
     
     self.startedAnimating = YES;
@@ -210,7 +214,7 @@
     {
         self.startedAnimating = YES;
         
-        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectMenuButtonTap;
+        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapForward;
         [[MMXAudioManager sharedManager] playSoundEffect];
     }
     

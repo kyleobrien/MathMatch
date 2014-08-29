@@ -24,6 +24,7 @@
 @property (nonatomic, assign) CGFloat fontSize;
 
 @property (nonatomic, assign) BOOL shouldUseSelctionInsteadOfFlip;
+@property (nonatomic, assign) BOOL shouldPlaySoundEffect;
 
 @property (nonatomic, weak) id<MMXCardViewControllerDelegate> delegate;
 

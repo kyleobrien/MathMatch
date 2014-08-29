@@ -168,7 +168,7 @@
                                                                         delegate:self
                                                                cancelButtonTitle:cancelButtonTitle
                                                                otherButtonTitles:nil];
-        [decisionView showAndDimBackgroundWithPercent:0.50];
+        [decisionView showInViewController:self.currentGameViewController.navigationController andDimBackgroundWithPercent:0.50];
     }
 }
 
@@ -364,13 +364,16 @@
                                                                     delegate:self
                                                            cancelButtonTitle:cancelButtonTitle
                                                            otherButtonTitles:nil];
-    [decisionView showAndDimBackgroundWithPercent:0.50];
+    [decisionView showInViewController:self.currentGameViewController.navigationController andDimBackgroundWithPercent:0.50];
 }
 
 #pragma mark - KMODecisionViewDelegate
 
 - (void)decisionView:(KMODecisionView *)decisionView tappedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
+    [[MMXAudioManager sharedManager] playSoundEffect];
+    
     switch (self.currentStep)
     {
         case MMXTutorialStep01:
