@@ -202,13 +202,9 @@ CGFloat const kMMXStepsToFade = 10;
     {
         filenameWithoutExtension = @"sfx_fail";
     }
-    else if (_soundEffect == MMXAudioSoundEffectDeal1)
+    else if (_soundEffect == MMXAudioSoundEffectDeal)
     {
-        filenameWithoutExtension = @"sfx_deal_1";
-    }
-    else if (_soundEffect == MMXAudioSoundEffectDeal2)
-    {
-        filenameWithoutExtension = @"sfx_deal_2";
+        filenameWithoutExtension = @"sfx_deal";
     }
     else if (_soundEffect == MMXAudioSoundEffectCountdownTone)
     {

@@ -37,8 +37,7 @@ typedef NS_ENUM(NSUInteger, MMXAudioSoundEffect)
     MMXAudioSoundEffectTapNeutral,
     MMXAudioSoundEffectSuccess,
     MMXAudioSoundEffectFail,
-    MMXAudioSoundEffectDeal1,
-    MMXAudioSoundEffectDeal2,
+    MMXAudioSoundEffectDeal,
     MMXAudioSoundEffectCountdownTone,
     MMXAudioSoundEffectFireworks,
     MMXAudioSoundEffectWhoosh

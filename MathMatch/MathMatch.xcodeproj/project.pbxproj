@@ -25,8 +25,7 @@
 		277A1F2919229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
 		277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
 		278F9EA219B0DFC10035BDE5 /* sfx_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */; };
-		278F9EA319B0DFC10035BDE5 /* sfx_deal_1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9919B0DFC10035BDE5 /* sfx_deal_1.caf */; };
-		278F9EA419B0DFC10035BDE5 /* sfx_deal_2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9A19B0DFC10035BDE5 /* sfx_deal_2.caf */; };
+		278F9EA419B0DFC10035BDE5 /* sfx_deal.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9A19B0DFC10035BDE5 /* sfx_deal.caf */; };
 		278F9EA519B0DFC10035BDE5 /* sfx_countdown_tone.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9B19B0DFC10035BDE5 /* sfx_countdown_tone.caf */; };
 		278F9EA619B0DFC10035BDE5 /* sfx_fireworks.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9C19B0DFC10035BDE5 /* sfx_fireworks.caf */; };
 		278F9EA719B0DFC10035BDE5 /* sfx_whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9D19B0DFC10035BDE5 /* sfx_whoosh.caf */; };
@@ -112,8 +111,7 @@
 		277A1F1F192268BC00E09050 /* MMXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXAudioManager.m; sourceTree = "<group>"; };
 		277A1F2819229B4F00E09050 /* destination-01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "destination-01.caf"; sourceTree = "<group>"; };
 		278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_fail.caf; sourceTree = "<group>"; };
-		278F9E9919B0DFC10035BDE5 /* sfx_deal_1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_deal_1.caf; sourceTree = "<group>"; };
-		278F9E9A19B0DFC10035BDE5 /* sfx_deal_2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_deal_2.caf; sourceTree = "<group>"; };
+		278F9E9A19B0DFC10035BDE5 /* sfx_deal.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_deal.caf; sourceTree = "<group>"; };
 		278F9E9B19B0DFC10035BDE5 /* sfx_countdown_tone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_countdown_tone.caf; sourceTree = "<group>"; };
 		278F9E9C19B0DFC10035BDE5 /* sfx_fireworks.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_fireworks.caf; sourceTree = "<group>"; };
 		278F9E9D19B0DFC10035BDE5 /* sfx_whoosh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_whoosh.caf; sourceTree = "<group>"; };
@@ -238,8 +236,7 @@
 				278F9E9E19B0DFC10035BDE5 /* sfx_tap_neutral.caf */,
 				278F9E9F19B0DFC10035BDE5 /* sfx_success.caf */,
 				278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */,
-				278F9E9919B0DFC10035BDE5 /* sfx_deal_1.caf */,
-				278F9E9A19B0DFC10035BDE5 /* sfx_deal_2.caf */,
+				278F9E9A19B0DFC10035BDE5 /* sfx_deal.caf */,
 				278F9E9B19B0DFC10035BDE5 /* sfx_countdown_tone.caf */,
 				278F9E9C19B0DFC10035BDE5 /* sfx_fireworks.caf */,
 				278F9E9D19B0DFC10035BDE5 /* sfx_whoosh.caf */,
@@ -518,7 +515,7 @@
 				279EC22318884A890087E0DB /* Main_iPad.storyboard in Resources */,
 				279EC22E18884A890087E0DB /* Images.xcassets in Resources */,
 				277A1F2919229B4F00E09050 /* destination-01.caf in Resources */,
-				278F9EA419B0DFC10035BDE5 /* sfx_deal_2.caf in Resources */,
+				278F9EA419B0DFC10035BDE5 /* sfx_deal.caf in Resources */,
 				279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */,
 				278F9EAB19B0DFC10035BDE5 /* sfx_tap_backward.caf in Resources */,
 				278F9EAA19B0DFC10035BDE5 /* sfx_tap_forward.caf in Resources */,
@@ -526,7 +523,6 @@
 				27CA5AA11986E84F00CC29FC /* classes.json in Resources */,
 				275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
 				278F9EA619B0DFC10035BDE5 /* sfx_fireworks.caf in Resources */,
-				278F9EA319B0DFC10035BDE5 /* sfx_deal_1.caf in Resources */,
 				279EC21718884A890087E0DB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -256,7 +256,7 @@
 {
     self.card.selected = YES;
     
-    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectDeal2;
+    [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectDeal;
     [[MMXAudioManager sharedManager] playSoundEffect];
     
     self.faceUpButton.selected = YES;
@@ -325,7 +325,7 @@
         
         if (self.shouldPlaySoundEffect)
         {
-            [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectDeal2;
+            [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectDeal;
             [[MMXAudioManager sharedManager] playSoundEffect];
         }
         
@@ -356,18 +356,16 @@
 }
 
 - (void)applyGLow
-{
-    self.containerView.layer.borderWidth = 4.0;
-    
+{    
     CGFloat red, green, blue, alpha;
     [[UIColor mmx_greenColor] getRed:&red green:&green blue:&blue alpha:&alpha];
     
-    UIColor *alphaOrange = [UIColor colorWithRed:red green:green blue:blue alpha:0.75];
+    UIColor *alphaOrange = [UIColor colorWithRed:red green:green blue:blue alpha:0.5];
     
     CABasicAnimation *color = [CABasicAnimation animationWithKeyPath:@"borderColor"];
     color.autoreverses = YES;
     color.repeatCount = HUGE_VALF;
-    color.duration = 1.0;
+    color.duration = 0.75;
     color.fromValue = (id)alphaOrange.CGColor;
     color.toValue = (id)[UIColor mmx_greenColor].CGColor;
     self.containerView.layer.backgroundColor = [UIColor mmx_greenColor].CGColor;

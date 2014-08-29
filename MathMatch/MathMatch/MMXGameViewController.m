@@ -903,8 +903,11 @@
 {
     if (success)
     {
-        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectSuccess;
-        [[MMXAudioManager sharedManager] playSoundEffect];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        {
+            [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectSuccess;
+            [[MMXAudioManager sharedManager] playSoundEffect];
+        });
         
         [UIView animateWithDuration:0.1 animations:^
         {
@@ -913,8 +916,11 @@
     }
     else
     {
-        [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectFail;
-        [[MMXAudioManager sharedManager] playSoundEffect];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        {
+            [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectFail;
+            [[MMXAudioManager sharedManager] playSoundEffect];
+        });
         
         [UIView animateWithDuration:0.1 animations:^
         {
