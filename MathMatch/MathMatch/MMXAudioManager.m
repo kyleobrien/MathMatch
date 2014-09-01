@@ -125,7 +125,7 @@ CGFloat const kMMXStepsToFade = 10;
 {
     if (_alreadyPlayingSameTrack)
     {
-        
+        // Don't do anything.
     }
     else if (!_trackAudioPlayer.playing)
     {
@@ -162,7 +162,23 @@ CGFloat const kMMXStepsToFade = 10;
     NSString *filenameWithoutExtension = nil;
     if (_track == MMXAudioTrackMenus)
     {
-        filenameWithoutExtension = @"destination-01";
+        filenameWithoutExtension = @"track_go_doge_go";
+    }
+    else if (_track == MMXAudioTrackGameplayEasy)
+    {
+        filenameWithoutExtension = @"track_pencil_maze";
+    }
+    else if (_track == MMXAudioTrackGameplayMedium)
+    {
+        filenameWithoutExtension = @"track_frozen_leaves";
+    }
+    else if (_track == MMXAudioTrackGameplayHard)
+    {
+        filenameWithoutExtension = @"track_boring_cavern";
+    }
+    else if (_track == MMXAudioTrackResults)
+    {
+        filenameWithoutExtension = @"track_wonder_place";
     }
     
     if (filenameWithoutExtension)
@@ -309,7 +325,7 @@ CGFloat const kMMXStepsToFade = 10;
 
 - (void)setTrack:(MMXAudioTrack)track
 {
-    if (!(_track == track))
+    if (!(_track == track) || !_trackAudioPlayer.playing)
     {
         _track = track;
         

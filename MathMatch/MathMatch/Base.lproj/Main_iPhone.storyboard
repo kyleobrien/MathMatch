@@ -525,7 +525,7 @@ Thank you.</string>
                                 <rect key="frame" x="20" y="277" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fv-DM-rfO">
                                         <rect key="frame" x="70" y="0.0" width="210" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -563,7 +563,7 @@ Thank you.</string>
                                 <rect key="frame" x="20" y="391" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-IU-aB8">
                                         <rect key="frame" x="70" y="0.0" width="210" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.25098039220000001" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -1007,16 +1007,17 @@ Thank you.</string>
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-Wf-eQN" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="0.0" width="280" height="32"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-Wf-eQN" userLabel="1 Spacer View">
+                                <rect key="frame" x="20" y="0.0" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="B48-FM-zkc"/>
+                                    <constraint firstAttribute="height" constant="49" id="iN6-0M-rcg"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-n7-4BR" userLabel="Number View">
-                                <rect key="frame" x="20" y="32" width="280" height="72"/>
+                                <rect key="frame" x="20" y="49" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruF-TR-8Rb">
@@ -1103,16 +1104,16 @@ Thank you.</string>
                                     <constraint firstAttribute="height" constant="72" id="sgC-zx-rdU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7O-4k-JVo" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="104" width="280" height="33"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7O-4k-JVo" userLabel="2 Spacer View">
+                                <rect key="frame" x="20" y="121" width="280" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="bk3-Mk-gEH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-d3-EXq" userLabel="Arithmetic View">
-                                <rect key="frame" x="20" y="137" width="280" height="72"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-d3-EXq" userLabel="Arithmetic View">
+                                <rect key="frame" x="20" y="143" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arithmetic Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4W-kE-kFX">
@@ -1181,16 +1182,16 @@ Thank you.</string>
                                     <constraint firstAttribute="width" constant="280" id="MTm-he-huG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cq1-EE-6W1" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="209" width="280" height="33"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cq1-EE-6W1" userLabel="3 Spacer View">
+                                <rect key="frame" x="20" y="215" width="280" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="cYH-Gt-hpq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZc-ys-LAC" userLabel="Memory Speed View">
-                                <rect key="frame" x="20" y="242" width="280" height="72"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZc-ys-LAC" userLabel="Memory Speed View">
+                                <rect key="frame" x="20" y="237" width="280" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Starting Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-ao-gRo">
@@ -1249,16 +1250,16 @@ Thank you.</string>
                                     <constraint firstAttribute="height" constant="72" id="TWl-bM-QjJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-Nj-W7D" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="314" width="280" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-Nj-W7D" userLabel="4 Spacer View">
+                                <rect key="frame" x="20" y="309" width="280" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="U8l-44-PPk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-UI-jrn" userLabel="Music View">
-                                <rect key="frame" x="20" y="345" width="280" height="124"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7Z-UI-jrn" userLabel="Music View">
+                                <rect key="frame" x="20" y="331" width="280" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXY-Sg-yXr">
@@ -1330,11 +1331,12 @@ Thank you.</string>
                                     <constraint firstAttribute="height" constant="124" id="zEC-fp-pTR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Unh-1c-SsE" userLabel="Spacer View">
-                                <rect key="frame" x="20" y="473" width="280" height="31"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unh-1c-SsE" userLabel="5 Spacer View">
+                                <rect key="frame" x="20" y="455" width="280" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="UWQ-qx-Jvn"/>
                                     <constraint firstAttribute="width" constant="280" id="c9V-by-Xec"/>
                                 </constraints>
                             </view>
@@ -1345,25 +1347,23 @@ Thank you.</string>
                             <constraint firstAttribute="centerX" secondItem="tY1-d3-EXq" secondAttribute="centerX" id="4lX-Aq-MQp"/>
                             <constraint firstAttribute="centerX" secondItem="6ne-n7-4BR" secondAttribute="centerX" id="5Dn-Lk-Qis"/>
                             <constraint firstItem="b7Z-UI-jrn" firstAttribute="top" secondItem="WAz-Nj-W7D" secondAttribute="bottom" id="7H7-0o-Rlh"/>
-                            <constraint firstItem="Qap-Wf-eQN" firstAttribute="height" secondItem="WAz-Nj-W7D" secondAttribute="height" id="9Is-vQ-kjP"/>
                             <constraint firstItem="WAz-Nj-W7D" firstAttribute="top" secondItem="NZc-ys-LAC" secondAttribute="bottom" id="Bvh-eN-x0q"/>
                             <constraint firstAttribute="centerX" secondItem="cq1-EE-6W1" secondAttribute="centerX" id="Dal-Do-PnM"/>
-                            <constraint firstItem="Qap-Wf-eQN" firstAttribute="height" secondItem="cq1-EE-6W1" secondAttribute="height" id="E1h-jI-EWD"/>
-                            <constraint firstItem="Unh-1c-SsE" firstAttribute="top" secondItem="b7Z-UI-jrn" secondAttribute="bottom" constant="4" id="Of5-bR-3n0"/>
+                            <constraint firstItem="Unh-1c-SsE" firstAttribute="top" secondItem="b7Z-UI-jrn" secondAttribute="bottom" id="Of5-bR-3n0"/>
                             <constraint firstAttribute="centerX" secondItem="NZc-ys-LAC" secondAttribute="centerX" id="Pg9-Lo-4GX"/>
                             <constraint firstAttribute="centerX" secondItem="b7Z-UI-jrn" secondAttribute="centerX" id="SeU-82-IkX"/>
                             <constraint firstItem="k7O-4k-JVo" firstAttribute="top" secondItem="6ne-n7-4BR" secondAttribute="bottom" id="UrN-rq-zLE"/>
-                            <constraint firstItem="Qap-Wf-eQN" firstAttribute="height" secondItem="k7O-4k-JVo" secondAttribute="height" id="WoU-jx-YUJ"/>
+                            <constraint firstItem="NZc-ys-LAC" firstAttribute="top" secondItem="cq1-EE-6W1" secondAttribute="bottom" id="VT6-Gw-Yyg"/>
                             <constraint firstAttribute="centerX" secondItem="Unh-1c-SsE" secondAttribute="centerX" id="ZLf-dk-1zm"/>
                             <constraint firstItem="tY1-d3-EXq" firstAttribute="top" secondItem="k7O-4k-JVo" secondAttribute="bottom" id="aVP-95-OIQ"/>
-                            <constraint firstItem="NZc-ys-LAC" firstAttribute="top" secondItem="cq1-EE-6W1" secondAttribute="bottom" id="bWH-aH-pbW"/>
                             <constraint firstAttribute="centerX" secondItem="WAz-Nj-W7D" secondAttribute="centerX" id="cw6-hT-pdS"/>
                             <constraint firstAttribute="centerX" secondItem="k7O-4k-JVo" secondAttribute="centerX" id="cxX-oB-d7E"/>
                             <constraint firstItem="6ne-n7-4BR" firstAttribute="top" secondItem="Qap-Wf-eQN" secondAttribute="bottom" id="lHV-xo-Kzz"/>
-                            <constraint firstItem="Qap-Wf-eQN" firstAttribute="height" secondItem="Unh-1c-SsE" secondAttribute="height" id="pqX-s3-5e6"/>
+                            <constraint firstItem="k7O-4k-JVo" firstAttribute="height" secondItem="cq1-EE-6W1" secondAttribute="height" id="mnm-qL-8Wl"/>
                             <constraint firstItem="ddM-bC-P2A" firstAttribute="top" secondItem="Unh-1c-SsE" secondAttribute="bottom" id="s9i-FR-yBk"/>
                             <constraint firstItem="cq1-EE-6W1" firstAttribute="top" secondItem="tY1-d3-EXq" secondAttribute="bottom" id="tL2-cI-Hwn"/>
                             <constraint firstItem="Qap-Wf-eQN" firstAttribute="top" secondItem="azj-xu-j1g" secondAttribute="bottom" id="tdP-MR-9eO"/>
+                            <constraint firstItem="k7O-4k-JVo" firstAttribute="height" secondItem="WAz-Nj-W7D" secondAttribute="height" id="yO8-pT-J8n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Practice" id="L2E-x7-Gbg">

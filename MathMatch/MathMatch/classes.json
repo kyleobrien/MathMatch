@@ -9,6 +9,7 @@
               "targetNumber": 10,
               "numberOfCards": 12,
               "startingPositionType": "face up",
+              "musicTrackType" : "easy",
               "penaltyMultiplier": 2.0,
               "starTimes": [
                             20.0,
@@ -22,6 +23,7 @@
               "targetNumber": 11,
               "numberOfCards": 12,
               "startingPositionType": "face up",
+              "musicTrackType" : "medium",
               "penaltyMultiplier": 2.0,
               "starTimes": [
                             20.0,
@@ -35,6 +37,7 @@
               "targetNumber": 12,
               "numberOfCards": 12,
               "startingPositionType": "face up",
+              "musicTrackType" : "hard",
               "penaltyMultiplier": 2.0,
               "starTimes": [
                             20.0,

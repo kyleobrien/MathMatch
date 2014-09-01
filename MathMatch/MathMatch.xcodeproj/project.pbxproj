@@ -22,8 +22,6 @@
 		2757A221195C8B5A00294D5C /* MMXSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */; };
 		277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
 		277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
-		277A1F2919229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
-		277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 277A1F2819229B4F00E09050 /* destination-01.caf */; };
 		278F9EA219B0DFC10035BDE5 /* sfx_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */; };
 		278F9EA419B0DFC10035BDE5 /* sfx_deal.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9A19B0DFC10035BDE5 /* sfx_deal.caf */; };
 		278F9EA519B0DFC10035BDE5 /* sfx_countdown_tone.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9B19B0DFC10035BDE5 /* sfx_countdown_tone.caf */; };
@@ -33,6 +31,11 @@
 		278F9EA919B0DFC10035BDE5 /* sfx_success.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9F19B0DFC10035BDE5 /* sfx_success.caf */; };
 		278F9EAA19B0DFC10035BDE5 /* sfx_tap_forward.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EA019B0DFC10035BDE5 /* sfx_tap_forward.caf */; };
 		278F9EAB19B0DFC10035BDE5 /* sfx_tap_backward.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EA119B0DFC10035BDE5 /* sfx_tap_backward.caf */; };
+		278F9EB219B503560035BDE5 /* track_boring_cavern.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EAD19B503560035BDE5 /* track_boring_cavern.caf */; };
+		278F9EB319B503560035BDE5 /* track_frozen_leaves.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EAE19B503560035BDE5 /* track_frozen_leaves.caf */; };
+		278F9EB419B503560035BDE5 /* track_go_doge_go.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EAF19B503560035BDE5 /* track_go_doge_go.caf */; };
+		278F9EB519B503560035BDE5 /* track_pencil_maze.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EB019B503560035BDE5 /* track_pencil_maze.caf */; };
+		278F9EB619B503560035BDE5 /* track_wonder_place.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9EB119B503560035BDE5 /* track_wonder_place.caf */; };
 		279EC21718884A890087E0DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 279EC21518884A890087E0DB /* InfoPlist.strings */; };
 		279EC21918884A890087E0DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC21818884A890087E0DB /* main.m */; };
 		279EC21D18884A890087E0DB /* MMXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 279EC21C18884A890087E0DB /* MMXAppDelegate.m */; };
@@ -109,7 +112,6 @@
 		2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsTableViewCell.m; sourceTree = "<group>"; };
 		277A1F1E192268BC00E09050 /* MMXAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXAudioManager.h; sourceTree = "<group>"; };
 		277A1F1F192268BC00E09050 /* MMXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXAudioManager.m; sourceTree = "<group>"; };
-		277A1F2819229B4F00E09050 /* destination-01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "destination-01.caf"; sourceTree = "<group>"; };
 		278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_fail.caf; sourceTree = "<group>"; };
 		278F9E9A19B0DFC10035BDE5 /* sfx_deal.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_deal.caf; sourceTree = "<group>"; };
 		278F9E9B19B0DFC10035BDE5 /* sfx_countdown_tone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_countdown_tone.caf; sourceTree = "<group>"; };
@@ -119,6 +121,11 @@
 		278F9E9F19B0DFC10035BDE5 /* sfx_success.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_success.caf; sourceTree = "<group>"; };
 		278F9EA019B0DFC10035BDE5 /* sfx_tap_forward.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_tap_forward.caf; sourceTree = "<group>"; };
 		278F9EA119B0DFC10035BDE5 /* sfx_tap_backward.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_tap_backward.caf; sourceTree = "<group>"; };
+		278F9EAD19B503560035BDE5 /* track_boring_cavern.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = track_boring_cavern.caf; sourceTree = "<group>"; };
+		278F9EAE19B503560035BDE5 /* track_frozen_leaves.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = track_frozen_leaves.caf; sourceTree = "<group>"; };
+		278F9EAF19B503560035BDE5 /* track_go_doge_go.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = track_go_doge_go.caf; sourceTree = "<group>"; };
+		278F9EB019B503560035BDE5 /* track_pencil_maze.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = track_pencil_maze.caf; sourceTree = "<group>"; };
+		278F9EB119B503560035BDE5 /* track_wonder_place.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = track_wonder_place.caf; sourceTree = "<group>"; };
 		279EC20718884A890087E0DB /* MathMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279EC21418884A890087E0DB /* MathMatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MathMatch-Info.plist"; sourceTree = "<group>"; };
 		279EC21618884A890087E0DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -222,8 +229,8 @@
 		277A1F24192289CB00E09050 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				278F9EAC19B502F90035BDE5 /* Tracks */,
 				278F9E8319B0DDB40035BDE5 /* SFX */,
-				277A1F2819229B4F00E09050 /* destination-01.caf */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -242,6 +249,18 @@
 				278F9E9D19B0DFC10035BDE5 /* sfx_whoosh.caf */,
 			);
 			name = SFX;
+			sourceTree = "<group>";
+		};
+		278F9EAC19B502F90035BDE5 /* Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				278F9EAF19B503560035BDE5 /* track_go_doge_go.caf */,
+				278F9EB019B503560035BDE5 /* track_pencil_maze.caf */,
+				278F9EAE19B503560035BDE5 /* track_frozen_leaves.caf */,
+				278F9EAD19B503560035BDE5 /* track_boring_cavern.caf */,
+				278F9EB119B503560035BDE5 /* track_wonder_place.caf */,
+			);
+			name = Tracks;
 			sourceTree = "<group>";
 		};
 		279EC1FE18884A890087E0DB = {
@@ -513,17 +532,21 @@
 				278F9EA719B0DFC10035BDE5 /* sfx_whoosh.caf in Resources */,
 				278F9EA919B0DFC10035BDE5 /* sfx_success.caf in Resources */,
 				279EC22318884A890087E0DB /* Main_iPad.storyboard in Resources */,
+				278F9EB319B503560035BDE5 /* track_frozen_leaves.caf in Resources */,
+				278F9EB219B503560035BDE5 /* track_boring_cavern.caf in Resources */,
 				279EC22E18884A890087E0DB /* Images.xcassets in Resources */,
-				277A1F2919229B4F00E09050 /* destination-01.caf in Resources */,
 				278F9EA419B0DFC10035BDE5 /* sfx_deal.caf in Resources */,
 				279EC22018884A890087E0DB /* Main_iPhone.storyboard in Resources */,
+				278F9EB519B503560035BDE5 /* track_pencil_maze.caf in Resources */,
 				278F9EAB19B0DFC10035BDE5 /* sfx_tap_backward.caf in Resources */,
 				278F9EAA19B0DFC10035BDE5 /* sfx_tap_forward.caf in Resources */,
 				278F9EA219B0DFC10035BDE5 /* sfx_fail.caf in Resources */,
 				27CA5AA11986E84F00CC29FC /* classes.json in Resources */,
 				275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
+				278F9EB419B503560035BDE5 /* track_go_doge_go.caf in Resources */,
 				278F9EA619B0DFC10035BDE5 /* sfx_fireworks.caf in Resources */,
 				279EC21718884A890087E0DB /* InfoPlist.strings in Resources */,
+				278F9EB619B503560035BDE5 /* track_wonder_place.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +554,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277A1F2A19229B4F00E09050 /* destination-01.caf in Resources */,
 				275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */,
 				279EC24018884A890087E0DB /* InfoPlist.strings in Resources */,
 			);

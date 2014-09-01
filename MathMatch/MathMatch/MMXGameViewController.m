@@ -211,6 +211,9 @@
     self.howToPlayDelegate = nil;
     
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+    [[MMXAudioManager sharedManager] playTrack];
 }
 
 - (IBAction)unwindToGame:(UIStoryboardSegue *)unwindSegue
@@ -375,26 +378,33 @@
                 [unshuffledCardValues addObject:bucket[randomIndex]];
                 [bucket removeObjectAtIndex:randomIndex];
                 
-                NSInteger numberToNuke;
+                NSInteger numberToNuke = 0;
+                BOOL shouldNuke = NO;
+                
                 if ((self.gameData.arithmeticType == MMXArithmeticTypeAddition) ||
                     (self.gameData.arithmeticType == MMXArithmeticTypeSubtraction))
                 {
                     numberToNuke = self.gameData.targetNumber.integerValue - selectedNumber;
+                    shouldNuke = YES;
                 }
                 else if ((self.gameData.arithmeticType == MMXArithmeticTypeMultiplication) ||
                          (self.gameData.arithmeticType == MMXArithmeticTypeDivision))
                 {
                     numberToNuke = (NSInteger)(self.gameData.targetNumber.integerValue / selectedNumber);
+                    shouldNuke = YES;
                 }
                 
-                [unshuffledCardValues addObject:[NSNumber numberWithInteger:numberToNuke]];
-                
-                for (NSNumber *number in bucket)
+                if (shouldNuke)
                 {
-                    if (number.integerValue == numberToNuke)
+                    [unshuffledCardValues addObject:[NSNumber numberWithInteger:numberToNuke]];
+                    
+                    for (NSNumber *number in bucket)
                     {
-                        [bucket removeObject:number];
-                        break;
+                        if (number.integerValue == numberToNuke)
+                        {
+                            [bucket removeObject:number];
+                            break;
+                        }
                     }
                 }
             }
@@ -631,6 +641,26 @@
     self.pauseBarButtonItem.enabled = NO;
     
     [self createDeck];
+    
+    if (self.gameData.musicTrack == MMXMusicTrackEasy)
+    {
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayEasy;
+        [[MMXAudioManager sharedManager] playTrack];
+    }
+    else if (self.gameData.musicTrack == MMXMusicTrackMedium)
+    {
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayMedium;
+        [[MMXAudioManager sharedManager] playTrack];
+    }
+    else if (self.gameData.musicTrack == MMXMusicTrackHard)
+    {
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayHard;
+        [[MMXAudioManager sharedManager] playTrack];
+    }
+    else
+    {
+        [[MMXAudioManager sharedManager] pauseTrack];
+    }
 }
 
 - (void)allowPlayerInputAndStartGame
@@ -1351,6 +1381,9 @@
     {
         [self terminateGameBeforeFinishing];
         [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     else if (buttonIndex == 1) // Player decided to keep playing. Resume.
     {
@@ -1376,6 +1409,9 @@
         else // Player wanted to view the list of lessons for the current course.
         {
             [self.navigationController popViewControllerAnimated:YES];
+            
+            [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+            [[MMXAudioManager sharedManager] playTrack];
         }
     }
 }

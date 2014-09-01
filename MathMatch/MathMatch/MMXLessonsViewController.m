@@ -44,7 +44,6 @@ NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsView
                                                       {
                                                           if (self.indexOfNextLesson > 0)
                                                           {
-                                                              NSLog(@"BLAM: %ld", (long)self.indexOfNextLesson);
                                                               [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexOfNextLesson inSection:0]
                                                                                           animated:YES
                                                                                     scrollPosition:UITableViewScrollPositionNone];
@@ -232,8 +231,23 @@ NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsView
     {
         NSAssert(YES, @"MMX: Starting position type in JSON is not valid.");
     }
-    
-    // TODO: Need music tracks.
+
+    if ([lesson[@"musicTrackType"] isEqualToString:@"easy"])
+    {
+        gameConfiguration.musicTrack = MMXMusicTrackEasy;
+    }
+    else if ([lesson[@"musicTrackType"] isEqualToString:@"medium"])
+    {
+        gameConfiguration.musicTrack = MMXMusicTrackMedium;
+    }
+    else if ([lesson[@"musicTrackType"] isEqualToString:@"hard"])
+    {
+        gameConfiguration.musicTrack = MMXMusicTrackHard;
+    }
+    else
+    {
+        gameConfiguration.musicTrack = MMXMusicTrackEasy;
+    }
     
     gameConfiguration.cardStyle = [MMXGameData selectRandomCardStyle];
     

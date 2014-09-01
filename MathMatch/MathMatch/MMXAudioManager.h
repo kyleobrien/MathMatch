@@ -23,9 +23,10 @@ typedef NS_ENUM(NSUInteger, MMXAudioTrack)
 {
     MMXAudioTrackNone,
     MMXAudioTrackMenus,
-    MMXAudioTrackPracticeOne,
-    MMXAudioTrackPracticeTwo,
-    MMXAudioTrackPracticeThree
+    MMXAudioTrackGameplayEasy,
+    MMXAudioTrackGameplayMedium,
+    MMXAudioTrackGameplayHard,
+    MMXAudioTrackResults
 };
 
 typedef NS_ENUM(NSUInteger, MMXAudioSoundEffect)

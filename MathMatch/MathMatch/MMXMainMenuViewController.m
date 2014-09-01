@@ -104,8 +104,7 @@
         gameViewController.gameData.numberOfCards = @12.0;
         gameViewController.gameData.arithmeticType = MMXArithmeticTypeAddition;
         gameViewController.gameData.startingPositionType = MMXStartingPositionTypeFaceUp;
-        // TODO: Music track!
-        //howToPlayViewController.gameData.musicTrack = ;
+        gameViewController.gameData.musicTrack = MMXAudioTrackGameplayEasy;
         gameViewController.gameData.cardStyle = MMXCardStyleThatch;
         gameViewController.manuallySpecifiedCardValues = @[@6, @4, @3, @7, @8, @2, @9, @1, @10, @0, @5, @5];
     }

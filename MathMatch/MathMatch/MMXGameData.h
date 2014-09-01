@@ -35,9 +35,9 @@ typedef NS_ENUM(NSUInteger, MMXStartingPositionType)
 typedef NS_ENUM(NSUInteger, MMXMusicTrack)
 {
     MMXMusicTrackOff,
-    MMXMusicTrack1,
-    MMXMusicTrack2,
-    MMXMusicTrack3
+    MMXMusicTrackEasy,
+    MMXMusicTrackMedium,
+    MMXMusicTrackHard
 };
 
 typedef NS_ENUM(NSUInteger, MMXCardStyle)

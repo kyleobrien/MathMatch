@@ -174,9 +174,7 @@
 
 - (void)respondToIncorrectSelectionOfCardViewController:(MMXCardViewController *)cardViewController
                                   andGameViewController:(MMXGameViewController *)gameViewController;
-{
-    // TODO: Play error sound.
-    
+{    
     switch (self.currentStep)
     {
         case MMXTutorialStep03:

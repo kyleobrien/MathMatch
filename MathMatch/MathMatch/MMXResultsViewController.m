@@ -109,8 +109,6 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
                 topScoreForLesson.stars = [self.gameData.starRating copy];
                 topScoreForLesson.gameData = self.gameData;
                 
-                // TODO: Play kid horray sound!
-                
                 self.recordLabel.hidden = NO;
                 [self rainbowizeNewRecordLabel];
                 
@@ -175,6 +173,12 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     [super viewWillAppear:animated];
     
     self.navigationItem.hidesBackButton = YES;
+    
+    if (self.gameData.gameType != MMXGameTypePractice)
+    {
+        [MMXAudioManager sharedManager].track = MMXAudioTrackResults;
+        [[MMXAudioManager sharedManager] playTrack];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -387,6 +391,9 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
     else if (buttonIndex == 1) // Player decided to return to the main menu.
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     else if (buttonIndex == 2) // Player wants to try again.
     {
@@ -402,6 +409,9 @@ NSString * const kMMXResultsDidSaveGameNotification = @"MMXResultsDidSaveGameNot
         else // Player wanted to view the list of lessons for the current course.
         {
             [self performSegueWithIdentifier:@"MMXUnwindToLessonsSegue" sender:self];
+            
+            [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+            [[MMXAudioManager sharedManager] playTrack];
         }
     }
     else if (buttonIndex == 4)

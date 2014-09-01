@@ -12,8 +12,8 @@
 
 + (NSArray *)stringWithInterval:(NSTimeInterval)interval forFormatType:(MMXTimeIntervalFormatType)formatType
 {
-    NSString *formattedString = nil;
-    NSString *accessibilityString = nil;
+    NSString *formattedString = @"";
+    NSString *accessibilityString = @"";
     
     CGFloat minutes = floor(interval / 60.0);
     CGFloat seconds = floorf(interval - minutes * 60.0);

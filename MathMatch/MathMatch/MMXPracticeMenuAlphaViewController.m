@@ -50,6 +50,9 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     {
         [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapBackward;
         [[MMXAudioManager sharedManager] playSoundEffect];
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackMenus;
+        [[MMXAudioManager sharedManager] playTrack];
     }
 }
 
@@ -192,23 +195,34 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     if (button == self.music1Button)
     {
-        self.gameData.musicTrack = MMXMusicTrack1;
-        [userDefaults setInteger:MMXMusicTrack1 forKey:kMMXUserDefaultsPracticeMusic];
+        self.gameData.musicTrack = MMXMusicTrackEasy;
+        [userDefaults setInteger:MMXMusicTrackEasy forKey:kMMXUserDefaultsPracticeMusic];
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayEasy;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     else if (button == self.music2Button)
     {
-        self.gameData.musicTrack = MMXMusicTrack2;
-        [userDefaults setInteger:MMXMusicTrack2 forKey:kMMXUserDefaultsPracticeMusic];
+        self.gameData.musicTrack = MMXMusicTrackMedium;
+        [userDefaults setInteger:MMXMusicTrackMedium forKey:kMMXUserDefaultsPracticeMusic];
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayMedium;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     else if (button == self.music3Button)
     {
-        self.gameData.musicTrack = MMXMusicTrack3;
-        [userDefaults setInteger:MMXMusicTrack3 forKey:kMMXUserDefaultsPracticeMusic];
+        self.gameData.musicTrack = MMXMusicTrackHard;
+        [userDefaults setInteger:MMXMusicTrackHard forKey:kMMXUserDefaultsPracticeMusic];
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayHard;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     else if (button == self.musicOffButton)
     {
         self.gameData.musicTrack = MMXMusicTrackOff;
         [userDefaults setInteger:MMXMusicTrackOff forKey:kMMXUserDefaultsPracticeMusic];
+        
+        [[MMXAudioManager sharedManager] pauseTrack];
     }
 }
 
@@ -299,26 +313,40 @@ NSString * const kMMXUserDefaultsPracticeMusic = @"MMXUserDefaultsPracticeMusic"
     
     // Music Track --------------
     MMXMusicTrack musicTrack = [userDefaults integerForKey:kMMXUserDefaultsPracticeMusic];
-    if (musicTrack == MMXMusicTrack1)
+    if (musicTrack == MMXMusicTrackEasy)
     {
         self.music1Button.selected = YES;
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayEasy;
+        [[MMXAudioManager sharedManager] playTrack];
     }
-    else if (musicTrack == MMXMusicTrack2)
+    else if (musicTrack == MMXMusicTrackMedium)
     {
         self.music2Button.selected = YES;
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayMedium;
+        [[MMXAudioManager sharedManager] playTrack];
     }
-    else if (musicTrack == MMXMusicTrack3)
+    else if (musicTrack == MMXMusicTrackHard)
     {
         self.music3Button.selected = YES;
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayHard;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     else if (musicTrack == MMXMusicTrackOff)
     {
         self.musicOffButton.selected = YES;
+        
+        [[MMXAudioManager sharedManager] pauseTrack];
     }
     else
     {
         self.music1Button.selected = YES;
-        musicTrack = MMXMusicTrack1;
+        musicTrack = MMXMusicTrackEasy;
+        
+        [MMXAudioManager sharedManager].track = MMXAudioTrackGameplayEasy;
+        [[MMXAudioManager sharedManager] playTrack];
     }
     
     self.gameData.musicTrack = musicTrack;

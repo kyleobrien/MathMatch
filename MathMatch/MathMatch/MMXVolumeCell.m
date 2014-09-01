@@ -45,7 +45,7 @@
 
 - (void)configureSliderWithUserDefaults
 {
-    float volume;
+    float volume = 0.5;
     if (self.volumeSettingType == MMXVolumeSettingTypeTrack)
     {
         volume = [[NSUserDefaults standardUserDefaults] floatForKey:kMMXUserDefaultsTrackVolume];
