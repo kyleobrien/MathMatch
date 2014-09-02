@@ -1926,7 +1926,7 @@ Thank you.</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JnF-y4-gyq" firstAttribute="top" secondItem="A2e-82-obX" secondAttribute="bottom" constant="14" id="0yN-8o-LWn"/>
                             <constraint firstItem="JnF-y4-gyq" firstAttribute="leading" secondItem="S0q-Qx-Ubp" secondAttribute="leading" constant="20" id="7RB-eH-yLU"/>

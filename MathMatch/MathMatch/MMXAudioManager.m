@@ -57,8 +57,8 @@ CGFloat const kMMXStepsToFade = 10;
         
         if (![[NSUserDefaults standardUserDefaults] boolForKey:kMMXUserDefaultsAudioLevelsInitializedOnFirstRun])
         {
-            [[NSUserDefaults standardUserDefaults] setFloat:0.6 forKey:kMMXUserDefaultsTrackVolume];
-            [[NSUserDefaults standardUserDefaults] setFloat:0.8 forKey:kMMXUserDefaultsSoundEffectVolume];
+            [[NSUserDefaults standardUserDefaults] setFloat:0.25 forKey:kMMXUserDefaultsTrackVolume];
+            [[NSUserDefaults standardUserDefaults] setFloat:0.75 forKey:kMMXUserDefaultsSoundEffectVolume];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kMMXUserDefaultsAudioLevelsInitializedOnFirstRun];
             
             /*
