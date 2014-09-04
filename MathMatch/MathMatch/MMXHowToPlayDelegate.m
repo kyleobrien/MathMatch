@@ -47,14 +47,14 @@
     {
         case MMXTutorialStep01:
         {
-            message = NSLocalizedString(@"Hey, listen! We're going to learn how to play Math Match. Tap the button below when you're ready.", nil);
+            message = NSLocalizedString(@"Time to learn how to play Math Match.", nil);
             cancelButtonTitle = NSLocalizedString(@"Let's get started!", nil);
             
             break;
         }
         case MMXTutorialStep02:
         {
-            message = NSLocalizedString(@"Your job is to pick two cards that make the equation true. Let's start by picking the card with the number 6.", nil);
+            message = NSLocalizedString(@"Your job is to pick two cards that make the equation true. Start by picking the number 6.", nil);
             cancelButtonTitle = NSLocalizedString(@"Okay!", nil);
             
             break;
@@ -63,7 +63,7 @@
         {
             [self.currentCardViewController removeGlow];
             
-            message = NSLocalizedString(@"Nice. Now find the number that adds with 6 to make 10.", nil);
+            message = NSLocalizedString(@"Nice. Now 6 plus what number equals 10?", nil);
             cancelButtonTitle = NSLocalizedString(@"Got it.", nil);
             
             break;
@@ -72,15 +72,15 @@
         {
             [self.currentCardViewController removeGlow];
             
-            message = NSLocalizedString(@"Good job! 6 plus 4 equals 10. Let's do one more to see if you've got the hang of it. This time you can pick any card you like.", nil);
+            message = NSLocalizedString(@"Good job! 6 + 4 = 10. Let’s do one more. Choose any card.", nil);
             cancelButtonTitle = NSLocalizedString(@"Cool.", nil);
             
             break;
         }
         case MMXTutorialStep05:
         {
-            message = [NSString stringWithFormat:NSLocalizedString(@"%ld? Good choice! Remember your next choice needs to add together with %ld to make 10.", nil), (long)self.currentCard.value, (long)self.currentCard.value];
-            cancelButtonTitle = NSLocalizedString(@"Sounds good.", nil);
+            message = [NSString stringWithFormat:NSLocalizedString(@"%ld? Good choice! %ld plus what number equals 10?", nil), (long)self.currentCard.value, (long)self.currentCard.value];
+            cancelButtonTitle = NSLocalizedString(@"Ready to choose.", nil);
             
             break;
         }
@@ -95,14 +95,14 @@
         }
         case MMXTutorialStep07:
         {
-            message = NSLocalizedString(@"This game is a little different. Instead of seeing the numbers, you get 5 seconds to memorize as many as you can before they flip over.", nil);
-            cancelButtonTitle = NSLocalizedString(@"Neat.", nil);
+            message = NSLocalizedString(@"Same game as before, but now the cards are only face up for 5 seconds and then they flip over. Ready to memorize?", nil);
+            cancelButtonTitle = NSLocalizedString(@"Ready.", nil);
             
             break;
         }
         case MMXTutorialStep08:
         {
-            message = NSLocalizedString(@"Remember where the 7 is hiding? See if you can find it.", nil);
+            message = NSLocalizedString(@"Find the 7.", nil);
             cancelButtonTitle = NSLocalizedString(@"Okay.", nil);
             
             break;
@@ -111,7 +111,7 @@
         {
             [self.currentCardViewController removeGlow];
             
-            message = NSLocalizedString(@"Great. Now try to find the 3.", nil);
+            message = NSLocalizedString(@"Great! Now what number added to 7 makes 10? 7 + 3 = 10. Find the 3.", nil);
             cancelButtonTitle = NSLocalizedString(@"Will do.", nil);
             
             break;
@@ -136,14 +136,14 @@
         {
             [self.currentCardViewController removeGlow];
             
-            message = NSLocalizedString(@"Hooray! We're almost done. Let's cover one last type of game.", nil);
+            message = NSLocalizedString(@"Hooray! We’re almost done. One more type of game.", nil);
             cancelButtonTitle = NSLocalizedString(@"Alright.", nil);
             
             break;
         }
         case MMXTutorialStep13:
         {
-            message = NSLocalizedString(@"This time all the cards start face down. Hope you have a good memory! Give it a shot.", nil);
+            message = NSLocalizedString(@"Same game as before, but now the cards all start face down. Good luck!", nil);
             cancelButtonTitle = NSLocalizedString(@"Yeah!", nil);
             
             break;
@@ -355,7 +355,7 @@
 
 - (void)completedGameForGameViewController:(MMXGameViewController *)gameViewController
 {    
-    NSString *message = NSLocalizedString(@"You made it through the tutorial! Now get out there and do some math!", nil);
+    NSString *message = NSLocalizedString(@"You made it through the tutorial! Now get started matching!", nil);
     NSString *cancelButtonTitle = NSLocalizedString(@"YEAH!", nil);
     
     KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message

@@ -46,7 +46,7 @@ NSString * const kMMXLessonsViewControolerDidShowNotification = @"MMXLessonsView
                                                           {
                                                               [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexOfNextLesson inSection:0]
                                                                                           animated:YES
-                                                                                    scrollPosition:UITableViewScrollPositionNone];
+                                                                                    scrollPosition:UITableViewScrollPositionBottom];
                                                               
                                                               self.indexOfNextLesson = 0;
                                                               
