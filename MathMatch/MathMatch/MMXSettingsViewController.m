@@ -65,7 +65,7 @@
     if (indexPath.section == 0)
     {
         MMXVolumeCell *volumeCell = (MMXVolumeCell *)cell;
-        volumeCell.volumeSettingType = MMXVolumeSettingTypeTrack;
+        volumeCell.volumeSettingType = VolumeSettingTypeTrack;
         
         [volumeCell configureSliderWithUserDefaults];
         
@@ -74,7 +74,7 @@
     else if (indexPath.section == 1)
     {
         MMXVolumeCell *volumeCell = (MMXVolumeCell *)cell;
-        volumeCell.volumeSettingType = MMXVolumeSettingTypeSFX;
+        volumeCell.volumeSettingType = VolumeSettingTypeSFX;
         
         [volumeCell configureSliderWithUserDefaults];
         

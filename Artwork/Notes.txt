@@ -1,0 +1,6 @@
+Stuff I forgot that I don't want to forget again!
+-------------------------------------------------
+
++ Used Acorn filter "False Color" to change the Glyphish icons to fit color pallete. (GreenCheckmark, Settings, SoundMax, SoundMin)
+
++ Change background color on GreenCheckmark from transparent to white.

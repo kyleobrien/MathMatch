@@ -15,7 +15,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.volumeSettingType = MMXVolumeSettingTypeNone;
+        self.volumeSettingType = VolumeSettingTypeNone;
     }
     
     return self;
@@ -23,7 +23,7 @@
 
 - (IBAction)volumeSliderValueChanged:(id)sender
 {
-    if (self.volumeSettingType == MMXVolumeSettingTypeTrack)
+    if (self.volumeSettingType == VolumeSettingTypeTrack)
     {
         NSDictionary *userInfo = @{kMMXAudioManagerDictionaryVolumeKey: [NSNumber numberWithFloat:self.volumeSlider.value]};
         [[NSNotificationCenter defaultCenter] postNotificationName:kMMXAudioManagerDidChangeTrackVolumeNotification
@@ -32,7 +32,7 @@
         
         [[NSUserDefaults standardUserDefaults] setFloat:self.volumeSlider.value forKey:kMMXUserDefaultsTrackVolume];
     }
-    else if (self.volumeSettingType == MMXVolumeSettingTypeSFX)
+    else if (self.volumeSettingType == VolumeSettingTypeSFX)
     {
         NSDictionary *userInfo = @{kMMXAudioManagerDictionaryVolumeKey: [NSNumber numberWithFloat:self.volumeSlider.value]};
         [[NSNotificationCenter defaultCenter] postNotificationName:kMMXAudioManagerDidChangeSoundEffectVolumeNotification
@@ -46,11 +46,11 @@
 - (void)configureSliderWithUserDefaults
 {
     float volume = 0.5;
-    if (self.volumeSettingType == MMXVolumeSettingTypeTrack)
+    if (self.volumeSettingType == VolumeSettingTypeTrack)
     {
         volume = [[NSUserDefaults standardUserDefaults] floatForKey:kMMXUserDefaultsTrackVolume];
     }
-    else if (self.volumeSettingType == MMXVolumeSettingTypeSFX)
+    else if (self.volumeSettingType == VolumeSettingTypeSFX)
     {
         volume = [[NSUserDefaults standardUserDefaults] floatForKey:kMMXUserDefaultsSoundEffectVolume];
     }

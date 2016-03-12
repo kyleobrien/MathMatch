@@ -8,9 +8,9 @@
 
 typedef NS_ENUM(NSInteger, VolumeSettingType)
 {
-    MMXVolumeSettingTypeNone = 0,
-    MMXVolumeSettingTypeTrack = 1,
-    MMXVolumeSettingTypeSFX = 2
+    VolumeSettingTypeNone = 0,
+    VolumeSettingTypeTrack = 1,
+    VolumeSettingTypeSFX = 2
 };
 
 @interface MMXVolumeCell : UITableViewCell

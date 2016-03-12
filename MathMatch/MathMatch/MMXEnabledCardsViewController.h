@@ -6,6 +6,6 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-@interface MMXEnabledCardsViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MMXEnabledCardsViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @end

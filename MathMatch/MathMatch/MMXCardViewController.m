@@ -28,7 +28,7 @@
                                              green:(210.0 / 255.0)
                                               blue:(231.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleBeach"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleBeach"];
         }
         else if (cardStyle == MMXCardStyleCheckers)
         {
@@ -36,7 +36,7 @@
                                              green:(44.0 / 255.0)
                                               blue:(38.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCheckers"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleCheckers"];
         }
         else if (cardStyle == MMXCardStyleCitrus)
         {
@@ -44,7 +44,7 @@
                                              green:(105.0 / 255.0)
                                               blue:(145.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCitrus"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleCitrus"];
         }
         else if (cardStyle == MMXCardStyleCupcake)
         {
@@ -52,7 +52,7 @@
                                              green:(156.0 / 255.0)
                                               blue:(142.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleCupcake"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleCupcake"];
         }
         else if (cardStyle == MMXCardStyleEmerald)
         {
@@ -60,7 +60,7 @@
                                              green:(143.0 / 255.0)
                                               blue:(118.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleEmerald"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleEmerald"];
         }
         else if (cardStyle == MMXCardStyleGrass)
         {
@@ -68,7 +68,7 @@
                                              green:(226.0 / 255.0)
                                               blue:(57.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleGrass"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleGrass"];
         }
         else if (cardStyle == MMXCardStyleHoney)
         {
@@ -76,7 +76,7 @@
                                              green:(79.0 / 255.0)
                                               blue:(56.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleHoney"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleHoney"];
         }
         else if (cardStyle == MMXCardStyleMoon)
         {
@@ -84,7 +84,7 @@
                                              green:(43.0 / 255.0)
                                               blue:(82.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleMoon"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleMoon"];
         }
         else if (cardStyle == MMXCardStyleOverlook)
         {
@@ -92,7 +92,7 @@
                                              green:(59.0 / 255.0)
                                               blue:(0.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleOverlook"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleOverlook"];
         }
         else if (cardStyle == MMXCardStyleStars)
         {
@@ -100,7 +100,7 @@
                                              green:(54.0 / 255.0)
                                               blue:(64.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleStars"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleStars"];
         }
         else if (cardStyle == MMXCardStyleSteel)
         {
@@ -108,7 +108,7 @@
                                              green:(188.0 / 255.0)
                                               blue:(188.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSteel"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleSteel"];
         }
         else if (cardStyle == MMXCardStyleSushi)
         {
@@ -116,7 +116,7 @@
                                              green:(59.0 / 255.0)
                                               blue:(39.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleSushi"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleSushi"];
         }
         else if (cardStyle == MMXCardStyleThatch)
         {
@@ -124,7 +124,7 @@
                                              green:(70.0 / 255.0)
                                               blue:(86.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleThatch"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleThatch"];
         }
         else if (cardStyle == MMXCardStyleVelvet)
         {
@@ -132,7 +132,7 @@
                                              green:(10.0 / 255.0)
                                               blue:(61.0 / 255.0)
                                              alpha:1.0];
-            self.faceDownImage = [UIImage imageNamed:@"MMXCardStyleVelvet"];
+            self.faceDownImage = [UIImage imageNamed:@"CardStyleVelvet"];
         }
         else
         {

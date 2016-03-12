@@ -67,59 +67,59 @@ NSString * const kMMXUserDefaultsEnabledCards = @"MMXUserDefaultsEnabledCards";
     NSString *imageName = nil;
     if (cardStyle == MMXCardStyleBeach)
     {
-        imageName = @"MMXCardStyleBeach";
+        imageName = @"CardStyleBeach";
     }
     else if (cardStyle == MMXCardStyleCheckers)
     {
-        imageName = @"MMXCardStyleCheckers";
+        imageName = @"CardStyleCheckers";
     }
     else if (cardStyle == MMXCardStyleCitrus)
     {
-        imageName = @"MMXCardStyleCitrus";
+        imageName = @"CardStyleCitrus";
     }
     else if (cardStyle == MMXCardStyleCupcake)
     {
-        imageName = @"MMXCardStyleCupcake";
+        imageName = @"CardStyleCupcake";
     }
     else if (cardStyle == MMXCardStyleEmerald)
     {
-        imageName = @"MMXCardStyleEmerald";
+        imageName = @"CardStyleEmerald";
     }
     else if (cardStyle == MMXCardStyleGrass)
     {
-        imageName = @"MMXCardStyleGrass";
+        imageName = @"CardStyleGrass";
     }
     else if (cardStyle == MMXCardStyleHoney)
     {
-        imageName = @"MMXCardStyleHoney";
+        imageName = @"CardStyleHoney";
     }
     else if (cardStyle == MMXCardStyleMoon)
     {
-        imageName = @"MMXCardStyleMoon";
+        imageName = @"CardStyleMoon";
     }
     else if (cardStyle == MMXCardStyleStars)
     {
-        imageName = @"MMXCardStyleStars";
+        imageName = @"CardStyleStars";
     }
     else if (cardStyle == MMXCardStyleSteel)
     {
-        imageName = @"MMXCardStyleSteel";
+        imageName = @"CardStyleSteel";
     }
     else if (cardStyle == MMXCardStyleSushi)
     {
-        imageName = @"MMXCardStyleSushi";
+        imageName = @"CardStyleSushi";
     }
     else if (cardStyle == MMXCardStyleThatch)
     {
-        imageName = @"MMXCardStyleThatch";
+        imageName = @"CardStyleThatch";
     }
     else if (cardStyle == MMXCardStyleVelvet)
     {
-        imageName = @"MMXCardStyleVelvet";
+        imageName = @"CardStyleVelvet";
     }
     else if (cardStyle == MMXCardStyleOverlook)
     {
-        imageName = @"MMXCardStyleOverlook";
+        imageName = @"CardStyleOverlook";
     }
     
     return imageName;

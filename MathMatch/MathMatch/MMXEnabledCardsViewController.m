@@ -21,7 +21,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self)
-    {
+    {        
         NSArray *arrayFromDefaults = [[NSUserDefaults standardUserDefaults] arrayForKey:kMMXUserDefaultsEnabledCards];
         self.enabledCards = [NSMutableArray arrayWithArray:arrayFromDefaults];
         
@@ -109,6 +109,25 @@
     [self flipEnabledForIndexPath:indexPath];
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat gap = [self calculateGapWidthForCardsPerRow:3];
+    
+    return UIEdgeInsetsMake(gap, gap, gap, gap);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return [self calculateGapWidthForCardsPerRow:3];
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return [self calculateGapWidthForCardsPerRow:3];
+}
+
 #pragma mark - Helpers
 
 - (void)flipEnabledForIndexPath:(NSIndexPath *)indexPath
@@ -131,6 +150,11 @@
         cell.disabledCardView.hidden = NO;
         cell.checkmarkImageView.hidden = YES;
     }
+}
+
+- (CGFloat)calculateGapWidthForCardsPerRow:(NSInteger)cardsPerRow
+{
+    return floorf((self.collectionView.bounds.size.width - (80.0 * cardsPerRow)) / (cardsPerRow + 1.0));
 }
 
 - (NSString *)cardTitleForCardStyle:(MMXCardStyle)cardStyle
