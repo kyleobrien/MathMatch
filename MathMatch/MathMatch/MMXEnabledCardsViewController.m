@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
-#import "MMXEnabledCardCell.h"
+#import "MathMatch-Swift.h"
 #import "MMXEnabledCardsViewController.h"
 
 @interface MMXEnabledCardsViewController ()
@@ -81,7 +81,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MMXEnabledCardCell *cell = (MMXEnabledCardCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"MMXEnabledCardCell"
+    EnabledCardCell *cell = (EnabledCardCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"EnabledCardCell"
                                                                                                forIndexPath:indexPath];
     
     NSNumber *enabled = self.enabledCards[indexPath.row + 1];
@@ -138,7 +138,7 @@
     NSNumber *enabled = self.enabledCards[indexPath.row + 1];
     self.enabledCards[indexPath.row + 1] = [NSNumber numberWithBool:!enabled.boolValue];
     
-    MMXEnabledCardCell *cell = (MMXEnabledCardCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    EnabledCardCell *cell = (EnabledCardCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     
     if (!enabled.boolValue)
     {

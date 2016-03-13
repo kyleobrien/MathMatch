@@ -6,7 +6,6 @@
 //  Copyright © 2016 Kyle O'Brien. All rights reserved.
 //
 
-//import Foundation
 import UIKit
 
 class AboutViewController: UIViewController {
@@ -22,7 +21,7 @@ class AboutViewController: UIViewController {
         
         if let shortVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
             self.versionLabel.text = String.localizedStringWithFormat(NSLocalizedString("Version %@", comment: "Current version of Math Match."), shortVersion);
-            self.versionLabel.accessibilityLabel = self.versionLabel.text!.stringByReplacingOccurrencesOfString(".", withString: NSLocalizedString(" dot ", comment: "Dot between major and minor version"));
+            self.versionLabel.accessibilityLabel = self.versionLabel.text!.stringByReplacingOccurrencesOfString(".", withString: NSLocalizedString(" dot ", comment: "Dot between major and minor version."));
         }
     }
     
