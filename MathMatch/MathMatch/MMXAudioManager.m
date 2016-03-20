@@ -155,6 +155,18 @@ CGFloat const kMMXStepsToFade = 10;
     [_soundEffectAudioPlayer play];
 }
 
+- (void)playSoundEffect:(MMXAudioSoundEffect)soundEffect
+{
+    [_soundEffectAudioPlayer stop];
+    
+    self.soundEffect = soundEffect;
+    
+    _soundEffectAudioPlayer = _bufferSoundEffectAudioPlayer;
+    _soundEffectAudioPlayer.currentTime = 0.0;
+    
+    [_soundEffectAudioPlayer play];
+}
+
 #pragma mark - Helpers
 
 - (void)configureTrackPlayer

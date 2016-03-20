@@ -29,8 +29,7 @@ class AboutViewController: UIViewController {
         super.viewWillDisappear(animated);
         
         if self.isMovingFromParentViewController() {
-            MMXAudioManager.sharedManager().soundEffect = MMXAudioSoundEffect.TapBackward;
-            MMXAudioManager.sharedManager().playSoundEffect();
+            MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapBackward);
         }
     }
 }

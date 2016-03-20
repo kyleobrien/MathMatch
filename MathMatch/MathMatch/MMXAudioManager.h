@@ -55,5 +55,6 @@ typedef NS_ENUM(NSUInteger, MMXAudioSoundEffect)
 - (void)pauseTrack;
 
 - (void)playSoundEffect;
+- (void)playSoundEffect:(MMXAudioSoundEffect)soundEffect;
 
 @end

@@ -313,7 +313,7 @@
         <!--Card Styles-->
         <scene sceneID="mRM-qz-6KJ">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="hok-83-lwb" customClass="MMXEnabledCardsViewController" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="hok-83-lwb" customClass="EnabledCardsViewController" customModule="MathMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="eFe-Bp-8UL">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

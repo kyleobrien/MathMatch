@@ -6,7 +6,6 @@
 //  Copyright © 2016 Kyle O'Brien All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class EnabledCardCell: UICollectionViewCell {

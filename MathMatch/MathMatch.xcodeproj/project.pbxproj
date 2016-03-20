@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		270384AF1C90EC80001CAC67 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270384AE1C90EC80001CAC67 /* AboutViewController.swift */; };
 		270384B11C94DEBC001CAC67 /* EnabledCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270384B01C94DEBC001CAC67 /* EnabledCardCell.swift */; };
+		270384B31C9A7877001CAC67 /* EnabledCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270384B21C9A7877001CAC67 /* EnabledCardsViewController.swift */; };
 		271DA31C1901953B00E81154 /* MMXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271DA31B1901953B00E81154 /* MMXResultsViewController.m */; };
 		271DA31D1901953B00E81154 /* MMXResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271DA31B1901953B00E81154 /* MMXResultsViewController.m */; };
 		273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273592A11888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m */; };
@@ -61,7 +62,6 @@
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A7894C195498D9007E4018 /* MMXSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894B195498D9007E4018 /* MMXSettingsViewController.m */; };
 		27A789501954A733007E4018 /* MMXVolumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894F1954A733007E4018 /* MMXVolumeCell.m */; };
-		27A7895919589B1B007E4018 /* MMXEnabledCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7895819589B1B007E4018 /* MMXEnabledCardsViewController.m */; };
 		27B177101A40CD2A00535B05 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B1770F1A40CD2A00535B05 /* Launch Screen.xib */; };
 		27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
@@ -100,6 +100,7 @@
 		270384AD1C90EC7F001CAC67 /* MathMatch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathMatch-Bridging-Header.h"; sourceTree = "<group>"; };
 		270384AE1C90EC80001CAC67 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		270384B01C94DEBC001CAC67 /* EnabledCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnabledCardCell.swift; sourceTree = "<group>"; };
+		270384B21C9A7877001CAC67 /* EnabledCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnabledCardsViewController.swift; sourceTree = "<group>"; };
 		271DA31A1901953B00E81154 /* MMXResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXResultsViewController.h; sourceTree = "<group>"; };
 		271DA31B1901953B00E81154 /* MMXResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXResultsViewController.m; sourceTree = "<group>"; };
 		273592A01888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXPracticeMenuAlphaViewController.h; sourceTree = "<group>"; };
@@ -161,8 +162,6 @@
 		27A7894B195498D9007E4018 /* MMXSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsViewController.m; sourceTree = "<group>"; };
 		27A7894E1954A733007E4018 /* MMXVolumeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXVolumeCell.h; sourceTree = "<group>"; };
 		27A7894F1954A733007E4018 /* MMXVolumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXVolumeCell.m; sourceTree = "<group>"; };
-		27A7895719589B1B007E4018 /* MMXEnabledCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXEnabledCardsViewController.h; sourceTree = "<group>"; };
-		27A7895819589B1B007E4018 /* MMXEnabledCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXEnabledCardsViewController.m; sourceTree = "<group>"; };
 		27B1770F1A40CD2A00535B05 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTimeIntervalFormatter.m; sourceTree = "<group>"; };
@@ -376,8 +375,7 @@
 				2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */,
 				27A7894E1954A733007E4018 /* MMXVolumeCell.h */,
 				27A7894F1954A733007E4018 /* MMXVolumeCell.m */,
-				27A7895719589B1B007E4018 /* MMXEnabledCardsViewController.h */,
-				27A7895819589B1B007E4018 /* MMXEnabledCardsViewController.m */,
+				270384B21C9A7877001CAC67 /* EnabledCardsViewController.swift */,
 				270384B01C94DEBC001CAC67 /* EnabledCardCell.swift */,
 				270384AE1C90EC80001CAC67 /* AboutViewController.swift */,
 			);
@@ -593,8 +591,8 @@
 				27A086761891CB9000C318DE /* MMXGameData.m in Sources */,
 				270384AF1C90EC80001CAC67 /* AboutViewController.swift in Sources */,
 				270384B11C94DEBC001CAC67 /* EnabledCardCell.swift in Sources */,
+				270384B31C9A7877001CAC67 /* EnabledCardsViewController.swift in Sources */,
 				27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */,
-				27A7895919589B1B007E4018 /* MMXEnabledCardsViewController.m in Sources */,
 				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
 				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */,

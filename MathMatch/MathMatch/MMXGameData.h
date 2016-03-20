@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Computer Lab. All rights reserved.
 //
 
+@import CoreData;
+
 FOUNDATION_EXPORT NSString * const kMMXUserDefaultsEnabledCards;
 
 typedef NS_ENUM(NSUInteger, MMXGameType)
