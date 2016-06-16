@@ -55,7 +55,7 @@
         case MMXTutorialStep02:
         {
             message = NSLocalizedString(@"Your job is to pick two cards that make the equation true. Start by picking the number 6.", nil);
-            cancelButtonTitle = NSLocalizedString(@"Okay!", nil);
+            cancelButtonTitle = NSLocalizedString(@"OK!", nil);
             
             break;
         }
@@ -103,7 +103,7 @@
         case MMXTutorialStep08:
         {
             message = NSLocalizedString(@"Find the 7.", nil);
-            cancelButtonTitle = NSLocalizedString(@"Okay.", nil);
+            cancelButtonTitle = NSLocalizedString(@"Sure thing.", nil);
             
             break;
         }

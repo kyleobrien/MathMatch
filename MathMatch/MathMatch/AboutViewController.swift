@@ -17,19 +17,19 @@ class AboutViewController: UIViewController {
     // MARK: Methods
     
     override func viewDidLoad() {
-        super.viewDidLoad();
+        super.viewDidLoad()
         
         if let shortVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
-            self.versionLabel.text = String.localizedStringWithFormat(NSLocalizedString("Version %@", comment: "Current version of Math Match."), shortVersion);
-            self.versionLabel.accessibilityLabel = self.versionLabel.text!.stringByReplacingOccurrencesOfString(".", withString: NSLocalizedString(" dot ", comment: "Dot between major and minor version."));
+            self.versionLabel.text = String.localizedStringWithFormat(NSLocalizedString("Version %@", comment: "Current version of Math Match."), shortVersion)
+            self.versionLabel.accessibilityLabel = self.versionLabel.text!.stringByReplacingOccurrencesOfString(".", withString: NSLocalizedString(" dot ", comment: "Dot between major and minor version."))
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated);
+        super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController() {
-            MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapBackward);
+            MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapBackward)
         }
     }
 }

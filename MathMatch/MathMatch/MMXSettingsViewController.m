@@ -93,7 +93,7 @@
         [MMXAudioManager sharedManager].soundEffect = MMXAudioSoundEffectTapNeutral;
         [[MMXAudioManager sharedManager] playSoundEffect];
         
-        NSString *message = NSLocalizedString(@"You're about to reset all progress, including stars, best times and completed game stats. Are you sure? You cannot undue this action.", nil);
+        NSString *message = NSLocalizedString(@"You're about to reset all progress, including stars, best times and completed game stats. Are you sure? You cannot undo this action.", nil);
         KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                         delegate:self
                                                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -137,7 +137,7 @@
             
             KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                             delegate:nil
-                                                                   cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                                                                   cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                                                    otherButtonTitles:nil];
             [decisionView showInViewController:self andDimBackgroundWithPercent:0.50];
         }
@@ -239,7 +239,7 @@
         NSString *message = NSLocalizedString(@"Couldn't send the email. Try again later.", nil);
         KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                         delegate:nil
-                                                               cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                                                otherButtonTitles:nil];
         [decisionView showInViewController:self andDimBackgroundWithPercent:0.50];
     }

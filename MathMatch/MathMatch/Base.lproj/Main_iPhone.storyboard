@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -187,7 +187,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Send us an Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jC0-Gf-cBJ">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Send Us an Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jC0-Gf-cBJ">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -207,7 +207,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Rate us on the App Store" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sNf-Gj-a54">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Rate Us on the App Store" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sNf-Gj-a54">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -320,13 +320,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="JuK-2b-V28">
                             <size key="itemSize" width="80" height="80"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                            <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EnabledCardCell" id="Dcg-X2-uLA" customClass="EnabledCardCell" customModule="MathMatch" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="80" height="80"/>
+                                <rect key="frame" x="20" y="60" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -342,6 +342,9 @@
                                                 <accessibilityTraits key="traits" button="YES"/>
                                             </accessibility>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedX" translatesAutoresizingMaskIntoConstraints="NO" id="VHc-h6-963" userLabel="X Image View">
+                                            <rect key="frame" x="48" y="48" width="28" height="28"/>
+                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GreenCheckmark" translatesAutoresizingMaskIntoConstraints="NO" id="IdJ-wm-Dq3">
                                             <rect key="frame" x="48" y="48" width="28" height="28"/>
                                         </imageView>
@@ -353,9 +356,28 @@
                                     <outlet property="cardImageView" destination="sBM-hy-0Mf" id="17G-Uu-U8p"/>
                                     <outlet property="checkmarkImageView" destination="IdJ-wm-Dq3" id="Odz-bL-k3g"/>
                                     <outlet property="disabledCardView" destination="kwq-yn-Rmh" id="p9W-8w-gVf"/>
+                                    <outlet property="xImageView" destination="VHc-h6-963" id="4Bo-v1-7Wa"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EnabledCardsHeader" id="UIb-Ud-qJ4">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable the card styles you don't like." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjD-04-Zkx">
+                                    <rect key="frame" x="20" y="8" width="280" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="LjD-04-Zkx" firstAttribute="leading" secondItem="UIb-Ud-qJ4" secondAttribute="leadingMargin" constant="12" id="7aZ-YB-J33"/>
+                                <constraint firstItem="LjD-04-Zkx" firstAttribute="top" secondItem="UIb-Ud-qJ4" secondAttribute="topMargin" id="8Xw-1T-ETO"/>
+                                <constraint firstItem="LjD-04-Zkx" firstAttribute="bottom" secondItem="UIb-Ud-qJ4" secondAttribute="bottomMargin" id="SSE-Cd-oel"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="LjD-04-Zkx" secondAttribute="trailing" constant="12" id="cWb-lp-Ftc"/>
+                            </constraints>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="hok-83-lwb" id="OHK-hy-2Cg"/>
                             <outlet property="delegate" destination="hok-83-lwb" id="Ons-ak-4Zg"/>
@@ -410,12 +432,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcA-qL-Zad">
-                                <rect key="frame" x="20" y="235" width="280" height="237"/>
+                                <rect key="frame" x="20" y="247" width="280" height="237"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="237" id="An4-GQ-qfJ"/>
-                                </constraints>
-                                <string key="text">This app is designed, developed and maintained by a small team living near Buffalo, New York. Your purchase directly supports our family and lets us do what we love.
+                                <string key="text">This app is designed, developed and maintained by a small team in Buffalo, New York. Your purchase directly supports our family and lets us do what we love.
 
 Thank you.</string>
                                 <color key="textColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -428,9 +447,10 @@ Thank you.</string>
                             <constraint firstAttribute="trailing" secondItem="GcA-qL-Zad" secondAttribute="trailing" constant="20" id="1na-BR-TNP"/>
                             <constraint firstItem="Hld-TQ-2M3" firstAttribute="top" secondItem="fMA-FL-pTS" secondAttribute="bottom" id="3my-Tm-7wr"/>
                             <constraint firstItem="HgF-Ml-Czj" firstAttribute="top" secondItem="69Y-Mt-jKx" secondAttribute="bottom" constant="20" id="BTN-UD-hvM"/>
-                            <constraint firstItem="GcA-qL-Zad" firstAttribute="top" secondItem="Hld-TQ-2M3" secondAttribute="bottom" constant="8" id="Oa7-0H-aZk"/>
+                            <constraint firstItem="GcA-qL-Zad" firstAttribute="top" secondItem="Hld-TQ-2M3" secondAttribute="bottom" constant="20" id="Oa7-0H-aZk"/>
                             <constraint firstItem="fMA-FL-pTS" firstAttribute="top" secondItem="HgF-Ml-Czj" secondAttribute="bottom" constant="20" id="VkR-rx-2JU"/>
                             <constraint firstAttribute="centerX" secondItem="Hld-TQ-2M3" secondAttribute="centerX" id="XFp-PV-RIA"/>
+                            <constraint firstItem="HVe-Ss-hNv" firstAttribute="top" secondItem="GcA-qL-Zad" secondAttribute="bottom" constant="20" id="uVR-D9-6QT"/>
                             <constraint firstItem="GcA-qL-Zad" firstAttribute="leading" secondItem="3wa-Kh-RQG" secondAttribute="leading" constant="20" id="vn0-ci-qPh"/>
                             <constraint firstAttribute="centerX" secondItem="HgF-Ml-Czj" secondAttribute="centerX" id="ypH-hu-XBd"/>
                             <constraint firstAttribute="centerX" secondItem="fMA-FL-pTS" secondAttribute="centerX" id="z4F-cZ-nh5"/>
@@ -1934,6 +1954,7 @@ Thank you.</string>
         <image name="MMXRankStarEmpty" width="44" height="41"/>
         <image name="MMXRankStarFull" width="44" height="41"/>
         <image name="MMXRatingStar" width="28" height="26"/>
+        <image name="RedX" width="22" height="22"/>
         <image name="Settings" width="22" height="22"/>
         <image name="SoundMax" width="28" height="28"/>
         <image name="SoundMin" width="23" height="28"/>

@@ -135,7 +135,7 @@
         NSString *message = NSLocalizedString(@"Couldn't retrieve player information because of a database error.", nil);
         KMODecisionView *decisionView = [[KMODecisionView alloc] initWithMessage:message
                                                                         delegate:nil
-                                                               cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                                                otherButtonTitles:nil];
         [decisionView showInViewController:self.navigationController andDimBackgroundWithPercent:0.50];
     }
