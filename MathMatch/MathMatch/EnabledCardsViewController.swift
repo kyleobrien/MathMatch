@@ -109,8 +109,8 @@ class EnabledCardsViewController: UICollectionViewController {
         }
     }
 
+    // TODO: Refactor this out into a tuple or class that represents card style info.
     func cardTitleForCardStyle(cardStyle: MMXCardStyle) -> String {
-        // TODO: Refactor this out into a tuple or class that represents card style info.
         var cardTitle = ""
         
         if (cardStyle == MMXCardStyle.Beach)

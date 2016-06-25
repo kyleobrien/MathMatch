@@ -8,7 +8,7 @@
 
 #import "MMXNavigationController.h"
 #import "MMXSettingsViewController.h"
-#import "MMXVolumeCell.h"
+#import "MathMatch-Swift.h"
 
 @implementation MMXSettingsViewController
 
@@ -64,8 +64,8 @@
     
     if (indexPath.section == 0)
     {
-        MMXVolumeCell *volumeCell = (MMXVolumeCell *)cell;
-        volumeCell.volumeSettingType = VolumeSettingTypeTrack;
+        VolumeCell *volumeCell = (VolumeCell *)cell;
+        volumeCell.volumeSettingType = @2;
         
         [volumeCell configureSliderWithUserDefaults];
         
@@ -73,7 +73,7 @@
     }
     else if (indexPath.section == 1)
     {
-        MMXVolumeCell *volumeCell = (MMXVolumeCell *)cell;
+        VolumeCell *volumeCell = (VolumeCell *)cell;
         volumeCell.volumeSettingType = VolumeSettingTypeSFX;
         
         [volumeCell configureSliderWithUserDefaults];
