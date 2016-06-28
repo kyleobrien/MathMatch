@@ -73,6 +73,8 @@
 		27D391701937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27D391711937867C0041BDB4 /* MMXTopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D3916F1937867C0041BDB4 /* MMXTopScore.m */; };
 		27DBB8E71D1E347C004B1A95 /* VolumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8E61D1E347C004B1A95 /* VolumeCell.swift */; };
+		27DBB8E91D1E488F004B1A95 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8E81D1E488F004B1A95 /* SettingsTableViewCell.swift */; };
+		27DBB8EB1D1E52A5004B1A95 /* UIColor+MMXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8EA1D1E52A5004B1A95 /* UIColor+MMXColor.swift */; };
 		27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */; };
 		27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C2791928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
@@ -173,6 +175,8 @@
 		27D3916E1937867C0041BDB4 /* MMXTopScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTopScore.h; sourceTree = "<group>"; };
 		27D3916F1937867C0041BDB4 /* MMXTopScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTopScore.m; sourceTree = "<group>"; };
 		27DBB8E61D1E347C004B1A95 /* VolumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeCell.swift; sourceTree = "<group>"; };
+		27DBB8E81D1E488F004B1A95 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		27DBB8EA1D1E52A5004B1A95 /* UIColor+MMXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MMXColor.swift"; sourceTree = "<group>"; };
 		27E4B32E1976DFF000B1D885 /* MMXReportCardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXReportCardTableViewController.h; sourceTree = "<group>"; };
 		27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXReportCardTableViewController.m; sourceTree = "<group>"; };
 		27F3C2761928F8DB00EB5D59 /* MMXClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassesViewController.h; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				27A7894B195498D9007E4018 /* MMXSettingsViewController.m */,
 				2757A21F195C8B5A00294D5C /* MMXSettingsTableViewCell.h */,
 				2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */,
+				27DBB8E81D1E488F004B1A95 /* SettingsTableViewCell.swift */,
 				27DBB8E61D1E347C004B1A95 /* VolumeCell.swift */,
 				270384B21C9A7877001CAC67 /* EnabledCardsViewController.swift */,
 				270384B01C94DEBC001CAC67 /* EnabledCardCell.swift */,
@@ -387,6 +392,7 @@
 				277A1F1F192268BC00E09050 /* MMXAudioManager.m */,
 				27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */,
 				27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */,
+				27DBB8EA1D1E52A5004B1A95 /* UIColor+MMXColor.swift */,
 				27B199A4190ADCBA00C38E8F /* UIColor+MMXColor.h */,
 				27B199A5190ADCBA00C38E8F /* UIColor+MMXColor.m */,
 			);
@@ -581,10 +587,12 @@
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27F3C2841929178B00EB5D59 /* MMXClassStarTableViewCell.m in Sources */,
 				27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */,
+				27DBB8E91D1E488F004B1A95 /* SettingsTableViewCell.swift in Sources */,
 				27B199A6190ADCBA00C38E8F /* UIColor+MMXColor.m in Sources */,
 				271DA31C1901953B00E81154 /* MMXResultsViewController.m in Sources */,
 				27A086801893867C00C318DE /* MMXGameViewController.m in Sources */,
 				279EC22618884A890087E0DB /* MathMatch.xcdatamodeld in Sources */,
+				27DBB8EB1D1E52A5004B1A95 /* UIColor+MMXColor.swift in Sources */,
 				27A086761891CB9000C318DE /* MMXGameData.m in Sources */,
 				270384AF1C90EC80001CAC67 /* AboutViewController.swift in Sources */,
 				270384B11C94DEBC001CAC67 /* EnabledCardCell.swift in Sources */,

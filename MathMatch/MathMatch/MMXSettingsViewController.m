@@ -65,7 +65,7 @@
     if (indexPath.section == 0)
     {
         VolumeCell *volumeCell = (VolumeCell *)cell;
-        volumeCell.volumeSettingType = @2;
+        volumeCell.volumeSettingType = VolumeSettingTypeTrack;
         
         [volumeCell configureSliderWithUserDefaults];
         

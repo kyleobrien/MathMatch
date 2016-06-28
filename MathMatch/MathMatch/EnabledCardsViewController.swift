@@ -93,9 +93,7 @@ class EnabledCardsViewController: UICollectionViewController {
         self.flipEnabledForIndexPath(indexPath)
     }
     
-
     // MARK: Helper Methods
-    
     
     func flipEnabledForIndexPath(indexPath: NSIndexPath) {
         MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapNeutral);
