@@ -40,7 +40,7 @@ class EnabledCardsViewController: UICollectionViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapBackward)
+        MMXAudioManager.sharedManager().playSoundEffect(.TapBackward)
     }
     
     deinit {
@@ -96,7 +96,7 @@ class EnabledCardsViewController: UICollectionViewController {
     // MARK: Helper Methods
     
     func flipEnabledForIndexPath(indexPath: NSIndexPath) {
-        MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapNeutral);
+        MMXAudioManager.sharedManager().playSoundEffect(.TapNeutral);
         
         self.isCardEnabled[indexPath.row + 1] = !self.isCardEnabled[indexPath.row + 1]
         

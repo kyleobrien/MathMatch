@@ -26,11 +26,11 @@ class VolumeCell: UITableViewCell {
     // MARK: Methods
     
     @IBAction func volumeSliderValueChanged(sender: UISlider) {
-        if (self.volumeSettingType == VolumeSettingType.Track) {
+        if self.volumeSettingType == VolumeSettingType.Track {
             NSNotificationCenter.defaultCenter().postNotificationName(kMMXAudioManagerDidChangeTrackVolumeNotification, object: nil, userInfo: [kMMXAudioManagerDictionaryVolumeKey: self.volumeSlider.value])
             NSUserDefaults.standardUserDefaults().setFloat(self.volumeSlider.value, forKey: kMMXUserDefaultsTrackVolume)
         }
-        else if (self.volumeSettingType == VolumeSettingType.SFX) {
+        else if self.volumeSettingType == VolumeSettingType.SFX {
             NSNotificationCenter.defaultCenter().postNotificationName(kMMXAudioManagerDidChangeSoundEffectVolumeNotification, object: nil, userInfo: [kMMXAudioManagerDictionaryVolumeKey: self.volumeSlider.value])
             NSUserDefaults.standardUserDefaults().setFloat(self.volumeSlider.value, forKey: kMMXUserDefaultsSoundEffectVolume)
         }
@@ -39,10 +39,10 @@ class VolumeCell: UITableViewCell {
     func configureSliderWithUserDefaults() {
         var volume: Float = 0.5
         
-        if (self.volumeSettingType == VolumeSettingType.Track) {
+        if self.volumeSettingType == VolumeSettingType.Track {
             volume = NSUserDefaults.standardUserDefaults().floatForKey(kMMXUserDefaultsTrackVolume)
         }
-        else if (self.volumeSettingType == VolumeSettingType.SFX) {
+        else if self.volumeSettingType == VolumeSettingType.SFX {
             volume = NSUserDefaults.standardUserDefaults().floatForKey(kMMXUserDefaultsSoundEffectVolume)
         }
         

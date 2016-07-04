@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SettingsTableViewCell: UITableViewCell
-{
+class SettingsTableViewCell: UITableViewCell {
+    
     // MARK: Methods
     // TODO: Why isn't this one animating?!
     
@@ -21,7 +21,7 @@ class SettingsTableViewCell: UITableViewCell
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        if (animated) {
+        if animated {
             UIView.animateWithDuration(0.3, animations: { self.shouldHighlight(selected) })
         }
         else {
@@ -30,7 +30,7 @@ class SettingsTableViewCell: UITableViewCell
     }
     
     func shouldHighlight(highlight: Bool) {
-        if (highlight) {
+        if highlight {
             self.backgroundColor = UIColor().mmx_purpleColor(withAlpha: 1.0 / 8.0)
         }
         else {

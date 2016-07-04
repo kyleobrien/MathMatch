@@ -26,7 +26,7 @@
         <!--Settings-->
         <scene sceneID="wgr-3M-pxp">
             <objects>
-                <tableViewController id="tbY-En-PYT" customClass="MMXSettingsViewController" sceneMemberID="viewController">
+                <tableViewController id="tbY-En-PYT" customClass="SettingsViewController" customModule="MathMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="UCk-vf-zgO">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +135,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Options" id="bZT-ZT-bAV">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="GvV-1O-kuO" style="IBUITableViewCellStyleDefault" id="BkB-tL-5Le" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="GvV-1O-kuO" style="IBUITableViewCellStyleDefault" id="BkB-tL-5Le" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="224" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BkB-tL-5Le" id="dbT-c9-xGv">
@@ -157,7 +157,7 @@
                                             <segue destination="hok-83-lwb" kind="push" identifier="MMXShowCardStylesSegue" id="x61-zD-XKJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qWX-w8-m2E" style="IBUITableViewCellStyleDefault" id="vY3-8H-tRX" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qWX-w8-m2E" style="IBUITableViewCellStyleDefault" id="vY3-8H-tRX" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="268" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vY3-8H-tRX" id="BlL-BV-AIb">
@@ -180,7 +180,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="More" id="h2n-By-HAF">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jC0-Gf-cBJ" style="IBUITableViewCellStyleDefault" id="QNc-jE-IWq" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jC0-Gf-cBJ" style="IBUITableViewCellStyleDefault" id="QNc-jE-IWq" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="355" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QNc-jE-IWq" id="Za9-hI-7L6">
@@ -200,7 +200,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="sNf-Gj-a54" style="IBUITableViewCellStyleDefault" id="pNs-HD-MVN" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="sNf-Gj-a54" style="IBUITableViewCellStyleDefault" id="pNs-HD-MVN" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="399" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pNs-HD-MVN" id="3vA-T6-b4z">
@@ -219,7 +219,7 @@
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="GaL-gq-7Xr" style="IBUITableViewCellStyleDefault" id="bbU-II-gkB" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="GaL-gq-7Xr" style="IBUITableViewCellStyleDefault" id="bbU-II-gkB" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="443" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bbU-II-gkB" id="bjK-xT-Nmu">
@@ -242,7 +242,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="About" id="M6G-ex-J1a">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="svz-tH-D0R" detailTextLabel="KEh-l1-FtM" style="IBUITableViewCellStyleValue1" id="nMI-n5-7qj" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="svz-tH-D0R" detailTextLabel="KEh-l1-FtM" style="IBUITableViewCellStyleValue1" id="nMI-n5-7qj" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="530" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nMI-n5-7qj" id="JBH-os-a3V">
@@ -268,7 +268,7 @@
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kLF-rW-RUx" style="IBUITableViewCellStyleDefault" id="KqG-mH-Ef1" customClass="MMXSettingsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kLF-rW-RUx" style="IBUITableViewCellStyleDefault" id="KqG-mH-Ef1" customClass="SettingsTableViewCell" customModule="MathMatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="574" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KqG-mH-Ef1" id="MBp-Ll-Gks">

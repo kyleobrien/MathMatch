@@ -12,7 +12,6 @@
 #import "MMXNavigationController.h"
 #import "MMXPracticeMenuAlphaViewController.h"
 #import "MMXReportCardTableViewController.h"
-#import "MMXSettingsViewController.h"
 
 @interface MMXMainMenuViewController ()
 

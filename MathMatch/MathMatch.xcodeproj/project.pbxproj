@@ -22,7 +22,6 @@
 		275500AF18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
 		275500B018AED9B9008B4DB4 /* MMXCardViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */; };
 		2757A21E195C858500294D5C /* MMXClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A21D195C858500294D5C /* MMXClassTableViewCell.m */; };
-		2757A221195C8B5A00294D5C /* MMXSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */; };
 		277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
 		277A1F21192268BC00E09050 /* MMXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A1F1F192268BC00E09050 /* MMXAudioManager.m */; };
 		278F9EA219B0DFC10035BDE5 /* sfx_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */; };
@@ -60,7 +59,6 @@
 		27A086811893867C00C318DE /* MMXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A0867F1893867C00C318DE /* MMXGameViewController.m */; };
 		27A1D93A188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
 		27A1D93B188F0B8100255231 /* MMXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A1D939188F0B8100255231 /* MMXNavigationController.m */; };
-		27A7894C195498D9007E4018 /* MMXSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A7894B195498D9007E4018 /* MMXSettingsViewController.m */; };
 		27B177101A40CD2A00535B05 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B1770F1A40CD2A00535B05 /* Launch Screen.xib */; };
 		27B19994190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
 		27B19995190950E400C38E8F /* MMXTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */; };
@@ -75,6 +73,7 @@
 		27DBB8E71D1E347C004B1A95 /* VolumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8E61D1E347C004B1A95 /* VolumeCell.swift */; };
 		27DBB8E91D1E488F004B1A95 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8E81D1E488F004B1A95 /* SettingsTableViewCell.swift */; };
 		27DBB8EB1D1E52A5004B1A95 /* UIColor+MMXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8EA1D1E52A5004B1A95 /* UIColor+MMXColor.swift */; };
+		27DBB8ED1D222C0D004B1A95 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBB8EC1D222C0D004B1A95 /* SettingsViewController.swift */; };
 		27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */; };
 		27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
 		27F3C2791928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3C2771928F8DB00EB5D59 /* MMXClassesViewController.m */; };
@@ -115,8 +114,6 @@
 		275500AE18AED9B9008B4DB4 /* MMXCardViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MMXCardViewController~iphone.xib"; sourceTree = "<group>"; };
 		2757A21C195C858500294D5C /* MMXClassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassTableViewCell.h; sourceTree = "<group>"; };
 		2757A21D195C858500294D5C /* MMXClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXClassTableViewCell.m; sourceTree = "<group>"; };
-		2757A21F195C8B5A00294D5C /* MMXSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXSettingsTableViewCell.h; sourceTree = "<group>"; };
-		2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsTableViewCell.m; sourceTree = "<group>"; };
 		277A1F1E192268BC00E09050 /* MMXAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXAudioManager.h; sourceTree = "<group>"; };
 		277A1F1F192268BC00E09050 /* MMXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXAudioManager.m; sourceTree = "<group>"; };
 		278F9E9819B0DFC10035BDE5 /* sfx_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfx_fail.caf; sourceTree = "<group>"; };
@@ -160,8 +157,6 @@
 		27A0867F1893867C00C318DE /* MMXGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXGameViewController.m; sourceTree = "<group>"; };
 		27A1D938188F0B8100255231 /* MMXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXNavigationController.h; sourceTree = "<group>"; };
 		27A1D939188F0B8100255231 /* MMXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXNavigationController.m; sourceTree = "<group>"; };
-		27A7894A195498D9007E4018 /* MMXSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXSettingsViewController.h; sourceTree = "<group>"; };
-		27A7894B195498D9007E4018 /* MMXSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXSettingsViewController.m; sourceTree = "<group>"; };
 		27B1770F1A40CD2A00535B05 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		27B19992190950E400C38E8F /* MMXTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		27B19993190950E400C38E8F /* MMXTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXTimeIntervalFormatter.m; sourceTree = "<group>"; };
@@ -177,6 +172,7 @@
 		27DBB8E61D1E347C004B1A95 /* VolumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeCell.swift; sourceTree = "<group>"; };
 		27DBB8E81D1E488F004B1A95 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		27DBB8EA1D1E52A5004B1A95 /* UIColor+MMXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MMXColor.swift"; sourceTree = "<group>"; };
+		27DBB8EC1D222C0D004B1A95 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		27E4B32E1976DFF000B1D885 /* MMXReportCardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXReportCardTableViewController.h; sourceTree = "<group>"; };
 		27E4B32F1976DFF000B1D885 /* MMXReportCardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXReportCardTableViewController.m; sourceTree = "<group>"; };
 		27F3C2761928F8DB00EB5D59 /* MMXClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXClassesViewController.h; sourceTree = "<group>"; };
@@ -372,10 +368,7 @@
 		27A7894D1954A6FC007E4018 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				27A7894A195498D9007E4018 /* MMXSettingsViewController.h */,
-				27A7894B195498D9007E4018 /* MMXSettingsViewController.m */,
-				2757A21F195C8B5A00294D5C /* MMXSettingsTableViewCell.h */,
-				2757A220195C8B5A00294D5C /* MMXSettingsTableViewCell.m */,
+				27DBB8EC1D222C0D004B1A95 /* SettingsViewController.swift */,
 				27DBB8E81D1E488F004B1A95 /* SettingsTableViewCell.swift */,
 				27DBB8E61D1E347C004B1A95 /* VolumeCell.swift */,
 				270384B21C9A7877001CAC67 /* EnabledCardsViewController.swift */,
@@ -582,7 +575,6 @@
 				275500AA18AB0DC2008B4DB4 /* MMXCardViewController.m in Sources */,
 				277A1F20192268BC00E09050 /* MMXAudioManager.m in Sources */,
 				273592A21888AA5C0063C5CD /* MMXPracticeMenuAlphaViewController.m in Sources */,
-				2757A221195C8B5A00294D5C /* MMXSettingsTableViewCell.m in Sources */,
 				27C687DA18C438A50060D451 /* KMODecisionView.m in Sources */,
 				27A0867B18930F1200C318DE /* MMXPracticeMenuBetaViewController.m in Sources */,
 				27F3C2841929178B00EB5D59 /* MMXClassStarTableViewCell.m in Sources */,
@@ -600,9 +592,9 @@
 				27F3C2781928F8DB00EB5D59 /* MMXClassesViewController.m in Sources */,
 				27A086721890882F00C318DE /* MMXFlatButton.m in Sources */,
 				27DBB8E71D1E347C004B1A95 /* VolumeCell.swift in Sources */,
+				27DBB8ED1D222C0D004B1A95 /* SettingsViewController.swift in Sources */,
 				279EC24D18884CF70087E0DB /* MMXMainMenuViewController.m in Sources */,
 				27E4B3301976DFF000B1D885 /* MMXReportCardTableViewController.m in Sources */,
-				27A7894C195498D9007E4018 /* MMXSettingsViewController.m in Sources */,
 				279EC21918884A890087E0DB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@ class AboutViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController() {
-            MMXAudioManager.sharedManager().playSoundEffect(MMXAudioSoundEffect.TapBackward)
+            MMXAudioManager.sharedManager().playSoundEffect(.TapBackward)
         }
     }
 }
